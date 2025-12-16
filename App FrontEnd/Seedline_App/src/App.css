@@ -923,13 +923,14 @@ body {
   }
   
   .rankings-table .col-league {
-    width: 42px;
-    min-width: 42px;
+    width: 36px;
+    min-width: 36px;
   }
-  
+
   .league-badge-sm {
-    padding: 0.1rem 0.25rem;
-    font-size: 0.65rem;
+    padding: 0.1rem 0.2rem;
+    font-size: 0.6rem;
+    margin-right: 0.1rem !important;
   }
   
   .rankings-table .col-state {

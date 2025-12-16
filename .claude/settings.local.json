@@ -5,7 +5,12 @@
       "Bash(wc:*)",
       "Bash(git config:*)",
       "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: Seedline youth soccer analytics platform\n\n- React frontend (v49) with Vite build system\n- Flask admin server for scraping and data management\n- Python scrapers for ECNL, Girls Academy, ASPIRE, and NPL leagues\n- PageRank-based team ranking algorithm (v42c)\n- Player and team profile management\n- Badge/award system\n- User authentication with role-based access\n- Club logo assets\n\nDatabase and large data files excluded via .gitignore\nEOF\n)\")",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "WebFetch(domain:www.dropbox.com)",
+      "WebFetch(domain:uc1f6e09cd639f7d34b91c501a75.dl.dropboxusercontent.com)"
     ]
   }
 }
