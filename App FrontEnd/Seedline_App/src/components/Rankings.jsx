@@ -25,6 +25,73 @@ function getLeagueBadgeStyle(league) {
   return styles[league] || { background: '#f5f5f5', color: '#666' };
 }
 
+// Truncated text component with tap-to-expand for mobile
+function TruncatedCell({ text, color, maxWidth = '150px' }) {
+  const [expanded, setExpanded] = useState(false);
+
+  if (!text || text === '-') return <span>-</span>;
+
+  return (
+    <div style={{ position: 'relative' }}>
+      <span
+        onClick={(e) => {
+          e.stopPropagation();
+          setExpanded(!expanded);
+        }}
+        style={{
+          fontSize: '0.8rem',
+          color: color,
+          maxWidth: maxWidth,
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          display: 'block',
+          cursor: 'pointer'
+        }}
+        title={text}
+      >
+        {text}
+      </span>
+      {expanded && (
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+            setExpanded(false);
+          }}
+          style={{
+            position: 'absolute',
+            top: '100%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            background: '#333',
+            color: '#fff',
+            padding: '0.5rem 0.75rem',
+            borderRadius: '6px',
+            fontSize: '0.8rem',
+            whiteSpace: 'nowrap',
+            zIndex: 1000,
+            boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+            marginTop: '4px'
+          }}
+        >
+          {text}
+          <div style={{
+            position: 'absolute',
+            top: '-6px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 0,
+            height: 0,
+            borderLeft: '6px solid transparent',
+            borderRight: '6px solid transparent',
+            borderBottom: '6px solid #333'
+          }} />
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Rankings() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -700,51 +767,23 @@ function Rankings() {
                           </td>
                         )}
                         {showDetails && (
-                          <td style={{ 
-                            fontSize: '0.8rem',
-                            color: '#2e7d32',
-                            maxWidth: '150px',
-                            whiteSpace: 'nowrap',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis'
-                          }} title={team.bestWin || ''}>
-                            {team.bestWin || '-'}
+                          <td>
+                            <TruncatedCell text={team.bestWin} color="#2e7d32" />
                           </td>
                         )}
                         {showDetails && (
-                          <td style={{ 
-                            fontSize: '0.8rem',
-                            color: '#2e7d32',
-                            maxWidth: '150px',
-                            whiteSpace: 'nowrap',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis'
-                          }} title={team.secondBestWin || ''}>
-                            {team.secondBestWin || '-'}
+                          <td>
+                            <TruncatedCell text={team.secondBestWin} color="#2e7d32" />
                           </td>
                         )}
                         {showDetails && (
-                          <td style={{ 
-                            fontSize: '0.8rem',
-                            color: '#c62828',
-                            maxWidth: '150px',
-                            whiteSpace: 'nowrap',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis'
-                          }} title={team.worstLoss || ''}>
-                            {team.worstLoss || '-'}
+                          <td>
+                            <TruncatedCell text={team.worstLoss} color="#c62828" />
                           </td>
                         )}
                         {showDetails && (
-                          <td style={{ 
-                            fontSize: '0.8rem',
-                            color: '#c62828',
-                            maxWidth: '150px',
-                            whiteSpace: 'nowrap',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis'
-                          }} title={team.secondWorstLoss || ''}>
-                            {team.secondWorstLoss || '-'}
+                          <td>
+                            <TruncatedCell text={team.secondWorstLoss} color="#c62828" />
                           </td>
                         )}
                         {canPerform('canSaveMyTeams') && (

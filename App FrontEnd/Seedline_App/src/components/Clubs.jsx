@@ -5,6 +5,75 @@ import { useRankingsData } from '../data/useRankingsData';
 // Pagination constants
 const CLUBS_PER_PAGE = 200;
 
+// Truncated text component with tap-to-expand for mobile
+function TruncatedCell({ text, subText, color, maxWidth = '150px' }) {
+  const [expanded, setExpanded] = useState(false);
+
+  if (!text || text === '-') return <span>-</span>;
+
+  const fullText = subText ? `${text} (by ${subText})` : text;
+
+  return (
+    <div style={{ position: 'relative' }}>
+      <span
+        onClick={(e) => {
+          e.stopPropagation();
+          setExpanded(!expanded);
+        }}
+        style={{
+          fontSize: '0.8rem',
+          color: color,
+          maxWidth: maxWidth,
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          display: 'block',
+          cursor: 'pointer'
+        }}
+        title={fullText}
+      >
+        {text}
+      </span>
+      {expanded && (
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+            setExpanded(false);
+          }}
+          style={{
+            position: 'absolute',
+            top: '100%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            background: '#333',
+            color: '#fff',
+            padding: '0.5rem 0.75rem',
+            borderRadius: '6px',
+            fontSize: '0.8rem',
+            whiteSpace: 'nowrap',
+            zIndex: 1000,
+            boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+            marginTop: '4px'
+          }}
+        >
+          {fullText}
+          <div style={{
+            position: 'absolute',
+            top: '-6px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 0,
+            height: 0,
+            borderLeft: '6px solid transparent',
+            borderRight: '6px solid transparent',
+            borderBottom: '6px solid #333'
+          }} />
+        </div>
+      )}
+    </div>
+  );
+}
+
 // Session storage keys for preserving state
 const STORAGE_KEYS = {
   scrollPosition: 'clubs_scroll_position',
@@ -726,51 +795,39 @@ function Clubs() {
                       </td>
                     )}
                     {showDetails && (
-                      <td style={{
-                        fontSize: '0.8rem',
-                        color: '#2e7d32',
-                        maxWidth: '150px',
-                        whiteSpace: 'nowrap',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis'
-                      }} title={club.bestWin ? `${club.bestWin} (by ${club.bestWinTeam})` : ''}>
-                        {club.bestWin || '-'}
+                      <td>
+                        <TruncatedCell
+                          text={club.bestWin}
+                          subText={club.bestWinTeam}
+                          color="#2e7d32"
+                        />
                       </td>
                     )}
                     {showDetails && (
-                      <td style={{
-                        fontSize: '0.8rem',
-                        color: '#2e7d32',
-                        maxWidth: '150px',
-                        whiteSpace: 'nowrap',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis'
-                      }} title={club.secondBestWin ? `${club.secondBestWin} (by ${club.secondBestWinTeam})` : ''}>
-                        {club.secondBestWin || '-'}
+                      <td>
+                        <TruncatedCell
+                          text={club.secondBestWin}
+                          subText={club.secondBestWinTeam}
+                          color="#2e7d32"
+                        />
                       </td>
                     )}
                     {showDetails && (
-                      <td style={{
-                        fontSize: '0.8rem',
-                        color: '#c62828',
-                        maxWidth: '150px',
-                        whiteSpace: 'nowrap',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis'
-                      }} title={club.worstLoss ? `${club.worstLoss} (by ${club.worstLossTeam})` : ''}>
-                        {club.worstLoss || '-'}
+                      <td>
+                        <TruncatedCell
+                          text={club.worstLoss}
+                          subText={club.worstLossTeam}
+                          color="#c62828"
+                        />
                       </td>
                     )}
                     {showDetails && (
-                      <td style={{
-                        fontSize: '0.8rem',
-                        color: '#c62828',
-                        maxWidth: '150px',
-                        whiteSpace: 'nowrap',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis'
-                      }} title={club.secondWorstLoss ? `${club.secondWorstLoss} (by ${club.secondWorstLossTeam})` : ''}>
-                        {club.secondWorstLoss || '-'}
+                      <td>
+                        <TruncatedCell
+                          text={club.secondWorstLoss}
+                          subText={club.secondWorstLossTeam}
+                          color="#c62828"
+                        />
                       </td>
                     )}
                     {showDetails && (
