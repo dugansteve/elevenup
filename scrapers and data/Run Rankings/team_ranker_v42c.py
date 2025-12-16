@@ -577,13 +577,14 @@ class TeamRankerV30:
         self.db_path = Path(db_path)
         self.games_df = None
         # V39: Added Boys age groups
-        # V42c: Added all age groups G06-G19, B06-B19
+        # V42c: Added all age groups
+        # Note: G06/B06 = birth year 2006 (oldest ~19yo), G19/B19 = U-19 (also oldest)
+        # Both formats coexist in data from different leagues
         self.all_age_groups = [
-            'G19', 'G18', 'G17', 'G16', 'G15', 'G14',     # Girls older
-            'G13', 'G12', 'G11', 'G10', 'G09', 'G08/07',  # Girls younger
-            'B19', 'B18', 'B17', 'B16', 'B15', 'B14',     # Boys older
-            'B13', 'B12', 'B11', 'B10', 'B09', 'B08',     # Boys younger
-            'B07', 'B06', 'G07', 'G06'                     # Youngest
+            'G06', 'G07', 'G19', 'G18', 'G17', 'G16', 'G15', 'G14',  # Girls older (birth yr & U-age)
+            'G13', 'G12', 'G11', 'G10', 'G09', 'G08/07',              # Girls younger
+            'B06', 'B07', 'B19', 'B18', 'B17', 'B16', 'B15', 'B14',  # Boys older (birth yr & U-age)
+            'B13', 'B12', 'B11', 'B10', 'B09', 'B08'                  # Boys younger
         ]
         self.cleanup_stats = {
             'bad_teams_removed': 0, 
