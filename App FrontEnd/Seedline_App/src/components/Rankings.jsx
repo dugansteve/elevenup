@@ -21,9 +21,22 @@ function getLeagueBadgeStyle(league) {
     'ECNL-RL': { background: '#ffebee', color: '#c62828' },   // Red
     'ASPIRE': { background: '#e8f5e9', color: '#2e7d32' },    // Green
     'NPL': { background: '#fff3e0', color: '#e65100' },       // Orange
+    'MLS NEXT': { background: '#e0f7fa', color: '#00838f' },  // Teal
   };
   return styles[league] || { background: '#f5f5f5', color: '#666' };
 }
+
+// League categorization
+const NATIONAL_LEAGUES = ['ECNL', 'ECNL RL', 'GA', 'ASPIRE', 'NPL', 'MLS NEXT'];
+const REGIONAL_LEAGUES = [
+  'Southeastern CCL Fall',
+  'Southeastern CCL U11/U12',
+  'Florida WFPL',
+  'Florida NFPL',
+  'Florida SEFPL',
+  'Florida CFPL',
+  'Chesapeake PSL YPL'
+];
 
 // Truncated text component with tap-to-expand for mobile
 function TruncatedCell({ text, color, maxWidth = '150px' }) {
@@ -565,15 +578,22 @@ function Rankings() {
                 
                 <div className="filter-group">
                   <label className="filter-label">League</label>
-                  <select 
+                  <select
                     className="filter-select"
                     value={selectedLeague}
                     onChange={(e) => setSelectedLeague(e.target.value)}
                   >
-                    <option value="ALL">All</option>
-                    {leagues.map(league => (
-                      <option key={league} value={league}>{league}</option>
-                    ))}
+                    <option value="ALL">All Leagues</option>
+                    <optgroup label="National Leagues">
+                      {NATIONAL_LEAGUES.filter(l => leagues.includes(l)).map(league => (
+                        <option key={league} value={league}>{league}</option>
+                      ))}
+                    </optgroup>
+                    <optgroup label="Regional Leagues">
+                      {REGIONAL_LEAGUES.filter(l => leagues.includes(l)).map(league => (
+                        <option key={league} value={league}>{league}</option>
+                      ))}
+                    </optgroup>
                   </select>
                 </div>
                 
