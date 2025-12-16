@@ -5,17 +5,17 @@ SOCCER TEAM RANKING SYSTEM - V42 (ASPIRE + NPL SUPPORT)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 V42 CHANGES FROM V41:
-  ✅ ASPIRE LEAGUE FACTOR - Added ASPIRE league with 0.90 multiplier
-  ✅ NPL LEAGUE FACTORS - Added all NPL regional leagues with 0.90 multiplier
-  ✅ DEFAULT LEAGUE FACTOR - Changed from 0.90 to 0.75 for unknown leagues
+  [OK] ASPIRE LEAGUE FACTOR - Added ASPIRE league with 0.90 multiplier
+  [OK] NPL LEAGUE FACTORS - Added all NPL regional leagues with 0.90 multiplier
+  [OK] DEFAULT LEAGUE FACTOR - Changed from 0.90 to 0.75 for unknown leagues
      This ensures teams from top-tier leagues (ECNL, GA) are properly weighted
      above teams from lesser-known or regional leagues
 
 V41 features retained:
-  ✅ OFFENSIVE POWER SCORE - Measures attacking strength (goals/game, big wins)
-  ✅ DEFENSIVE POWER SCORE - Measures defensive strength (goals against, clean sheets)
-  ✅ OFFENSIVE/DEFENSIVE RANKINGS - Ranks teams by offensive and defensive power
-  ✅ EXPANDED JSON EXPORT - Includes all Excel columns in React JSON:
+  [OK] OFFENSIVE POWER SCORE - Measures attacking strength (goals/game, big wins)
+  [OK] DEFENSIVE POWER SCORE - Measures defensive strength (goals against, clean sheets)
+  [OK] OFFENSIVE/DEFENSIVE RANKINGS - Ranks teams by offensive and defensive power
+  [OK] EXPANDED JSON EXPORT - Includes all Excel columns in React JSON:
      - bestWin, secondBestWin, worstLoss, secondWorstLoss
      - recordWithin50, recordVsHigher, recordVsLower
      - confStrength, avgGD
@@ -23,15 +23,15 @@ V41 features retained:
      - offensiveRank, defensiveRank
 
 V40 features retained:
-  ✅ MINIMUM WINS RULE - Teams with < 5 wins cannot be ranked higher than #10
+  [OK] MINIMUM WINS RULE - Teams with < 5 wins cannot be ranked higher than #10
      This prevents teams with records like 4-2-0 from being #1 just because
      they beat a couple strong teams. They need more games to prove themselves.
 
 V39 features retained:
-  ✅ BOYS SUPPORT - Ranks Boys age groups (B08-B13) in addition to Girls
-  ✅ PLAYER EXPORT - Exports player data from database to JSON for React app
-  ✅ STATE LOOKUP - Gets states from teams table instead of conference mapping
-  ✅ GENDER FILTER - Adds genders list to JSON output for React filter
+  [OK] BOYS SUPPORT - Ranks Boys age groups (B08-B13) in addition to Girls
+  [OK] PLAYER EXPORT - Exports player data from database to JSON for React app
+  [OK] STATE LOOKUP - Gets states from teams table instead of conference mapping
+  [OK] GENDER FILTER - Adds genders list to JSON output for React filter
 
 V38 features retained:
   - Team name alias system (170+ aliases)
@@ -105,7 +105,7 @@ except ImportError:
         pass
 
 if not CLEANUP_AVAILABLE:
-    print("⚠️  Warning: cleanup_database_v3.py not found. Cleanup features disabled.")
+    print("WARNING:  Warning: cleanup_database_v3.py not found. Cleanup features disabled.")
 
 
 class TeamRankerV30:
@@ -613,11 +613,11 @@ class TeamRankerV30:
     def run_database_cleanup(self, dry_run=False):
         """Run comprehensive database cleanup before ranking"""
         if not CLEANUP_AVAILABLE:
-            print("\n⚠️  Database cleanup not available (cleanup_database_v3.py not found)")
+            print("\nWARNING:  Database cleanup not available (cleanup_database_v3.py not found)")
             return None
         
         print(f"\n{'='*80}")
-        print("📊 PHASE 1: DATABASE CLEANUP")
+        print("[CHART] PHASE 1: DATABASE CLEANUP")
         print(f"{'='*80}")
         
         try:
@@ -626,7 +626,7 @@ class TeamRankerV30:
             self.db_cleanup_stats = stats
             return stats
         except Exception as e:
-            print(f"\n❌ Cleanup error: {e}")
+            print(f"\n[ERROR] Cleanup error: {e}")
             return None
     
     def check_partial_scores(self):
@@ -835,7 +835,7 @@ class TeamRankerV30:
     def load_game_data(self):
         """Load game data with runtime cleanup - V29: Gender filtered"""
         print(f"\n{'='*80}")
-        print("📊 PHASE 2: LOADING DATA FROM DATABASE")
+        print("[CHART] PHASE 2: LOADING DATA FROM DATABASE")
         print(f"{'='*80}")
         print(f"Database: {self.db_path}")
         
@@ -844,16 +844,16 @@ class TeamRankerV30:
         
         partial_stats = self.check_partial_scores()
         
-        print("\n📈 Score completeness by league:")
+        print("\n Score completeness by league:")
         for league, stats in partial_stats.items():
             total = stats['complete'] + stats['partial'] + stats['none']
             pct = (stats['complete'] / total * 100) if total > 0 else 0
             print(f"  {league}: {stats['complete']:,} complete, {stats['partial']:,} partial ({pct:.0f}% usable)")
             if stats['partial'] > 100:
-                print(f"    ⚠️  {stats['partial']} games have partial scores - scraper issue!")
+                print(f"    WARNING:  {stats['partial']} games have partial scores - scraper issue!")
         
         # V29: Check gender distribution before loading
-        print("\n📊 Gender distribution in database:")
+        print("\n[CHART] Gender distribution in database:")
         gender_dist = self.check_gender_distribution()
         # V39: Show both Girls and Boys age groups
         all_age_groups = ['G13', 'G12', 'G11', 'G10', 'G09', 'G08', 'G07', 'G08/07',
@@ -879,7 +879,7 @@ class TeamRankerV30:
         self.games_df = pd.read_sql_query(query, conn)
         
         # V39: Load team states from teams table for state lookup
-        print("\n📍 Loading team states from database...")
+        print("\n Loading team states from database...")
         state_query = """
             SELECT DISTINCT team_name, state 
             FROM teams 
@@ -901,7 +901,7 @@ class TeamRankerV30:
         # V29: Report on gender filtering
         if 'gender' in self.games_df.columns:
             gender_counts = self.games_df['gender'].value_counts(dropna=False)
-            print(f"\n📊 Loaded games by gender field:")
+            print(f"\n[CHART] Loaded games by gender field:")
             for gender, count in gender_counts.items():
                 gender_str = gender if gender else 'NULL/Unknown'
                 print(f"  {gender_str}: {count:,}")
@@ -992,7 +992,7 @@ class TeamRankerV30:
         
         # V29: Show sample of bad team names
         if bad_teams_detail and self.verbose:
-            print(f"\n  📋 Sample bad team names (first 20 unique):")
+            print(f"\n   Sample bad team names (first 20 unique):")
             seen = set()
             for item in bad_teams_detail:
                 if item['team'] not in seen and len(seen) < 20:
@@ -1475,10 +1475,10 @@ class TeamRankerV30:
             new_rank = new_ranks.get(team, 999)
             if old_rank < self.MAX_RANK_WITHOUT_MIN_WINS and new_rank > old_rank:
                 wins = stats.get('wins', 0)
-                demoted.append(f"   {team[:35]:<35} #{old_rank:>2} → #{new_rank:>2} ({wins} wins)")
+                demoted.append(f"   {team[:35]:<35} #{old_rank:>2} -> #{new_rank:>2} ({wins} wins)")
         
         if demoted:
-            print(f"\n⚠️  Demoted {len(demoted)} teams (< {self.MIN_WINS_FOR_TOP_RANKS} wins):")
+            print(f"\nWARNING:  Demoted {len(demoted)} teams (< {self.MIN_WINS_FOR_TOP_RANKS} wins):")
             for d in demoted[:10]:
                 print(d)
             if len(demoted) > 10:
@@ -2551,7 +2551,7 @@ class TeamRankerV30:
     def print_diagnostics_report(self):
         """Print detailed diagnostics about data quality issues"""
         print(f"\n{'='*80}")
-        print("🔍 DATA QUALITY DIAGNOSTICS REPORT")
+        print(" DATA QUALITY DIAGNOSTICS REPORT")
         print(f"{'='*80}")
         
         # Bad team names
@@ -2564,7 +2564,7 @@ class TeamRankerV30:
                 reason_counts[item['reason']] += 1
                 unique_bad_names.add(item['team'])
             
-            print(f"\n📋 Bad Team Names: {len(bad_names)} instances, {len(unique_bad_names)} unique")
+            print(f"\n Bad Team Names: {len(bad_names)} instances, {len(unique_bad_names)} unique")
             print("   Breakdown by reason:")
             for reason, count in sorted(reason_counts.items(), key=lambda x: -x[1])[:10]:
                 print(f"     {count:5,} - {reason}")
@@ -2576,14 +2576,14 @@ class TeamRankerV30:
         # Duplicate samples
         dup_samples = self.diagnostics.get('duplicates_removed_samples', [])
         if dup_samples:
-            print(f"\n📋 Sample Duplicates Removed:")
+            print(f"\n Sample Duplicates Removed:")
             for sample in dup_samples[:10]:
                 print(f"     {sample.get('game_date', 'N/A')} | {sample.get('home_team', 'N/A')[:25]} vs {sample.get('away_team', 'N/A')[:25]} | {sample.get('home_score', 0)}-{sample.get('away_score', 0)}")
         
         # Gender breakdown
         gender_breakdown = self.diagnostics.get('age_group_gender_breakdown', {})
         if gender_breakdown:
-            print(f"\n📋 Age Group / Gender in Database:")
+            print(f"\n Age Group / Gender in Database:")
             for age, genders in sorted(gender_breakdown.items()):
                 parts = [f"{g}:{c:,}" for g, c in genders.items()]
                 print(f"     {age}: {', '.join(parts)}")
@@ -2595,7 +2595,7 @@ class TeamRankerV30:
     def run_all_age_groups(self, do_cleanup=None, dry_run=False):
         """Generate rankings for all age groups"""
         print(f"\n{'='*80}")
-        print("🏆 SOCCER TEAM RANKING SYSTEM V42")
+        print("[TROPHY] SOCCER TEAM RANKING SYSTEM V42")
         print(f"{'='*80}")
         print(f"Database: {self.db_path}")
         print(f"League Factors: ECNL={self.LEAGUE_FACTORS['ECNL']}, "
@@ -2609,7 +2609,7 @@ class TeamRankerV30:
         
         if do_cleanup is None and CLEANUP_AVAILABLE:
             print("\n" + "="*60)
-            response = input("🔧 Run database cleanup first? (y/n): ").strip().lower()
+            response = input(" Run database cleanup first? (y/n): ").strip().lower()
             do_cleanup = response in ['y', 'yes']
         elif do_cleanup is None:
             do_cleanup = False
@@ -2617,7 +2617,7 @@ class TeamRankerV30:
         if do_cleanup:
             self.run_database_cleanup(dry_run=dry_run)
         else:
-            print("\n⏭️  Skipping database cleanup")
+            print("\n  Skipping database cleanup")
         
         self.load_game_data()
         
@@ -2625,7 +2625,7 @@ class TeamRankerV30:
         
         for age_group in self.all_age_groups:
             print(f"\n{'='*60}")
-            print(f"🎯 RANKING: {age_group}")
+            print(f" RANKING: {age_group}")
             print(f"{'='*60}")
             
             games = self.get_age_group_games(age_group)
@@ -2643,7 +2643,7 @@ class TeamRankerV30:
             all_rankings[age_group] = rankings
             
             # V30: Updated display with predictability
-            print(f"\n🏆 Top 15 {age_group}:")
+            print(f"\n[TROPHY] Top 15 {age_group}:")
             print("-" * 80)
             print(f"{'Rk':>2}  {'Team':<32} {'League':<8} {'Record':<10} {'Rating':>6} {'Pred':>4}")
             print("-" * 80)
@@ -2655,7 +2655,7 @@ class TeamRankerV30:
                 pred = stats.get('predictability', 0)
                 print(f"{rank:2}. {team[:32]:<32} ({league:<7}) {record:<10} {rating:6.0f} {pred:4.0f}")
             
-            print(f"\n📊 Top 100 by League:")
+            print(f"\n[CHART] Top 100 by League:")
             top_100 = rankings[:100]
             league_counts = {}
             for _, stats in top_100:
@@ -2789,7 +2789,7 @@ class TeamRankerV30:
         # ═══════════════════════════════════════════════════════════════════
         
         players_data = []
-        print("\n📋 Loading players from database...")
+        print("\n Loading players from database...")
         
         try:
             conn = sqlite3.connect(self.db_path)
@@ -2833,7 +2833,7 @@ class TeamRankerV30:
             
             print(f"   Loaded {len(players_data):,} players")
         except Exception as e:
-            print(f"   ⚠️ Could not load players: {e}")
+            print(f"   WARNING: Could not load players: {e}")
             players_data = []
         
         # ═══════════════════════════════════════════════════════════════════
@@ -2855,7 +2855,7 @@ class TeamRankerV30:
         json_path = Path('rankings_for_react.json')
         with open(json_path, 'w') as f:
             json.dump(react_data, f, indent=2)
-        print(f"\n✅ Saved: {json_path}")
+        print(f"\n[OK] Saved: {json_path}")
         print(f"   Teams: {len(teams_data):,}")
         print(f"   Games: {len(games_data):,}")
         print(f"   Players: {len(players_data):,}")
@@ -2869,9 +2869,9 @@ class TeamRankerV30:
         if os.path.exists(REACT_APP_PUBLIC_FOLDER):
             dest_path = Path(REACT_APP_PUBLIC_FOLDER) / 'rankings_for_react.json'
             shutil.copy(json_path, dest_path)
-            print(f"✅ Copied to React app: {dest_path}")
+            print(f"[OK] Copied to React app: {dest_path}")
         else:
-            print(f"⚠️  React app folder not found: {REACT_APP_PUBLIC_FOLDER}")
+            print(f"WARNING:  React app folder not found: {REACT_APP_PUBLIC_FOLDER}")
             print("   Update REACT_APP_PUBLIC_FOLDER in the script to enable auto-copy")
         
         # ═══════════════════════════════════════════════════════════════════
@@ -2918,9 +2918,9 @@ class TeamRankerV30:
             df = pd.DataFrame(all_rows)
             excel_path = Path(f'All_Age_Groups_Rankings_V41_{timestamp}.xlsx')
             df.to_excel(excel_path, index=False)
-            print(f"✅ Saved: {excel_path}")
+            print(f"[OK] Saved: {excel_path}")
         except Exception as e:
-            print(f"⚠️ Could not save Excel: {e}")
+            print(f"WARNING: Could not save Excel: {e}")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -2994,17 +2994,17 @@ V41 Changes:
     else:
         db_path = find_database()
         if not db_path:
-            print("❌ Database not found. Please provide path as argument.")
+            print("[ERROR] Database not found. Please provide path as argument.")
             sys.exit(1)
     
     try:
         ranker = TeamRankerV30(db_path, verbose=args.verbose)
         ranker.run_all_age_groups(do_cleanup=do_cleanup, dry_run=args.dry_run)
     except FileNotFoundError as e:
-        print(f"❌ {e}")
+        print(f"[ERROR] {e}")
         sys.exit(1)
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f"[ERROR] Error: {e}")
         import traceback
         traceback.print_exc()
         sys.exit(1)

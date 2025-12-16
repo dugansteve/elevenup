@@ -10,7 +10,24 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "WebFetch(domain:www.dropbox.com)",
-      "WebFetch(domain:uc1f6e09cd639f7d34b91c501a75.dl.dropboxusercontent.com)"
+      "WebFetch(domain:uc1f6e09cd639f7d34b91c501a75.dl.dropboxusercontent.com)",
+      "Bash(sqlite3:*)",
+      "Bash(python:*)",
+      "WebSearch",
+      "WebFetch(domain:www.usclubsoccer.org)",
+      "WebFetch(domain:www.gotsport.com)",
+      "WebFetch(domain:system.gotsport.com)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:www.soccerwire.com)",
+      "WebFetch(domain:www.southeasternccl.com)",
+      "WebFetch(domain:floridasoccer.org)",
+      "WebFetch(domain:www.fysa.com)",
+      "WebFetch(domain:www.southatlanticpremierleague.com)",
+      "WebFetch(domain:www.midatlanticpremierleague.com)",
+      "WebFetch(domain:midatlanticpl.com)",
+      "WebFetch(domain:floridaclubleague.com)",
+      "WebFetch(domain:floridaclubleagues.com)",
+      "WebFetch(domain:usclubsoccer.org)"
     ]
   }
 }

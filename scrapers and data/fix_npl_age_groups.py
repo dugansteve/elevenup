@@ -258,14 +258,14 @@ Examples:
     db_path = args.db or find_database()
     
     if not db_path:
-        print("❌ Could not find seedlinedata.db")
+        print("ERROR: Could not find seedlinedata.db")
         print("   Please specify path with --db option")
         db_path = input("   Enter database path: ").strip()
         if not db_path or not os.path.exists(db_path):
-            print("❌ Invalid path. Exiting.")
+            print("ERROR: Invalid path. Exiting.")
             return 1
     
-    print(f"📂 Database: {db_path}")
+    print(f"Database: {db_path}")
     print()
     
     # Show current state
@@ -276,7 +276,7 @@ Examples:
         for age_group, count in dist[:10]:
             # Check if it needs fixing
             new_age, needs_fix = convert_grad_year_to_u_age(age_group)
-            indicator = f" → {new_age}" if needs_fix else " ✓"
+            indicator = f" -> {new_age}" if needs_fix else " (ok)"
             print(f"  {age_group}: {count:,} games{indicator}")
     else:
         print("  No NPL games found")
@@ -292,7 +292,7 @@ Examples:
     print()
     
     if not games_to_fix and not teams_to_fix:
-        print("✅ No changes needed! All age groups are already in correct format.")
+        print("OK: No changes needed! All age groups are already in correct format.")
         return 0
     
     # Show sample of changes
@@ -300,39 +300,39 @@ Examples:
     print("-" * 40)
     for i, (rowid, game_id, league, old_age, new_age, home, away) in enumerate(games_to_fix[:5]):
         print(f"  Game: {home[:30]} vs {away[:30]}")
-        print(f"        {old_age} → {new_age} ({league})")
+        print(f"        {old_age} -> {new_age} ({league})")
     if len(games_to_fix) > 5:
         print(f"  ... and {len(games_to_fix) - 5:,} more games")
     print()
     
     if args.dry_run:
-        print("🔍 DRY RUN - No changes made")
+        print("DRY RUN - No changes made")
         return 0
-    
+
     # Confirm
     if not args.yes:
-        print("⚠️  This will modify the database.")
+        print("WARNING: This will modify the database.")
         response = input("   Proceed? (yes/no): ").strip().lower()
         if response not in ('yes', 'y'):
-            print("❌ Cancelled")
+            print("Cancelled")
             return 1
-    
+
     # Create backup
     if not args.no_backup:
         print()
         print("CREATING BACKUP...")
         backup_path = create_backup(db_path)
-        print(f"  ✅ Backup: {backup_path}")
-    
+        print(f"  Backup: {backup_path}")
+
     # Apply fixes
     print()
     print("APPLYING FIXES...")
     games_fixed, teams_fixed = apply_fixes(db_path, games_to_fix, teams_to_fix)
-    
-    print(f"  ✅ Games fixed: {games_fixed:,}")
-    print(f"  ✅ Teams fixed: {teams_fixed:,}")
+
+    print(f"  Games fixed: {games_fixed:,}")
+    print(f"  Teams fixed: {teams_fixed:,}")
     print()
-    
+
     # Show new state
     print("NEW STATE (NPL games):")
     print("-" * 40)
@@ -340,9 +340,9 @@ Examples:
     for age_group, count in dist[:10]:
         print(f"  {age_group}: {count:,} games")
     print()
-    
+
     print("=" * 70)
-    print("  ✅ COMPLETE!")
+    print("  COMPLETE!")
     print("=" * 70)
     
     return 0
