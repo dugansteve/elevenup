@@ -184,6 +184,9 @@ function Clubs() {
           totalGoalsAgainst: 0,
           totalGamesPlayed: 0,
           allBestWins: [],
+          allSecondBestWins: [],
+          allWorstLosses: [],
+          allSecondWorstLosses: [],
           bestTeamPerAgeGroup: {}
         };
       }
@@ -206,6 +209,9 @@ function Clubs() {
       club.totalGamesPlayed += team.gamesPlayed || ((team.wins || 0) + (team.losses || 0) + (team.draws || 0));
 
       if (team.bestWin) club.allBestWins.push({ win: team.bestWin, team: team.name });
+      if (team.secondBestWin) club.allSecondBestWins.push({ win: team.secondBestWin, team: team.name });
+      if (team.worstLoss) club.allWorstLosses.push({ win: team.worstLoss, team: team.name });
+      if (team.secondWorstLoss) club.allSecondWorstLosses.push({ win: team.secondWorstLoss, team: team.name });
 
       const ageGroup = team.ageGroup;
       if (ageGroup) {
@@ -230,14 +236,29 @@ function Clubs() {
         ? bestTeams.reduce((sum, bt) => sum + bt.powerScore, 0) / ageGroupCount
         : 0;
 
-      // Best single win across all teams (parse rank from bestWin string)
-      const bestOverallWin = club.allBestWins.length > 0
-        ? club.allBestWins.reduce((best, current) => {
-            const currentRank = parseInt((current.win.match(/^#(\d+)/) || [])[1]) || 9999;
-            const bestRank = parseInt((best.win.match(/^#(\d+)/) || [])[1]) || 9999;
-            return currentRank < bestRank ? current : best;
-          })
-        : null;
+      // Helper to find best/worst result from array (lower rank = better for wins, higher rank = worse for losses)
+      const findBestWin = (winsArray) => {
+        if (winsArray.length === 0) return null;
+        return winsArray.reduce((best, current) => {
+          const currentRank = parseInt((current.win.match(/^#(\d+)/) || [])[1]) || 9999;
+          const bestRank = parseInt((best.win.match(/^#(\d+)/) || [])[1]) || 9999;
+          return currentRank < bestRank ? current : best;
+        });
+      };
+
+      const findWorstLoss = (lossesArray) => {
+        if (lossesArray.length === 0) return null;
+        return lossesArray.reduce((worst, current) => {
+          const currentRank = parseInt((current.win.match(/^#(\d+)/) || [])[1]) || 0;
+          const worstRank = parseInt((worst.win.match(/^#(\d+)/) || [])[1]) || 0;
+          return currentRank > worstRank ? current : worst;
+        });
+      };
+
+      const bestOverallWin = findBestWin(club.allBestWins);
+      const secondBestOverallWin = findBestWin(club.allSecondBestWins);
+      const worstOverallLoss = findWorstLoss(club.allWorstLosses);
+      const secondWorstOverallLoss = findWorstLoss(club.allSecondWorstLosses);
 
       const goalDiff = club.totalGoalsFor - club.totalGoalsAgainst;
       const avgGD = club.totalGamesPlayed > 0 ? goalDiff / club.totalGamesPlayed : 0;
@@ -270,7 +291,13 @@ function Clubs() {
         avgOffScore: avgOffScore,
         avgDefScore: avgDefScore,
         bestWin: bestOverallWin ? bestOverallWin.win : null,
-        bestWinTeam: bestOverallWin ? bestOverallWin.team : null
+        bestWinTeam: bestOverallWin ? bestOverallWin.team : null,
+        secondBestWin: secondBestOverallWin ? secondBestOverallWin.win : null,
+        secondBestWinTeam: secondBestOverallWin ? secondBestOverallWin.team : null,
+        worstLoss: worstOverallLoss ? worstOverallLoss.win : null,
+        worstLossTeam: worstOverallLoss ? worstOverallLoss.team : null,
+        secondWorstLoss: secondWorstOverallLoss ? secondWorstOverallLoss.win : null,
+        secondWorstLossTeam: secondWorstOverallLoss ? secondWorstOverallLoss.team : null
       };
     });
   }, [teamsData]);
@@ -618,6 +645,9 @@ function Clubs() {
                   {showDetails && <th title="Average Offensive Power Score">Off</th>}
                   {showDetails && <th title="Average Defensive Power Score">Def</th>}
                   {showDetails && <th title="Best Win (from any team in club)">Best Win</th>}
+                  {showDetails && <th title="2nd Best Win">2nd Best</th>}
+                  {showDetails && <th title="Worst Loss">Worst Loss</th>}
+                  {showDetails && <th title="2nd Worst Loss">2nd Worst</th>}
                   {showDetails && <th title="Win Percentage">Win %</th>}
                 </tr>
               </thead>
@@ -707,6 +737,42 @@ function Clubs() {
                         textOverflow: 'ellipsis'
                       }} title={club.bestWin ? `${club.bestWin} (by ${club.bestWinTeam})` : ''}>
                         {club.bestWin || '-'}
+                      </td>
+                    )}
+                    {showDetails && (
+                      <td style={{
+                        fontSize: '0.8rem',
+                        color: '#2e7d32',
+                        maxWidth: '150px',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis'
+                      }} title={club.secondBestWin ? `${club.secondBestWin} (by ${club.secondBestWinTeam})` : ''}>
+                        {club.secondBestWin || '-'}
+                      </td>
+                    )}
+                    {showDetails && (
+                      <td style={{
+                        fontSize: '0.8rem',
+                        color: '#c62828',
+                        maxWidth: '150px',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis'
+                      }} title={club.worstLoss ? `${club.worstLoss} (by ${club.worstLossTeam})` : ''}>
+                        {club.worstLoss || '-'}
+                      </td>
+                    )}
+                    {showDetails && (
+                      <td style={{
+                        fontSize: '0.8rem',
+                        color: '#c62828',
+                        maxWidth: '150px',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis'
+                      }} title={club.secondWorstLoss ? `${club.secondWorstLoss} (by ${club.secondWorstLossTeam})` : ''}>
+                        {club.secondWorstLoss || '-'}
                       </td>
                     )}
                     {showDetails && (
