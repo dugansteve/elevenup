@@ -3,6 +3,23 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useRankingsData } from '../data/useRankingsData';
 import LinkManager from './LinkManager';
 
+// Helper to extract actual club name by stripping age group suffixes
+// (same logic as Clubs.jsx to ensure consistent matching)
+function extractClubName(teamName) {
+  if (!teamName) return '';
+
+  let name = teamName.trim();
+
+  name = name
+    .replace(/\s+[GB]?\d{2}[GB]?(\s+(Ga|RL|Gold|White|Blue|Red|Black|Premier|Elite|Academy|Select|Pre-Academy|Pre Academy))*\s*$/i, '')
+    .replace(/\s+\d{2}\s*$/, '')
+    .replace(/\s*\([A-Za-z]{2}\)\s*$/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  return name || teamName;
+}
+
 function ClubProfile() {
   const { clubName } = useParams();
   const navigate = useNavigate();
@@ -13,9 +30,10 @@ function ClubProfile() {
   const decodedClubName = decodeURIComponent(clubName);
 
   // Get all teams for this club
+  // Use extractClubName to match the same way Clubs.jsx aggregates clubs
   const clubTeams = useMemo(() => {
     return teamsData
-      .filter(t => t.club === decodedClubName)
+      .filter(t => extractClubName(t.club || t.name) === decodedClubName)
       .sort((a, b) => {
         // Sort by age group first, then by power score
         if (a.ageGroup !== b.ageGroup) {
