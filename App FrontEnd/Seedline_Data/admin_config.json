@@ -1,0 +1,413 @@
+{
+  "users": [],
+  "scraper_history": [
+    {
+      "scraper": "ga_events",
+      "started_at": "2025-12-12T11:54:26.791218",
+      "status": "running",
+      "args": [
+        "--no-confirm",
+        "--scrape"
+      ],
+      "settings": {
+        "id": "ga_events",
+        "events_mode": "scrape"
+      }
+    },
+    {
+      "scraper": "npl",
+      "started_at": "2025-12-14T22:20:57.406917",
+      "status": "running",
+      "args": [
+        "--no-confirm",
+        "--gender",
+        "both",
+        "--ages",
+        "13,12,11,10,09,08",
+        "--players"
+      ],
+      "settings": {
+        "id": "npl",
+        "girls": true,
+        "boys": true,
+        "age_groups": [
+          "13",
+          "12",
+          "11",
+          "10",
+          "09",
+          "08"
+        ],
+        "date_range": "all",
+        "include_players": true,
+        "verbose": false
+      }
+    },
+    {
+      "scraper": "npl",
+      "started_at": "2025-12-14T22:25:08.745660",
+      "status": "running",
+      "args": [
+        "--no-confirm",
+        "--gender",
+        "both",
+        "--ages",
+        "13,12,11,10,09,08",
+        "--players",
+        "--verbose"
+      ],
+      "settings": {
+        "id": "npl",
+        "girls": true,
+        "boys": true,
+        "age_groups": [
+          "13",
+          "12",
+          "11",
+          "10",
+          "09",
+          "08"
+        ],
+        "date_range": "all",
+        "include_players": true,
+        "verbose": true
+      }
+    },
+    {
+      "scraper": "npl",
+      "started_at": "2025-12-14T22:26:54.375854",
+      "status": "running",
+      "args": [
+        "--no-confirm",
+        "--gender",
+        "both",
+        "--ages",
+        "13,12,11,10,09,08",
+        "--players",
+        "--verbose"
+      ],
+      "settings": {
+        "id": "npl",
+        "girls": true,
+        "boys": true,
+        "age_groups": [
+          "13",
+          "12",
+          "11",
+          "10",
+          "09",
+          "08"
+        ],
+        "date_range": "all",
+        "include_players": true,
+        "verbose": true
+      }
+    },
+    {
+      "scraper": "npl",
+      "started_at": "2025-12-14T22:31:25.541740",
+      "status": "running",
+      "args": [
+        "--no-confirm",
+        "--gender",
+        "both",
+        "--ages",
+        "13,12,11,10,09,08",
+        "--players",
+        "--verbose"
+      ],
+      "settings": {
+        "id": "npl",
+        "girls": true,
+        "boys": true,
+        "age_groups": [
+          "13",
+          "12",
+          "11",
+          "10",
+          "09",
+          "08"
+        ],
+        "date_range": "all",
+        "include_players": true,
+        "verbose": true
+      }
+    },
+    {
+      "scraper": "npl",
+      "started_at": "2025-12-14T22:40:24.423451",
+      "status": "running",
+      "args": [
+        "--no-confirm",
+        "--gender",
+        "both",
+        "--ages",
+        "13,12,11,10,09,08",
+        "--players",
+        "--verbose"
+      ],
+      "settings": {
+        "id": "npl",
+        "girls": true,
+        "boys": true,
+        "age_groups": [
+          "13",
+          "12",
+          "11",
+          "10",
+          "09",
+          "08"
+        ],
+        "date_range": "all",
+        "include_players": true,
+        "verbose": true
+      }
+    },
+    {
+      "scraper": "ecnl",
+      "started_at": "2025-12-14T22:42:54.952036",
+      "status": "running",
+      "args": [
+        "--no-confirm",
+        "--gender",
+        "both",
+        "--ages",
+        "13,12,11,10,09,08",
+        "--players",
+        "--verbose"
+      ],
+      "settings": {
+        "id": "ecnl",
+        "girls": true,
+        "boys": true,
+        "age_groups": [
+          "13",
+          "12",
+          "11",
+          "10",
+          "09",
+          "08"
+        ],
+        "date_range": "all",
+        "include_players": true,
+        "verbose": true
+      }
+    },
+    {
+      "scraper": "ecnl",
+      "started_at": "2025-12-14T23:02:38.985360",
+      "status": "running",
+      "args": [
+        "--no-confirm",
+        "--gender",
+        "both",
+        "--ages",
+        "13,12,11,10,09,08",
+        "--players",
+        "--verbose"
+      ],
+      "settings": {
+        "id": "ecnl",
+        "girls": true,
+        "boys": true,
+        "age_groups": [
+          "13",
+          "12",
+          "11",
+          "10",
+          "09",
+          "08"
+        ],
+        "date_range": "all",
+        "include_players": true,
+        "verbose": true
+      }
+    },
+    {
+      "scraper": "ecnl",
+      "started_at": "2025-12-14T23:16:24.110478",
+      "status": "running",
+      "args": [
+        "--no-confirm",
+        "--reset-status",
+        "--scrape",
+        "--gender",
+        "both",
+        "--ages",
+        "13,12,11,10,09,08",
+        "--players",
+        "--verbose"
+      ],
+      "settings": {
+        "id": "ecnl",
+        "girls": true,
+        "boys": true,
+        "age_groups": [
+          "13",
+          "12",
+          "11",
+          "10",
+          "09",
+          "08"
+        ],
+        "include_players": true,
+        "verbose": true,
+        "scrape_mode": "reset",
+        "ecnl_league": "both"
+      }
+    },
+    {
+      "scraper": "ecnl",
+      "started_at": "2025-12-15T08:13:09.539514",
+      "status": "running",
+      "args": [
+        "--no-confirm",
+        "--reset-status",
+        "--scrape",
+        "--gender",
+        "both",
+        "--ages",
+        "13,12,11,10,09,08",
+        "--players",
+        "--verbose"
+      ],
+      "settings": {
+        "id": "ecnl",
+        "girls": true,
+        "boys": true,
+        "age_groups": [
+          "13",
+          "12",
+          "11",
+          "10",
+          "09",
+          "08"
+        ],
+        "include_players": true,
+        "verbose": true,
+        "scrape_mode": "reset",
+        "ecnl_league": "both"
+      }
+    },
+    {
+      "scraper": "ecnl",
+      "started_at": "2025-12-15T11:17:18.493669",
+      "status": "running",
+      "args": [
+        "--no-confirm",
+        "--scrape",
+        "--gender",
+        "both",
+        "--ages",
+        "13,12,11,10,09,08",
+        "--players",
+        "--verbose"
+      ],
+      "settings": {
+        "id": "ecnl",
+        "girls": true,
+        "boys": true,
+        "age_groups": [
+          "13",
+          "12",
+          "11",
+          "10",
+          "09",
+          "08"
+        ],
+        "include_players": true,
+        "verbose": true,
+        "scrape_mode": "pending",
+        "ecnl_league": "both"
+      }
+    },
+    {
+      "scraper": "npl",
+      "started_at": "2025-12-15T14:00:13.098862",
+      "status": "running",
+      "args": [
+        "--no-confirm",
+        "--gender",
+        "girls",
+        "--ages",
+        "13,12,11,10,09,08",
+        "--players",
+        "--verbose"
+      ],
+      "settings": {
+        "id": "npl",
+        "girls": true,
+        "boys": false,
+        "age_groups": [
+          "13",
+          "12",
+          "11",
+          "10",
+          "09",
+          "08"
+        ],
+        "date_range": "all",
+        "include_players": true,
+        "verbose": true
+      }
+    },
+    {
+      "scraper": "npl",
+      "started_at": "2025-12-15T14:45:15.797338",
+      "status": "running",
+      "args": [
+        "--no-confirm",
+        "--reset-status",
+        "--scrape",
+        "--gender",
+        "both",
+        "--no-screenshots",
+        "--verbose"
+      ],
+      "settings": {
+        "id": "npl",
+        "girls": true,
+        "boys": true,
+        "include_players": true,
+        "verbose": true,
+        "scrape_mode": "reset",
+        "npl_tier": "all",
+        "npl_region": "",
+        "time_filter": "all",
+        "days": "90",
+        "headless": false,
+        "no_screenshots": true
+      }
+    },
+    {
+      "scraper": "npl",
+      "started_at": "2025-12-15T15:43:05.282642",
+      "status": "running",
+      "args": [
+        "--no-confirm",
+        "--scrape",
+        "--gender",
+        "both",
+        "--verbose"
+      ],
+      "settings": {
+        "id": "npl",
+        "girls": true,
+        "boys": true,
+        "include_players": true,
+        "verbose": true,
+        "scrape_mode": "pending",
+        "npl_tier": "all",
+        "npl_region": "",
+        "time_filter": "all",
+        "days": "90",
+        "headless": false,
+        "no_screenshots": false
+      }
+    }
+  ],
+  "settings": {
+    "auto_export": true,
+    "theme": "dark"
+  }
+}

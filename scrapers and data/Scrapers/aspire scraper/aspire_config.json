@@ -1,0 +1,374 @@
+{
+  "last_discovery": null,
+  "league_event_id": "42138",
+  "league_last_scraped": "2025-12-08T22:26:43.799336",
+  "events": {},
+  "team_mapping": {
+    "BVB International Academy Texas": {
+      "42138": "3427489"
+    },
+    "Dallas Surf": {
+      "42138": "3325606"
+    },
+    "Michigan Jaguars": {
+      "42138": "3302532"
+    },
+    "Midwest United": {
+      "42138": "3301892"
+    },
+    "North Shore United": {
+      "42138": "3370997"
+    },
+    "FC United Soccer Club": {
+      "42138": "3309370"
+    },
+    "Sockers FC": {
+      "42138": "3300246"
+    },
+    "Midwest United FC SCOR": {
+      "42138": "3305757"
+    },
+    "Michigan Stars Elite SC": {
+      "42138": "3372140"
+    },
+    "Elmbrook United": {
+      "42138": "3300291"
+    },
+    "Indy Premier SC": {
+      "42138": "3339357"
+    },
+    "Kings Hammer Soccer Club 13G Aspire TN": {
+      "42138": "3308958"
+    },
+    "Baltimore Celtic Soccer Club": {
+      "42138": "3256654"
+    },
+    "Potomac Soccer Association": {
+      "42138": "3294019"
+    },
+    "Carolina Core FC Youth": {
+      "42138": "3307561"
+    },
+    "VA Rush Soccer Club": {
+      "42138": "3385300"
+    },
+    "Virginia Revolution SC": {
+      "42138": "3275816"
+    },
+    "FC Richmond": {
+      "42138": "3308686"
+    },
+    "Kansas Rush": {
+      "42138": "3392897"
+    },
+    "St. Louis Development Academy": {
+      "42138": "3315603"
+    },
+    "KC Legends": {
+      "42138": "3298005"
+    },
+    "Toca FC": {
+      "42138": "3281453"
+    },
+    "ALBION SC Las Vegas": {
+      "42138": "3391040"
+    },
+    "Black Diamond FC": {
+      "42138": "3393160"
+    },
+    "Seacoast United Massachusetts": {
+      "42138": "3299776"
+    },
+    "Seacoast United": {
+      "42138": "3300734"
+    },
+    "Ginga FC": {
+      "42138": "3391910"
+    },
+    "FC Boston Bolts": {
+      "42138": "3267467"
+    },
+    "NJ Premier FC": {
+      "42138": "3294194"
+    },
+    "New York SC": {
+      "42138": "3309317"
+    },
+    "New York City FC Girls": {
+      "42138": "3376921"
+    },
+    "Atlantic United SB/LGN SC": {
+      "42138": "3309790"
+    },
+    "Long Island SC": {
+      "42138": "3305440"
+    },
+    "STA": {
+      "42138": "3308360"
+    },
+    "Columbia Premier Soccer Club": {
+      "42138": "3309308"
+    },
+    "Portland City United SC": {
+      "42138": "3370848"
+    },
+    "Eugene Metro FC": {
+      "42138": "3289337"
+    },
+    "Mt. Rainier Futbol Club": {
+      "42138": "3309381"
+    },
+    "Bend FC": {
+      "42138": "3327235"
+    },
+    "Valor Soccer": {
+      "42138": "3370708"
+    },
+    "Charlotte Independence SC 13G Aspire North": {
+      "42138": "3294842"
+    },
+    "AFC Lightning": {
+      "42138": "3387741"
+    },
+    "Fox Soccer Academy of the Carolinas": {
+      "42138": "3316071"
+    },
+    "Georgia Impact SC": {
+      "42138": "3244073"
+    },
+    "James Island Youth SC": {
+      "42138": "3308938"
+    },
+    "Charlotte Independence SC 13G Aspire South": {
+      "42138": "3294843"
+    },
+    "California Football Academy": {
+      "42138": "3308992"
+    },
+    "Santa Barbara Soccer Club": {
+      "42138": "3295508"
+    },
+    "Sand and Surf SC": {
+      "42138": "3309431"
+    },
+    "City SC": {
+      "42138": "3295502"
+    },
+    "Kings Hammer Soccer Club 12G Aspire TN": {
+      "42138": "3308955"
+    },
+    "Charlotte Independence SC 12G Aspire North": {
+      "42138": "3294845"
+    },
+    "Charlotte Independence SC 12G Aspire South": {
+      "42138": "3294835"
+    },
+    "HTX 11G North NL (TX-S)": {
+      "42138": "3315360"
+    },
+    "Houston Surf Soccer Club": {
+      "42138": "3372553"
+    },
+    "Wheaton United SC": {
+      "42138": "3297189"
+    },
+    "Galaxy SC": {
+      "42138": "3371405"
+    },
+    "Kings Hammer Soccer Club 11G Aspire NKY": {
+      "42138": "3300902"
+    },
+    "Javanon FC": {
+      "42138": "3276119"
+    },
+    "Baltimore Armour": {
+      "42138": "3298720"
+    },
+    "The Player Progression Academy": {
+      "42138": "3297255"
+    },
+    "KC Fusion": {
+      "42138": "3353076"
+    },
+    "Charlotte Independence SC 11G Aspire South": {
+      "42138": "3294846"
+    },
+    "Charlotte Independence SC 11G Aspire North": {
+      "42138": "3294841"
+    },
+    "HTX 10G North NL (TX-S)": {
+      "42138": "3315359"
+    },
+    "Kings Hammer Soccer Club 10G Aspire NKY": {
+      "42138": "3300903"
+    },
+    "Charlotte Independence SC 10G Aspire North": {
+      "42138": "3294844"
+    },
+    "Charlotte Independence SC 10G Aspire South": {
+      "42138": "3294836"
+    },
+    "HTX 09G Aspire North": {
+      "42138": "3315358"
+    },
+    "Kings Hammer Soccer Club 09G Aspire NKY": {
+      "42138": "3300904"
+    },
+    "Charlotte Independence SC 09G Aspire North": {
+      "42138": "3294838"
+    },
+    "Charlotte Independence SC 09G Aspire South": {
+      "42138": "3294840"
+    },
+    "HTX 08/07G North NL (TX-S)": {
+      "42138": "3315357"
+    },
+    "Houston Surf Soccer Club 08/07G": {
+      "42138": "3384575"
+    },
+    "Midwest United 08/07G": {
+      "42138": "3301891"
+    },
+    "Wheaton United SC 08/07G": {
+      "42138": "3297190"
+    },
+    "Sockers FC 0807G": {
+      "42138": "3300245"
+    },
+    "Elmbrook United 08/07G": {
+      "42138": "3300292"
+    },
+    "Midwest United FC SCOR 08/07G": {
+      "42138": "3305760"
+    },
+    "Galaxy SC 08/07G": {
+      "42138": "3371404"
+    },
+    "FC United Soccer Club 08/07G": {
+      "42138": "3309368"
+    },
+    "North Shore United 08/07G": {
+      "42138": "3370998"
+    },
+    "Kings Hammer Soccer Club 08/07G Aspire NKY": {
+      "42138": "3300905"
+    },
+    "Javanon FC 08/07G": {
+      "42138": "3276123"
+    },
+    "Baltimore Celtic Soccer Club 08/07G": {
+      "42138": "3256656"
+    },
+    "Potomac Soccer Association 08/07G": {
+      "42138": "3294017"
+    },
+    "Baltimore Armour 08/07G": {
+      "42138": "3298717"
+    },
+    "The Player Progression Academy 08/07G": {
+      "42138": "3297256"
+    },
+    "Carolina Core FC Youth 08/07G": {
+      "42138": "3307564"
+    },
+    "VA Rush Soccer Club 08/07G": {
+      "42138": "3385305"
+    },
+    "Virginia Revolution SC 08/07G": {
+      "42138": "3275821"
+    },
+    "FC Richmond 08/07G": {
+      "42138": "3455164"
+    },
+    "KC Legends 08/07G": {
+      "42138": "3298000"
+    },
+    "KC Fusion 08/07G": {
+      "42138": "3353074"
+    },
+    "ALBION SC Las Vegas 08/07G": {
+      "42138": "3391036"
+    },
+    "Black Diamond FC 08/07G": {
+      "42138": "3393159"
+    },
+    "Seacoast United Massachusetts 08/07G": {
+      "42138": "3299777"
+    },
+    "Seacoast United 08/07G": {
+      "42138": "3300733"
+    },
+    "Ginga FC 08/07G": {
+      "42138": "3391909"
+    },
+    "FC Boston Bolts 08/07G": {
+      "42138": "3267468"
+    },
+    "Long Island SC 08/07G": {
+      "42138": "3305439"
+    },
+    "STA 08/07G": {
+      "42138": "3308363"
+    },
+    "NJ Premier FC 08/07G": {
+      "42138": "3294189"
+    },
+    "New York SC 08/07": {
+      "42138": "3309322"
+    },
+    "New York City FC Girls 08/07G": {
+      "42138": "3376916"
+    },
+    "Atlantic United SB/LGN SC 08/07G": {
+      "42138": "3309786"
+    },
+    "Columbia Premier Soccer Club 08/07G": {
+      "42138": "3309307"
+    },
+    "Portland City United SC 08/07G": {
+      "42138": "3370851"
+    },
+    "Eugene Metro FC 08/07G": {
+      "42138": "3289339"
+    },
+    "Mt. Rainier Futbol Club 08/07G": {
+      "42138": "3309054"
+    },
+    "Bend FC 08/07G": {
+      "42138": "3327408"
+    },
+    "Valor Soccer 08/07G": {
+      "42138": "3370707"
+    },
+    "Charlotte Independence SC 08/07G Aspire North": {
+      "42138": "3294837"
+    },
+    "AFC Lightning 08/07G": {
+      "42138": "3387742"
+    },
+    "Fox Soccer Academy of the Carolinas 08/07G": {
+      "42138": "3316074"
+    },
+    "Georgia Impact SC 08/07G": {
+      "42138": "3244070"
+    },
+    "James Island Youth SC 08/07G": {
+      "42138": "3308936"
+    },
+    "Charlotte Independence SC 08/07G Aspire South": {
+      "42138": "3294839"
+    },
+    "Sand and Surf SC 08/07G": {
+      "42138": "3309432"
+    },
+    "City SC 08/07G": {
+      "42138": "3295503"
+    },
+    "California Football Academy 08/07G": {
+      "42138": "3308994"
+    },
+    "Santa Barbara Soccer Club 08/07G": {
+      "42138": "3295509"
+    }
+  }
+}

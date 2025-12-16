@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seedline Admin Dashboard</title>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent-green: #22c55e;
+            --accent-blue: #3b82f6;
+            --accent-red: #ef4444;
+            --accent-yellow: #eab308;
+            --accent-purple: #a855f7;
+            --border-color: #334155;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg-primary); color: var(--text-primary); min-height: 100vh; }
+        
+        .app-container { display: flex; min-height: 100vh; }
+        
+        /* Sidebar */
+        .sidebar { width: 240px; background: var(--bg-secondary); border-right: 1px solid var(--border-color); padding: 20px 0; position: fixed; height: 100vh; overflow-y: auto; }
+        .sidebar-brand { padding: 0 20px 20px; border-bottom: 1px solid var(--border-color); margin-bottom: 20px; }
+        .sidebar-brand h1 { font-size: 1.5rem; color: var(--accent-green); display: flex; align-items: center; gap: 10px; }
+        .sidebar-brand span { font-size: 0.75rem; color: var(--text-secondary); }
+        
+        .nav-section { margin-bottom: 20px; }
+        .nav-section-title { padding: 10px 20px; font-size: 0.7rem; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 1px; }
+        .nav-item { display: flex; align-items: center; gap: 12px; padding: 12px 20px; color: var(--text-secondary); text-decoration: none; cursor: pointer; transition: all 0.2s; }
+        .nav-item:hover { background: rgba(255,255,255,0.05); color: var(--text-primary); }
+        .nav-item.active { background: var(--accent-green); color: white; }
+        .nav-item svg { width: 20px; height: 20px; }
+        
+        /* Main Content */
+        .main-content { flex: 1; margin-left: 240px; padding: 30px; }
+        .page { display: none; }
+        .page.active { display: block; }
+        .page-header { margin-bottom: 30px; }
+        .page-header h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 5px; }
+        .page-header p { color: var(--text-secondary); }
+        
+        /* Cards */
+        .card { background: var(--bg-card); border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border-color); }
+        .card h3 { font-size: 1.1rem; margin-bottom: 15px; }
+        
+        /* Stats Grid */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .stat-card { background: var(--bg-card); border-radius: 12px; padding: 20px; border: 1px solid var(--border-color); }
+        .stat-label { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 5px; }
+        .stat-value { font-size: 2rem; font-weight: 700; }
+        .stat-sub { font-size: 0.8rem; color: var(--text-secondary); margin-top: 5px; }
+        
+        /* Connection Status */
+        .connection-status { display: flex; align-items: center; gap: 10px; padding: 15px; background: var(--bg-card); border-radius: 8px; margin-bottom: 20px; border: 1px solid var(--border-color); }
+        .connection-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .connection-dot.connected { background: var(--accent-green); }
+        .connection-dot.disconnected { background: var(--accent-red); }
+        
+        /* Tables */
+        .data-table { width: 100%; border-collapse: collapse; }
+        .data-table th { text-align: left; padding: 12px; background: rgba(255,255,255,0.05); font-weight: 600; font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; }
+        .data-table td { padding: 12px; border-bottom: 1px solid var(--border-color); }
+        .data-table tr:hover { background: rgba(255,255,255,0.02); }
+        .data-table tr { cursor: pointer; }
+        
+        /* Badges */
+        .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+        .badge-blue { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .badge-purple { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
+        .badge-red { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+        .badge-green { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+        .badge-yellow { background: rgba(234, 179, 8, 0.2); color: #facc15; }
+        
+        /* Buttons */
+        .btn { padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; font-size: 0.9rem; }
+        .btn-primary { background: var(--accent-green); color: white; }
+        .btn-primary:hover { background: #16a34a; }
+        .btn-secondary { background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+        .btn-danger { background: var(--accent-red); color: white; }
+        .btn-danger:hover { background: #dc2626; }
+        .btn-sm { padding: 6px 12px; font-size: 0.8rem; }
+        
+        /* Forms */
+        .form-group { margin-bottom: 15px; }
+        .form-label { display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 5px; }
+        .form-input, .form-select { width: 100%; padding: 10px 15px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary); font-size: 0.95rem; }
+        .form-input:focus, .form-select:focus { outline: none; border-color: var(--accent-green); }
+        
+        /* Filter Bar */
+        .filter-bar { display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+        .filter-bar .form-input, .filter-bar .form-select { width: auto; min-width: 150px; }
+        
+        /* Modal */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; }
+        .modal-overlay.active { display: flex; }
+        .modal { background: var(--bg-secondary); border-radius: 16px; padding: 25px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header h3 { font-size: 1.25rem; }
+        .modal-close { background: none; border: none; color: var(--text-secondary); font-size: 1.5rem; cursor: pointer; }
+        .modal-footer { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+        
+        /* Scrapers */
+        .scraper-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .scraper-card { background: var(--bg-card); border-radius: 12px; padding: 20px; border: 1px solid var(--border-color); }
+        .scraper-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .scraper-name { font-weight: 600; font-size: 1.1rem; }
+        .scraper-status { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; }
+        .status-dot.ready { background: var(--accent-green); }
+        .status-dot.running { background: var(--accent-yellow); animation: pulse 1s infinite; }
+        .status-dot.missing { background: var(--accent-red); }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .scraper-desc { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 15px; }
+        .scraper-meta { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 15px; }
+        .scraper-actions { display: flex; gap: 10px; }
+        
+        /* Console */
+        .console { background: #0a0a0a; border-radius: 8px; padding: 15px; font-family: 'Monaco', 'Consolas', monospace; font-size: 0.8rem; color: #4ade80; max-height: 300px; overflow-y: auto; white-space: pre-wrap; word-break: break-all; }
+        
+        /* User Grid */
+        .user-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+        .user-card { background: var(--bg-card); border-radius: 12px; padding: 20px; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.2s; }
+        .user-card:hover { border-color: var(--accent-green); transform: translateY(-2px); }
+        .user-avatar { width: 50px; height: 50px; border-radius: 50%; background: var(--accent-green); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; }
+        .user-name { font-weight: 600; font-size: 1.1rem; }
+        .user-email { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 10px; }
+        .user-stats { font-size: 0.8rem; color: var(--text-secondary); }
+        
+        /* Data Lists */
+        .data-list { display: flex; flex-direction: column; gap: 5px; }
+        .data-list-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border-color); }
+        .data-list-item:last-child { border-bottom: none; }
+        
+        /* Launch App Button */
+        .launch-app-btn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, var(--accent-green), #16a34a); color: white; padding: 15px 25px; border-radius: 50px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(34,197,94,0.4); transition: all 0.2s; z-index: 100; border: none; font-size: 1rem; }
+        .launch-app-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(34,197,94,0.5); }
+        
+        /* File Tree Styles */
+        .file-tree { font-family: 'Monaco', 'Consolas', monospace; font-size: 0.85rem; }
+        .file-tree-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 6px; cursor: pointer; transition: all 0.15s; margin: 2px 0; }
+        .file-tree-item:hover { background: rgba(255,255,255,0.05); }
+        .file-tree-item.selected { background: rgba(34,197,94,0.2); border-left: 3px solid var(--accent-green); }
+        .file-tree-item.folder { font-weight: 600; color: var(--accent-blue); }
+        .file-tree-item.file { color: var(--text-primary); }
+        .file-tree-item .icon { font-size: 1rem; min-width: 20px; }
+        .file-tree-children { margin-left: 20px; border-left: 1px dashed var(--border-color); }
+        .file-tree-category { font-weight: 700; font-size: 0.9rem; color: var(--accent-green); margin: 15px 0 8px 0; padding-bottom: 5px; border-bottom: 1px solid var(--border-color); }
+        
+        /* File Details Styles */
+        .file-detail-section { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--border-color); }
+        .file-detail-section:last-child { border-bottom: none; }
+        .file-detail-label { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .file-detail-value { color: var(--text-primary); font-size: 0.95rem; }
+        .file-detail-code { background: #0a0a0a; padding: 10px; border-radius: 6px; font-family: 'Monaco', 'Consolas', monospace; font-size: 0.8rem; color: #4ade80; overflow-x: auto; }
+        
+        /* Scraper Settings Modal */
+        .scraper-settings { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 15px 0; }
+        .setting-group { background: var(--bg-primary); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); }
+        .setting-group label { display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 5px; }
+        .checkbox-group { display: flex; flex-wrap: wrap; gap: 10px; }
+        .checkbox-item { display: flex; align-items: center; gap: 6px; background: var(--bg-secondary); padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+        .checkbox-item:hover { background: rgba(255,255,255,0.1); }
+        .checkbox-item input { accent-color: var(--accent-green); }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <h1>🌱 Seedline</h1>
+                <span>Admin Dashboard v4.0</span>
+            </div>
+            
+            <nav>
+                <div class="nav-section">
+                    <div class="nav-section-title">Overview</div>
+                    <div class="nav-item active" onclick="showPage('dashboard')">📊 Dashboard</div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Data</div>
+                    <div class="nav-item" onclick="showPage('scrapers')">🔄 Scrapers</div>
+                    <div class="nav-item" onclick="showPage('teams')">⚽ Teams</div>
+                    <div class="nav-item" onclick="showPage('players')">👤 Players</div>
+                    <div class="nav-item" onclick="showPage('games')">🎮 Games</div>
+                    <div class="nav-item" onclick="showPage('export')">📤 Export</div>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title">Manage</div>
+                    <div class="nav-item" onclick="showPage('users')">👥 Users</div>
+                    <div class="nav-item" onclick="showPage('files')">📁 Files & Folders</div>
+                    <div class="nav-item" onclick="showPage('settings')">⚙️ Settings</div>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Page -->
+            <div class="page active" id="page-dashboard">
+                <div class="page-header">
+                    <h2>Dashboard</h2>
+                    <p>Overview of your Seedline data and system status</p>
+                </div>
+                
+                <div class="connection-status" id="connection-status">
+                    <div class="connection-dot disconnected"></div>
+                    <span>Checking connection...</span>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">TOTAL GAMES</div>
+                        <div class="stat-value" id="stat-games">-</div>
+                        <div class="stat-sub" id="stat-completed">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">TOTAL TEAMS</div>
+                        <div class="stat-value" id="stat-teams">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">TOTAL PLAYERS</div>
+                        <div class="stat-value" id="stat-players">-</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">DATABASE SIZE</div>
+                        <div class="stat-value" id="stat-size">-</div>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="card">
+                        <h3>Games by League</h3>
+                        <div class="data-list" id="games-by-league"></div>
+                    </div>
+                    <div class="card">
+                        <h3>Games by Age Group</h3>
+                        <div class="data-list" id="games-by-age" style="max-height: 400px; overflow-y: auto;"></div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Recent Games</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Date</th><th>Home Team</th><th>Score</th><th>Away Team</th><th>League</th></tr>
+                        </thead>
+                        <tbody id="recent-games"></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Scrapers Page -->
+            <div class="page" id="page-scrapers">
+                <div class="page-header">
+                    <h2>Scrapers</h2>
+                    <p>Run and manage data scrapers</p>
+                </div>
+                
+                <div class="scraper-grid" id="scraper-list"></div>
+                
+                <div class="card" style="margin-top: 20px;">
+                    <h3>Console Output</h3>
+                    <div class="console" id="console-output">Ready...</div>
+                </div>
+            </div>
+            
+            <!-- Teams Page -->
+            <div class="page" id="page-teams">
+                <div class="page-header">
+                    <h2>Teams <span id="teams-count" style="font-size: 0.9rem; color: var(--text-secondary); font-weight: normal;"></span></h2>
+                    <p>Browse and edit teams in the database</p>
+                </div>
+                
+                <div class="filter-bar">
+                    <input type="text" class="form-input" id="teams-search" placeholder="Search teams...">
+                    <select class="form-select" id="teams-league-filter">
+                        <option value="">All Leagues</option>
+                    </select>
+                    <select class="form-select" id="teams-age-filter">
+                        <option value="">All Age Groups</option>
+                    </select>
+                    <select class="form-select" id="teams-gender-filter">
+                        <option value="">All Genders</option>
+                        <option value="Girls">Girls</option>
+                        <option value="Boys">Boys</option>
+                    </select>
+                </div>
+                
+                <div class="card">
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                        <button class="btn btn-secondary btn-sm" onclick="loadMoreTeams()">Load 500 More</button>
+                        <button class="btn btn-secondary btn-sm" onclick="loadAllTeams()">Load All</button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Team Name</th><th>Club</th><th>League</th><th>Age Group</th><th>State</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="teams-table"></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Players Page -->
+            <div class="page" id="page-players">
+                <div class="page-header">
+                    <h2>Players <span id="players-count" style="font-size: 0.9rem; color: var(--text-secondary); font-weight: normal;"></span></h2>
+                    <p>Browse and edit players in the database</p>
+                </div>
+                
+                <div class="filter-bar">
+                    <input type="text" class="form-input" id="players-search" placeholder="Search players...">
+                    <select class="form-select" id="players-league-filter">
+                        <option value="">All Leagues</option>
+                    </select>
+                    <select class="form-select" id="players-age-filter">
+                        <option value="">All Age Groups</option>
+                    </select>
+                    <select class="form-select" id="players-position-filter">
+                        <option value="">All Positions</option>
+                    </select>
+                    <select class="form-select" id="players-gender-filter">
+                        <option value="">All Genders</option>
+                        <option value="Girls">Girls</option>
+                        <option value="Boys">Boys</option>
+                    </select>
+                </div>
+                
+                <div class="card">
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                        <button class="btn btn-secondary btn-sm" onclick="loadMorePlayers()">Load 500 More</button>
+                        <button class="btn btn-secondary btn-sm" onclick="loadAllPlayers()">Load All</button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Name</th><th>Team</th><th>Position</th><th>Jersey</th><th>Grad Year</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="players-table"></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Games Page -->
+            <div class="page" id="page-games">
+                <div class="page-header">
+                    <h2>Games <span id="games-count" style="font-size: 0.9rem; color: var(--text-secondary); font-weight: normal;"></span></h2>
+                    <p>Browse and edit game results</p>
+                </div>
+                
+                <div class="filter-bar">
+                    <input type="text" class="form-input" id="games-search" placeholder="Search teams...">
+                    <select class="form-select" id="games-league-filter">
+                        <option value="">All Leagues</option>
+                    </select>
+                    <select class="form-select" id="games-age-filter">
+                        <option value="">All Age Groups</option>
+                    </select>
+                    <select class="form-select" id="games-status-filter">
+                        <option value="">All Status</option>
+                        <option value="completed">Completed</option>
+                        <option value="scheduled">Scheduled</option>
+                    </select>
+                    <select class="form-select" id="games-gender-filter">
+                        <option value="">All Genders</option>
+                        <option value="Girls">Girls</option>
+                        <option value="Boys">Boys</option>
+                    </select>
+                    <select class="form-select" id="games-sort">
+                        <option value="desc">Newest First</option>
+                        <option value="asc">Oldest First</option>
+                    </select>
+                </div>
+                
+                <div class="card">
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                        <button class="btn btn-secondary btn-sm" onclick="loadMoreGames()">Load 500 More</button>
+                        <button class="btn btn-secondary btn-sm" onclick="loadAllGames()">Load All</button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Date</th><th>Home Team</th><th>Score</th><th>Away Team</th><th>League</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody id="games-table"></tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Export Page -->
+            <div class="page" id="page-export">
+                <div class="page-header">
+                    <h2>Export Data</h2>
+                    <p>Generate rankings and export to React app</p>
+                </div>
+                
+                <div class="card">
+                    <h3>📊 Generate Rankings</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 15px;">Run the team ranker to generate updated rankings from the database.</p>
+                    <button class="btn btn-primary" onclick="runRanker()">Run Team Ranker</button>
+                </div>
+                
+                <div class="card">
+                    <h3>📤 Export to React App</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 15px;">Copy rankings and player data to the React app public folder.</p>
+                    <button class="btn btn-primary" onclick="exportToReact()">Export to React</button>
+                </div>
+                
+                <div class="card">
+                    <h3>Console Log</h3>
+                    <div class="console" id="export-console">Ready to export...</div>
+                </div>
+            </div>
+            
+            <!-- Users Page -->
+            <div class="page" id="page-users">
+                <div class="page-header">
+                    <h2>Users</h2>
+                    <p>Manage app user accounts</p>
+                </div>
+                
+                <div class="filter-bar">
+                    <input type="text" class="form-input" id="users-search" placeholder="Search users...">
+                    <select class="form-select" id="users-type-filter">
+                        <option value="">All Types</option>
+                        <option value="guest">Guest</option>
+                        <option value="free">Free</option>
+                        <option value="pro">Pro</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="showAddUserModal()">+ Add User</button>
+                </div>
+                
+                <div class="user-grid" id="users-list"></div>
+            </div>
+            
+            <!-- Files & Folders Page -->
+            <div class="page" id="page-files">
+                <div class="page-header">
+                    <h2>📁 Files & Folders</h2>
+                    <p>View and understand all system files, scrapers, and data sources</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 350px 1fr; gap: 20px;">
+                    <!-- File Tree Panel -->
+                    <div class="card" style="max-height: calc(100vh - 200px); overflow-y: auto;">
+                        <h3 style="margin-bottom: 15px;">📂 File Tree</h3>
+                        <div id="file-tree" class="file-tree">Loading...</div>
+                    </div>
+                    
+                    <!-- File Details Panel -->
+                    <div class="card" id="file-details-panel">
+                        <h3 style="margin-bottom: 15px;">📄 File Details</h3>
+                        <div id="file-details" style="color: var(--text-secondary);">
+                            <div style="text-align: center; padding: 40px;">
+                                <div style="font-size: 3rem; margin-bottom: 10px;">👈</div>
+                                <p>Click on a file in the tree to view details</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Settings Page -->
+            <div class="page" id="page-settings">
+                <div class="page-header">
+                    <h2>Settings</h2>
+                    <p>Configure paths and preferences</p>
+                </div>
+                
+                <div class="card">
+                    <h3 style="margin-bottom: 20px;">📁 File Paths</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">Edit paths and click Save to update.</p>
+                    <div class="form-group">
+                        <label class="form-label">Database Path</label>
+                        <input type="text" class="form-input" id="settings-db-path">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Scrapers Folder</label>
+                        <input type="text" class="form-input" id="settings-scrapers-path">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">React App Path</label>
+                        <input type="text" class="form-input" id="settings-react-path">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Team Ranker Path</label>
+                        <input type="text" class="form-input" id="settings-ranker-path">
+                    </div>
+                    <button class="btn btn-primary" onclick="savePaths()">Save Paths</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Launch App Button -->
+    <button class="launch-app-btn" onclick="launchSeedlineApp()">🚀 Launch Seedline App</button>
+    
+    <!-- Add User Modal -->
+    <div class="modal-overlay" id="add-user-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Add New User</h3>
+                <button class="modal-close" onclick="closeModal('add-user-modal')">&times;</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-input" id="new-user-username">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" id="new-user-email">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Password <span style="color: var(--text-secondary); font-size: 0.8rem;">(required for Free/Pro)</span></label>
+                <input type="text" class="form-input" id="new-user-password" placeholder="Enter password">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Account Type</label>
+                <select class="form-select" id="new-user-type">
+                    <option value="guest">Guest</option>
+                    <option value="free" selected>Free</option>
+                    <option value="pro">Pro</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('add-user-modal')">Cancel</button>
+                <button class="btn btn-primary" onclick="addUser()">Add User</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- User Detail Modal -->
+    <div class="modal-overlay" id="user-detail-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>User Details</h3>
+                <button class="modal-close" onclick="closeModal('user-detail-modal')">&times;</button>
+            </div>
+            <div id="user-detail-content"></div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" id="delete-user-btn">Delete User</button>
+                <button class="btn btn-secondary" onclick="closeModal('user-detail-modal')">Close</button>
+                <button class="btn btn-primary" id="save-user-btn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Edit Team Modal -->
+    <div class="modal-overlay" id="edit-team-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Team</h3>
+                <button class="modal-close" onclick="closeModal('edit-team-modal')">&times;</button>
+            </div>
+            <div id="edit-team-content"></div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('edit-team-modal')">Cancel</button>
+                <button class="btn btn-primary" id="save-team-btn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Edit Player Modal -->
+    <div class="modal-overlay" id="edit-player-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Player</h3>
+                <button class="modal-close" onclick="closeModal('edit-player-modal')">&times;</button>
+            </div>
+            <div id="edit-player-content"></div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('edit-player-modal')">Cancel</button>
+                <button class="btn btn-primary" id="save-player-btn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Edit Game Modal -->
+    <div class="modal-overlay" id="edit-game-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Game</h3>
+                <button class="modal-close" onclick="closeModal('edit-game-modal')">&times;</button>
+            </div>
+            <div id="edit-game-content"></div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" id="delete-game-btn">Delete Game</button>
+                <button class="btn btn-secondary" onclick="closeModal('edit-game-modal')">Cancel</button>
+                <button class="btn btn-primary" id="save-game-btn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scraper Settings Modal -->
+    <div class="modal-overlay" id="scraper-settings-modal">
+        <div class="modal" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3 id="scraper-modal-title">Scraper Settings</h3>
+                <button class="modal-close" onclick="closeModal('scraper-settings-modal')">&times;</button>
+            </div>
+            <div id="scraper-settings-content">
+                <p style="color: var(--text-secondary); margin-bottom: 15px;">Configure scraper options before running:</p>
+                
+                <div class="scraper-settings">
+                    <div class="setting-group" id="scraper-gender-section">
+                        <label>Gender</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="checkbox" id="scraper-girls" checked> Girls</label>
+                            <label class="checkbox-item"><input type="checkbox" id="scraper-boys" checked> Boys</label>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group" id="scraper-age-section">
+                        <label>Age Groups</label>
+                        <div class="checkbox-group" id="scraper-age-groups">
+                            <label class="checkbox-item"><input type="checkbox" value="13" checked> U13</label>
+                            <label class="checkbox-item"><input type="checkbox" value="12" checked> U12</label>
+                            <label class="checkbox-item"><input type="checkbox" value="11" checked> U11</label>
+                            <label class="checkbox-item"><input type="checkbox" value="10" checked> U10</label>
+                            <label class="checkbox-item"><input type="checkbox" value="09" checked> U09</label>
+                            <label class="checkbox-item"><input type="checkbox" value="08" checked> U08</label>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group" id="scraper-date-section">
+                        <label>Date Range</label>
+                        <select class="form-select" id="scraper-date-range">
+                            <option value="30">Last 30 days</option>
+                            <option value="60">Last 60 days</option>
+                            <option value="90" selected>Last 90 days</option>
+                            <option value="180">Last 180 days</option>
+                            <option value="365">Last year</option>
+                            <option value="all">All games</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setting-group" id="scraper-players-section">
+                        <label>Options</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="checkbox" id="scraper-players" checked> Include Players</label>
+                            <label class="checkbox-item"><input type="checkbox" id="scraper-verbose"> Verbose Output</label>
+                        </div>
+                    </div>
+                    
+                    <!-- GA Events Scraper Options -->
+                    <div class="setting-group" id="scraper-events-section" style="display: none;">
+                        <label>Event Scraping Mode</label>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <label class="checkbox-item">
+                                <input type="radio" name="events-mode" value="scrape" checked> 
+                                Scrape Active Events <span style="color: var(--text-secondary); font-size: 0.85em;">(Champions Cup, playoffs happening now)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="radio" name="events-mode" value="scrape-all"> 
+                                Scrape All Events <span style="color: var(--text-secondary); font-size: 0.85em;">(All discovered events)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="radio" name="events-mode" value="discover"> 
+                                Discover New Events <span style="color: var(--text-secondary); font-size: 0.85em;">(Check GA website for new events)</span>
+                            </label>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 0.85em; margin-top: 10px;">
+                            This scrapes GA showcases, Champions Cup, playoffs, regionals, and Talent ID events (separate from league games).
+                        </p>
+                    </div>
+                    
+                    <!-- ECNL Scraper Options (v2) -->
+                    <div class="setting-group" id="scraper-ecnl-mode-section" style="display: none; grid-column: 1 / -1;">
+                        <label style="color: var(--accent-green);">⚡ Scrape Mode (IMPORTANT)</label>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+                            <label class="checkbox-item">
+                                <input type="radio" name="ecnl-scrape-mode" value="pending" checked> 
+                                Pending Only <span style="color: var(--text-secondary); font-size: 0.85em;">(Teams not yet scraped)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="radio" name="ecnl-scrape-mode" value="all"> 
+                                Scrape All <span style="color: var(--text-secondary); font-size: 0.85em;">(Re-scrape all teams)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="radio" name="ecnl-scrape-mode" value="reset"> 
+                                Reset & Scrape <span style="color: var(--text-secondary); font-size: 0.85em;">(Reset status to pending, then scrape - full refresh)</span>
+                            </label>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 0.85em; margin-top: 10px;">
+                            ⚠️ If all teams show "completed", use "Reset & Scrape" to re-scrape them.
+                        </p>
+                    </div>
+                    
+                    <div class="setting-group" id="scraper-ecnl-league-section" style="display: none;">
+                        <label style="color: var(--accent-green);">🏆 League</label>
+                        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
+                            <label class="checkbox-item">
+                                <input type="radio" name="ecnl-league" value="both" checked> Both ECNL + ECNL RL
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="radio" name="ecnl-league" value="ECNL"> ECNL Only
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="radio" name="ecnl-league" value="ECNL RL"> ECNL Regional League Only
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- NPL Scraper Options -->
+                    <div class="setting-group" id="scraper-npl-mode-section" style="display: none; grid-column: 1 / -1;">
+                        <label style="color: var(--accent-blue);">⚡ Scrape Mode (IMPORTANT)</label>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+                            <label class="checkbox-item">
+                                <input type="radio" name="npl-scrape-mode" value="pending" checked> 
+                                Pending Only <span style="color: var(--text-secondary); font-size: 0.85em;">(Leagues not yet scraped this session)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="radio" name="npl-scrape-mode" value="all"> 
+                                Scrape All <span style="color: var(--text-secondary); font-size: 0.85em;">(Re-scrape all leagues)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="radio" name="npl-scrape-mode" value="reset"> 
+                                Reset & Scrape <span style="color: var(--text-secondary); font-size: 0.85em;">(Reset status to pending, then scrape - full refresh)</span>
+                            </label>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 0.85em; margin-top: 10px;">
+                            ⚠️ "Pending Only" allows you to resume if the scraper was interrupted.
+                        </p>
+                    </div>
+                    
+                    <div class="setting-group" id="scraper-npl-tier-section" style="display: none;">
+                        <label style="color: var(--accent-blue);">🏅 League Tier</label>
+                        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
+                            <label class="checkbox-item">
+                                <input type="radio" name="npl-tier" value="all" checked> All Tiers
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="radio" name="npl-tier" value="NPL"> NPL Only <span style="color: var(--text-secondary); font-size: 0.85em;">(Top tier)</span>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="radio" name="npl-tier" value="Sub-NPL"> Sub-NPL Only <span style="color: var(--text-secondary); font-size: 0.85em;">(Regional leagues)</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group" id="scraper-npl-region-section" style="display: none;">
+                        <label style="color: var(--accent-blue);">🌎 Region</label>
+                        <select class="form-select" id="npl-region" style="margin-top: 8px;">
+                            <option value="">All Regions</option>
+                            <option value="Midwest">Midwest</option>
+                            <option value="Southeast">Southeast</option>
+                            <option value="Mid-Atlantic">Mid-Atlantic</option>
+                            <option value="Southwest">Southwest</option>
+                            <option value="West">West</option>
+                            <option value="Northwest">Northwest</option>
+                            <option value="Mountain">Mountain</option>
+                            <option value="Central">Central</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setting-group" id="scraper-npl-time-section" style="display: none;">
+                        <label style="color: var(--accent-blue);">📅 Time Filter</label>
+                        <select class="form-select" id="npl-time-filter" style="margin-top: 8px;">
+                            <option value="all" selected>All Games</option>
+                            <option value="past">Past Games Only</option>
+                            <option value="future">Future Games Only</option>
+                            <option value="last_days">Last N Days</option>
+                        </select>
+                        <div id="npl-days-input" style="display: none; margin-top: 8px;">
+                            <input type="number" class="form-input" id="npl-days" value="90" min="1" max="365" style="width: 100px;">
+                            <span style="color: var(--text-secondary); margin-left: 5px;">days</span>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group" id="scraper-npl-options-section" style="display: none;">
+                        <label style="color: var(--accent-blue);">⚙️ Advanced Options</label>
+                        <div class="checkbox-group" style="margin-top: 8px;">
+                            <label class="checkbox-item"><input type="checkbox" id="npl-headless"> Headless Mode <span style="color: var(--text-secondary); font-size: 0.85em;">(Hide browser)</span></label>
+                            <label class="checkbox-item"><input type="checkbox" id="npl-no-screenshots"> Skip Screenshots <span style="color: var(--text-secondary); font-size: 0.85em;">(Faster)</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('scraper-settings-modal')">Cancel</button>
+                <button class="btn btn-primary" onclick="runScraperWithSettings()">🚀 Run Scraper</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:5050';
+        let currentUserId = null;
+        let currentTeamRowId = null;
+        let currentPlayerRowId = null;
+        let currentGameRowId = null;
+        
+        // API Helper
+        async function api(endpoint, options = {}) {
+            try {
+                const response = await fetch(`${API_BASE}${endpoint}`, {
+                    ...options,
+                    headers: { 'Content-Type': 'application/json', ...options.headers }
+                });
+                return await response.json();
+            } catch (e) {
+                console.error('API Error:', e);
+                return { error: e.message };
+            }
+        }
+        
+        // Page Navigation
+        function showPage(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            document.getElementById(`page-${page}`).classList.add('active');
+            event.target.classList.add('active');
+            
+            // Load page data
+            if (page === 'dashboard') loadDashboard();
+            if (page === 'scrapers') loadScrapers();
+            if (page === 'teams') loadTeams();
+            if (page === 'players') loadPlayers();
+            if (page === 'games') loadGames();
+            if (page === 'users') loadUsers();
+            if (page === 'files') loadFilesAndFolders();
+            if (page === 'settings') loadSettings();
+        }
+        
+        // Modal Helpers
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+        
+        function getLeagueBadge(league) {
+            if (!league) return 'blue';
+            const l = league.toUpperCase();
+            if (l.includes('ECNL') && !l.includes('RL')) return 'blue';
+            if (l.includes('GA')) return 'purple';
+            if (l.includes('RL')) return 'red';
+            if (l.includes('ASPIRE')) return 'green';
+            return 'blue';
+        }
+        
+        // Dashboard
+        let connectionRetries = 0;
+        const MAX_RETRIES = 5;
+        
+        async function loadDashboard() {
+            const statusEl = document.getElementById('connection-status');
+            
+            // Show connecting status
+            if (connectionRetries === 0) {
+                statusEl.innerHTML = `
+                    <div class="connection-dot" style="background: var(--accent-yellow); animation: pulse 1s infinite;"></div>
+                    <span>Connecting to server...</span>
+                `;
+            }
+            
+            const stats = await api('/api/stats');
+            
+            if (stats.error) {
+                connectionRetries++;
+                if (connectionRetries < MAX_RETRIES) {
+                    statusEl.innerHTML = `
+                        <div class="connection-dot" style="background: var(--accent-yellow); animation: pulse 1s infinite;"></div>
+                        <span>Connecting to server... (attempt ${connectionRetries}/${MAX_RETRIES})</span>
+                    `;
+                    // Retry after 2 seconds
+                    setTimeout(loadDashboard, 2000);
+                    return;
+                }
+                
+                statusEl.innerHTML = `
+                    <div class="connection-dot disconnected"></div>
+                    <span>Cannot connect to server. 
+                        <strong>Run launch_admin.bat</strong> to start the server, then 
+                        <a href="#" onclick="retryConnection(); return false;" style="color: var(--accent-green);">click here to retry</a>.
+                    </span>
+                `;
+                return;
+            }
+            
+            // Connected successfully
+            connectionRetries = 0;
+            statusEl.innerHTML = `
+                <div class="connection-dot connected"></div>
+                <span>Connected to database: ${stats.path}</span>
+            `;
+            
+            document.getElementById('stat-games').textContent = (stats.total_games || 0).toLocaleString();
+            document.getElementById('stat-completed').textContent = `${(stats.completed_games || 0).toLocaleString()} completed`;
+            document.getElementById('stat-teams').textContent = (stats.total_teams || 0).toLocaleString();
+            document.getElementById('stat-players').textContent = (stats.total_players || 0).toLocaleString();
+            document.getElementById('stat-size').textContent = `${stats.size_mb || 0} MB`;
+            
+            // Games by league
+            const leagueEl = document.getElementById('games-by-league');
+            if (stats.games_by_league && Object.keys(stats.games_by_league).length > 0) {
+                leagueEl.innerHTML = Object.entries(stats.games_by_league).map(([league, count]) => `
+                    <div class="data-list-item">
+                        <span class="badge badge-${getLeagueBadge(league)}">${league}</span>
+                        <span><strong>${count.toLocaleString()}</strong></span>
+                    </div>
+                `).join('');
+            } else {
+                leagueEl.innerHTML = '<div style="color: var(--text-secondary)">No data</div>';
+            }
+            
+            // Games by age
+            const ageEl = document.getElementById('games-by-age');
+            if (stats.games_by_age && Object.keys(stats.games_by_age).length > 0) {
+                ageEl.innerHTML = Object.entries(stats.games_by_age).map(([age, count]) => `
+                    <div class="data-list-item">
+                        <span>${age}</span>
+                        <span><strong>${count.toLocaleString()}</strong></span>
+                    </div>
+                `).join('');
+            } else {
+                ageEl.innerHTML = '<div style="color: var(--text-secondary)">No data</div>';
+            }
+            
+            // Recent games
+            const gamesEl = document.getElementById('recent-games');
+            if (stats.recent_games && stats.recent_games.length > 0) {
+                gamesEl.innerHTML = stats.recent_games.map(game => `
+                    <tr>
+                        <td>${game.date || '-'}</td>
+                        <td>${(game.home_team || '-').substring(0, 30)}</td>
+                        <td><strong>${game.home_score || 0} - ${game.away_score || 0}</strong></td>
+                        <td>${(game.away_team || '-').substring(0, 30)}</td>
+                        <td><span class="badge badge-${getLeagueBadge(game.league)}">${game.league || '-'}</span></td>
+                    </tr>
+                `).join('');
+            } else {
+                gamesEl.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--text-secondary)">No games found</td></tr>';
+            }
+        }
+        
+        // Scrapers
+        let currentScraperId = null;
+        
+        async function loadScrapers() {
+            const scrapers = await api('/api/scrapers');
+            if (scrapers.error) {
+                document.getElementById('scraper-list').innerHTML = '<div class="card">Cannot load scrapers. Is the server running?</div>';
+                return;
+            }
+            
+            document.getElementById('scraper-list').innerHTML = scrapers.map(s => `
+                <div class="scraper-card">
+                    <div class="scraper-card-header">
+                        <div class="scraper-name">${s.name}</div>
+                        <div class="scraper-status">
+                            <span class="status-dot ${s.running ? 'running' : (s.exists ? 'ready' : 'missing')}"></span>
+                            ${s.running ? 'Running' : (s.exists ? 'Ready' : 'Not Found')}
+                        </div>
+                    </div>
+                    <div class="scraper-desc">${s.description}</div>
+                    <div class="scraper-meta">Last run: ${s.last_run ? new Date(s.last_run).toLocaleDateString() : 'Never'}</div>
+                    <div class="scraper-actions">
+                        <button class="btn btn-primary btn-sm" onclick="showScraperSettings('${s.id}', '${s.name}')" ${!s.exists || s.running ? 'disabled' : ''}>
+                            ${s.running ? 'Running...' : 'Run Now'}
+                        </button>
+                        ${s.running ? `<button class="btn btn-danger btn-sm" onclick="stopScraper('${s.id}')">Stop</button>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function showScraperSettings(id, name) {
+            currentScraperId = id;
+            document.getElementById('scraper-modal-title').textContent = `${name} Settings`;
+            
+            // Customize options based on scraper type
+            const ageGroups = document.getElementById('scraper-age-groups');
+            const genderSection = document.getElementById('scraper-gender-section');
+            const ageSection = document.getElementById('scraper-age-section');
+            const dateSection = document.getElementById('scraper-date-section');
+            const playersSection = document.getElementById('scraper-players-section');
+            const eventsSection = document.getElementById('scraper-events-section');
+            const ecnlModeSection = document.getElementById('scraper-ecnl-mode-section');
+            const ecnlLeagueSection = document.getElementById('scraper-ecnl-league-section');
+            const nplModeSection = document.getElementById('scraper-npl-mode-section');
+            const nplTierSection = document.getElementById('scraper-npl-tier-section');
+            const nplRegionSection = document.getElementById('scraper-npl-region-section');
+            const nplTimeSection = document.getElementById('scraper-npl-time-section');
+            const nplOptionsSection = document.getElementById('scraper-npl-options-section');
+            
+            // Hide all special sections by default
+            if (eventsSection) eventsSection.style.display = 'none';
+            if (ecnlModeSection) ecnlModeSection.style.display = 'none';
+            if (ecnlLeagueSection) ecnlLeagueSection.style.display = 'none';
+            if (nplModeSection) nplModeSection.style.display = 'none';
+            if (nplTierSection) nplTierSection.style.display = 'none';
+            if (nplRegionSection) nplRegionSection.style.display = 'none';
+            if (nplTimeSection) nplTimeSection.style.display = 'none';
+            if (nplOptionsSection) nplOptionsSection.style.display = 'none';
+            
+            // Show/hide sections based on scraper type
+            if (id === 'ga_events') {
+                // GA Events scraper has different options
+                if (genderSection) genderSection.style.display = 'none';
+                if (ageSection) ageSection.style.display = 'none';
+                if (dateSection) dateSection.style.display = 'none';
+                if (playersSection) playersSection.style.display = 'none';
+                if (eventsSection) eventsSection.style.display = 'block';
+            } else if (id === 'ecnl') {
+                // ECNL scraper has special mode and league options
+                if (genderSection) genderSection.style.display = 'block';
+                if (ageSection) ageSection.style.display = 'block';
+                if (dateSection) dateSection.style.display = 'none'; // ECNL doesn't use date range
+                if (playersSection) playersSection.style.display = 'block';
+                if (ecnlModeSection) ecnlModeSection.style.display = 'block';
+                if (ecnlLeagueSection) ecnlLeagueSection.style.display = 'block';
+                
+                ageGroups.innerHTML = `
+                    <label class="checkbox-item"><input type="checkbox" value="13" checked> U13</label>
+                    <label class="checkbox-item"><input type="checkbox" value="12" checked> U12</label>
+                    <label class="checkbox-item"><input type="checkbox" value="11" checked> U11</label>
+                    <label class="checkbox-item"><input type="checkbox" value="10" checked> U10</label>
+                    <label class="checkbox-item"><input type="checkbox" value="09" checked> U09</label>
+                    <label class="checkbox-item"><input type="checkbox" value="08" checked> U08/07</label>
+                `;
+            } else if (id === 'npl') {
+                // NPL scraper has special mode, tier, region, and time options
+                if (genderSection) genderSection.style.display = 'block';
+                if (ageSection) ageSection.style.display = 'none';  // NPL scrapes all ages
+                if (dateSection) dateSection.style.display = 'none';  // Uses NPL time filter instead
+                if (playersSection) playersSection.style.display = 'block';
+                if (nplModeSection) nplModeSection.style.display = 'block';
+                if (nplTierSection) nplTierSection.style.display = 'block';
+                if (nplRegionSection) nplRegionSection.style.display = 'block';
+                if (nplTimeSection) nplTimeSection.style.display = 'block';
+                if (nplOptionsSection) nplOptionsSection.style.display = 'block';
+                
+                // Setup NPL time filter change handler
+                const timeFilter = document.getElementById('npl-time-filter');
+                const daysInput = document.getElementById('npl-days-input');
+                if (timeFilter && daysInput) {
+                    timeFilter.onchange = function() {
+                        daysInput.style.display = this.value === 'last_days' ? 'block' : 'none';
+                    };
+                }
+            } else {
+                // Regular scrapers
+                if (genderSection) genderSection.style.display = 'block';
+                if (ageSection) ageSection.style.display = 'block';
+                if (dateSection) dateSection.style.display = 'block';
+                if (playersSection) playersSection.style.display = 'block';
+                
+                if (id === 'aspire') {
+                    // ASPIRE uses different age format
+                    ageGroups.innerHTML = `
+                        <label class="checkbox-item"><input type="checkbox" value="13G" checked> 13G</label>
+                        <label class="checkbox-item"><input type="checkbox" value="12G" checked> 12G</label>
+                        <label class="checkbox-item"><input type="checkbox" value="11G" checked> 11G</label>
+                        <label class="checkbox-item"><input type="checkbox" value="10G" checked> 10G</label>
+                        <label class="checkbox-item"><input type="checkbox" value="09G" checked> 09G</label>
+                        <label class="checkbox-item"><input type="checkbox" value="08/07G" checked> 08/07G</label>
+                    `;
+                } else {
+                    ageGroups.innerHTML = `
+                        <label class="checkbox-item"><input type="checkbox" value="13" checked> U13</label>
+                        <label class="checkbox-item"><input type="checkbox" value="12" checked> U12</label>
+                        <label class="checkbox-item"><input type="checkbox" value="11" checked> U11</label>
+                        <label class="checkbox-item"><input type="checkbox" value="10" checked> U10</label>
+                        <label class="checkbox-item"><input type="checkbox" value="09" checked> U09</label>
+                        <label class="checkbox-item"><input type="checkbox" value="08" checked> U08/07</label>
+                    `;
+                }
+            }
+            
+            document.getElementById('scraper-settings-modal').classList.add('active');
+        }
+        
+        async function runScraperWithSettings() {
+            const consoleEl = document.getElementById('console-output');
+            
+            // Build settings based on scraper type
+            let settings;
+            
+            if (currentScraperId === 'ga_events') {
+                // GA Events scraper has different settings
+                const eventsMode = document.querySelector('input[name="events-mode"]:checked').value;
+                settings = {
+                    id: currentScraperId,
+                    events_mode: eventsMode
+                };
+                
+                consoleEl.innerHTML = `Starting GA Events scraper:\n`;
+                const modeNames = {
+                    'scrape': 'Scrape Active Events',
+                    'scrape-all': 'Scrape All Events', 
+                    'discover': 'Discover New Events'
+                };
+                consoleEl.innerHTML += `  Mode: ${modeNames[eventsMode]}\n\n`;
+            } else if (currentScraperId === 'ecnl') {
+                // ECNL scraper has special mode and league settings
+                const scrapeMode = document.querySelector('input[name="ecnl-scrape-mode"]:checked')?.value || 'pending';
+                const ecnlLeague = document.querySelector('input[name="ecnl-league"]:checked')?.value || 'both';
+                
+                settings = {
+                    id: currentScraperId,
+                    girls: document.getElementById('scraper-girls').checked,
+                    boys: document.getElementById('scraper-boys').checked,
+                    age_groups: Array.from(document.querySelectorAll('#scraper-age-groups input:checked')).map(cb => cb.value),
+                    include_players: document.getElementById('scraper-players').checked,
+                    verbose: document.getElementById('scraper-verbose').checked,
+                    scrape_mode: scrapeMode,
+                    ecnl_league: ecnlLeague
+                };
+                
+                const modeNames = {
+                    'pending': 'Pending Only',
+                    'all': 'Scrape All',
+                    'reset': 'Reset & Scrape'
+                };
+                
+                consoleEl.innerHTML = `Starting ECNL scraper with settings:\n`;
+                consoleEl.innerHTML += `  ⚡ Mode: ${modeNames[scrapeMode]}\n`;
+                consoleEl.innerHTML += `  🏆 League: ${ecnlLeague === 'both' ? 'ECNL + ECNL RL' : ecnlLeague}\n`;
+                consoleEl.innerHTML += `  Gender: ${settings.girls ? 'Girls' : ''}${settings.girls && settings.boys ? ', ' : ''}${settings.boys ? 'Boys' : ''}\n`;
+                consoleEl.innerHTML += `  Age Groups: ${settings.age_groups.join(', ')}\n`;
+                consoleEl.innerHTML += `  Include Players: ${settings.include_players ? 'Yes' : 'No'}\n\n`;
+            } else if (currentScraperId === 'npl') {
+                // NPL scraper has special mode, tier, region, and time settings
+                const scrapeMode = document.querySelector('input[name="npl-scrape-mode"]:checked')?.value || 'pending';
+                const nplTier = document.querySelector('input[name="npl-tier"]:checked')?.value || 'all';
+                const nplRegion = document.getElementById('npl-region')?.value || '';
+                const nplTimeFilter = document.getElementById('npl-time-filter')?.value || 'all';
+                const nplDays = document.getElementById('npl-days')?.value || '90';
+                const nplHeadless = document.getElementById('npl-headless')?.checked || false;
+                const nplNoScreenshots = document.getElementById('npl-no-screenshots')?.checked || false;
+                
+                settings = {
+                    id: currentScraperId,
+                    girls: document.getElementById('scraper-girls').checked,
+                    boys: document.getElementById('scraper-boys').checked,
+                    include_players: document.getElementById('scraper-players').checked,
+                    verbose: document.getElementById('scraper-verbose').checked,
+                    scrape_mode: scrapeMode,
+                    npl_tier: nplTier,
+                    npl_region: nplRegion,
+                    time_filter: nplTimeFilter,
+                    days: nplDays,
+                    headless: nplHeadless,
+                    no_screenshots: nplNoScreenshots
+                };
+                
+                const modeNames = {
+                    'pending': 'Pending Only (Resume)',
+                    'all': 'Scrape All',
+                    'reset': 'Reset & Scrape'
+                };
+                
+                const tierNames = {
+                    'all': 'All Tiers',
+                    'NPL': 'NPL Only',
+                    'Sub-NPL': 'Sub-NPL Only'
+                };
+                
+                consoleEl.innerHTML = `Starting NPL scraper with settings:\n`;
+                consoleEl.innerHTML += `  ⚡ Mode: ${modeNames[scrapeMode]}\n`;
+                consoleEl.innerHTML += `  🏅 Tier: ${tierNames[nplTier]}\n`;
+                consoleEl.innerHTML += `  🌎 Region: ${nplRegion || 'All Regions'}\n`;
+                consoleEl.innerHTML += `  📅 Time: ${nplTimeFilter === 'last_days' ? 'Last ' + nplDays + ' days' : nplTimeFilter}\n`;
+                consoleEl.innerHTML += `  Gender: ${settings.girls ? 'Girls' : ''}${settings.girls && settings.boys ? ', ' : ''}${settings.boys ? 'Boys' : ''}\n`;
+                consoleEl.innerHTML += `  Include Players: ${settings.include_players ? 'Yes' : 'No'}\n`;
+                if (nplHeadless) consoleEl.innerHTML += `  🖥️ Headless: Yes\n`;
+                if (nplNoScreenshots) consoleEl.innerHTML += `  📷 Screenshots: Disabled\n`;
+                consoleEl.innerHTML += `\n`;
+            } else {
+                // Regular scrapers
+                settings = {
+                    id: currentScraperId,
+                    girls: document.getElementById('scraper-girls').checked,
+                    boys: document.getElementById('scraper-boys').checked,
+                    age_groups: Array.from(document.querySelectorAll('#scraper-age-groups input:checked')).map(cb => cb.value),
+                    date_range: document.getElementById('scraper-date-range').value,
+                    include_players: document.getElementById('scraper-players').checked,
+                    verbose: document.getElementById('scraper-verbose').checked
+                };
+                
+                consoleEl.innerHTML = `Starting ${currentScraperId} scraper with settings:\n`;
+                consoleEl.innerHTML += `  Gender: ${settings.girls ? 'Girls' : ''}${settings.girls && settings.boys ? ', ' : ''}${settings.boys ? 'Boys' : ''}\n`;
+                consoleEl.innerHTML += `  Age Groups: ${settings.age_groups.join(', ')}\n`;
+                consoleEl.innerHTML += `  Date Range: ${settings.date_range === 'all' ? 'All games' : 'Last ' + settings.date_range + ' days'}\n`;
+                consoleEl.innerHTML += `  Include Players: ${settings.include_players ? 'Yes' : 'No'}\n\n`;
+            }
+            
+            closeModal('scraper-settings-modal');
+            
+            const result = await api('/api/scraper/run', { method: 'POST', body: JSON.stringify(settings) });
+            if (result.success) {
+                consoleEl.innerHTML += `Scraper started in CMD window!\n\n`;
+                consoleEl.innerHTML += `📋 Look for the new CMD window that opened.\n`;
+                consoleEl.innerHTML += `   You can interact with it directly.\n`;
+                consoleEl.innerHTML += `   The window will stay open when finished.\n`;
+                loadScrapers();
+            } else {
+                consoleEl.innerHTML += `Error: ${result.error || 'Failed to start scraper'}\n`;
+            }
+        }
+        
+        async function runScraper(id) {
+            showScraperSettings(id, id.toUpperCase());
+        }
+        
+        async function stopScraper(id) {
+            await api('/api/scraper/stop', { method: 'POST', body: JSON.stringify({ id }) });
+            loadScrapers();
+        }
+        
+        async function pollScraperOutput(id) {
+            const output = await api(`/api/scraper/output?id=${id}`);
+            if (output && output.output) {
+                document.getElementById('console-output').innerHTML = output.output.slice(-50).join('\n');
+            }
+            const scrapers = await api('/api/scrapers');
+            const scraper = scrapers.find(s => s.id === id);
+            if (scraper && scraper.running) {
+                setTimeout(() => pollScraperOutput(id), 2000);
+            } else {
+                loadScrapers();
+            }
+        }
+        
+        // ============================================
+        // FILES & FOLDERS PAGE
+        // ============================================
+        
+        // File catalog with metadata about all system files
+        const FILE_CATALOG = {
+            categories: [
+                {
+                    name: "🗄️ Database",
+                    files: [
+                        {
+                            name: "youth_soccer.db",
+                            path: "scrapers and data/youth_soccer.db",
+                            type: "SQLite Database",
+                            icon: "🗃️",
+                            description: "Main database containing all scraped game data, team records, and player information.",
+                            pullsFrom: ["ECNL website", "Girls Academy website", "ASPIRE website"],
+                            savesTo: "Used by team_ranker and React app",
+                            tables: ["games", "teams", "players", "scrape_log"],
+                            notes: "This is the central data store. All scrapers write to this database, and the ranker reads from it."
+                        }
+                    ]
+                },
+                {
+                    name: "🔄 Scrapers",
+                    files: [
+                        {
+                            name: "ecnl_scraper_v*.py",
+                            path: "scrapers and data/ecnl scraper/ecnl_scraper_v*.py",
+                            type: "Python Script",
+                            icon: "🐍",
+                            description: "Scrapes ECNL and ECNL-RL league games and player rosters from the official ECNL website.",
+                            pullsFrom: ["ecnl.com league schedules", "ecnl.com team rosters"],
+                            savesTo: "youth_soccer.db (games, teams, players tables)",
+                            arguments: ["--gender (girls/boys/both)", "--ages (13,12,11,10,09,08)", "--days (number of days back)", "--players (include roster scraping)"],
+                            notes: "Supports both ECNL Premier and ECNL Regional League. Uses Selenium for dynamic content."
+                        },
+                        {
+                            name: "ga_scraper_v*.py",
+                            path: "scrapers and data/GA scraper/ga_scraper_v*.py",
+                            type: "Python Script",
+                            icon: "🐍",
+                            description: "Scrapes Girls Academy league games from the official GA website.",
+                            pullsFrom: ["girlsacademy.com match schedules"],
+                            savesTo: "youth_soccer.db (games, teams tables)",
+                            arguments: ["--ages (age groups to scrape)", "--days (number of days back)"],
+                            notes: "Girls Academy only has girls teams. Some games may have missing scores."
+                        },
+                        {
+                            name: "ASPIRE_scraper_v*.py",
+                            path: "scrapers and data/aspire scraper/ASPIRE_scraper_v*.py",
+                            type: "Python Script",
+                            icon: "🐍",
+                            description: "Scrapes ASPIRE league games from the official ASPIRE website.",
+                            pullsFrom: ["aspiresoccer.com match schedules"],
+                            savesTo: "youth_soccer.db (games, teams tables)",
+                            arguments: ["--age_groups (13G, 12G, etc)", "--days (number of days back)"],
+                            notes: "ASPIRE uses different age group format (13G instead of G13). Regional league primarily in certain states."
+                        }
+                    ]
+                },
+                {
+                    name: "📊 Rankings",
+                    files: [
+                        {
+                            name: "team_ranker_v*.py",
+                            path: "scrapers and data/Run Rankings/team_ranker_v*.py",
+                            type: "Python Script",
+                            icon: "🐍",
+                            description: "Calculates team power scores and rankings using a PageRank-based algorithm that considers win/loss records, goal differentials, and strength of schedule.",
+                            pullsFrom: ["youth_soccer.db"],
+                            savesTo: "rankings_for_react.json, players_for_react.json",
+                            arguments: ["--gender (girls/boys/all)", "--state (filter by state)", "--export-players (include players in export)"],
+                            notes: "Uses iterative algorithm to calculate strength of schedule. Higher-ranked opponents = more points for wins."
+                        },
+                        {
+                            name: "cleanup_database_v*.py",
+                            path: "scrapers and data/Run Rankings/cleanup_database_v*.py",
+                            type: "Python Script",
+                            icon: "🐍",
+                            description: "Cleans up duplicate games, fixes team name inconsistencies, and normalizes data before ranking.",
+                            pullsFrom: ["youth_soccer.db"],
+                            savesTo: "youth_soccer.db (in-place cleanup)",
+                            notes: "Should be run before team_ranker to ensure data quality."
+                        },
+                        {
+                            name: "rankings_for_react.json",
+                            path: "public/rankings_for_react.json",
+                            type: "JSON Data",
+                            icon: "📄",
+                            description: "Exported team rankings and stats for the React frontend app.",
+                            pullsFrom: ["Generated by team_ranker"],
+                            savesTo: "Used by Seedline React App",
+                            structure: { teamsData: "Array of ranked teams", playersData: "Array of all players", ageGroups: "Available age groups", leagues: "Available leagues", lastUpdated: "Export timestamp" },
+                            notes: "This file must be in the public/ folder for the React app to load it."
+                        }
+                    ]
+                },
+                {
+                    name: "⚛️ React App",
+                    files: [
+                        {
+                            name: "Rankings.jsx",
+                            path: "src/components/Rankings.jsx",
+                            type: "React Component",
+                            icon: "⚛️",
+                            description: "Main rankings page component. Displays team rankings table with filtering, pagination, and My Teams feature.",
+                            pullsFrom: ["rankings_for_react.json via useRankingsData hook"],
+                            savesTo: "localStorage (My Teams)",
+                            features: ["Team search/filter", "Gender/Age/League/State filters", "Pagination (200 teams at a time)", "My Teams (up to 5)"],
+                            notes: "v33+ includes pagination to improve load time with 5000+ teams."
+                        },
+                        {
+                            name: "Players.jsx",
+                            path: "src/components/Players.jsx",
+                            type: "React Component",
+                            icon: "⚛️",
+                            description: "Player management page. Shows database players and allows adding custom players.",
+                            pullsFrom: ["rankings_for_react.json", "localStorage"],
+                            savesTo: "localStorage (custom players)",
+                            notes: "Combines database players with user-created players."
+                        },
+                        {
+                            name: "useRankingsData.js",
+                            path: "src/data/useRankingsData.js",
+                            type: "React Hook",
+                            icon: "🪝",
+                            description: "Custom hook that fetches and parses rankings_for_react.json for use by components.",
+                            pullsFrom: ["/rankings_for_react.json"],
+                            notes: "Extracts unique age groups, leagues, and states from team data."
+                        },
+                        {
+                            name: "UserContext.jsx",
+                            path: "src/context/UserContext.jsx",
+                            type: "React Context",
+                            icon: "👤",
+                            description: "Manages user authentication state and permissions across the app.",
+                            pullsFrom: ["localStorage"],
+                            savesTo: "localStorage",
+                            notes: "Defines Guest/Free/Paid account types with different permissions."
+                        }
+                    ]
+                },
+                {
+                    name: "🛠️ Admin Tools",
+                    files: [
+                        {
+                            name: "admin_dashboard.html",
+                            path: "admin_dashboard.html",
+                            type: "HTML + JavaScript",
+                            icon: "🌐",
+                            description: "Admin dashboard for managing scrapers, viewing data, and configuring the system.",
+                            pullsFrom: ["admin_server.py API"],
+                            notes: "Open directly in browser. Requires admin_server.py running for full functionality."
+                        },
+                        {
+                            name: "admin_server.py",
+                            path: "admin_server.py",
+                            type: "Python Server",
+                            icon: "🖥️",
+                            description: "Backend server providing REST API for admin dashboard. Manages scrapers, users, and data export.",
+                            pullsFrom: ["youth_soccer.db", "admin_config.json"],
+                            savesTo: ["admin_config.json", "seedline_users.json"],
+                            port: 5050,
+                            notes: "Run with 'python admin_server.py' or use launch_admin.bat"
+                        },
+                        {
+                            name: "admin_config.json",
+                            path: "admin_config.json",
+                            type: "JSON Config",
+                            icon: "⚙️",
+                            description: "Stores admin dashboard configuration including paths and scraper history.",
+                            notes: "Auto-created on first run."
+                        },
+                        {
+                            name: "seedline_users.json",
+                            path: "seedline_users.json",
+                            type: "JSON Data",
+                            icon: "👥",
+                            description: "Persistent user database. Users created here survive app updates.",
+                            notes: "Separate from admin_config.json to ensure users persist across updates."
+                        }
+                    ]
+                },
+                {
+                    name: "📜 Batch Scripts",
+                    files: [
+                        {
+                            name: "launch_admin.bat",
+                            path: "launch_admin.bat",
+                            type: "Batch Script",
+                            icon: "📜",
+                            description: "Starts the admin server and opens the dashboard in browser.",
+                            notes: "Windows only. Double-click to run."
+                        },
+                        {
+                            name: "update_react_rankings.bat",
+                            path: "update_react_rankings.bat",
+                            type: "Batch Script",
+                            icon: "📜",
+                            description: "Runs cleanup, team ranker, and copies output to React app.",
+                            notes: "Auto-detects latest versions of scripts."
+                        }
+                    ]
+                }
+            ]
+        };
+        
+        let selectedFile = null;
+        
+        function loadFilesAndFolders() {
+            renderFileTree();
+        }
+        
+        function renderFileTree() {
+            const treeEl = document.getElementById('file-tree');
+            let html = '';
+            
+            for (const category of FILE_CATALOG.categories) {
+                html += `<div class="file-tree-category">${category.name}</div>`;
+                for (const file of category.files) {
+                    const isSelected = selectedFile && selectedFile.name === file.name;
+                    html += `
+                        <div class="file-tree-item file ${isSelected ? 'selected' : ''}" 
+                             onclick="showFileDetails('${file.name}', '${category.name}')">
+                            <span class="icon">${file.icon}</span>
+                            <span>${file.name}</span>
+                        </div>
+                    `;
+                }
+            }
+            
+            treeEl.innerHTML = html;
+        }
+        
+        function showFileDetails(fileName, categoryName) {
+            // Find the file in catalog
+            for (const category of FILE_CATALOG.categories) {
+                if (category.name === categoryName) {
+                    for (const file of category.files) {
+                        if (file.name === fileName) {
+                            selectedFile = file;
+                            renderFileDetails(file);
+                            renderFileTree(); // Re-render to update selection
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+        
+        function renderFileDetails(file) {
+            const detailsEl = document.getElementById('file-details');
+            
+            let html = `
+                <div class="file-detail-section">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
+                        <span style="font-size: 2.5rem;">${file.icon}</span>
+                        <div>
+                            <h3 style="margin: 0; color: var(--accent-green);">${file.name}</h3>
+                            <span class="badge badge-blue">${file.type}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="file-detail-section">
+                    <div class="file-detail-label">Description</div>
+                    <div class="file-detail-value">${file.description}</div>
+                </div>
+                
+                <div class="file-detail-section">
+                    <div class="file-detail-label">Path</div>
+                    <div class="file-detail-code">${file.path}</div>
+                </div>
+            `;
+            
+            if (file.pullsFrom && file.pullsFrom.length > 0) {
+                html += `
+                    <div class="file-detail-section">
+                        <div class="file-detail-label">📥 Data Sources (Pulls From)</div>
+                        <ul style="margin: 0; padding-left: 20px; color: var(--text-primary);">
+                            ${file.pullsFrom.map(s => `<li>${s}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            if (file.savesTo) {
+                html += `
+                    <div class="file-detail-section">
+                        <div class="file-detail-label">📤 Output (Saves To)</div>
+                        <div class="file-detail-value">${file.savesTo}</div>
+                    </div>
+                `;
+            }
+            
+            if (file.arguments) {
+                html += `
+                    <div class="file-detail-section">
+                        <div class="file-detail-label">⌨️ Command Line Arguments</div>
+                        <div class="file-detail-code">${file.arguments.join('\n')}</div>
+                    </div>
+                `;
+            }
+            
+            if (file.features) {
+                html += `
+                    <div class="file-detail-section">
+                        <div class="file-detail-label">✨ Features</div>
+                        <ul style="margin: 0; padding-left: 20px; color: var(--text-primary);">
+                            ${file.features.map(f => `<li>${f}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            if (file.tables) {
+                html += `
+                    <div class="file-detail-section">
+                        <div class="file-detail-label">📋 Database Tables</div>
+                        <div class="file-detail-value">${file.tables.join(', ')}</div>
+                    </div>
+                `;
+            }
+            
+            if (file.structure) {
+                html += `
+                    <div class="file-detail-section">
+                        <div class="file-detail-label">📊 Data Structure</div>
+                        <div class="file-detail-code">${JSON.stringify(file.structure, null, 2)}</div>
+                    </div>
+                `;
+            }
+            
+            if (file.port) {
+                html += `
+                    <div class="file-detail-section">
+                        <div class="file-detail-label">🔌 Port</div>
+                        <div class="file-detail-value">${file.port}</div>
+                    </div>
+                `;
+            }
+            
+            if (file.notes) {
+                html += `
+                    <div class="file-detail-section">
+                        <div class="file-detail-label">📝 Notes</div>
+                        <div class="file-detail-value" style="font-style: italic; color: var(--text-secondary);">${file.notes}</div>
+                    </div>
+                `;
+            }
+            
+            // Try to get last modified from server
+            html += `<div id="file-modified-info" style="margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border-color);"></div>`;
+            
+            detailsEl.innerHTML = html;
+            
+            // Fetch file info from server
+            fetchFileInfo(file.path);
+        }
+        
+        async function fetchFileInfo(path) {
+            const result = await api(`/api/file-info?path=${encodeURIComponent(path)}`);
+            const infoEl = document.getElementById('file-modified-info');
+            
+            if (result && !result.error) {
+                infoEl.innerHTML = `
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                        <div>
+                            <div class="file-detail-label">📅 Last Modified</div>
+                            <div class="file-detail-value">${result.modified || 'Unknown'}</div>
+                        </div>
+                        <div>
+                            <div class="file-detail-label">📏 Size</div>
+                            <div class="file-detail-value">${result.size || 'Unknown'}</div>
+                        </div>
+                        <div>
+                            <div class="file-detail-label">✅ Exists</div>
+                            <div class="file-detail-value">${result.exists ? '✓ Yes' : '✗ No'}</div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                infoEl.innerHTML = `<div style="color: var(--text-secondary);">Could not fetch file info (server may be offline)</div>`;
+            }
+        }
+        
+        // Teams
+        let teamsOffset = 0;
+        let teamsLimit = 500;
+        
+        async function loadTeams(append = false) {
+            if (!append) teamsOffset = 0;
+            
+            const search = document.getElementById('teams-search')?.value || '';
+            const league = document.getElementById('teams-league-filter')?.value || '';
+            const ageGroup = document.getElementById('teams-age-filter')?.value || '';
+            const gender = document.getElementById('teams-gender-filter')?.value || '';
+            
+            const params = new URLSearchParams({ limit: teamsLimit, offset: teamsOffset, search, league, age_group: ageGroup, gender });
+            const result = await api(`/api/teams?${params}`);
+            
+            if (result.error) {
+                document.getElementById('teams-table').innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-secondary)">Cannot load teams. Is the server running?</td></tr>`;
+                return;
+            }
+            
+            if (result.teams && result.teams.length > 0) {
+                const currentCount = append ? (teamsOffset + result.teams.length) : result.teams.length;
+                document.getElementById('teams-count').textContent = `(showing ${currentCount} of ${result.total || result.teams.length})`;
+                
+                const html = result.teams.map(team => `
+                    <tr onclick="editTeam(${team.rowid}, '${(team.team_name || '').replace(/'/g, "\\'")}', '${(team.club || '').replace(/'/g, "\\'")}', '${team.league || ''}', '${team.age_group || ''}', '${team.state || ''}')">
+                        <td>${team.team_name || '-'}</td>
+                        <td>${team.club || '-'}</td>
+                        <td><span class="badge badge-${getLeagueBadge(team.league)}">${team.league || '-'}</span></td>
+                        <td>${team.age_group || '-'}</td>
+                        <td>${team.state || '-'}</td>
+                        <td><button class="btn btn-secondary btn-sm">Edit</button></td>
+                    </tr>
+                `).join('');
+                
+                if (append) {
+                    document.getElementById('teams-table').innerHTML += html;
+                } else {
+                    document.getElementById('teams-table').innerHTML = html;
+                }
+            } else if (!append) {
+                document.getElementById('teams-count').textContent = '';
+                document.getElementById('teams-table').innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-secondary)">No teams found</td></tr>`;
+            }
+        }
+        
+        function loadMoreTeams() {
+            teamsOffset += teamsLimit;
+            loadTeams(true);
+        }
+        
+        async function loadAllTeams() {
+            const search = document.getElementById('teams-search')?.value || '';
+            const league = document.getElementById('teams-league-filter')?.value || '';
+            const ageGroup = document.getElementById('teams-age-filter')?.value || '';
+            const gender = document.getElementById('teams-gender-filter')?.value || '';
+            
+            const params = new URLSearchParams({ limit: 100000, search, league, age_group: ageGroup, gender });
+            const result = await api(`/api/teams?${params}`);
+            
+            if (result.teams && result.teams.length > 0) {
+                document.getElementById('teams-count').textContent = `(showing ALL ${result.teams.length})`;
+                document.getElementById('teams-table').innerHTML = result.teams.map(team => `
+                    <tr onclick="editTeam(${team.rowid}, '${(team.team_name || '').replace(/'/g, "\\'")}', '${(team.club || '').replace(/'/g, "\\'")}', '${team.league || ''}', '${team.age_group || ''}', '${team.state || ''}')">
+                        <td>${team.team_name || '-'}</td>
+                        <td>${team.club || '-'}</td>
+                        <td><span class="badge badge-${getLeagueBadge(team.league)}">${team.league || '-'}</span></td>
+                        <td>${team.age_group || '-'}</td>
+                        <td>${team.state || '-'}</td>
+                        <td><button class="btn btn-secondary btn-sm">Edit</button></td>
+                    </tr>
+                `).join('');
+            }
+        }
+        
+        function editTeam(rowid, name, club, league, age_group, state) {
+            currentTeamRowId = rowid;
+            document.getElementById('edit-team-content').innerHTML = `
+                <div class="form-group"><label class="form-label">Team Name</label><input type="text" class="form-input" id="edit-team-name" value="${name}"></div>
+                <div class="form-group"><label class="form-label">Club</label><input type="text" class="form-input" id="edit-team-club" value="${club}"></div>
+                <div class="form-group"><label class="form-label">League</label><input type="text" class="form-input" id="edit-team-league" value="${league}"></div>
+                <div class="form-group"><label class="form-label">Age Group</label><input type="text" class="form-input" id="edit-team-age" value="${age_group}"></div>
+                <div class="form-group"><label class="form-label">State</label><input type="text" class="form-input" id="edit-team-state" value="${state}"></div>
+            `;
+            document.getElementById('edit-team-modal').classList.add('active');
+        }
+        
+        document.getElementById('save-team-btn').onclick = async () => {
+            const updates = {
+                team_name: document.getElementById('edit-team-name').value,
+                club: document.getElementById('edit-team-club').value,
+                league: document.getElementById('edit-team-league').value,
+                age_group: document.getElementById('edit-team-age').value,
+                state: document.getElementById('edit-team-state').value
+            };
+            const result = await api(`/api/teams/${currentTeamRowId}`, { method: 'PUT', body: JSON.stringify(updates) });
+            if (result.success) {
+                closeModal('edit-team-modal');
+                loadTeams();
+            } else {
+                alert(result.error || 'Failed to save');
+            }
+        };
+        
+        // Players
+        let playersOffset = 0;
+        let playersLimit = 500;
+        
+        async function loadPlayers(append = false) {
+            if (!append) playersOffset = 0;
+            
+            const search = document.getElementById('players-search')?.value || '';
+            const league = document.getElementById('players-league-filter')?.value || '';
+            const ageGroup = document.getElementById('players-age-filter')?.value || '';
+            const position = document.getElementById('players-position-filter')?.value || '';
+            const gender = document.getElementById('players-gender-filter')?.value || '';
+            
+            const params = new URLSearchParams({ limit: playersLimit, offset: playersOffset, search, league, age_group: ageGroup, position, gender });
+            const result = await api(`/api/players?${params}`);
+            
+            if (result.error) {
+                document.getElementById('players-table').innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-secondary)">Cannot load players. Is the server running?</td></tr>`;
+                return;
+            }
+            
+            if (result.players && result.players.length > 0) {
+                const currentCount = append ? (playersOffset + result.players.length) : result.players.length;
+                document.getElementById('players-count').textContent = `(showing ${currentCount} of ${result.total || result.players.length})`;
+                
+                const html = result.players.map(p => `
+                    <tr onclick="editPlayer(${p.rowid}, '${(p.player_name || '').replace(/'/g, "\\'")}', '${(p.team_name || '').replace(/'/g, "\\'")}', '${p.position || ''}', '${p.jersey_number || ''}', '${p.graduation_year || ''}')">
+                        <td>${p.player_name || '-'}</td>
+                        <td>${(p.team_name || '-').substring(0, 30)}</td>
+                        <td>${p.position || '-'}</td>
+                        <td>${p.jersey_number || '-'}</td>
+                        <td>${p.graduation_year || '-'}</td>
+                        <td><button class="btn btn-secondary btn-sm">Edit</button></td>
+                    </tr>
+                `).join('');
+                
+                if (append) {
+                    document.getElementById('players-table').innerHTML += html;
+                } else {
+                    document.getElementById('players-table').innerHTML = html;
+                }
+            } else if (!append) {
+                document.getElementById('players-count').textContent = '';
+                document.getElementById('players-table').innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-secondary)">No players found</td></tr>`;
+            }
+        }
+        
+        function loadMorePlayers() {
+            playersOffset += playersLimit;
+            loadPlayers(true);
+        }
+        
+        async function loadAllPlayers() {
+            const search = document.getElementById('players-search')?.value || '';
+            const league = document.getElementById('players-league-filter')?.value || '';
+            const ageGroup = document.getElementById('players-age-filter')?.value || '';
+            const position = document.getElementById('players-position-filter')?.value || '';
+            const gender = document.getElementById('players-gender-filter')?.value || '';
+            
+            const params = new URLSearchParams({ limit: 100000, search, league, age_group: ageGroup, position, gender });
+            const result = await api(`/api/players?${params}`);
+            
+            if (result.players && result.players.length > 0) {
+                document.getElementById('players-count').textContent = `(showing ALL ${result.players.length})`;
+                document.getElementById('players-table').innerHTML = result.players.map(p => `
+                    <tr onclick="editPlayer(${p.rowid}, '${(p.player_name || '').replace(/'/g, "\\'")}', '${(p.team_name || '').replace(/'/g, "\\'")}', '${p.position || ''}', '${p.jersey_number || ''}', '${p.graduation_year || ''}')">
+                        <td>${p.player_name || '-'}</td>
+                        <td>${(p.team_name || '-').substring(0, 30)}</td>
+                        <td>${p.position || '-'}</td>
+                        <td>${p.jersey_number || '-'}</td>
+                        <td>${p.graduation_year || '-'}</td>
+                        <td><button class="btn btn-secondary btn-sm">Edit</button></td>
+                    </tr>
+                `).join('');
+            }
+        }
+        
+        function editPlayer(rowid, name, team, position, jersey, grad_year) {
+            currentPlayerRowId = rowid;
+            document.getElementById('edit-player-content').innerHTML = `
+                <div class="form-group"><label class="form-label">Name</label><input type="text" class="form-input" id="edit-player-name" value="${name}"></div>
+                <div class="form-group"><label class="form-label">Team</label><input type="text" class="form-input" id="edit-player-team" value="${team}"></div>
+                <div class="form-group"><label class="form-label">Position</label><input type="text" class="form-input" id="edit-player-position" value="${position}"></div>
+                <div class="form-group"><label class="form-label">Jersey Number</label><input type="text" class="form-input" id="edit-player-jersey" value="${jersey}"></div>
+                <div class="form-group"><label class="form-label">Grad Year</label><input type="text" class="form-input" id="edit-player-grad" value="${grad_year}"></div>
+            `;
+            document.getElementById('edit-player-modal').classList.add('active');
+        }
+        
+        document.getElementById('save-player-btn').onclick = async () => {
+            const updates = {
+                player_name: document.getElementById('edit-player-name').value,
+                team_name: document.getElementById('edit-player-team').value,
+                position: document.getElementById('edit-player-position').value,
+                jersey_number: document.getElementById('edit-player-jersey').value,
+                graduation_year: document.getElementById('edit-player-grad').value
+            };
+            const result = await api(`/api/players/${currentPlayerRowId}`, { method: 'PUT', body: JSON.stringify(updates) });
+            if (result.success) {
+                closeModal('edit-player-modal');
+                loadPlayers();
+            } else {
+                alert(result.error || 'Failed to save');
+            }
+        };
+        
+        // Games
+        let gamesOffset = 0;
+        let gamesLimit = 500;
+        
+        async function loadGames(append = false) {
+            if (!append) gamesOffset = 0;
+            
+            const search = document.getElementById('games-search')?.value || '';
+            const league = document.getElementById('games-league-filter')?.value || '';
+            const ageGroup = document.getElementById('games-age-filter')?.value || '';
+            const status = document.getElementById('games-status-filter')?.value || '';
+            const gender = document.getElementById('games-gender-filter')?.value || '';
+            const sort = document.getElementById('games-sort')?.value || 'desc';
+            
+            const params = new URLSearchParams({ limit: gamesLimit, offset: gamesOffset, search, league, age_group: ageGroup, status, gender, sort });
+            const result = await api(`/api/games?${params}`);
+            
+            if (result.error) {
+                document.getElementById('games-table').innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-secondary)">Cannot load games. Is the server running?</td></tr>`;
+                return;
+            }
+            
+            if (result.games && result.games.length > 0) {
+                const currentCount = append ? (gamesOffset + result.games.length) : result.games.length;
+                document.getElementById('games-count').textContent = `(showing ${currentCount} of ${result.total || result.games.length})`;
+                
+                const html = result.games.map(g => `
+                    <tr onclick="editGame(${g.rowid}, '${g.game_date || ''}', '${(g.home_team || '').replace(/'/g, "\\'")}', '${(g.away_team || '').replace(/'/g, "\\'")}', ${g.home_score || 0}, ${g.away_score || 0}, '${g.league || ''}', '${g.age_group || ''}')">
+                        <td>${g.game_date || '-'}</td>
+                        <td>${(g.home_team || '-').substring(0, 25)}</td>
+                        <td><strong>${g.home_score ?? '-'} - ${g.away_score ?? '-'}</strong></td>
+                        <td>${(g.away_team || '-').substring(0, 25)}</td>
+                        <td><span class="badge badge-${getLeagueBadge(g.league)}">${g.league || '-'}</span></td>
+                        <td><button class="btn btn-secondary btn-sm">Edit</button></td>
+                    </tr>
+                `).join('');
+                
+                if (append) {
+                    document.getElementById('games-table').innerHTML += html;
+                } else {
+                    document.getElementById('games-table').innerHTML = html;
+                }
+            } else if (!append) {
+                document.getElementById('games-count').textContent = '';
+                document.getElementById('games-table').innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-secondary)">No games found</td></tr>`;
+            }
+        }
+        
+        function loadMoreGames() {
+            gamesOffset += gamesLimit;
+            loadGames(true);
+        }
+        
+        async function loadAllGames() {
+            const search = document.getElementById('games-search')?.value || '';
+            const league = document.getElementById('games-league-filter')?.value || '';
+            const ageGroup = document.getElementById('games-age-filter')?.value || '';
+            const status = document.getElementById('games-status-filter')?.value || '';
+            const gender = document.getElementById('games-gender-filter')?.value || '';
+            const sort = document.getElementById('games-sort')?.value || 'desc';
+            
+            const params = new URLSearchParams({ limit: 100000, search, league, age_group: ageGroup, status, gender, sort });
+            const result = await api(`/api/games?${params}`);
+            
+            if (result.games && result.games.length > 0) {
+                document.getElementById('games-count').textContent = `(showing ALL ${result.games.length})`;
+                document.getElementById('games-table').innerHTML = result.games.map(g => `
+                    <tr onclick="editGame(${g.rowid}, '${g.game_date || ''}', '${(g.home_team || '').replace(/'/g, "\\'")}', '${(g.away_team || '').replace(/'/g, "\\'")}', ${g.home_score || 0}, ${g.away_score || 0}, '${g.league || ''}', '${g.age_group || ''}')">
+                        <td>${g.game_date || '-'}</td>
+                        <td>${(g.home_team || '-').substring(0, 25)}</td>
+                        <td><strong>${g.home_score ?? '-'} - ${g.away_score ?? '-'}</strong></td>
+                        <td>${(g.away_team || '-').substring(0, 25)}</td>
+                        <td><span class="badge badge-${getLeagueBadge(g.league)}">${g.league || '-'}</span></td>
+                        <td><button class="btn btn-secondary btn-sm">Edit</button></td>
+                    </tr>
+                `).join('');
+            }
+        }
+        
+        function editGame(rowid, date, home, away, homeScore, awayScore, league, ageGroup) {
+            currentGameRowId = rowid;
+            document.getElementById('edit-game-content').innerHTML = `
+                <div class="form-group"><label class="form-label">Date</label><input type="text" class="form-input" id="edit-game-date" value="${date}"></div>
+                <div class="form-group"><label class="form-label">Home Team</label><input type="text" class="form-input" id="edit-game-home" value="${home}"></div>
+                <div class="form-group"><label class="form-label">Away Team</label><input type="text" class="form-input" id="edit-game-away" value="${away}"></div>
+                <div class="form-group"><label class="form-label">Home Score</label><input type="number" class="form-input" id="edit-game-home-score" value="${homeScore}"></div>
+                <div class="form-group"><label class="form-label">Away Score</label><input type="number" class="form-input" id="edit-game-away-score" value="${awayScore}"></div>
+                <div class="form-group"><label class="form-label">League</label><input type="text" class="form-input" id="edit-game-league" value="${league}"></div>
+                <div class="form-group"><label class="form-label">Age Group</label><input type="text" class="form-input" id="edit-game-age" value="${ageGroup}"></div>
+            `;
+            document.getElementById('edit-game-modal').classList.add('active');
+        }
+        
+        document.getElementById('save-game-btn').onclick = async () => {
+            const updates = {
+                game_date: document.getElementById('edit-game-date').value,
+                home_team: document.getElementById('edit-game-home').value,
+                away_team: document.getElementById('edit-game-away').value,
+                home_score: parseInt(document.getElementById('edit-game-home-score').value) || 0,
+                away_score: parseInt(document.getElementById('edit-game-away-score').value) || 0,
+                league: document.getElementById('edit-game-league').value,
+                age_group: document.getElementById('edit-game-age').value
+            };
+            const result = await api(`/api/games/${currentGameRowId}`, { method: 'PUT', body: JSON.stringify(updates) });
+            if (result.success) {
+                closeModal('edit-game-modal');
+                loadGames();
+            } else {
+                alert(result.error || 'Failed to save');
+            }
+        };
+        
+        document.getElementById('delete-game-btn').onclick = async () => {
+            if (confirm('Are you sure you want to delete this game?')) {
+                const result = await api(`/api/games/${currentGameRowId}`, { method: 'DELETE' });
+                if (result.success) {
+                    closeModal('edit-game-modal');
+                    loadGames();
+                } else {
+                    alert(result.error || 'Failed to delete');
+                }
+            }
+        };
+        
+        // Users
+        async function loadUsers() {
+            const users = await api('/api/users');
+            const search = document.getElementById('users-search')?.value?.toLowerCase() || '';
+            const typeFilter = document.getElementById('users-type-filter')?.value || '';
+            
+            let filtered = Array.isArray(users) ? users : [];
+            if (search) filtered = filtered.filter(u => u.username.toLowerCase().includes(search) || (u.email && u.email.toLowerCase().includes(search)));
+            if (typeFilter) filtered = filtered.filter(u => u.account_type === typeFilter);
+            
+            if (filtered.length > 0) {
+                document.getElementById('users-list').innerHTML = filtered.map(user => `
+                    <div class="user-card" onclick="showUserDetail(${user.id})">
+                        <div class="user-avatar">${(user.username || '?')[0].toUpperCase()}</div>
+                        <div class="user-name">${user.username}</div>
+                        <div class="user-email">${user.email || 'No email'}</div>
+                        ${user.password ? `<div class="user-password" style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 4px;">🔑 ${user.password}</div>` : ''}
+                        <span class="badge badge-${user.account_type === 'pro' ? 'green' : user.account_type === 'free' ? 'blue' : 'yellow'}">${user.account_type.toUpperCase()}</span>
+                    </div>
+                `).join('');
+            } else {
+                document.getElementById('users-list').innerHTML = '<div style="color: var(--text-secondary); text-align: center; padding: 40px;">No users found</div>';
+            }
+        }
+        
+        function showAddUserModal() {
+            document.getElementById('add-user-modal').classList.add('active');
+        }
+        
+        async function addUser() {
+            const username = document.getElementById('new-user-username').value;
+            const email = document.getElementById('new-user-email').value;
+            const password = document.getElementById('new-user-password').value;
+            const account_type = document.getElementById('new-user-type').value;
+            
+            if (!username) { alert('Username is required'); return; }
+            if ((account_type === 'free' || account_type === 'pro') && !password) {
+                alert('Password is required for Free and Pro accounts');
+                return;
+            }
+            
+            const result = await api('/api/users', { method: 'POST', body: JSON.stringify({ username, email, password, account_type }) });
+            if (result.success) {
+                closeModal('add-user-modal');
+                document.getElementById('new-user-username').value = '';
+                document.getElementById('new-user-email').value = '';
+                document.getElementById('new-user-password').value = '';
+                loadUsers();
+            } else {
+                alert(result.error || 'Failed to add user');
+            }
+        }
+        
+        async function showUserDetail(userId) {
+            currentUserId = userId;
+            const users = await api('/api/users');
+            const user = users.find(u => u.id === userId);
+            if (!user) return;
+            
+            document.getElementById('user-detail-content').innerHTML = `
+                <div class="form-group"><label class="form-label">Username</label><input type="text" class="form-input" id="edit-username" value="${user.username}"></div>
+                <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="edit-email" value="${user.email || ''}"></div>
+                <div class="form-group"><label class="form-label">Password</label><input type="text" class="form-input" id="edit-password" value="${user.password || ''}"></div>
+                <div class="form-group"><label class="form-label">Account Type</label>
+                    <select class="form-select" id="edit-account-type">
+                        <option value="guest" ${user.account_type === 'guest' ? 'selected' : ''}>Guest</option>
+                        <option value="free" ${user.account_type === 'free' ? 'selected' : ''}>Free</option>
+                        <option value="pro" ${user.account_type === 'pro' ? 'selected' : ''}>Pro</option>
+                    </select>
+                </div>
+            `;
+            document.getElementById('user-detail-modal').classList.add('active');
+        }
+        
+        document.getElementById('save-user-btn').onclick = async () => {
+            const updates = {
+                username: document.getElementById('edit-username').value,
+                email: document.getElementById('edit-email').value,
+                password: document.getElementById('edit-password').value,
+                account_type: document.getElementById('edit-account-type').value
+            };
+            const result = await api(`/api/users/${currentUserId}`, { method: 'PUT', body: JSON.stringify(updates) });
+            if (result.success) {
+                closeModal('user-detail-modal');
+                loadUsers();
+            } else {
+                alert(result.error || 'Failed to save');
+            }
+        };
+        
+        document.getElementById('delete-user-btn').onclick = async () => {
+            if (confirm('Are you sure you want to delete this user?')) {
+                const result = await api(`/api/users/${currentUserId}`, { method: 'DELETE' });
+                if (result.success) {
+                    closeModal('user-detail-modal');
+                    loadUsers();
+                } else {
+                    alert(result.error || 'Failed to delete');
+                }
+            }
+        };
+        
+        // Settings
+        async function loadSettings() {
+            const config = await api('/api/config');
+            if (config.paths) {
+                document.getElementById('settings-db-path').value = config.paths.database || '';
+                document.getElementById('settings-scrapers-path').value = config.paths.scrapers_folder || '';
+                document.getElementById('settings-react-path').value = config.paths.react_app || '';
+                document.getElementById('settings-ranker-path').value = config.paths.ranker || '';
+            }
+        }
+        
+        async function savePaths() {
+            const paths = {
+                database: document.getElementById('settings-db-path').value,
+                scrapers_folder: document.getElementById('settings-scrapers-path').value,
+                react_app: document.getElementById('settings-react-path').value,
+                ranker: document.getElementById('settings-ranker-path').value
+            };
+            const result = await api('/api/config/paths', { method: 'PUT', body: JSON.stringify(paths) });
+            if (result.success) {
+                alert('Paths saved successfully!');
+                loadDashboard();
+            } else {
+                alert(result.error || 'Failed to save paths');
+            }
+        }
+        
+        // Export
+        async function runRanker() {
+            document.getElementById('export-console').innerHTML = 'Running team ranker...\n';
+            const result = await api('/api/ranker/run', { method: 'POST' });
+            if (result.success) {
+                document.getElementById('export-console').innerHTML += 'Team ranker completed!\n' + (result.output || '');
+            } else {
+                document.getElementById('export-console').innerHTML += 'Error: ' + (result.error || 'Unknown error');
+            }
+        }
+        
+        async function exportToReact() {
+            document.getElementById('export-console').innerHTML = 'Exporting data to React app...\n';
+            const result = await api('/api/export', { method: 'POST' });
+            
+            if (result.rankings?.success) {
+                document.getElementById('export-console').innerHTML += '✅ Rankings exported\n';
+            } else {
+                document.getElementById('export-console').innerHTML += '❌ Rankings: ' + (result.rankings?.error || 'Failed') + '\n';
+            }
+            
+            if (result.players?.success) {
+                document.getElementById('export-console').innerHTML += '✅ Players exported\n';
+            } else {
+                document.getElementById('export-console').innerHTML += '❌ Players: ' + (result.players?.error || 'Failed') + '\n';
+            }
+        }
+        
+        // Launch Seedline App
+        async function launchSeedlineApp() {
+            const btn = document.querySelector('.launch-app-btn');
+            btn.textContent = '🚀 Launching...';
+            btn.disabled = true;
+            
+            try {
+                const result = await api('/api/launch-react', { method: 'POST' });
+                
+                if (result.success) {
+                    btn.textContent = '✅ Launched!';
+                    setTimeout(() => {
+                        btn.textContent = '🚀 Launch Seedline App';
+                        btn.disabled = false;
+                    }, 3000);
+                    
+                    // Also try to open the URL after a delay
+                    setTimeout(() => {
+                        window.open('http://localhost:5173', '_blank');
+                    }, 5000);
+                } else {
+                    alert('Failed to launch: ' + (result.error || 'Unknown error'));
+                    btn.textContent = '🚀 Launch Seedline App';
+                    btn.disabled = false;
+                }
+            } catch (e) {
+                alert('Cannot connect to server. Make sure admin_server.py is running.');
+                btn.textContent = '🚀 Launch Seedline App';
+                btn.disabled = false;
+            }
+        }
+        
+        // Load filter options from database
+        async function loadFilterOptions() {
+            const options = await api('/api/filter-options');
+            if (options.error) return;
+            
+            // Populate league dropdowns
+            const leagueOptions = '<option value="">All Leagues</option>' + 
+                (options.leagues || []).map(l => `<option value="${l}">${l}</option>`).join('');
+            document.getElementById('teams-league-filter').innerHTML = leagueOptions;
+            document.getElementById('players-league-filter').innerHTML = leagueOptions;
+            document.getElementById('games-league-filter').innerHTML = leagueOptions;
+            
+            // Populate age group dropdowns for teams and games
+            const ageOptions = '<option value="">All Age Groups</option>' + 
+                (options.age_groups || []).map(a => `<option value="${a}">${a}</option>`).join('');
+            document.getElementById('teams-age-filter').innerHTML = ageOptions;
+            document.getElementById('games-age-filter').innerHTML = ageOptions;
+            
+            // Populate age group dropdown for players (uses player-specific age groups)
+            const playerAgeOptions = '<option value="">All Age Groups</option>' + 
+                (options.player_age_groups || options.age_groups || []).map(a => `<option value="${a}">${a}</option>`).join('');
+            document.getElementById('players-age-filter').innerHTML = playerAgeOptions;
+            
+            // Populate position dropdown with actual values from database
+            const posOptions = '<option value="">All Positions</option>' + 
+                (options.positions || []).map(p => `<option value="${p}">${p}</option>`).join('');
+            document.getElementById('players-position-filter').innerHTML = posOptions;
+        }
+        
+        // Event Listeners
+        document.getElementById('teams-search')?.addEventListener('input', () => loadTeams());
+        document.getElementById('teams-league-filter')?.addEventListener('change', () => loadTeams());
+        document.getElementById('teams-age-filter')?.addEventListener('change', () => loadTeams());
+        document.getElementById('teams-gender-filter')?.addEventListener('change', () => loadTeams());
+        document.getElementById('players-search')?.addEventListener('input', () => loadPlayers());
+        document.getElementById('players-league-filter')?.addEventListener('change', () => loadPlayers());
+        document.getElementById('players-age-filter')?.addEventListener('change', () => loadPlayers());
+        document.getElementById('players-position-filter')?.addEventListener('change', () => loadPlayers());
+        document.getElementById('players-gender-filter')?.addEventListener('change', () => loadPlayers());
+        document.getElementById('games-search')?.addEventListener('input', () => loadGames());
+        document.getElementById('games-league-filter')?.addEventListener('change', () => loadGames());
+        document.getElementById('games-age-filter')?.addEventListener('change', () => loadGames());
+        document.getElementById('games-status-filter')?.addEventListener('change', () => loadGames());
+        document.getElementById('games-gender-filter')?.addEventListener('change', () => loadGames());
+        document.getElementById('games-sort')?.addEventListener('change', () => loadGames());
+        document.getElementById('users-search')?.addEventListener('input', loadUsers);
+        document.getElementById('users-type-filter')?.addEventListener('change', loadUsers);
+        
+        // Retry connection function
+        function retryConnection() {
+            connectionRetries = 0;
+            loadDashboard();
+        }
+        
+        // Initial load
+        loadDashboard();
+        loadFilterOptions();
+    </script>
+</body>
+</html>

@@ -1,0 +1,6797 @@
+[
+  {
+    "event_id": "42137",
+    "team_id": "3279172",
+    "team_name": "Atletico Dallas Youth 13G GA",
+    "club_name": "Atletico Dallas Youth",
+    "conference": "Frontier",
+    "age_group": "U13",
+    "group_id": "399282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3290518",
+    "team_name": "BVB International Academy Texas 13G GA",
+    "club_name": "BVB International Academy Texas",
+    "conference": "Frontier",
+    "age_group": "U13",
+    "group_id": "399282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300174",
+    "team_name": "Dallas Surf 13G GA",
+    "club_name": "Dallas Surf",
+    "conference": "Frontier",
+    "age_group": "U13",
+    "group_id": "399282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277807",
+    "team_name": "HTX 13G GA",
+    "club_name": "HTX",
+    "conference": "Frontier",
+    "age_group": "U13",
+    "group_id": "399282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274846",
+    "team_name": "Lou Fusz Athletic 13G GA",
+    "club_name": "Lou Fusz Athletic",
+    "conference": "Frontier",
+    "age_group": "U13",
+    "group_id": "399282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332056",
+    "team_name": "Louisiana TDP Elite 13G GA",
+    "club_name": "Louisiana TDP Elite",
+    "conference": "Frontier",
+    "age_group": "U13",
+    "group_id": "399282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307324",
+    "team_name": "RISE Soccer Club 13G GA",
+    "club_name": "RISE Soccer Club",
+    "conference": "Frontier",
+    "age_group": "U13",
+    "group_id": "399282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3305750",
+    "team_name": "San Antonio City SC 13G GA",
+    "club_name": "San Antonio City SC",
+    "conference": "Frontier",
+    "age_group": "U13",
+    "group_id": "399282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3315433",
+    "team_name": "St. Louis Development Academy 13G GA",
+    "club_name": "St. Louis Development Academy",
+    "conference": "Frontier",
+    "age_group": "U13",
+    "group_id": "399282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331296",
+    "team_name": "Tulsa Soccer Club 13G GA",
+    "club_name": "Tulsa Soccer Club",
+    "conference": "Frontier",
+    "age_group": "U13",
+    "group_id": "399282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274656",
+    "team_name": "Beadling SC 13G GA",
+    "club_name": "Beadling SC",
+    "conference": "Mid-America",
+    "age_group": "U13",
+    "group_id": "399327"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309325",
+    "team_name": "Century United Soccer 13G GA",
+    "club_name": "Century United Soccer",
+    "conference": "Mid-America",
+    "age_group": "U13",
+    "group_id": "399327"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308386",
+    "team_name": "Cincinnati United 13G GA",
+    "club_name": "Cincinnati United",
+    "conference": "Mid-America",
+    "age_group": "U13",
+    "group_id": "399327"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308382",
+    "team_name": "Club Ohio 13G GA",
+    "club_name": "Club Ohio",
+    "conference": "Mid-America",
+    "age_group": "U13",
+    "group_id": "399327"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309213",
+    "team_name": "Columbus United 13G GA",
+    "club_name": "Columbus United",
+    "conference": "Mid-America",
+    "age_group": "U13",
+    "group_id": "399327"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331330",
+    "team_name": "Indy Premier SC 13G GA",
+    "club_name": "Indy Premier SC",
+    "conference": "Mid-America",
+    "age_group": "U13",
+    "group_id": "399327"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302858",
+    "team_name": "Kings Hammer Soccer Club 13G GA",
+    "club_name": "Kings Hammer Soccer Club",
+    "conference": "Mid-America",
+    "age_group": "U13",
+    "group_id": "399327"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278696",
+    "team_name": "Nashville United Soccer Academy 13G GA",
+    "club_name": "Nashville United Soccer Academy",
+    "conference": "Mid-America",
+    "age_group": "U13",
+    "group_id": "399327"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272760",
+    "team_name": "One Knoxville Youth Club 13G GA",
+    "club_name": "One Knoxville Youth Club",
+    "conference": "Mid-America",
+    "age_group": "U13",
+    "group_id": "399327"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3298713",
+    "team_name": "Baltimore Armour 13G GA",
+    "club_name": "Baltimore Armour",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U13",
+    "group_id": "399337"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3256645",
+    "team_name": "Baltimore Celtic Soccer Club 13G GA",
+    "club_name": "Baltimore Celtic Soccer Club",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U13",
+    "group_id": "399337"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308193",
+    "team_name": "Coppermine Soccer Club 13G GA",
+    "club_name": "Coppermine Soccer Club",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U13",
+    "group_id": "399337"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283882",
+    "team_name": "Keystone FC 13G GA",
+    "club_name": "Keystone FC",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U13",
+    "group_id": "399337"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275627",
+    "team_name": "LVU Rush 13G GA",
+    "club_name": "LVU Rush",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U13",
+    "group_id": "399337"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279346",
+    "team_name": "PA Classics 13G GA",
+    "club_name": "PA Classics",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U13",
+    "group_id": "399337"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312594",
+    "team_name": "Real Futbol Academy 13G GA",
+    "club_name": "Real Futbol Academy",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U13",
+    "group_id": "399337"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307838",
+    "team_name": "SJEB FC 13G GA",
+    "club_name": "SJEB FC",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U13",
+    "group_id": "399337"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3292985",
+    "team_name": "Sporting Athletic Club 13G GA",
+    "club_name": "Sporting Athletic Club",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U13",
+    "group_id": "399337"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279646",
+    "team_name": "Alexandria SA 13G GA",
+    "club_name": "Alexandria SA",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U13",
+    "group_id": "399338"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3292498",
+    "team_name": "Charlotte Development Academy 13G GA",
+    "club_name": "Charlotte Development Academy",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U13",
+    "group_id": "399338"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331631",
+    "team_name": "Charlotte Independence SC 13G GA",
+    "club_name": "Charlotte Independence SC",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U13",
+    "group_id": "399338"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272679",
+    "team_name": "Loudoun Soccer Club 13G GA",
+    "club_name": "Loudoun Soccer Club",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U13",
+    "group_id": "399338"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275711",
+    "team_name": "McLean YS 13G GA",
+    "club_name": "McLean YS",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U13",
+    "group_id": "399338"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272902",
+    "team_name": "Northern Virginia Alliance 13G GA",
+    "club_name": "Northern Virginia Alliance",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U13",
+    "group_id": "399338"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3294368",
+    "team_name": "Springfield SYC Soccer 13G GA",
+    "club_name": "Springfield SYC Soccer",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U13",
+    "group_id": "399338"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283654",
+    "team_name": "The St. James Football Club 13G GA",
+    "club_name": "The St. James Football Club",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U13",
+    "group_id": "399338"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308330",
+    "team_name": "Triangle United 13G GA",
+    "club_name": "Triangle United",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U13",
+    "group_id": "399338"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275809",
+    "team_name": "Virginia Revolution SC 13G GA",
+    "club_name": "Virginia Revolution SC",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U13",
+    "group_id": "399338"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299856",
+    "team_name": "Wake FC 13G GA",
+    "club_name": "Wake FC",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U13",
+    "group_id": "399338"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307744",
+    "team_name": "Central Illinois United 13G GA",
+    "club_name": "Central Illinois United",
+    "conference": "Midwest East",
+    "age_group": "U13",
+    "group_id": "399328"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284105",
+    "team_name": "Elmbrook United 13G GA",
+    "club_name": "Elmbrook United",
+    "conference": "Midwest East",
+    "age_group": "U13",
+    "group_id": "399328"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283977",
+    "team_name": "FC United Soccer Club 13G GA",
+    "club_name": "FC United Soccer Club",
+    "conference": "Midwest East",
+    "age_group": "U13",
+    "group_id": "399328"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300647",
+    "team_name": "Galaxy SC 13G GA",
+    "club_name": "Galaxy SC",
+    "conference": "Midwest East",
+    "age_group": "U13",
+    "group_id": "399328"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3281546",
+    "team_name": "Madison 56ers 13G GA",
+    "club_name": "Madison 56ers",
+    "conference": "Midwest East",
+    "age_group": "U13",
+    "group_id": "399328"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302447",
+    "team_name": "Michigan Jaguars 13G GA",
+    "club_name": "Michigan Jaguars",
+    "conference": "Midwest East",
+    "age_group": "U13",
+    "group_id": "399328"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3244319",
+    "team_name": "Michigan Tigers FC 13G GA",
+    "club_name": "Michigan Tigers FC",
+    "conference": "Midwest East",
+    "age_group": "U13",
+    "group_id": "399328"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279775",
+    "team_name": "Midwest United 13G GA",
+    "club_name": "Midwest United",
+    "conference": "Midwest East",
+    "age_group": "U13",
+    "group_id": "399328"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275702",
+    "team_name": "Sockers FC 13G GA",
+    "club_name": "Sockers FC",
+    "conference": "Midwest East",
+    "age_group": "U13",
+    "group_id": "399328"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300989",
+    "team_name": "Kansas Rush 13G GA",
+    "club_name": "Kansas Rush",
+    "conference": "Midwest West",
+    "age_group": "U13",
+    "group_id": "399329"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278006",
+    "team_name": "North Shore United 13G GA",
+    "club_name": "North Shore United",
+    "conference": "Midwest West",
+    "age_group": "U13",
+    "group_id": "399329"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299607",
+    "team_name": "SC Wave 13G GA",
+    "club_name": "SC Wave",
+    "conference": "Midwest West",
+    "age_group": "U13",
+    "group_id": "399329"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303412",
+    "team_name": "Salvo SC 13G GA",
+    "club_name": "Salvo SC",
+    "conference": "Midwest West",
+    "age_group": "U13",
+    "group_id": "399329"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272845",
+    "team_name": "Sporting City Soccer Club 13G GA",
+    "club_name": "Sporting City Soccer Club",
+    "conference": "Midwest West",
+    "age_group": "U13",
+    "group_id": "399329"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3296394",
+    "team_name": "Sporting Nebraska FC 13G GA",
+    "club_name": "Sporting Nebraska FC",
+    "conference": "Midwest West",
+    "age_group": "U13",
+    "group_id": "399329"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308529",
+    "team_name": "Tonka Fusion Elite 13G GA",
+    "club_name": "Tonka Fusion Elite",
+    "conference": "Midwest West",
+    "age_group": "U13",
+    "group_id": "399329"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272891",
+    "team_name": "Union KC Soccer Club 13G GA",
+    "club_name": "Union KC Soccer Club",
+    "conference": "Midwest West",
+    "age_group": "U13",
+    "group_id": "399329"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273893",
+    "team_name": "VSA Rush 13G GA",
+    "club_name": "VSA Rush",
+    "conference": "Midwest West",
+    "age_group": "U13",
+    "group_id": "399329"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309032",
+    "team_name": "ALBION SC Las Vegas 13G GA",
+    "club_name": "ALBION SC Las Vegas",
+    "conference": "Mountain West",
+    "age_group": "U13",
+    "group_id": "399330"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274190",
+    "team_name": "Broomfield Soccer Club 13G GA",
+    "club_name": "Broomfield Soccer Club",
+    "conference": "Mountain West",
+    "age_group": "U13",
+    "group_id": "399330"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272865",
+    "team_name": "Colorado United 13G GA",
+    "club_name": "Colorado United",
+    "conference": "Mountain West",
+    "age_group": "U13",
+    "group_id": "399330"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3330810",
+    "team_name": "Las Vegas Sports Academy 13G GA",
+    "club_name": "Las Vegas Sports Academy",
+    "conference": "Mountain West",
+    "age_group": "U13",
+    "group_id": "399330"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331720",
+    "team_name": "NM Rapids SC 13G GA",
+    "club_name": "NM Rapids SC",
+    "conference": "Mountain West",
+    "age_group": "U13",
+    "group_id": "399330"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272909",
+    "team_name": "New Mexico Soccer Academy 13G GA",
+    "club_name": "New Mexico Soccer Academy",
+    "conference": "Mountain West",
+    "age_group": "U13",
+    "group_id": "399330"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272724",
+    "team_name": "Utah Celtic 13G GA",
+    "club_name": "Utah Celtic",
+    "conference": "Mountain West",
+    "age_group": "U13",
+    "group_id": "399330"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273832",
+    "team_name": "Wasatch SC 13G GA",
+    "club_name": "Wasatch SC",
+    "conference": "Mountain West",
+    "age_group": "U13",
+    "group_id": "399330"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273444",
+    "team_name": "Bayside FC 13G GA",
+    "club_name": "Bayside FC",
+    "conference": "Northeast",
+    "age_group": "U13",
+    "group_id": "399332"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331793",
+    "team_name": "Cedar Stars Academy - Bergen 13G GA",
+    "club_name": "Cedar Stars Academy - Bergen",
+    "conference": "Northeast",
+    "age_group": "U13",
+    "group_id": "399332"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278242",
+    "team_name": "Cedar Stars Academy - Monmouth 13G GA",
+    "club_name": "Cedar Stars Academy - Monmouth",
+    "conference": "Northeast",
+    "age_group": "U13",
+    "group_id": "399332"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331806",
+    "team_name": "DUSC 13G GA",
+    "club_name": "DUSC",
+    "conference": "Northeast",
+    "age_group": "U13",
+    "group_id": "399332"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3305452",
+    "team_name": "Long Island SC 13G GA",
+    "club_name": "Long Island SC",
+    "conference": "Northeast",
+    "age_group": "U13",
+    "group_id": "399332"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3311125",
+    "team_name": "NEFC 13G GA Navy",
+    "club_name": "NEFC GA Navy",
+    "conference": "Northeast",
+    "age_group": "U13",
+    "group_id": "399332"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3311132",
+    "team_name": "NEFC 13G GA Red",
+    "club_name": "NEFC GA Red",
+    "conference": "Northeast",
+    "age_group": "U13",
+    "group_id": "399332"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307343",
+    "team_name": "New York SC 13G GA",
+    "club_name": "New York SC",
+    "conference": "Northeast",
+    "age_group": "U13",
+    "group_id": "399332"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299768",
+    "team_name": "Oakwood Soccer Club 13G GA",
+    "club_name": "Oakwood Soccer Club",
+    "conference": "Northeast",
+    "age_group": "U13",
+    "group_id": "399332"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277418",
+    "team_name": "RNY FC Youth 13G GA",
+    "club_name": "RNY FC Youth",
+    "conference": "Northeast",
+    "age_group": "U13",
+    "group_id": "399332"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275005",
+    "team_name": "Rhode Island Surf 13G GA",
+    "club_name": "Rhode Island Surf",
+    "conference": "Northeast",
+    "age_group": "U13",
+    "group_id": "399332"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307923",
+    "team_name": "STA 13G GA",
+    "club_name": "STA",
+    "conference": "Northeast",
+    "age_group": "U13",
+    "group_id": "399332"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279009",
+    "team_name": "Seacoast United 13G GA",
+    "club_name": "Seacoast United",
+    "conference": "Northeast",
+    "age_group": "U13",
+    "group_id": "399332"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307274",
+    "team_name": "Syracuse Development Academy (SDA) 13G GA",
+    "club_name": "Syracuse Development Academy (SDA)",
+    "conference": "Northeast",
+    "age_group": "U13",
+    "group_id": "399332"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3319666",
+    "team_name": "1974 Newark FC 13G GA",
+    "club_name": "1974 Newark FC",
+    "conference": "Northwest",
+    "age_group": "U13",
+    "group_id": "399333"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331907",
+    "team_name": "Ajax United 13G GA",
+    "club_name": "Ajax United",
+    "conference": "Northwest",
+    "age_group": "U13",
+    "group_id": "399333"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284102",
+    "team_name": "Almaden FC 13G GA",
+    "club_name": "Almaden FC",
+    "conference": "Northwest",
+    "age_group": "U13",
+    "group_id": "399333"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3334727",
+    "team_name": "Blues FC 13G GA",
+    "club_name": "Blues FC",
+    "conference": "Northwest",
+    "age_group": "U13",
+    "group_id": "399333"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331918",
+    "team_name": "Clovis Crossfire  13G GA",
+    "club_name": "Clovis Crossfire",
+    "conference": "Northwest",
+    "age_group": "U13",
+    "group_id": "399333"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275406",
+    "team_name": "Lamorinda SC 13G GA",
+    "club_name": "Lamorinda SC",
+    "conference": "Northwest",
+    "age_group": "U13",
+    "group_id": "399333"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3282756",
+    "team_name": "Napa United 13G GA",
+    "club_name": "Napa United",
+    "conference": "Northwest",
+    "age_group": "U13",
+    "group_id": "399333"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3286463",
+    "team_name": "Sacramento United 13G GA",
+    "club_name": "Sacramento United",
+    "conference": "Northwest",
+    "age_group": "U13",
+    "group_id": "399333"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3306983",
+    "team_name": "San Francisco Glens Soccer Club 13G GA",
+    "club_name": "San Francisco Glens Soccer Club",
+    "conference": "Northwest",
+    "age_group": "U13",
+    "group_id": "399333"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331930",
+    "team_name": "Santa Clara Sporting 13G GA",
+    "club_name": "Santa Clara Sporting",
+    "conference": "Northwest",
+    "age_group": "U13",
+    "group_id": "399333"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331949",
+    "team_name": "Silicon Valley SA 13G GA",
+    "club_name": "Silicon Valley SA",
+    "conference": "Northwest",
+    "age_group": "U13",
+    "group_id": "399333"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309964",
+    "team_name": "South Valley Surf SC 13G GA",
+    "club_name": "South Valley Surf SC",
+    "conference": "Northwest",
+    "age_group": "U13",
+    "group_id": "399333"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3297880",
+    "team_name": "Capital FC 13G GA",
+    "club_name": "Capital FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U13",
+    "group_id": "399331"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303583",
+    "team_name": "Columbia Premier Soccer Club 13G GA",
+    "club_name": "Columbia Premier Soccer Club",
+    "conference": "Pacific Northwest",
+    "age_group": "U13",
+    "group_id": "399331"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3289349",
+    "team_name": "Eugene Metro FC 13G GA",
+    "club_name": "Eugene Metro FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U13",
+    "group_id": "399331"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3297445",
+    "team_name": "NPSA WW SURF 13G GA",
+    "club_name": "NPSA WW SURF",
+    "conference": "Pacific Northwest",
+    "age_group": "U13",
+    "group_id": "399331"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3294864",
+    "team_name": "Oregon Premier FC 13G GA",
+    "club_name": "Oregon Premier FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U13",
+    "group_id": "399331"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274454",
+    "team_name": "Seattle Celtic 13G GA",
+    "club_name": "Seattle Celtic",
+    "conference": "Pacific Northwest",
+    "age_group": "U13",
+    "group_id": "399331"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308514",
+    "team_name": "Seattle Reign Academy 13G GA",
+    "club_name": "Seattle Reign Academy",
+    "conference": "Pacific Northwest",
+    "age_group": "U13",
+    "group_id": "399331"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279231",
+    "team_name": "Spokane Shadow 13G GA",
+    "club_name": "Spokane Shadow",
+    "conference": "Pacific Northwest",
+    "age_group": "U13",
+    "group_id": "399331"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284727",
+    "team_name": "United PDX 13G GA",
+    "club_name": "United PDX",
+    "conference": "Pacific Northwest",
+    "age_group": "U13",
+    "group_id": "399331"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332009",
+    "team_name": "Washington East Surf Soccer Club 13G GA",
+    "club_name": "Washington East Surf Soccer Club",
+    "conference": "Pacific Northwest",
+    "age_group": "U13",
+    "group_id": "399331"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308650",
+    "team_name": "Washington Rush 13G GA",
+    "club_name": "Washington Rush",
+    "conference": "Pacific Northwest",
+    "age_group": "U13",
+    "group_id": "399331"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307987",
+    "team_name": "Westside Metros FC 13G GA",
+    "club_name": "Westside Metros FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U13",
+    "group_id": "399331"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272622",
+    "team_name": "Florida United 13G GA",
+    "club_name": "Florida United",
+    "conference": "Southeast",
+    "age_group": "U13",
+    "group_id": "399334"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279289",
+    "team_name": "Hoover-Vestavia Soccer 13G GA",
+    "club_name": "Hoover-Vestavia Soccer",
+    "conference": "Southeast",
+    "age_group": "U13",
+    "group_id": "399334"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3310806",
+    "team_name": "IMG Academy 13G GA",
+    "club_name": "IMG Academy",
+    "conference": "Southeast",
+    "age_group": "U13",
+    "group_id": "399334"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308764",
+    "team_name": "Palm Beach Kicks 13G GA",
+    "club_name": "Palm Beach Kicks",
+    "conference": "Southeast",
+    "age_group": "U13",
+    "group_id": "399334"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307391",
+    "team_name": "Pinecrest Premier Soccer 13G GA",
+    "club_name": "Pinecrest Premier Soccer",
+    "conference": "Southeast",
+    "age_group": "U13",
+    "group_id": "399334"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284055",
+    "team_name": "Southern Soccer Academy 13G GA",
+    "club_name": "Southern Soccer Academy",
+    "conference": "Southeast",
+    "age_group": "U13",
+    "group_id": "399334"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277723",
+    "team_name": "Space Coast United 13G GA",
+    "club_name": "Space Coast United",
+    "conference": "Southeast",
+    "age_group": "U13",
+    "group_id": "399334"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312422",
+    "team_name": "TopHat 13G GA Gold",
+    "club_name": "TopHat GA Gold",
+    "conference": "Southeast",
+    "age_group": "U13",
+    "group_id": "399334"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312425",
+    "team_name": "TopHat 13G GA Navy",
+    "club_name": "TopHat GA Navy",
+    "conference": "Southeast",
+    "age_group": "U13",
+    "group_id": "399334"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308922",
+    "team_name": "West Florida Flames 13G GA",
+    "club_name": "West Florida Flames",
+    "conference": "Southeast",
+    "age_group": "U13",
+    "group_id": "399334"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3282910",
+    "team_name": "ALBION SC San Diego 13G GA",
+    "club_name": "ALBION SC San Diego",
+    "conference": "Southwest",
+    "age_group": "U13",
+    "group_id": "399335"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3304706",
+    "team_name": "City SC 13G GA Blue",
+    "club_name": "City SC GA Blue",
+    "conference": "Southwest",
+    "age_group": "U13",
+    "group_id": "399335"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3304701",
+    "team_name": "City SC 13G GA White",
+    "club_name": "City SC GA White",
+    "conference": "Southwest",
+    "age_group": "U13",
+    "group_id": "399335"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307335",
+    "team_name": "City SC Southwest 13G GA",
+    "club_name": "City SC Southwest",
+    "conference": "Southwest",
+    "age_group": "U13",
+    "group_id": "399335"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303511",
+    "team_name": "FC Tucson Youth Soccer 13G GA",
+    "club_name": "FC Tucson Youth Soccer",
+    "conference": "Southwest",
+    "age_group": "U13",
+    "group_id": "399335"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3285484",
+    "team_name": "FRAM SC 13G GA",
+    "club_name": "FRAM SC",
+    "conference": "Southwest",
+    "age_group": "U13",
+    "group_id": "399335"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332133",
+    "team_name": "LA Surf Soccer Club 13G GA",
+    "club_name": "LA Surf Soccer Club",
+    "conference": "Southwest",
+    "age_group": "U13",
+    "group_id": "399335"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308947",
+    "team_name": "Rangers FC 13G GA",
+    "club_name": "Rangers FC",
+    "conference": "Southwest",
+    "age_group": "U13",
+    "group_id": "399335"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309236",
+    "team_name": "SC del Sol 13G GA",
+    "club_name": "SC del Sol",
+    "conference": "Southwest",
+    "age_group": "U13",
+    "group_id": "399335"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302938",
+    "team_name": "SDSC Surf 13G GA",
+    "club_name": "SDSC Surf",
+    "conference": "Southwest",
+    "age_group": "U13",
+    "group_id": "399335"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307067",
+    "team_name": "SoCal Reds FC 13G GA",
+    "club_name": "SoCal Reds FC",
+    "conference": "Southwest",
+    "age_group": "U13",
+    "group_id": "399335"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332141",
+    "team_name": "West Coast F.C.  13G GA",
+    "club_name": "West Coast F.C.",
+    "conference": "Southwest",
+    "age_group": "U13",
+    "group_id": "399335"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279170",
+    "team_name": "Atletico Dallas Youth 12G GA",
+    "club_name": "Atletico Dallas Youth",
+    "conference": "Frontier",
+    "age_group": "U14",
+    "group_id": "399760"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3290516",
+    "team_name": "BVB International Academy Texas 12G GA",
+    "club_name": "BVB International Academy Texas",
+    "conference": "Frontier",
+    "age_group": "U14",
+    "group_id": "399760"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300176",
+    "team_name": "Dallas Surf 12G GA",
+    "club_name": "Dallas Surf",
+    "conference": "Frontier",
+    "age_group": "U14",
+    "group_id": "399760"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277806",
+    "team_name": "HTX 12G GA",
+    "club_name": "HTX",
+    "conference": "Frontier",
+    "age_group": "U14",
+    "group_id": "399760"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274845",
+    "team_name": "Lou Fusz Athletic 12G GA",
+    "club_name": "Lou Fusz Athletic",
+    "conference": "Frontier",
+    "age_group": "U14",
+    "group_id": "399760"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332059",
+    "team_name": "Louisiana TDP Elite 12G GA",
+    "club_name": "Louisiana TDP Elite",
+    "conference": "Frontier",
+    "age_group": "U14",
+    "group_id": "399760"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307327",
+    "team_name": "RISE Soccer Club 12G GA",
+    "club_name": "RISE Soccer Club",
+    "conference": "Frontier",
+    "age_group": "U14",
+    "group_id": "399760"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3305752",
+    "team_name": "San Antonio City SC 12G GA",
+    "club_name": "San Antonio City SC",
+    "conference": "Frontier",
+    "age_group": "U14",
+    "group_id": "399760"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3315432",
+    "team_name": "St. Louis Development Academy 12G GA",
+    "club_name": "St. Louis Development Academy",
+    "conference": "Frontier",
+    "age_group": "U14",
+    "group_id": "399760"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331299",
+    "team_name": "Tulsa Soccer Club 12G GA",
+    "club_name": "Tulsa Soccer Club",
+    "conference": "Frontier",
+    "age_group": "U14",
+    "group_id": "399760"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274655",
+    "team_name": "Beadling SC 12G GA",
+    "club_name": "Beadling SC",
+    "conference": "Mid-America",
+    "age_group": "U14",
+    "group_id": "399761"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309328",
+    "team_name": "Century United Soccer 12G GA",
+    "club_name": "Century United Soccer",
+    "conference": "Mid-America",
+    "age_group": "U14",
+    "group_id": "399761"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308389",
+    "team_name": "Cincinnati United 12G GA",
+    "club_name": "Cincinnati United",
+    "conference": "Mid-America",
+    "age_group": "U14",
+    "group_id": "399761"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308381",
+    "team_name": "Club Ohio 12G GA",
+    "club_name": "Club Ohio",
+    "conference": "Mid-America",
+    "age_group": "U14",
+    "group_id": "399761"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309216",
+    "team_name": "Columbus United 12G GA",
+    "club_name": "Columbus United",
+    "conference": "Mid-America",
+    "age_group": "U14",
+    "group_id": "399761"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331331",
+    "team_name": "Indy Premier SC 12G GA",
+    "club_name": "Indy Premier SC",
+    "conference": "Mid-America",
+    "age_group": "U14",
+    "group_id": "399761"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302859",
+    "team_name": "Kings Hammer Soccer Club 12G GA",
+    "club_name": "Kings Hammer Soccer Club",
+    "conference": "Mid-America",
+    "age_group": "U14",
+    "group_id": "399761"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278698",
+    "team_name": "Nashville United Soccer Academy 12G GA",
+    "club_name": "Nashville United Soccer Academy",
+    "conference": "Mid-America",
+    "age_group": "U14",
+    "group_id": "399761"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272758",
+    "team_name": "One Knoxville Youth Club 12G GA",
+    "club_name": "One Knoxville Youth Club",
+    "conference": "Mid-America",
+    "age_group": "U14",
+    "group_id": "399761"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3298711",
+    "team_name": "Baltimore Armour 12G GA",
+    "club_name": "Baltimore Armour",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U14",
+    "group_id": "399763"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3256643",
+    "team_name": "Baltimore Celtic Soccer Club 12G GA",
+    "club_name": "Baltimore Celtic Soccer Club",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U14",
+    "group_id": "399763"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308195",
+    "team_name": "Coppermine Soccer Club 12G GA",
+    "club_name": "Coppermine Soccer Club",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U14",
+    "group_id": "399763"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283886",
+    "team_name": "Keystone FC 12G GA",
+    "club_name": "Keystone FC",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U14",
+    "group_id": "399763"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275630",
+    "team_name": "LVU Rush 12G GA",
+    "club_name": "LVU Rush",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U14",
+    "group_id": "399763"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279345",
+    "team_name": "PA Classics 12G GA",
+    "club_name": "PA Classics",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U14",
+    "group_id": "399763"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312593",
+    "team_name": "Real Futbol Academy 12G GA",
+    "club_name": "Real Futbol Academy",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U14",
+    "group_id": "399763"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307836",
+    "team_name": "SJEB FC 12G GA",
+    "club_name": "SJEB FC",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U14",
+    "group_id": "399763"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3292984",
+    "team_name": "Sporting Athletic Club 12G GA",
+    "club_name": "Sporting Athletic Club",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U14",
+    "group_id": "399763"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279645",
+    "team_name": "Alexandria SA 12G GA",
+    "club_name": "Alexandria SA",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U14",
+    "group_id": "399764"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3292501",
+    "team_name": "Charlotte Development Academy 12G GA",
+    "club_name": "Charlotte Development Academy",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U14",
+    "group_id": "399764"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331633",
+    "team_name": "Charlotte Independence SC 12G GA",
+    "club_name": "Charlotte Independence SC",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U14",
+    "group_id": "399764"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272684",
+    "team_name": "Loudoun Soccer Club 12G GA",
+    "club_name": "Loudoun Soccer Club",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U14",
+    "group_id": "399764"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275707",
+    "team_name": "McLean YS 12G GA",
+    "club_name": "McLean YS",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U14",
+    "group_id": "399764"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272906",
+    "team_name": "Northern Virginia Alliance 12G GA",
+    "club_name": "Northern Virginia Alliance",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U14",
+    "group_id": "399764"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307598",
+    "team_name": "Skyline Elite 12G GA",
+    "club_name": "Skyline Elite",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U14",
+    "group_id": "399764"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3294372",
+    "team_name": "Springfield SYC Soccer 12G GA",
+    "club_name": "Springfield SYC Soccer",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U14",
+    "group_id": "399764"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283656",
+    "team_name": "The St. James Football Club 12G GA",
+    "club_name": "The St. James Football Club",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U14",
+    "group_id": "399764"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308334",
+    "team_name": "Triangle United 12G GA",
+    "club_name": "Triangle United",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U14",
+    "group_id": "399764"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275805",
+    "team_name": "Virginia Revolution SC 12G GA",
+    "club_name": "Virginia Revolution SC",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U14",
+    "group_id": "399764"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299858",
+    "team_name": "Wake FC 12G GA",
+    "club_name": "Wake FC",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U14",
+    "group_id": "399764"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307747",
+    "team_name": "Central Illinois United 12G GA",
+    "club_name": "Central Illinois United",
+    "conference": "Midwest East",
+    "age_group": "U14",
+    "group_id": "399765"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284107",
+    "team_name": "Elmbrook United 12G GA",
+    "club_name": "Elmbrook United",
+    "conference": "Midwest East",
+    "age_group": "U14",
+    "group_id": "399765"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283981",
+    "team_name": "FC United Soccer Club 12G GA",
+    "club_name": "FC United Soccer Club",
+    "conference": "Midwest East",
+    "age_group": "U14",
+    "group_id": "399765"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300650",
+    "team_name": "Galaxy SC 12G GA",
+    "club_name": "Galaxy SC",
+    "conference": "Midwest East",
+    "age_group": "U14",
+    "group_id": "399765"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3281547",
+    "team_name": "Madison 56ers 12G GA",
+    "club_name": "Madison 56ers",
+    "conference": "Midwest East",
+    "age_group": "U14",
+    "group_id": "399765"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302448",
+    "team_name": "Michigan Jaguars 12G GA",
+    "club_name": "Michigan Jaguars",
+    "conference": "Midwest East",
+    "age_group": "U14",
+    "group_id": "399765"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3244324",
+    "team_name": "Michigan Tigers FC 12G GA",
+    "club_name": "Michigan Tigers FC",
+    "conference": "Midwest East",
+    "age_group": "U14",
+    "group_id": "399765"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279778",
+    "team_name": "Midwest United 12G GA",
+    "club_name": "Midwest United",
+    "conference": "Midwest East",
+    "age_group": "U14",
+    "group_id": "399765"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275703",
+    "team_name": "Sockers FC 12G GA",
+    "club_name": "Sockers FC",
+    "conference": "Midwest East",
+    "age_group": "U14",
+    "group_id": "399765"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300988",
+    "team_name": "Kansas Rush 12G GA",
+    "club_name": "Kansas Rush",
+    "conference": "Midwest West",
+    "age_group": "U14",
+    "group_id": "399766"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278010",
+    "team_name": "North Shore United 12G GA",
+    "club_name": "North Shore United",
+    "conference": "Midwest West",
+    "age_group": "U14",
+    "group_id": "399766"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299610",
+    "team_name": "SC Wave 12G GA",
+    "club_name": "SC Wave",
+    "conference": "Midwest West",
+    "age_group": "U14",
+    "group_id": "399766"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303414",
+    "team_name": "Salvo SC 12G GA",
+    "club_name": "Salvo SC",
+    "conference": "Midwest West",
+    "age_group": "U14",
+    "group_id": "399766"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272841",
+    "team_name": "Sporting City Soccer Club 12G GA",
+    "club_name": "Sporting City Soccer Club",
+    "conference": "Midwest West",
+    "age_group": "U14",
+    "group_id": "399766"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3296390",
+    "team_name": "Sporting Nebraska FC 12G GA",
+    "club_name": "Sporting Nebraska FC",
+    "conference": "Midwest West",
+    "age_group": "U14",
+    "group_id": "399766"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308528",
+    "team_name": "Tonka Fusion Elite 12G GA",
+    "club_name": "Tonka Fusion Elite",
+    "conference": "Midwest West",
+    "age_group": "U14",
+    "group_id": "399766"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272890",
+    "team_name": "Union KC Soccer Club 12G GA",
+    "club_name": "Union KC Soccer Club",
+    "conference": "Midwest West",
+    "age_group": "U14",
+    "group_id": "399766"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273894",
+    "team_name": "VSA Rush 12G GA",
+    "club_name": "VSA Rush",
+    "conference": "Midwest West",
+    "age_group": "U14",
+    "group_id": "399766"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309037",
+    "team_name": "ALBION SC Las Vegas 12G GA",
+    "club_name": "ALBION SC Las Vegas",
+    "conference": "Mountain West",
+    "age_group": "U14",
+    "group_id": "399767"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274193",
+    "team_name": "Broomfield Soccer Club 12G GA",
+    "club_name": "Broomfield Soccer Club",
+    "conference": "Mountain West",
+    "age_group": "U14",
+    "group_id": "399767"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272864",
+    "team_name": "Colorado United 12G GA",
+    "club_name": "Colorado United",
+    "conference": "Mountain West",
+    "age_group": "U14",
+    "group_id": "399767"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3330809",
+    "team_name": "Las Vegas Sports Academy 12G GA",
+    "club_name": "Las Vegas Sports Academy",
+    "conference": "Mountain West",
+    "age_group": "U14",
+    "group_id": "399767"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331722",
+    "team_name": "NM Rapids SC 12G GA",
+    "club_name": "NM Rapids SC",
+    "conference": "Mountain West",
+    "age_group": "U14",
+    "group_id": "399767"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272912",
+    "team_name": "New Mexico Soccer Academy 12G GA",
+    "club_name": "New Mexico Soccer Academy",
+    "conference": "Mountain West",
+    "age_group": "U14",
+    "group_id": "399767"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272721",
+    "team_name": "Utah Celtic 12G GA",
+    "club_name": "Utah Celtic",
+    "conference": "Mountain West",
+    "age_group": "U14",
+    "group_id": "399767"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273836",
+    "team_name": "Wasatch SC 12G GA",
+    "club_name": "Wasatch SC",
+    "conference": "Mountain West",
+    "age_group": "U14",
+    "group_id": "399767"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273448",
+    "team_name": "Bayside FC 12G GA",
+    "club_name": "Bayside FC",
+    "conference": "Northeast",
+    "age_group": "U14",
+    "group_id": "399768"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331790",
+    "team_name": "Cedar Stars Academy - Bergen 12G GA",
+    "club_name": "Cedar Stars Academy - Bergen",
+    "conference": "Northeast",
+    "age_group": "U14",
+    "group_id": "399768"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278243",
+    "team_name": "Cedar Stars Academy - Monmouth 12G GA",
+    "club_name": "Cedar Stars Academy - Monmouth",
+    "conference": "Northeast",
+    "age_group": "U14",
+    "group_id": "399768"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331809",
+    "team_name": "DUSC 12G GA",
+    "club_name": "DUSC",
+    "conference": "Northeast",
+    "age_group": "U14",
+    "group_id": "399768"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3305455",
+    "team_name": "Long Island SC 12G GA",
+    "club_name": "Long Island SC",
+    "conference": "Northeast",
+    "age_group": "U14",
+    "group_id": "399768"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3311129",
+    "team_name": "NEFC 12G GA Navy",
+    "club_name": "NEFC GA Navy",
+    "conference": "Northeast",
+    "age_group": "U14",
+    "group_id": "399768"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3311135",
+    "team_name": "NEFC 12G GA Red",
+    "club_name": "NEFC GA Red",
+    "conference": "Northeast",
+    "age_group": "U14",
+    "group_id": "399768"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307348",
+    "team_name": "New York SC 12G GA",
+    "club_name": "New York SC",
+    "conference": "Northeast",
+    "age_group": "U14",
+    "group_id": "399768"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299769",
+    "team_name": "Oakwood Soccer Club 12G GA",
+    "club_name": "Oakwood Soccer Club",
+    "conference": "Northeast",
+    "age_group": "U14",
+    "group_id": "399768"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277417",
+    "team_name": "RNY FC Youth 12G GA",
+    "club_name": "RNY FC Youth",
+    "conference": "Northeast",
+    "age_group": "U14",
+    "group_id": "399768"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275008",
+    "team_name": "Rhode Island Surf 12G GA",
+    "club_name": "Rhode Island Surf",
+    "conference": "Northeast",
+    "age_group": "U14",
+    "group_id": "399768"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307925",
+    "team_name": "STA 12G GA",
+    "club_name": "STA",
+    "conference": "Northeast",
+    "age_group": "U14",
+    "group_id": "399768"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279010",
+    "team_name": "Seacoast United 12G GA",
+    "club_name": "Seacoast United",
+    "conference": "Northeast",
+    "age_group": "U14",
+    "group_id": "399768"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307272",
+    "team_name": "Syracuse Development Academy (SDA) 12G GA",
+    "club_name": "Syracuse Development Academy (SDA)",
+    "conference": "Northeast",
+    "age_group": "U14",
+    "group_id": "399768"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3319667",
+    "team_name": "1974 Newark FC 12G GA",
+    "club_name": "1974 Newark FC",
+    "conference": "Northwest",
+    "age_group": "U14",
+    "group_id": "399769"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331911",
+    "team_name": "Ajax United 12G GA",
+    "club_name": "Ajax United",
+    "conference": "Northwest",
+    "age_group": "U14",
+    "group_id": "399769"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284098",
+    "team_name": "Almaden FC 12G GA",
+    "club_name": "Almaden FC",
+    "conference": "Northwest",
+    "age_group": "U14",
+    "group_id": "399769"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277823",
+    "team_name": "Blues FC 12G GA",
+    "club_name": "Blues FC",
+    "conference": "Northwest",
+    "age_group": "U14",
+    "group_id": "399769"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331922",
+    "team_name": "Clovis Crossfire  12G GA",
+    "club_name": "Clovis Crossfire",
+    "conference": "Northwest",
+    "age_group": "U14",
+    "group_id": "399769"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275402",
+    "team_name": "Lamorinda SC 12G GA",
+    "club_name": "Lamorinda SC",
+    "conference": "Northwest",
+    "age_group": "U14",
+    "group_id": "399769"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3282760",
+    "team_name": "Napa United 12G GA",
+    "club_name": "Napa United",
+    "conference": "Northwest",
+    "age_group": "U14",
+    "group_id": "399769"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3286465",
+    "team_name": "Sacramento United 12G GA",
+    "club_name": "Sacramento United",
+    "conference": "Northwest",
+    "age_group": "U14",
+    "group_id": "399769"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3306981",
+    "team_name": "San Francisco Glens Soccer Club 12G GA",
+    "club_name": "San Francisco Glens Soccer Club",
+    "conference": "Northwest",
+    "age_group": "U14",
+    "group_id": "399769"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331929",
+    "team_name": "Santa Clara Sporting 12G GA",
+    "club_name": "Santa Clara Sporting",
+    "conference": "Northwest",
+    "age_group": "U14",
+    "group_id": "399769"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331947",
+    "team_name": "Silicon Valley SA 12G GA",
+    "club_name": "Silicon Valley SA",
+    "conference": "Northwest",
+    "age_group": "U14",
+    "group_id": "399769"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309966",
+    "team_name": "South Valley Surf SC 12G GA",
+    "club_name": "South Valley Surf SC",
+    "conference": "Northwest",
+    "age_group": "U14",
+    "group_id": "399769"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3297882",
+    "team_name": "Capital FC 12G GA",
+    "club_name": "Capital FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U14",
+    "group_id": "399770"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303585",
+    "team_name": "Columbia Premier Soccer Club 12G GA",
+    "club_name": "Columbia Premier Soccer Club",
+    "conference": "Pacific Northwest",
+    "age_group": "U14",
+    "group_id": "399770"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3289348",
+    "team_name": "Eugene Metro FC 12G GA",
+    "club_name": "Eugene Metro FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U14",
+    "group_id": "399770"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3297444",
+    "team_name": "NPSA WW SURF 12G GA",
+    "club_name": "NPSA WW SURF",
+    "conference": "Pacific Northwest",
+    "age_group": "U14",
+    "group_id": "399770"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3294867",
+    "team_name": "Oregon Premier FC 12G GA",
+    "club_name": "Oregon Premier FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U14",
+    "group_id": "399770"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274453",
+    "team_name": "Seattle Celtic 12G GA",
+    "club_name": "Seattle Celtic",
+    "conference": "Pacific Northwest",
+    "age_group": "U14",
+    "group_id": "399770"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308515",
+    "team_name": "Seattle Reign Academy 12G GA",
+    "club_name": "Seattle Reign Academy",
+    "conference": "Pacific Northwest",
+    "age_group": "U14",
+    "group_id": "399770"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279235",
+    "team_name": "Spokane Shadow 12G GA",
+    "club_name": "Spokane Shadow",
+    "conference": "Pacific Northwest",
+    "age_group": "U14",
+    "group_id": "399770"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284729",
+    "team_name": "United PDX 12G GA",
+    "club_name": "United PDX",
+    "conference": "Pacific Northwest",
+    "age_group": "U14",
+    "group_id": "399770"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332014",
+    "team_name": "Washington East Surf Soccer Club 12G GA",
+    "club_name": "Washington East Surf Soccer Club",
+    "conference": "Pacific Northwest",
+    "age_group": "U14",
+    "group_id": "399770"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308648",
+    "team_name": "Washington Rush 12G GA",
+    "club_name": "Washington Rush",
+    "conference": "Pacific Northwest",
+    "age_group": "U14",
+    "group_id": "399770"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307986",
+    "team_name": "Westside Metros FC 12G GA",
+    "club_name": "Westside Metros FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U14",
+    "group_id": "399770"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272623",
+    "team_name": "Florida United 12G GA",
+    "club_name": "Florida United",
+    "conference": "Southeast",
+    "age_group": "U14",
+    "group_id": "399771"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279288",
+    "team_name": "Hoover-Vestavia Soccer 12G GA",
+    "club_name": "Hoover-Vestavia Soccer",
+    "conference": "Southeast",
+    "age_group": "U14",
+    "group_id": "399771"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3310810",
+    "team_name": "IMG Academy 12G GA",
+    "club_name": "IMG Academy",
+    "conference": "Southeast",
+    "age_group": "U14",
+    "group_id": "399771"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308763",
+    "team_name": "Palm Beach Kicks 12G GA",
+    "club_name": "Palm Beach Kicks",
+    "conference": "Southeast",
+    "age_group": "U14",
+    "group_id": "399771"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307393",
+    "team_name": "Pinecrest Premier Soccer 12G GA",
+    "club_name": "Pinecrest Premier Soccer",
+    "conference": "Southeast",
+    "age_group": "U14",
+    "group_id": "399771"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284056",
+    "team_name": "Southern Soccer Academy 12G GA",
+    "club_name": "Southern Soccer Academy",
+    "conference": "Southeast",
+    "age_group": "U14",
+    "group_id": "399771"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277725",
+    "team_name": "Space Coast United 12G GA",
+    "club_name": "Space Coast United",
+    "conference": "Southeast",
+    "age_group": "U14",
+    "group_id": "399771"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312426",
+    "team_name": "TopHat 12G GA Gold",
+    "club_name": "TopHat GA Gold",
+    "conference": "Southeast",
+    "age_group": "U14",
+    "group_id": "399771"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312424",
+    "team_name": "TopHat 12G GA Navy",
+    "club_name": "TopHat GA Navy",
+    "conference": "Southeast",
+    "age_group": "U14",
+    "group_id": "399771"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308927",
+    "team_name": "West Florida Flames 12G GA",
+    "club_name": "West Florida Flames",
+    "conference": "Southeast",
+    "age_group": "U14",
+    "group_id": "399771"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3282911",
+    "team_name": "ALBION SC San Diego 12G GA",
+    "club_name": "ALBION SC San Diego",
+    "conference": "Southwest",
+    "age_group": "U14",
+    "group_id": "399772"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3304700",
+    "team_name": "City SC 12G GA Blue",
+    "club_name": "City SC GA Blue",
+    "conference": "Southwest",
+    "age_group": "U14",
+    "group_id": "399772"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3304702",
+    "team_name": "City SC 12G GA White",
+    "club_name": "City SC GA White",
+    "conference": "Southwest",
+    "age_group": "U14",
+    "group_id": "399772"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307337",
+    "team_name": "City SC Southwest 12G GA",
+    "club_name": "City SC Southwest",
+    "conference": "Southwest",
+    "age_group": "U14",
+    "group_id": "399772"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303509",
+    "team_name": "FC Tucson Youth Soccer 12G GA",
+    "club_name": "FC Tucson Youth Soccer",
+    "conference": "Southwest",
+    "age_group": "U14",
+    "group_id": "399772"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3285487",
+    "team_name": "FRAM SC 12G GA",
+    "club_name": "FRAM SC",
+    "conference": "Southwest",
+    "age_group": "U14",
+    "group_id": "399772"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332137",
+    "team_name": "LA Surf Soccer Club 12G GA",
+    "club_name": "LA Surf Soccer Club",
+    "conference": "Southwest",
+    "age_group": "U14",
+    "group_id": "399772"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308946",
+    "team_name": "Rangers FC 12G GA",
+    "club_name": "Rangers FC",
+    "conference": "Southwest",
+    "age_group": "U14",
+    "group_id": "399772"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309240",
+    "team_name": "SC del Sol 12G GA",
+    "club_name": "SC del Sol",
+    "conference": "Southwest",
+    "age_group": "U14",
+    "group_id": "399772"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302941",
+    "team_name": "SDSC Surf 12G GA",
+    "club_name": "SDSC Surf",
+    "conference": "Southwest",
+    "age_group": "U14",
+    "group_id": "399772"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307062",
+    "team_name": "SoCal Reds FC 12G GA",
+    "club_name": "SoCal Reds FC",
+    "conference": "Southwest",
+    "age_group": "U14",
+    "group_id": "399772"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332143",
+    "team_name": "West Coast F.C.  12G GA",
+    "club_name": "West Coast F.C.",
+    "conference": "Southwest",
+    "age_group": "U14",
+    "group_id": "399772"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279175",
+    "team_name": "Atletico Dallas Youth 11G GA",
+    "club_name": "Atletico Dallas Youth",
+    "conference": "Frontier",
+    "age_group": "U15",
+    "group_id": "400239"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3290514",
+    "team_name": "BVB International Academy Texas 11G GA",
+    "club_name": "BVB International Academy Texas",
+    "conference": "Frontier",
+    "age_group": "U15",
+    "group_id": "400239"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300175",
+    "team_name": "Dallas Surf 11G GA",
+    "club_name": "Dallas Surf",
+    "conference": "Frontier",
+    "age_group": "U15",
+    "group_id": "400239"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277805",
+    "team_name": "HTX 11G GA",
+    "club_name": "HTX",
+    "conference": "Frontier",
+    "age_group": "U15",
+    "group_id": "400239"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312105",
+    "team_name": "Lou Fusz Athletic 11G GA",
+    "club_name": "Lou Fusz Athletic",
+    "conference": "Frontier",
+    "age_group": "U15",
+    "group_id": "400239"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332057",
+    "team_name": "Louisiana TDP Elite 11G GA",
+    "club_name": "Louisiana TDP Elite",
+    "conference": "Frontier",
+    "age_group": "U15",
+    "group_id": "400239"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307326",
+    "team_name": "RISE Soccer Club 11G GA",
+    "club_name": "RISE Soccer Club",
+    "conference": "Frontier",
+    "age_group": "U15",
+    "group_id": "400239"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3305751",
+    "team_name": "San Antonio City SC 11G GA",
+    "club_name": "San Antonio City SC",
+    "conference": "Frontier",
+    "age_group": "U15",
+    "group_id": "400239"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3315430",
+    "team_name": "St. Louis Development Academy 11G GA",
+    "club_name": "St. Louis Development Academy",
+    "conference": "Frontier",
+    "age_group": "U15",
+    "group_id": "400239"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331300",
+    "team_name": "Tulsa Soccer Club 11G GA",
+    "club_name": "Tulsa Soccer Club",
+    "conference": "Frontier",
+    "age_group": "U15",
+    "group_id": "400239"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274652",
+    "team_name": "Beadling SC 11G GA",
+    "club_name": "Beadling SC",
+    "conference": "Mid-America",
+    "age_group": "U15",
+    "group_id": "400240"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309323",
+    "team_name": "Century United Soccer 11G GA",
+    "club_name": "Century United Soccer",
+    "conference": "Mid-America",
+    "age_group": "U15",
+    "group_id": "400240"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308387",
+    "team_name": "Cincinnati United 11G GA",
+    "club_name": "Cincinnati United",
+    "conference": "Mid-America",
+    "age_group": "U15",
+    "group_id": "400240"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308377",
+    "team_name": "Club Ohio 11G GA",
+    "club_name": "Club Ohio",
+    "conference": "Mid-America",
+    "age_group": "U15",
+    "group_id": "400240"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309212",
+    "team_name": "Columbus United 11G GA",
+    "club_name": "Columbus United",
+    "conference": "Mid-America",
+    "age_group": "U15",
+    "group_id": "400240"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331328",
+    "team_name": "Indy Premier SC 11G GA",
+    "club_name": "Indy Premier SC",
+    "conference": "Mid-America",
+    "age_group": "U15",
+    "group_id": "400240"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302860",
+    "team_name": "Kings Hammer Soccer Club 11G GA",
+    "club_name": "Kings Hammer Soccer Club",
+    "conference": "Mid-America",
+    "age_group": "U15",
+    "group_id": "400240"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278700",
+    "team_name": "Nashville United Soccer Academy 11G GA",
+    "club_name": "Nashville United Soccer Academy",
+    "conference": "Mid-America",
+    "age_group": "U15",
+    "group_id": "400240"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272757",
+    "team_name": "One Knoxville Youth Club 11G GA",
+    "club_name": "One Knoxville Youth Club",
+    "conference": "Mid-America",
+    "age_group": "U15",
+    "group_id": "400240"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3298712",
+    "team_name": "Baltimore Armour 11G GA",
+    "club_name": "Baltimore Armour",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U15",
+    "group_id": "400241"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3256647",
+    "team_name": "Baltimore Celtic Soccer Club 11G GA",
+    "club_name": "Baltimore Celtic Soccer Club",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U15",
+    "group_id": "400241"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308196",
+    "team_name": "Coppermine Soccer Club 11G GA",
+    "club_name": "Coppermine Soccer Club",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U15",
+    "group_id": "400241"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283885",
+    "team_name": "Keystone FC 11G GA",
+    "club_name": "Keystone FC",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U15",
+    "group_id": "400241"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307726",
+    "team_name": "LVU Rush 11G GA",
+    "club_name": "LVU Rush",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U15",
+    "group_id": "400241"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279343",
+    "team_name": "PA Classics 11G GA",
+    "club_name": "PA Classics",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U15",
+    "group_id": "400241"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312592",
+    "team_name": "Real Futbol Academy 11G GA",
+    "club_name": "Real Futbol Academy",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U15",
+    "group_id": "400241"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307835",
+    "team_name": "SJEB FC 11G GA",
+    "club_name": "SJEB FC",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U15",
+    "group_id": "400241"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3292983",
+    "team_name": "Sporting Athletic Club 11G GA",
+    "club_name": "Sporting Athletic Club",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U15",
+    "group_id": "400241"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279648",
+    "team_name": "Alexandria SA 11G GA",
+    "club_name": "Alexandria SA",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U15",
+    "group_id": "400242"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3292496",
+    "team_name": "Charlotte Development Academy 11G GA",
+    "club_name": "Charlotte Development Academy",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U15",
+    "group_id": "400242"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331629",
+    "team_name": "Charlotte Independence SC 11G GA",
+    "club_name": "Charlotte Independence SC",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U15",
+    "group_id": "400242"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272680",
+    "team_name": "Loudoun Soccer Club 11G GA",
+    "club_name": "Loudoun Soccer Club",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U15",
+    "group_id": "400242"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275712",
+    "team_name": "McLean YS 11G GA",
+    "club_name": "McLean YS",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U15",
+    "group_id": "400242"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272905",
+    "team_name": "Northern Virginia Alliance 11G GA",
+    "club_name": "Northern Virginia Alliance",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U15",
+    "group_id": "400242"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307597",
+    "team_name": "Skyline Elite 11G GA",
+    "club_name": "Skyline Elite",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U15",
+    "group_id": "400242"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3294371",
+    "team_name": "Springfield SYC Soccer 11G GA",
+    "club_name": "Springfield SYC Soccer",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U15",
+    "group_id": "400242"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283657",
+    "team_name": "The St. James Football Club 11G GA",
+    "club_name": "The St. James Football Club",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U15",
+    "group_id": "400242"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308332",
+    "team_name": "Triangle United 11G GA",
+    "club_name": "Triangle United",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U15",
+    "group_id": "400242"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275808",
+    "team_name": "Virginia Revolution SC 11G GA",
+    "club_name": "Virginia Revolution SC",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U15",
+    "group_id": "400242"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299857",
+    "team_name": "Wake FC 11G GA",
+    "club_name": "Wake FC",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U15",
+    "group_id": "400242"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307750",
+    "team_name": "Central Illinois United 11G GA",
+    "club_name": "Central Illinois United",
+    "conference": "Midwest East",
+    "age_group": "U15",
+    "group_id": "400243"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284108",
+    "team_name": "Elmbrook United 11G GA",
+    "club_name": "Elmbrook United",
+    "conference": "Midwest East",
+    "age_group": "U15",
+    "group_id": "400243"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283979",
+    "team_name": "FC United Soccer Club 11G GA",
+    "club_name": "FC United Soccer Club",
+    "conference": "Midwest East",
+    "age_group": "U15",
+    "group_id": "400243"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300649",
+    "team_name": "Galaxy SC 11G GA",
+    "club_name": "Galaxy SC",
+    "conference": "Midwest East",
+    "age_group": "U15",
+    "group_id": "400243"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3281551",
+    "team_name": "Madison 56ers 11G GA",
+    "club_name": "Madison 56ers",
+    "conference": "Midwest East",
+    "age_group": "U15",
+    "group_id": "400243"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302445",
+    "team_name": "Michigan Jaguars 11G GA",
+    "club_name": "Michigan Jaguars",
+    "conference": "Midwest East",
+    "age_group": "U15",
+    "group_id": "400243"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3244321",
+    "team_name": "Michigan Tigers FC 11G GA",
+    "club_name": "Michigan Tigers FC",
+    "conference": "Midwest East",
+    "age_group": "U15",
+    "group_id": "400243"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279776",
+    "team_name": "Midwest United 11G GA",
+    "club_name": "Midwest United",
+    "conference": "Midwest East",
+    "age_group": "U15",
+    "group_id": "400243"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275705",
+    "team_name": "Sockers FC 11G GA",
+    "club_name": "Sockers FC",
+    "conference": "Midwest East",
+    "age_group": "U15",
+    "group_id": "400243"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300984",
+    "team_name": "Kansas Rush 11G GA",
+    "club_name": "Kansas Rush",
+    "conference": "Midwest West",
+    "age_group": "U15",
+    "group_id": "400244"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278007",
+    "team_name": "North Shore United 11G GA",
+    "club_name": "North Shore United",
+    "conference": "Midwest West",
+    "age_group": "U15",
+    "group_id": "400244"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299608",
+    "team_name": "SC Wave 11G GA",
+    "club_name": "SC Wave",
+    "conference": "Midwest West",
+    "age_group": "U15",
+    "group_id": "400244"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303410",
+    "team_name": "Salvo SC 11G GA",
+    "club_name": "Salvo SC",
+    "conference": "Midwest West",
+    "age_group": "U15",
+    "group_id": "400244"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272843",
+    "team_name": "Sporting City Soccer Club 11G GA",
+    "club_name": "Sporting City Soccer Club",
+    "conference": "Midwest West",
+    "age_group": "U15",
+    "group_id": "400244"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3296391",
+    "team_name": "Sporting Nebraska FC 11G GA",
+    "club_name": "Sporting Nebraska FC",
+    "conference": "Midwest West",
+    "age_group": "U15",
+    "group_id": "400244"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308527",
+    "team_name": "Tonka Fusion Elite 11G GA",
+    "club_name": "Tonka Fusion Elite",
+    "conference": "Midwest West",
+    "age_group": "U15",
+    "group_id": "400244"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272892",
+    "team_name": "Union KC Soccer Club 11G GA",
+    "club_name": "Union KC Soccer Club",
+    "conference": "Midwest West",
+    "age_group": "U15",
+    "group_id": "400244"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273895",
+    "team_name": "VSA Rush 11G GA",
+    "club_name": "VSA Rush",
+    "conference": "Midwest West",
+    "age_group": "U15",
+    "group_id": "400244"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309034",
+    "team_name": "ALBION SC Las Vegas 11G GA",
+    "club_name": "ALBION SC Las Vegas",
+    "conference": "Mountain West",
+    "age_group": "U15",
+    "group_id": "400245"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274192",
+    "team_name": "Broomfield Soccer Club 11G GA",
+    "club_name": "Broomfield Soccer Club",
+    "conference": "Mountain West",
+    "age_group": "U15",
+    "group_id": "400245"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272863",
+    "team_name": "Colorado United 11G GA",
+    "club_name": "Colorado United",
+    "conference": "Mountain West",
+    "age_group": "U15",
+    "group_id": "400245"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3330813",
+    "team_name": "Las Vegas Sports Academy 11G GA",
+    "club_name": "Las Vegas Sports Academy",
+    "conference": "Mountain West",
+    "age_group": "U15",
+    "group_id": "400245"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331723",
+    "team_name": "NM Rapids SC 11G GA",
+    "club_name": "NM Rapids SC",
+    "conference": "Mountain West",
+    "age_group": "U15",
+    "group_id": "400245"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272908",
+    "team_name": "New Mexico Soccer Academy 11G GA",
+    "club_name": "New Mexico Soccer Academy",
+    "conference": "Mountain West",
+    "age_group": "U15",
+    "group_id": "400245"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272720",
+    "team_name": "Utah Celtic 11G GA",
+    "club_name": "Utah Celtic",
+    "conference": "Mountain West",
+    "age_group": "U15",
+    "group_id": "400245"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273835",
+    "team_name": "Wasatch SC 11G GA",
+    "club_name": "Wasatch SC",
+    "conference": "Mountain West",
+    "age_group": "U15",
+    "group_id": "400245"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273446",
+    "team_name": "Bayside FC 11G GA",
+    "club_name": "Bayside FC",
+    "conference": "Northeast",
+    "age_group": "U15",
+    "group_id": "400246"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331789",
+    "team_name": "Cedar Stars Academy - Bergen 11G GA",
+    "club_name": "Cedar Stars Academy - Bergen",
+    "conference": "Northeast",
+    "age_group": "U15",
+    "group_id": "400246"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278239",
+    "team_name": "Cedar Stars Academy - Monmouth 11G GA",
+    "club_name": "Cedar Stars Academy - Monmouth",
+    "conference": "Northeast",
+    "age_group": "U15",
+    "group_id": "400246"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331807",
+    "team_name": "DUSC 11G GA",
+    "club_name": "DUSC",
+    "conference": "Northeast",
+    "age_group": "U15",
+    "group_id": "400246"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3305451",
+    "team_name": "Long Island SC 11G GA",
+    "club_name": "Long Island SC",
+    "conference": "Northeast",
+    "age_group": "U15",
+    "group_id": "400246"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3311131",
+    "team_name": "NEFC 11G GA Navy",
+    "club_name": "NEFC GA Navy",
+    "conference": "Northeast",
+    "age_group": "U15",
+    "group_id": "400246"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3311124",
+    "team_name": "NEFC 11G GA Red",
+    "club_name": "NEFC GA Red",
+    "conference": "Northeast",
+    "age_group": "U15",
+    "group_id": "400246"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307345",
+    "team_name": "New York SC 11G GA",
+    "club_name": "New York SC",
+    "conference": "Northeast",
+    "age_group": "U15",
+    "group_id": "400246"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299766",
+    "team_name": "Oakwood Soccer Club 11G GA",
+    "club_name": "Oakwood Soccer Club",
+    "conference": "Northeast",
+    "age_group": "U15",
+    "group_id": "400246"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277420",
+    "team_name": "RNY FC Youth 11G GA",
+    "club_name": "RNY FC Youth",
+    "conference": "Northeast",
+    "age_group": "U15",
+    "group_id": "400246"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275009",
+    "team_name": "Rhode Island Surf 11G GA",
+    "club_name": "Rhode Island Surf",
+    "conference": "Northeast",
+    "age_group": "U15",
+    "group_id": "400246"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307922",
+    "team_name": "STA 11G GA",
+    "club_name": "STA",
+    "conference": "Northeast",
+    "age_group": "U15",
+    "group_id": "400246"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279008",
+    "team_name": "Seacoast United 11G GA",
+    "club_name": "Seacoast United",
+    "conference": "Northeast",
+    "age_group": "U15",
+    "group_id": "400246"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307276",
+    "team_name": "Syracuse Development Academy (SDA) 11G GA",
+    "club_name": "Syracuse Development Academy (SDA)",
+    "conference": "Northeast",
+    "age_group": "U15",
+    "group_id": "400246"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3319671",
+    "team_name": "1974 Newark FC 11G GA",
+    "club_name": "1974 Newark FC",
+    "conference": "Northwest",
+    "age_group": "U15",
+    "group_id": "400247"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331909",
+    "team_name": "Ajax United 11G GA",
+    "club_name": "Ajax United",
+    "conference": "Northwest",
+    "age_group": "U15",
+    "group_id": "400247"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284101",
+    "team_name": "Almaden FC 11G GA",
+    "club_name": "Almaden FC",
+    "conference": "Northwest",
+    "age_group": "U15",
+    "group_id": "400247"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3334726",
+    "team_name": "Blues FC 11G GA",
+    "club_name": "Blues FC",
+    "conference": "Northwest",
+    "age_group": "U15",
+    "group_id": "400247"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331919",
+    "team_name": "Clovis Crossfire  11G GA",
+    "club_name": "Clovis Crossfire",
+    "conference": "Northwest",
+    "age_group": "U15",
+    "group_id": "400247"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275401",
+    "team_name": "Lamorinda SC 11G GA",
+    "club_name": "Lamorinda SC",
+    "conference": "Northwest",
+    "age_group": "U15",
+    "group_id": "400247"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3282755",
+    "team_name": "Napa United 11G GA",
+    "club_name": "Napa United",
+    "conference": "Northwest",
+    "age_group": "U15",
+    "group_id": "400247"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3286464",
+    "team_name": "Sacramento United 11G GA",
+    "club_name": "Sacramento United",
+    "conference": "Northwest",
+    "age_group": "U15",
+    "group_id": "400247"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3306984",
+    "team_name": "San Francisco Glens Soccer Club 11G GA",
+    "club_name": "San Francisco Glens Soccer Club",
+    "conference": "Northwest",
+    "age_group": "U15",
+    "group_id": "400247"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331927",
+    "team_name": "Santa Clara Sporting 11G GA",
+    "club_name": "Santa Clara Sporting",
+    "conference": "Northwest",
+    "age_group": "U15",
+    "group_id": "400247"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331948",
+    "team_name": "Silicon Valley SA 11G GA",
+    "club_name": "Silicon Valley SA",
+    "conference": "Northwest",
+    "age_group": "U15",
+    "group_id": "400247"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309963",
+    "team_name": "South Valley Surf SC 11G GA",
+    "club_name": "South Valley Surf SC",
+    "conference": "Northwest",
+    "age_group": "U15",
+    "group_id": "400247"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3297883",
+    "team_name": "Capital FC 11G GA",
+    "club_name": "Capital FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U15",
+    "group_id": "400248"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303582",
+    "team_name": "Columbia Premier Soccer Club 11G GA",
+    "club_name": "Columbia Premier Soccer Club",
+    "conference": "Pacific Northwest",
+    "age_group": "U15",
+    "group_id": "400248"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3289346",
+    "team_name": "Eugene Metro FC 11G GA",
+    "club_name": "Eugene Metro FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U15",
+    "group_id": "400248"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3297443",
+    "team_name": "NPSA WW SURF 11G GA",
+    "club_name": "NPSA WW SURF",
+    "conference": "Pacific Northwest",
+    "age_group": "U15",
+    "group_id": "400248"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3294865",
+    "team_name": "Oregon Premier FC 11G GA",
+    "club_name": "Oregon Premier FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U15",
+    "group_id": "400248"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274452",
+    "team_name": "Seattle Celtic 11G GA",
+    "club_name": "Seattle Celtic",
+    "conference": "Pacific Northwest",
+    "age_group": "U15",
+    "group_id": "400248"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308517",
+    "team_name": "Seattle Reign Academy 11G GA",
+    "club_name": "Seattle Reign Academy",
+    "conference": "Pacific Northwest",
+    "age_group": "U15",
+    "group_id": "400248"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279234",
+    "team_name": "Spokane Shadow 11G GA",
+    "club_name": "Spokane Shadow",
+    "conference": "Pacific Northwest",
+    "age_group": "U15",
+    "group_id": "400248"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284728",
+    "team_name": "United PDX 11G GA",
+    "club_name": "United PDX",
+    "conference": "Pacific Northwest",
+    "age_group": "U15",
+    "group_id": "400248"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332011",
+    "team_name": "Washington East Surf Soccer Club 11G GA",
+    "club_name": "Washington East Surf Soccer Club",
+    "conference": "Pacific Northwest",
+    "age_group": "U15",
+    "group_id": "400248"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308646",
+    "team_name": "Washington Rush 11G GA",
+    "club_name": "Washington Rush",
+    "conference": "Pacific Northwest",
+    "age_group": "U15",
+    "group_id": "400248"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307984",
+    "team_name": "Westside Metros FC 11G GA",
+    "club_name": "Westside Metros FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U15",
+    "group_id": "400248"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272624",
+    "team_name": "Florida United 11G GA",
+    "club_name": "Florida United",
+    "conference": "Southeast",
+    "age_group": "U15",
+    "group_id": "400249"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279287",
+    "team_name": "Hoover-Vestavia Soccer 11G GA",
+    "club_name": "Hoover-Vestavia Soccer",
+    "conference": "Southeast",
+    "age_group": "U15",
+    "group_id": "400249"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3310811",
+    "team_name": "IMG Academy 11G GA",
+    "club_name": "IMG Academy",
+    "conference": "Southeast",
+    "age_group": "U15",
+    "group_id": "400249"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308843",
+    "team_name": "Palm Beach Kicks 11G GA",
+    "club_name": "Palm Beach Kicks",
+    "conference": "Southeast",
+    "age_group": "U15",
+    "group_id": "400249"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307394",
+    "team_name": "Pinecrest Premier Soccer 11G GA",
+    "club_name": "Pinecrest Premier Soccer",
+    "conference": "Southeast",
+    "age_group": "U15",
+    "group_id": "400249"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284057",
+    "team_name": "Southern Soccer Academy 11G GA",
+    "club_name": "Southern Soccer Academy",
+    "conference": "Southeast",
+    "age_group": "U15",
+    "group_id": "400249"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277728",
+    "team_name": "Space Coast United 11G GA",
+    "club_name": "Space Coast United",
+    "conference": "Southeast",
+    "age_group": "U15",
+    "group_id": "400249"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312421",
+    "team_name": "TopHat 11G GA Gold",
+    "club_name": "TopHat GA Gold",
+    "conference": "Southeast",
+    "age_group": "U15",
+    "group_id": "400249"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312420",
+    "team_name": "TopHat 11G GA Navy",
+    "club_name": "TopHat GA Navy",
+    "conference": "Southeast",
+    "age_group": "U15",
+    "group_id": "400249"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308924",
+    "team_name": "West Florida Flames 11G GA",
+    "club_name": "West Florida Flames",
+    "conference": "Southeast",
+    "age_group": "U15",
+    "group_id": "400249"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3282908",
+    "team_name": "ALBION SC San Diego 11G GA",
+    "club_name": "ALBION SC San Diego",
+    "conference": "Southwest",
+    "age_group": "U15",
+    "group_id": "400250"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3304705",
+    "team_name": "City SC 11G GA Blue",
+    "club_name": "City SC GA Blue",
+    "conference": "Southwest",
+    "age_group": "U15",
+    "group_id": "400250"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3304699",
+    "team_name": "City SC 11G GA White",
+    "club_name": "City SC GA White",
+    "conference": "Southwest",
+    "age_group": "U15",
+    "group_id": "400250"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307336",
+    "team_name": "City SC Southwest 11G GA",
+    "club_name": "City SC Southwest",
+    "conference": "Southwest",
+    "age_group": "U15",
+    "group_id": "400250"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303510",
+    "team_name": "FC Tucson Youth Soccer 11G GA",
+    "club_name": "FC Tucson Youth Soccer",
+    "conference": "Southwest",
+    "age_group": "U15",
+    "group_id": "400250"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3285486",
+    "team_name": "FRAM SC 11G GA",
+    "club_name": "FRAM SC",
+    "conference": "Southwest",
+    "age_group": "U15",
+    "group_id": "400250"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332134",
+    "team_name": "LA Surf Soccer Club 11G GA",
+    "club_name": "LA Surf Soccer Club",
+    "conference": "Southwest",
+    "age_group": "U15",
+    "group_id": "400250"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308949",
+    "team_name": "Rangers FC 11G GA",
+    "club_name": "Rangers FC",
+    "conference": "Southwest",
+    "age_group": "U15",
+    "group_id": "400250"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309241",
+    "team_name": "SC del Sol 11G GA",
+    "club_name": "SC del Sol",
+    "conference": "Southwest",
+    "age_group": "U15",
+    "group_id": "400250"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302940",
+    "team_name": "SDSC Surf 11G GA",
+    "club_name": "SDSC Surf",
+    "conference": "Southwest",
+    "age_group": "U15",
+    "group_id": "400250"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307066",
+    "team_name": "SoCal Reds FC 11G GA",
+    "club_name": "SoCal Reds FC",
+    "conference": "Southwest",
+    "age_group": "U15",
+    "group_id": "400250"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332144",
+    "team_name": "West Coast F.C.  11G GA",
+    "club_name": "West Coast F.C.",
+    "conference": "Southwest",
+    "age_group": "U15",
+    "group_id": "400250"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279174",
+    "team_name": "Atletico Dallas Youth 10G GA",
+    "club_name": "Atletico Dallas Youth",
+    "conference": "Frontier",
+    "age_group": "U16",
+    "group_id": "400252"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3290517",
+    "team_name": "BVB International Academy Texas 10G GA",
+    "club_name": "BVB International Academy Texas",
+    "conference": "Frontier",
+    "age_group": "U16",
+    "group_id": "400252"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300173",
+    "team_name": "Dallas Surf 10G GA",
+    "club_name": "Dallas Surf",
+    "conference": "Frontier",
+    "age_group": "U16",
+    "group_id": "400252"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277804",
+    "team_name": "HTX 10G GA",
+    "club_name": "HTX",
+    "conference": "Frontier",
+    "age_group": "U16",
+    "group_id": "400252"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274847",
+    "team_name": "Lou Fusz Athletic 10G GA",
+    "club_name": "Lou Fusz Athletic",
+    "conference": "Frontier",
+    "age_group": "U16",
+    "group_id": "400252"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332060",
+    "team_name": "Louisiana TDP Elite 10G GA",
+    "club_name": "Louisiana TDP Elite",
+    "conference": "Frontier",
+    "age_group": "U16",
+    "group_id": "400252"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307328",
+    "team_name": "RISE Soccer Club 10G GA",
+    "club_name": "RISE Soccer Club",
+    "conference": "Frontier",
+    "age_group": "U16",
+    "group_id": "400252"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3305749",
+    "team_name": "San Antonio City SC 10G GA",
+    "club_name": "San Antonio City SC",
+    "conference": "Frontier",
+    "age_group": "U16",
+    "group_id": "400252"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3315429",
+    "team_name": "St. Louis Development Academy 10G GA",
+    "club_name": "St. Louis Development Academy",
+    "conference": "Frontier",
+    "age_group": "U16",
+    "group_id": "400252"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331295",
+    "team_name": "Tulsa Soccer Club 10G GA",
+    "club_name": "Tulsa Soccer Club",
+    "conference": "Frontier",
+    "age_group": "U16",
+    "group_id": "400252"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274653",
+    "team_name": "Beadling SC 10G GA",
+    "club_name": "Beadling SC",
+    "conference": "Mid-America",
+    "age_group": "U16",
+    "group_id": "400253"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309324",
+    "team_name": "Century United Soccer 10G GA",
+    "club_name": "Century United Soccer",
+    "conference": "Mid-America",
+    "age_group": "U16",
+    "group_id": "400253"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308384",
+    "team_name": "Cincinnati United 10G GA",
+    "club_name": "Cincinnati United",
+    "conference": "Mid-America",
+    "age_group": "U16",
+    "group_id": "400253"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308380",
+    "team_name": "Club Ohio 10G GA",
+    "club_name": "Club Ohio",
+    "conference": "Mid-America",
+    "age_group": "U16",
+    "group_id": "400253"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309215",
+    "team_name": "Columbus United 10G GA",
+    "club_name": "Columbus United",
+    "conference": "Mid-America",
+    "age_group": "U16",
+    "group_id": "400253"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331333",
+    "team_name": "Indy Premier SC 10G GA",
+    "club_name": "Indy Premier SC",
+    "conference": "Mid-America",
+    "age_group": "U16",
+    "group_id": "400253"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302861",
+    "team_name": "Kings Hammer Soccer Club 10G GA",
+    "club_name": "Kings Hammer Soccer Club",
+    "conference": "Mid-America",
+    "age_group": "U16",
+    "group_id": "400253"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278697",
+    "team_name": "Nashville United Soccer Academy 10G GA",
+    "club_name": "Nashville United Soccer Academy",
+    "conference": "Mid-America",
+    "age_group": "U16",
+    "group_id": "400253"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272756",
+    "team_name": "One Knoxville Youth Club 10G GA",
+    "club_name": "One Knoxville Youth Club",
+    "conference": "Mid-America",
+    "age_group": "U16",
+    "group_id": "400253"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3298708",
+    "team_name": "Baltimore Armour 10G GA",
+    "club_name": "Baltimore Armour",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U16",
+    "group_id": "400254"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3256644",
+    "team_name": "Baltimore Celtic Soccer Club 10G GA",
+    "club_name": "Baltimore Celtic Soccer Club",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U16",
+    "group_id": "400254"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308192",
+    "team_name": "Coppermine Soccer Club 10G GA",
+    "club_name": "Coppermine Soccer Club",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U16",
+    "group_id": "400254"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283884",
+    "team_name": "Keystone FC 10G GA",
+    "club_name": "Keystone FC",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U16",
+    "group_id": "400254"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275628",
+    "team_name": "LVU Rush 10G GA",
+    "club_name": "LVU Rush",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U16",
+    "group_id": "400254"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279347",
+    "team_name": "PA Classics 10G GA",
+    "club_name": "PA Classics",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U16",
+    "group_id": "400254"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312591",
+    "team_name": "Real Futbol Academy 10G GA",
+    "club_name": "Real Futbol Academy",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U16",
+    "group_id": "400254"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307833",
+    "team_name": "SJEB FC 10G GA",
+    "club_name": "SJEB FC",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U16",
+    "group_id": "400254"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3292982",
+    "team_name": "Sporting Athletic Club 10G GA",
+    "club_name": "Sporting Athletic Club",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U16",
+    "group_id": "400254"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279649",
+    "team_name": "Alexandria SA 10G GA",
+    "club_name": "Alexandria SA",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U16",
+    "group_id": "400255"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3292497",
+    "team_name": "Charlotte Development Academy 10G GA",
+    "club_name": "Charlotte Development Academy",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U16",
+    "group_id": "400255"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331632",
+    "team_name": "Charlotte Independence SC 10G GA",
+    "club_name": "Charlotte Independence SC",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U16",
+    "group_id": "400255"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272682",
+    "team_name": "Loudoun Soccer Club 10G GA",
+    "club_name": "Loudoun Soccer Club",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U16",
+    "group_id": "400255"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275709",
+    "team_name": "McLean YS 10G GA",
+    "club_name": "McLean YS",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U16",
+    "group_id": "400255"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272901",
+    "team_name": "Northern Virginia Alliance 10G GA",
+    "club_name": "Northern Virginia Alliance",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U16",
+    "group_id": "400255"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307594",
+    "team_name": "Skyline Elite 10G GA",
+    "club_name": "Skyline Elite",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U16",
+    "group_id": "400255"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3294370",
+    "team_name": "Springfield SYC Soccer 10G GA",
+    "club_name": "Springfield SYC Soccer",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U16",
+    "group_id": "400255"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283658",
+    "team_name": "The St. James Football Club 10G GA",
+    "club_name": "The St. James Football Club",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U16",
+    "group_id": "400255"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308333",
+    "team_name": "Triangle United 10G GA",
+    "club_name": "Triangle United",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U16",
+    "group_id": "400255"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275806",
+    "team_name": "Virginia Revolution SC 10G GA",
+    "club_name": "Virginia Revolution SC",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U16",
+    "group_id": "400255"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299860",
+    "team_name": "Wake FC 10G GA",
+    "club_name": "Wake FC",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U16",
+    "group_id": "400255"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307748",
+    "team_name": "Central Illinois United 10G GA",
+    "club_name": "Central Illinois United",
+    "conference": "Midwest East",
+    "age_group": "U16",
+    "group_id": "400256"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284106",
+    "team_name": "Elmbrook United 10G GA",
+    "club_name": "Elmbrook United",
+    "conference": "Midwest East",
+    "age_group": "U16",
+    "group_id": "400256"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283978",
+    "team_name": "FC United Soccer Club 10G GA",
+    "club_name": "FC United Soccer Club",
+    "conference": "Midwest East",
+    "age_group": "U16",
+    "group_id": "400256"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300645",
+    "team_name": "Galaxy SC 10G GA",
+    "club_name": "Galaxy SC",
+    "conference": "Midwest East",
+    "age_group": "U16",
+    "group_id": "400256"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3281548",
+    "team_name": "Madison 56ers 10G GA",
+    "club_name": "Madison 56ers",
+    "conference": "Midwest East",
+    "age_group": "U16",
+    "group_id": "400256"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302446",
+    "team_name": "Michigan Jaguars 10G GA",
+    "club_name": "Michigan Jaguars",
+    "conference": "Midwest East",
+    "age_group": "U16",
+    "group_id": "400256"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3244323",
+    "team_name": "Michigan Tigers FC 10G GA",
+    "club_name": "Michigan Tigers FC",
+    "conference": "Midwest East",
+    "age_group": "U16",
+    "group_id": "400256"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279780",
+    "team_name": "Midwest United 10G GA",
+    "club_name": "Midwest United",
+    "conference": "Midwest East",
+    "age_group": "U16",
+    "group_id": "400256"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275704",
+    "team_name": "Sockers FC 10G GA",
+    "club_name": "Sockers FC",
+    "conference": "Midwest East",
+    "age_group": "U16",
+    "group_id": "400256"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300985",
+    "team_name": "Kansas Rush 10G GA",
+    "club_name": "Kansas Rush",
+    "conference": "Midwest West",
+    "age_group": "U16",
+    "group_id": "400257"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278009",
+    "team_name": "North Shore United 10G GA",
+    "club_name": "North Shore United",
+    "conference": "Midwest West",
+    "age_group": "U16",
+    "group_id": "400257"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299606",
+    "team_name": "SC Wave 10G GA",
+    "club_name": "SC Wave",
+    "conference": "Midwest West",
+    "age_group": "U16",
+    "group_id": "400257"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303415",
+    "team_name": "Salvo SC 10G GA",
+    "club_name": "Salvo SC",
+    "conference": "Midwest West",
+    "age_group": "U16",
+    "group_id": "400257"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272844",
+    "team_name": "Sporting City Soccer Club 10G GA",
+    "club_name": "Sporting City Soccer Club",
+    "conference": "Midwest West",
+    "age_group": "U16",
+    "group_id": "400257"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3296395",
+    "team_name": "Sporting Nebraska FC 10G GA*",
+    "club_name": "Sporting Nebraska FC GA*",
+    "conference": "Midwest West",
+    "age_group": "U16",
+    "group_id": "400257"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308526",
+    "team_name": "Tonka Fusion Elite 10G GA",
+    "club_name": "Tonka Fusion Elite",
+    "conference": "Midwest West",
+    "age_group": "U16",
+    "group_id": "400257"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272889",
+    "team_name": "Union KC Soccer Club 10G GA",
+    "club_name": "Union KC Soccer Club",
+    "conference": "Midwest West",
+    "age_group": "U16",
+    "group_id": "400257"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273896",
+    "team_name": "VSA Rush 10G GA",
+    "club_name": "VSA Rush",
+    "conference": "Midwest West",
+    "age_group": "U16",
+    "group_id": "400257"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309036",
+    "team_name": "ALBION SC Las Vegas 10G GA",
+    "club_name": "ALBION SC Las Vegas",
+    "conference": "Mountain West",
+    "age_group": "U16",
+    "group_id": "400258"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274188",
+    "team_name": "Broomfield Soccer Club 10G GA",
+    "club_name": "Broomfield Soccer Club",
+    "conference": "Mountain West",
+    "age_group": "U16",
+    "group_id": "400258"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272860",
+    "team_name": "Colorado United 10G GA",
+    "club_name": "Colorado United",
+    "conference": "Mountain West",
+    "age_group": "U16",
+    "group_id": "400258"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3330811",
+    "team_name": "Las Vegas Sports Academy 10G GA",
+    "club_name": "Las Vegas Sports Academy",
+    "conference": "Mountain West",
+    "age_group": "U16",
+    "group_id": "400258"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331719",
+    "team_name": "NM Rapids SC 10G GA",
+    "club_name": "NM Rapids SC",
+    "conference": "Mountain West",
+    "age_group": "U16",
+    "group_id": "400258"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272910",
+    "team_name": "New Mexico Soccer Academy 10G GA",
+    "club_name": "New Mexico Soccer Academy",
+    "conference": "Mountain West",
+    "age_group": "U16",
+    "group_id": "400258"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272719",
+    "team_name": "Utah Celtic 10G GA",
+    "club_name": "Utah Celtic",
+    "conference": "Mountain West",
+    "age_group": "U16",
+    "group_id": "400258"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273834",
+    "team_name": "Wasatch SC 10G GA",
+    "club_name": "Wasatch SC",
+    "conference": "Mountain West",
+    "age_group": "U16",
+    "group_id": "400258"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273447",
+    "team_name": "Bayside FC 10G GA",
+    "club_name": "Bayside FC",
+    "conference": "Northeast",
+    "age_group": "U16",
+    "group_id": "400259"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331792",
+    "team_name": "Cedar Stars Academy - Bergen 10G GA",
+    "club_name": "Cedar Stars Academy - Bergen",
+    "conference": "Northeast",
+    "age_group": "U16",
+    "group_id": "400259"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278244",
+    "team_name": "Cedar Stars Academy - Monmouth 10G GA",
+    "club_name": "Cedar Stars Academy - Monmouth",
+    "conference": "Northeast",
+    "age_group": "U16",
+    "group_id": "400259"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331810",
+    "team_name": "DUSC 10G GA",
+    "club_name": "DUSC",
+    "conference": "Northeast",
+    "age_group": "U16",
+    "group_id": "400259"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3305454",
+    "team_name": "Long Island SC 10G GA",
+    "club_name": "Long Island SC",
+    "conference": "Northeast",
+    "age_group": "U16",
+    "group_id": "400259"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3311130",
+    "team_name": "NEFC 10G GA Navy",
+    "club_name": "NEFC GA Navy",
+    "conference": "Northeast",
+    "age_group": "U16",
+    "group_id": "400259"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3311126",
+    "team_name": "NEFC 10G GA Red",
+    "club_name": "NEFC GA Red",
+    "conference": "Northeast",
+    "age_group": "U16",
+    "group_id": "400259"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307347",
+    "team_name": "New York SC 10G GA",
+    "club_name": "New York SC",
+    "conference": "Northeast",
+    "age_group": "U16",
+    "group_id": "400259"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299767",
+    "team_name": "Oakwood Soccer Club 10G GA",
+    "club_name": "Oakwood Soccer Club",
+    "conference": "Northeast",
+    "age_group": "U16",
+    "group_id": "400259"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277421",
+    "team_name": "RNY FC Youth 10G GA",
+    "club_name": "RNY FC Youth",
+    "conference": "Northeast",
+    "age_group": "U16",
+    "group_id": "400259"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275007",
+    "team_name": "Rhode Island Surf 10G GA",
+    "club_name": "Rhode Island Surf",
+    "conference": "Northeast",
+    "age_group": "U16",
+    "group_id": "400259"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307926",
+    "team_name": "STA 10G GA",
+    "club_name": "STA",
+    "conference": "Northeast",
+    "age_group": "U16",
+    "group_id": "400259"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279011",
+    "team_name": "Seacoast United 10G GA",
+    "club_name": "Seacoast United",
+    "conference": "Northeast",
+    "age_group": "U16",
+    "group_id": "400259"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307273",
+    "team_name": "Syracuse Development Academy (SDA) 10G GA",
+    "club_name": "Syracuse Development Academy (SDA)",
+    "conference": "Northeast",
+    "age_group": "U16",
+    "group_id": "400259"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3319670",
+    "team_name": "1974 Newark FC 10G GA",
+    "club_name": "1974 Newark FC",
+    "conference": "Northwest",
+    "age_group": "U16",
+    "group_id": "400260"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331908",
+    "team_name": "Ajax United 10G GA",
+    "club_name": "Ajax United",
+    "conference": "Northwest",
+    "age_group": "U16",
+    "group_id": "400260"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284099",
+    "team_name": "Almaden FC 10G GA",
+    "club_name": "Almaden FC",
+    "conference": "Northwest",
+    "age_group": "U16",
+    "group_id": "400260"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277822",
+    "team_name": "Blues FC 10G GA",
+    "club_name": "Blues FC",
+    "conference": "Northwest",
+    "age_group": "U16",
+    "group_id": "400260"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331920",
+    "team_name": "Clovis Crossfire  10G GA",
+    "club_name": "Clovis Crossfire",
+    "conference": "Northwest",
+    "age_group": "U16",
+    "group_id": "400260"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275403",
+    "team_name": "Lamorinda SC 10G GA",
+    "club_name": "Lamorinda SC",
+    "conference": "Northwest",
+    "age_group": "U16",
+    "group_id": "400260"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3282758",
+    "team_name": "Napa United 10G GA",
+    "club_name": "Napa United",
+    "conference": "Northwest",
+    "age_group": "U16",
+    "group_id": "400260"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3286461",
+    "team_name": "Sacramento United 10G GA",
+    "club_name": "Sacramento United",
+    "conference": "Northwest",
+    "age_group": "U16",
+    "group_id": "400260"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3306980",
+    "team_name": "San Francisco Glens Soccer Club 10G GA",
+    "club_name": "San Francisco Glens Soccer Club",
+    "conference": "Northwest",
+    "age_group": "U16",
+    "group_id": "400260"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331928",
+    "team_name": "Santa Clara Sporting 10G GA",
+    "club_name": "Santa Clara Sporting",
+    "conference": "Northwest",
+    "age_group": "U16",
+    "group_id": "400260"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331950",
+    "team_name": "Silicon Valley SA 10G GA",
+    "club_name": "Silicon Valley SA",
+    "conference": "Northwest",
+    "age_group": "U16",
+    "group_id": "400260"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309967",
+    "team_name": "South Valley Surf SC 10G GA",
+    "club_name": "South Valley Surf SC",
+    "conference": "Northwest",
+    "age_group": "U16",
+    "group_id": "400260"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3297884",
+    "team_name": "Capital FC 10G GA",
+    "club_name": "Capital FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U16",
+    "group_id": "400261"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303580",
+    "team_name": "Columbia Premier Soccer Club 10G GA",
+    "club_name": "Columbia Premier Soccer Club",
+    "conference": "Pacific Northwest",
+    "age_group": "U16",
+    "group_id": "400261"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3289344",
+    "team_name": "Eugene Metro FC 10G GA",
+    "club_name": "Eugene Metro FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U16",
+    "group_id": "400261"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3297442",
+    "team_name": "NPSA WW SURF 10G GA",
+    "club_name": "NPSA WW SURF",
+    "conference": "Pacific Northwest",
+    "age_group": "U16",
+    "group_id": "400261"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3294866",
+    "team_name": "Oregon Premier FC 10G GA",
+    "club_name": "Oregon Premier FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U16",
+    "group_id": "400261"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274457",
+    "team_name": "Seattle Celtic 10G GA",
+    "club_name": "Seattle Celtic",
+    "conference": "Pacific Northwest",
+    "age_group": "U16",
+    "group_id": "400261"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308516",
+    "team_name": "Seattle Reign Academy 10G GA",
+    "club_name": "Seattle Reign Academy",
+    "conference": "Pacific Northwest",
+    "age_group": "U16",
+    "group_id": "400261"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279230",
+    "team_name": "Spokane Shadow 10G GA",
+    "club_name": "Spokane Shadow",
+    "conference": "Pacific Northwest",
+    "age_group": "U16",
+    "group_id": "400261"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284731",
+    "team_name": "United PDX 10G GA",
+    "club_name": "United PDX",
+    "conference": "Pacific Northwest",
+    "age_group": "U16",
+    "group_id": "400261"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332012",
+    "team_name": "Washington East Surf Soccer Club 10G GA",
+    "club_name": "Washington East Surf Soccer Club",
+    "conference": "Pacific Northwest",
+    "age_group": "U16",
+    "group_id": "400261"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308651",
+    "team_name": "Washington Rush 10G GA",
+    "club_name": "Washington Rush",
+    "conference": "Pacific Northwest",
+    "age_group": "U16",
+    "group_id": "400261"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307988",
+    "team_name": "Westside Metros FC 10G GA",
+    "club_name": "Westside Metros FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U16",
+    "group_id": "400261"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272625",
+    "team_name": "Florida United 10G GA",
+    "club_name": "Florida United",
+    "conference": "Southeast",
+    "age_group": "U16",
+    "group_id": "400262"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279290",
+    "team_name": "Hoover-Vestavia Soccer 10G GA",
+    "club_name": "Hoover-Vestavia Soccer",
+    "conference": "Southeast",
+    "age_group": "U16",
+    "group_id": "400262"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3310809",
+    "team_name": "IMG Academy 10G GA",
+    "club_name": "IMG Academy",
+    "conference": "Southeast",
+    "age_group": "U16",
+    "group_id": "400262"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308797",
+    "team_name": "Palm Beach Kicks 10G GA",
+    "club_name": "Palm Beach Kicks",
+    "conference": "Southeast",
+    "age_group": "U16",
+    "group_id": "400262"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307395",
+    "team_name": "Pinecrest Premier Soccer 10G GA",
+    "club_name": "Pinecrest Premier Soccer",
+    "conference": "Southeast",
+    "age_group": "U16",
+    "group_id": "400262"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284058",
+    "team_name": "Southern Soccer Academy 10G GA",
+    "club_name": "Southern Soccer Academy",
+    "conference": "Southeast",
+    "age_group": "U16",
+    "group_id": "400262"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277727",
+    "team_name": "Space Coast United 10G GA",
+    "club_name": "Space Coast United",
+    "conference": "Southeast",
+    "age_group": "U16",
+    "group_id": "400262"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312418",
+    "team_name": "TopHat 10G GA Gold",
+    "club_name": "TopHat GA Gold",
+    "conference": "Southeast",
+    "age_group": "U16",
+    "group_id": "400262"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312427",
+    "team_name": "TopHat 10G GA Navy",
+    "club_name": "TopHat GA Navy",
+    "conference": "Southeast",
+    "age_group": "U16",
+    "group_id": "400262"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308928",
+    "team_name": "West Florida Flames 10G GA",
+    "club_name": "West Florida Flames",
+    "conference": "Southeast",
+    "age_group": "U16",
+    "group_id": "400262"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3282906",
+    "team_name": "ALBION SC San Diego 10G GA",
+    "club_name": "ALBION SC San Diego",
+    "conference": "Southwest",
+    "age_group": "U16",
+    "group_id": "400263"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3304698",
+    "team_name": "City SC 10G GA Blue",
+    "club_name": "City SC GA Blue",
+    "conference": "Southwest",
+    "age_group": "U16",
+    "group_id": "400263"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3304697",
+    "team_name": "City SC 10G GA White",
+    "club_name": "City SC GA White",
+    "conference": "Southwest",
+    "age_group": "U16",
+    "group_id": "400263"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307334",
+    "team_name": "City SC Southwest 10G GA",
+    "club_name": "City SC Southwest",
+    "conference": "Southwest",
+    "age_group": "U16",
+    "group_id": "400263"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303508",
+    "team_name": "FC Tucson Youth Soccer 10G GA",
+    "club_name": "FC Tucson Youth Soccer",
+    "conference": "Southwest",
+    "age_group": "U16",
+    "group_id": "400263"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308991",
+    "team_name": "FRAM SC 10G GA",
+    "club_name": "FRAM SC",
+    "conference": "Southwest",
+    "age_group": "U16",
+    "group_id": "400263"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332132",
+    "team_name": "LA Surf Soccer Club 10G GA",
+    "club_name": "LA Surf Soccer Club",
+    "conference": "Southwest",
+    "age_group": "U16",
+    "group_id": "400263"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308948",
+    "team_name": "Rangers FC 10G GA",
+    "club_name": "Rangers FC",
+    "conference": "Southwest",
+    "age_group": "U16",
+    "group_id": "400263"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309237",
+    "team_name": "SC del Sol 10G GA",
+    "club_name": "SC del Sol",
+    "conference": "Southwest",
+    "age_group": "U16",
+    "group_id": "400263"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302939",
+    "team_name": "SDSC Surf 10G GA",
+    "club_name": "SDSC Surf",
+    "conference": "Southwest",
+    "age_group": "U16",
+    "group_id": "400263"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307065",
+    "team_name": "SoCal Reds FC 10G GA",
+    "club_name": "SoCal Reds FC",
+    "conference": "Southwest",
+    "age_group": "U16",
+    "group_id": "400263"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332142",
+    "team_name": "West Coast F.C.  10G GA",
+    "club_name": "West Coast F.C.",
+    "conference": "Southwest",
+    "age_group": "U16",
+    "group_id": "400263"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279171",
+    "team_name": "Atletico Dallas Youth 09G GA",
+    "club_name": "Atletico Dallas Youth",
+    "conference": "Frontier",
+    "age_group": "U17",
+    "group_id": "400266"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3290515",
+    "team_name": "BVB International Academy Texas 09G GA",
+    "club_name": "BVB International Academy Texas",
+    "conference": "Frontier",
+    "age_group": "U17",
+    "group_id": "400266"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300172",
+    "team_name": "Dallas Surf 09G GA",
+    "club_name": "Dallas Surf",
+    "conference": "Frontier",
+    "age_group": "U17",
+    "group_id": "400266"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277803",
+    "team_name": "HTX 09G GA",
+    "club_name": "HTX",
+    "conference": "Frontier",
+    "age_group": "U17",
+    "group_id": "400266"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274848",
+    "team_name": "Lou Fusz Athletic 09G GA",
+    "club_name": "Lou Fusz Athletic",
+    "conference": "Frontier",
+    "age_group": "U17",
+    "group_id": "400266"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332061",
+    "team_name": "Louisiana TDP Elite 09G GA",
+    "club_name": "Louisiana TDP Elite",
+    "conference": "Frontier",
+    "age_group": "U17",
+    "group_id": "400266"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307329",
+    "team_name": "RISE Soccer Club 09G GA",
+    "club_name": "RISE Soccer Club",
+    "conference": "Frontier",
+    "age_group": "U17",
+    "group_id": "400266"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3305748",
+    "team_name": "San Antonio City SC 09G GA",
+    "club_name": "San Antonio City SC",
+    "conference": "Frontier",
+    "age_group": "U17",
+    "group_id": "400266"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3315428",
+    "team_name": "St. Louis Development Academy 09G GA",
+    "club_name": "St. Louis Development Academy",
+    "conference": "Frontier",
+    "age_group": "U17",
+    "group_id": "400266"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331298",
+    "team_name": "Tulsa Soccer Club 09G GA",
+    "club_name": "Tulsa Soccer Club",
+    "conference": "Frontier",
+    "age_group": "U17",
+    "group_id": "400266"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274651",
+    "team_name": "Beadling SC 09G GA",
+    "club_name": "Beadling SC",
+    "conference": "Mid-America",
+    "age_group": "U17",
+    "group_id": "400267"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309326",
+    "team_name": "Century United Soccer 09G GA",
+    "club_name": "Century United Soccer",
+    "conference": "Mid-America",
+    "age_group": "U17",
+    "group_id": "400267"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308388",
+    "team_name": "Cincinnati United 09G GA",
+    "club_name": "Cincinnati United",
+    "conference": "Mid-America",
+    "age_group": "U17",
+    "group_id": "400267"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308378",
+    "team_name": "Club Ohio 09G GA",
+    "club_name": "Club Ohio",
+    "conference": "Mid-America",
+    "age_group": "U17",
+    "group_id": "400267"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309214",
+    "team_name": "Columbus United 09G GA",
+    "club_name": "Columbus United",
+    "conference": "Mid-America",
+    "age_group": "U17",
+    "group_id": "400267"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331329",
+    "team_name": "Indy Premier SC 09G GA",
+    "club_name": "Indy Premier SC",
+    "conference": "Mid-America",
+    "age_group": "U17",
+    "group_id": "400267"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302856",
+    "team_name": "Kings Hammer Soccer Club 09G GA",
+    "club_name": "Kings Hammer Soccer Club",
+    "conference": "Mid-America",
+    "age_group": "U17",
+    "group_id": "400267"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278699",
+    "team_name": "Nashville United Soccer Academy 09G GA",
+    "club_name": "Nashville United Soccer Academy",
+    "conference": "Mid-America",
+    "age_group": "U17",
+    "group_id": "400267"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272759",
+    "team_name": "One Knoxville Youth Club 09G GA",
+    "club_name": "One Knoxville Youth Club",
+    "conference": "Mid-America",
+    "age_group": "U17",
+    "group_id": "400267"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3298710",
+    "team_name": "Baltimore Armour 09G GA",
+    "club_name": "Baltimore Armour",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U17",
+    "group_id": "400268"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3256646",
+    "team_name": "Baltimore Celtic Soccer Club 09G GA",
+    "club_name": "Baltimore Celtic Soccer Club",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U17",
+    "group_id": "400268"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308197",
+    "team_name": "Coppermine Soccer Club 09G GA",
+    "club_name": "Coppermine Soccer Club",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U17",
+    "group_id": "400268"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283883",
+    "team_name": "Keystone FC 09G GA",
+    "club_name": "Keystone FC",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U17",
+    "group_id": "400268"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275626",
+    "team_name": "LVU Rush 09G GA",
+    "club_name": "LVU Rush",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U17",
+    "group_id": "400268"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279342",
+    "team_name": "PA Classics 09G GA",
+    "club_name": "PA Classics",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U17",
+    "group_id": "400268"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312595",
+    "team_name": "Real Futbol Academy 09G GA",
+    "club_name": "Real Futbol Academy",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U17",
+    "group_id": "400268"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307834",
+    "team_name": "SJEB FC 09G GA",
+    "club_name": "SJEB FC",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U17",
+    "group_id": "400268"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3292981",
+    "team_name": "Sporting Athletic Club 09G GA",
+    "club_name": "Sporting Athletic Club",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U17",
+    "group_id": "400268"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279647",
+    "team_name": "Alexandria SA 09G GA",
+    "club_name": "Alexandria SA",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U17",
+    "group_id": "400269"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3292500",
+    "team_name": "Charlotte Development Academy 09G GA",
+    "club_name": "Charlotte Development Academy",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U17",
+    "group_id": "400269"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331634",
+    "team_name": "Charlotte Independence SC 09G GA",
+    "club_name": "Charlotte Independence SC",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U17",
+    "group_id": "400269"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272681",
+    "team_name": "Loudoun Soccer Club 09G GA",
+    "club_name": "Loudoun Soccer Club",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U17",
+    "group_id": "400269"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275710",
+    "team_name": "McLean YS 09G GA",
+    "club_name": "McLean YS",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U17",
+    "group_id": "400269"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272904",
+    "team_name": "Northern Virginia Alliance 09G GA",
+    "club_name": "Northern Virginia Alliance",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U17",
+    "group_id": "400269"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307599",
+    "team_name": "Skyline Elite 09G GA",
+    "club_name": "Skyline Elite",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U17",
+    "group_id": "400269"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3294373",
+    "team_name": "Springfield SYC Soccer 09G GA",
+    "club_name": "Springfield SYC Soccer",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U17",
+    "group_id": "400269"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283655",
+    "team_name": "The St. James Football Club 09G GA",
+    "club_name": "The St. James Football Club",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U17",
+    "group_id": "400269"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308331",
+    "team_name": "Triangle United 09G GA",
+    "club_name": "Triangle United",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U17",
+    "group_id": "400269"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275804",
+    "team_name": "Virginia Revolution SC 09G GA",
+    "club_name": "Virginia Revolution SC",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U17",
+    "group_id": "400269"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299861",
+    "team_name": "Wake FC 09G GA",
+    "club_name": "Wake FC",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U17",
+    "group_id": "400269"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307745",
+    "team_name": "Central Illinois United 09G GA",
+    "club_name": "Central Illinois United",
+    "conference": "Midwest East",
+    "age_group": "U17",
+    "group_id": "400270"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284109",
+    "team_name": "Elmbrook United 09G GA",
+    "club_name": "Elmbrook United",
+    "conference": "Midwest East",
+    "age_group": "U17",
+    "group_id": "400270"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283982",
+    "team_name": "FC United Soccer Club 09G GA",
+    "club_name": "FC United Soccer Club",
+    "conference": "Midwest East",
+    "age_group": "U17",
+    "group_id": "400270"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300646",
+    "team_name": "Galaxy SC 09G GA",
+    "club_name": "Galaxy SC",
+    "conference": "Midwest East",
+    "age_group": "U17",
+    "group_id": "400270"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3281549",
+    "team_name": "Madison 56ers 09G GA",
+    "club_name": "Madison 56ers",
+    "conference": "Midwest East",
+    "age_group": "U17",
+    "group_id": "400270"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302450",
+    "team_name": "Michigan Jaguars 09G GA",
+    "club_name": "Michigan Jaguars",
+    "conference": "Midwest East",
+    "age_group": "U17",
+    "group_id": "400270"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3244320",
+    "team_name": "Michigan Tigers FC 09G GA",
+    "club_name": "Michigan Tigers FC",
+    "conference": "Midwest East",
+    "age_group": "U17",
+    "group_id": "400270"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279777",
+    "team_name": "Midwest United 09G GA",
+    "club_name": "Midwest United",
+    "conference": "Midwest East",
+    "age_group": "U17",
+    "group_id": "400270"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275701",
+    "team_name": "Sockers FC 09G GA",
+    "club_name": "Sockers FC",
+    "conference": "Midwest East",
+    "age_group": "U17",
+    "group_id": "400270"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300987",
+    "team_name": "Kansas Rush 09G GA",
+    "club_name": "Kansas Rush",
+    "conference": "Midwest West",
+    "age_group": "U17",
+    "group_id": "400271"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278008",
+    "team_name": "North Shore United 09G GA",
+    "club_name": "North Shore United",
+    "conference": "Midwest West",
+    "age_group": "U17",
+    "group_id": "400271"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299611",
+    "team_name": "SC Wave 09G GA",
+    "club_name": "SC Wave",
+    "conference": "Midwest West",
+    "age_group": "U17",
+    "group_id": "400271"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303413",
+    "team_name": "Salvo SC 09G GA",
+    "club_name": "Salvo SC",
+    "conference": "Midwest West",
+    "age_group": "U17",
+    "group_id": "400271"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272840",
+    "team_name": "Sporting City Soccer Club 09G GA",
+    "club_name": "Sporting City Soccer Club",
+    "conference": "Midwest West",
+    "age_group": "U17",
+    "group_id": "400271"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3296392",
+    "team_name": "Sporting Nebraska FC 09G GA",
+    "club_name": "Sporting Nebraska FC",
+    "conference": "Midwest West",
+    "age_group": "U17",
+    "group_id": "400271"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308530",
+    "team_name": "Tonka Fusion Elite 09G GA",
+    "club_name": "Tonka Fusion Elite",
+    "conference": "Midwest West",
+    "age_group": "U17",
+    "group_id": "400271"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272888",
+    "team_name": "Union KC Soccer Club 09G GA",
+    "club_name": "Union KC Soccer Club",
+    "conference": "Midwest West",
+    "age_group": "U17",
+    "group_id": "400271"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273898",
+    "team_name": "VSA Rush 09G GA",
+    "club_name": "VSA Rush",
+    "conference": "Midwest West",
+    "age_group": "U17",
+    "group_id": "400271"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309033",
+    "team_name": "ALBION SC Las Vegas 09G GA",
+    "club_name": "ALBION SC Las Vegas",
+    "conference": "Mountain West",
+    "age_group": "U17",
+    "group_id": "400272"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274191",
+    "team_name": "Broomfield Soccer Club 09G GA",
+    "club_name": "Broomfield Soccer Club",
+    "conference": "Mountain West",
+    "age_group": "U17",
+    "group_id": "400272"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272861",
+    "team_name": "Colorado United 09G GA",
+    "club_name": "Colorado United",
+    "conference": "Mountain West",
+    "age_group": "U17",
+    "group_id": "400272"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3330812",
+    "team_name": "Las Vegas Sports Academy 09G GA",
+    "club_name": "Las Vegas Sports Academy",
+    "conference": "Mountain West",
+    "age_group": "U17",
+    "group_id": "400272"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331718",
+    "team_name": "NM Rapids SC 09G GA",
+    "club_name": "NM Rapids SC",
+    "conference": "Mountain West",
+    "age_group": "U17",
+    "group_id": "400272"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272911",
+    "team_name": "New Mexico Soccer Academy 09G GA",
+    "club_name": "New Mexico Soccer Academy",
+    "conference": "Mountain West",
+    "age_group": "U17",
+    "group_id": "400272"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272722",
+    "team_name": "Utah Celtic 09G GA",
+    "club_name": "Utah Celtic",
+    "conference": "Mountain West",
+    "age_group": "U17",
+    "group_id": "400272"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273833",
+    "team_name": "Wasatch SC 09G GA",
+    "club_name": "Wasatch SC",
+    "conference": "Mountain West",
+    "age_group": "U17",
+    "group_id": "400272"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273445",
+    "team_name": "Bayside FC 09G GA",
+    "club_name": "Bayside FC",
+    "conference": "Northeast",
+    "age_group": "U17",
+    "group_id": "400273"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331791",
+    "team_name": "Cedar Stars Academy - Bergen 09G GA",
+    "club_name": "Cedar Stars Academy - Bergen",
+    "conference": "Northeast",
+    "age_group": "U17",
+    "group_id": "400273"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278241",
+    "team_name": "Cedar Stars Academy - Monmouth 09G GA",
+    "club_name": "Cedar Stars Academy - Monmouth",
+    "conference": "Northeast",
+    "age_group": "U17",
+    "group_id": "400273"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331808",
+    "team_name": "DUSC 09G GA",
+    "club_name": "DUSC",
+    "conference": "Northeast",
+    "age_group": "U17",
+    "group_id": "400273"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3305453",
+    "team_name": "Long Island SC 09G GA",
+    "club_name": "Long Island SC",
+    "conference": "Northeast",
+    "age_group": "U17",
+    "group_id": "400273"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3311134",
+    "team_name": "NEFC 09G GA Navy",
+    "club_name": "NEFC GA Navy",
+    "conference": "Northeast",
+    "age_group": "U17",
+    "group_id": "400273"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3311127",
+    "team_name": "NEFC 09G GA Red",
+    "club_name": "NEFC GA Red",
+    "conference": "Northeast",
+    "age_group": "U17",
+    "group_id": "400273"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307344",
+    "team_name": "New York SC 09G GA",
+    "club_name": "New York SC",
+    "conference": "Northeast",
+    "age_group": "U17",
+    "group_id": "400273"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299770",
+    "team_name": "Oakwood Soccer Club 09G GA",
+    "club_name": "Oakwood Soccer Club",
+    "conference": "Northeast",
+    "age_group": "U17",
+    "group_id": "400273"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277416",
+    "team_name": "RNY FC Youth 09G GA",
+    "club_name": "RNY FC Youth",
+    "conference": "Northeast",
+    "age_group": "U17",
+    "group_id": "400273"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275003",
+    "team_name": "Rhode Island Surf 09G GA",
+    "club_name": "Rhode Island Surf",
+    "conference": "Northeast",
+    "age_group": "U17",
+    "group_id": "400273"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307924",
+    "team_name": "STA 09G GA",
+    "club_name": "STA",
+    "conference": "Northeast",
+    "age_group": "U17",
+    "group_id": "400273"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279006",
+    "team_name": "Seacoast United 09G GA",
+    "club_name": "Seacoast United",
+    "conference": "Northeast",
+    "age_group": "U17",
+    "group_id": "400273"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307275",
+    "team_name": "Syracuse Development Academy (SDA) 09G GA",
+    "club_name": "Syracuse Development Academy (SDA)",
+    "conference": "Northeast",
+    "age_group": "U17",
+    "group_id": "400273"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3319669",
+    "team_name": "1974 Newark FC 09G GA",
+    "club_name": "1974 Newark FC",
+    "conference": "Northwest",
+    "age_group": "U17",
+    "group_id": "400274"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331912",
+    "team_name": "Ajax United 09G GA",
+    "club_name": "Ajax United",
+    "conference": "Northwest",
+    "age_group": "U17",
+    "group_id": "400274"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284100",
+    "team_name": "Almaden FC 09G GA",
+    "club_name": "Almaden FC",
+    "conference": "Northwest",
+    "age_group": "U17",
+    "group_id": "400274"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277824",
+    "team_name": "Blues FC 09G GA",
+    "club_name": "Blues FC",
+    "conference": "Northwest",
+    "age_group": "U17",
+    "group_id": "400274"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331921",
+    "team_name": "Clovis Crossfire  09G GA",
+    "club_name": "Clovis Crossfire",
+    "conference": "Northwest",
+    "age_group": "U17",
+    "group_id": "400274"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275404",
+    "team_name": "Lamorinda SC 09G GA",
+    "club_name": "Lamorinda SC",
+    "conference": "Northwest",
+    "age_group": "U17",
+    "group_id": "400274"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3282759",
+    "team_name": "Napa United 09G GA",
+    "club_name": "Napa United",
+    "conference": "Northwest",
+    "age_group": "U17",
+    "group_id": "400274"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3286460",
+    "team_name": "Sacramento United 09G GA",
+    "club_name": "Sacramento United",
+    "conference": "Northwest",
+    "age_group": "U17",
+    "group_id": "400274"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3306979",
+    "team_name": "San Francisco Glens Soccer Club 09G GA",
+    "club_name": "San Francisco Glens Soccer Club",
+    "conference": "Northwest",
+    "age_group": "U17",
+    "group_id": "400274"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331925",
+    "team_name": "Santa Clara Sporting 09G GA",
+    "club_name": "Santa Clara Sporting",
+    "conference": "Northwest",
+    "age_group": "U17",
+    "group_id": "400274"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331945",
+    "team_name": "Silicon Valley SA 09G GA",
+    "club_name": "Silicon Valley SA",
+    "conference": "Northwest",
+    "age_group": "U17",
+    "group_id": "400274"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309965",
+    "team_name": "South Valley Surf SC 09G GA",
+    "club_name": "South Valley Surf SC",
+    "conference": "Northwest",
+    "age_group": "U17",
+    "group_id": "400274"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3297881",
+    "team_name": "Capital FC 09G GA",
+    "club_name": "Capital FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U17",
+    "group_id": "400275"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303584",
+    "team_name": "Columbia Premier Soccer Club 09G GA",
+    "club_name": "Columbia Premier Soccer Club",
+    "conference": "Pacific Northwest",
+    "age_group": "U17",
+    "group_id": "400275"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3289347",
+    "team_name": "Eugene Metro FC 09G GA",
+    "club_name": "Eugene Metro FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U17",
+    "group_id": "400275"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3297441",
+    "team_name": "NPSA WW SURF 09G GA",
+    "club_name": "NPSA WW SURF",
+    "conference": "Pacific Northwest",
+    "age_group": "U17",
+    "group_id": "400275"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3294862",
+    "team_name": "Oregon Premier FC 09G GA",
+    "club_name": "Oregon Premier FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U17",
+    "group_id": "400275"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274456",
+    "team_name": "Seattle Celtic 09G GA",
+    "club_name": "Seattle Celtic",
+    "conference": "Pacific Northwest",
+    "age_group": "U17",
+    "group_id": "400275"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308518",
+    "team_name": "Seattle Reign Academy 09G GA",
+    "club_name": "Seattle Reign Academy",
+    "conference": "Pacific Northwest",
+    "age_group": "U17",
+    "group_id": "400275"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279233",
+    "team_name": "Spokane Shadow 09G GA",
+    "club_name": "Spokane Shadow",
+    "conference": "Pacific Northwest",
+    "age_group": "U17",
+    "group_id": "400275"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284730",
+    "team_name": "United PDX 09G GA",
+    "club_name": "United PDX",
+    "conference": "Pacific Northwest",
+    "age_group": "U17",
+    "group_id": "400275"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332013",
+    "team_name": "Washington East Surf Soccer Club 09G GA",
+    "club_name": "Washington East Surf Soccer Club",
+    "conference": "Pacific Northwest",
+    "age_group": "U17",
+    "group_id": "400275"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308649",
+    "team_name": "Washington Rush 09G GA",
+    "club_name": "Washington Rush",
+    "conference": "Pacific Northwest",
+    "age_group": "U17",
+    "group_id": "400275"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307989",
+    "team_name": "Westside Metros FC 09G GA",
+    "club_name": "Westside Metros FC",
+    "conference": "Pacific Northwest",
+    "age_group": "U17",
+    "group_id": "400275"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272621",
+    "team_name": "Florida United 09G GA",
+    "club_name": "Florida United",
+    "conference": "Southeast",
+    "age_group": "U17",
+    "group_id": "400276"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279285",
+    "team_name": "Hoover-Vestavia Soccer 09G GA",
+    "club_name": "Hoover-Vestavia Soccer",
+    "conference": "Southeast",
+    "age_group": "U17",
+    "group_id": "400276"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3310808",
+    "team_name": "IMG Academy 09G GA",
+    "club_name": "IMG Academy",
+    "conference": "Southeast",
+    "age_group": "U17",
+    "group_id": "400276"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308781",
+    "team_name": "Palm Beach Kicks 09G GA",
+    "club_name": "Palm Beach Kicks",
+    "conference": "Southeast",
+    "age_group": "U17",
+    "group_id": "400276"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307392",
+    "team_name": "Pinecrest Premier Soccer 09G GA",
+    "club_name": "Pinecrest Premier Soccer",
+    "conference": "Southeast",
+    "age_group": "U17",
+    "group_id": "400276"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284059",
+    "team_name": "Southern Soccer Academy 09G GA",
+    "club_name": "Southern Soccer Academy",
+    "conference": "Southeast",
+    "age_group": "U17",
+    "group_id": "400276"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277724",
+    "team_name": "Space Coast United 09G GA",
+    "club_name": "Space Coast United",
+    "conference": "Southeast",
+    "age_group": "U17",
+    "group_id": "400276"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312417",
+    "team_name": "TopHat 09G GA Gold",
+    "club_name": "TopHat GA Gold",
+    "conference": "Southeast",
+    "age_group": "U17",
+    "group_id": "400276"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312419",
+    "team_name": "TopHat 09G GA Navy",
+    "club_name": "TopHat GA Navy",
+    "conference": "Southeast",
+    "age_group": "U17",
+    "group_id": "400276"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308926",
+    "team_name": "West Florida Flames 09G GA",
+    "club_name": "West Florida Flames",
+    "conference": "Southeast",
+    "age_group": "U17",
+    "group_id": "400276"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3282909",
+    "team_name": "ALBION SC San Diego 09G GA",
+    "club_name": "ALBION SC San Diego",
+    "conference": "Southwest",
+    "age_group": "U17",
+    "group_id": "400277"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3304703",
+    "team_name": "City SC 09G GA Blue",
+    "club_name": "City SC GA Blue",
+    "conference": "Southwest",
+    "age_group": "U17",
+    "group_id": "400277"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3304704",
+    "team_name": "City SC 09G GA White",
+    "club_name": "City SC GA White",
+    "conference": "Southwest",
+    "age_group": "U17",
+    "group_id": "400277"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307332",
+    "team_name": "City SC Southwest 09G GA",
+    "club_name": "City SC Southwest",
+    "conference": "Southwest",
+    "age_group": "U17",
+    "group_id": "400277"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303513",
+    "team_name": "FC Tucson Youth Soccer 09G GA",
+    "club_name": "FC Tucson Youth Soccer",
+    "conference": "Southwest",
+    "age_group": "U17",
+    "group_id": "400277"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3285483",
+    "team_name": "FRAM SC 09G GA",
+    "club_name": "FRAM SC",
+    "conference": "Southwest",
+    "age_group": "U17",
+    "group_id": "400277"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332135",
+    "team_name": "LA Surf Soccer Club 09G GA",
+    "club_name": "LA Surf Soccer Club",
+    "conference": "Southwest",
+    "age_group": "U17",
+    "group_id": "400277"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308945",
+    "team_name": "Rangers FC 09G GA",
+    "club_name": "Rangers FC",
+    "conference": "Southwest",
+    "age_group": "U17",
+    "group_id": "400277"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309238",
+    "team_name": "SC del Sol 09G GA",
+    "club_name": "SC del Sol",
+    "conference": "Southwest",
+    "age_group": "U17",
+    "group_id": "400277"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302942",
+    "team_name": "SDSC Surf 09G GA",
+    "club_name": "SDSC Surf",
+    "conference": "Southwest",
+    "age_group": "U17",
+    "group_id": "400277"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307063",
+    "team_name": "SoCal Reds FC 09G GA",
+    "club_name": "SoCal Reds FC",
+    "conference": "Southwest",
+    "age_group": "U17",
+    "group_id": "400277"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332145",
+    "team_name": "West Coast F.C.  09G GA",
+    "club_name": "West Coast F.C.",
+    "conference": "Southwest",
+    "age_group": "U17",
+    "group_id": "400277"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279173",
+    "team_name": "Atletico Dallas Youth 08/07G GA",
+    "club_name": "Atletico Dallas Youth 08/",
+    "conference": "Frontier",
+    "age_group": "U19",
+    "group_id": "400280"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3290513",
+    "team_name": "BVB International Academy Texas 08/07G GA",
+    "club_name": "BVB International Academy Texas 08/",
+    "conference": "Frontier",
+    "age_group": "U19",
+    "group_id": "400280"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3296605",
+    "team_name": "Dallas Surf 08/07G GA",
+    "club_name": "Dallas Surf 08/",
+    "conference": "Frontier",
+    "age_group": "U19",
+    "group_id": "400280"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277802",
+    "team_name": "HTX 08/07G GA",
+    "club_name": "HTX 08/",
+    "conference": "Frontier",
+    "age_group": "U19",
+    "group_id": "400280"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312104",
+    "team_name": "Lou Fusz Athletic 08/07G GA",
+    "club_name": "Lou Fusz Athletic 08/",
+    "conference": "Frontier",
+    "age_group": "U19",
+    "group_id": "400280"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332058",
+    "team_name": "Louisiana TDP Elite 08/07G GA",
+    "club_name": "Louisiana TDP Elite 08/",
+    "conference": "Frontier",
+    "age_group": "U19",
+    "group_id": "400280"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307325",
+    "team_name": "RISE Soccer Club 08/07G GA",
+    "club_name": "RISE Soccer Club 08/",
+    "conference": "Frontier",
+    "age_group": "U19",
+    "group_id": "400280"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3305747",
+    "team_name": "San Antonio City SC 08/07G GA",
+    "club_name": "San Antonio City SC 08/",
+    "conference": "Frontier",
+    "age_group": "U19",
+    "group_id": "400280"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3315431",
+    "team_name": "St. Louis Development Academy 08/07G GA",
+    "club_name": "St. Louis Development Academy 08/",
+    "conference": "Frontier",
+    "age_group": "U19",
+    "group_id": "400280"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331297",
+    "team_name": "Tulsa Soccer Club 08/07G GA",
+    "club_name": "Tulsa Soccer Club 08/",
+    "conference": "Frontier",
+    "age_group": "U19",
+    "group_id": "400280"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274654",
+    "team_name": "Beadling SC 08/07G GA",
+    "club_name": "Beadling SC 08/",
+    "conference": "Mid-America",
+    "age_group": "U19",
+    "group_id": "400282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309327",
+    "team_name": "Century United Soccer 08/07G GA",
+    "club_name": "Century United Soccer 08/",
+    "conference": "Mid-America",
+    "age_group": "U19",
+    "group_id": "400282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308385",
+    "team_name": "Cincinnati United 08/07G GA",
+    "club_name": "Cincinnati United 08/",
+    "conference": "Mid-America",
+    "age_group": "U19",
+    "group_id": "400282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308379",
+    "team_name": "Club Ohio 08/07G GA",
+    "club_name": "Club Ohio 08/",
+    "conference": "Mid-America",
+    "age_group": "U19",
+    "group_id": "400282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309211",
+    "team_name": "Columbus United 08/07G GA",
+    "club_name": "Columbus United 08/",
+    "conference": "Mid-America",
+    "age_group": "U19",
+    "group_id": "400282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331332",
+    "team_name": "Indy Premier SC 08/07G GA",
+    "club_name": "Indy Premier SC 08/",
+    "conference": "Mid-America",
+    "age_group": "U19",
+    "group_id": "400282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302857",
+    "team_name": "Kings Hammer Soccer Club 08/07G GA",
+    "club_name": "Kings Hammer Soccer Club 08/",
+    "conference": "Mid-America",
+    "age_group": "U19",
+    "group_id": "400282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278695",
+    "team_name": "Nashville United Soccer Academy 08/07G GA",
+    "club_name": "Nashville United Soccer Academy 08/",
+    "conference": "Mid-America",
+    "age_group": "U19",
+    "group_id": "400282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272761",
+    "team_name": "One Knoxville Youth Club 08/07G GA",
+    "club_name": "One Knoxville Youth Club 08/",
+    "conference": "Mid-America",
+    "age_group": "U19",
+    "group_id": "400282"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3298709",
+    "team_name": "Baltimore Armour 08/07G GA",
+    "club_name": "Baltimore Armour 08/",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U19",
+    "group_id": "400283"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3256642",
+    "team_name": "Baltimore Celtic Soccer Club 08/07G GA",
+    "club_name": "Baltimore Celtic Soccer Club 08/",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U19",
+    "group_id": "400283"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308194",
+    "team_name": "Coppermine Soccer Club 08/07G GA",
+    "club_name": "Coppermine Soccer Club 08/",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U19",
+    "group_id": "400283"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300926",
+    "team_name": "Keystone FC 08/07G GA",
+    "club_name": "Keystone FC 08/",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U19",
+    "group_id": "400283"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275629",
+    "team_name": "LVU Rush 08/07G GA",
+    "club_name": "LVU Rush 08/",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U19",
+    "group_id": "400283"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279344",
+    "team_name": "PA Classics 08/07G GA",
+    "club_name": "PA Classics 08/",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U19",
+    "group_id": "400283"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312590",
+    "team_name": "Real Futbol Academy 08/07G GA",
+    "club_name": "Real Futbol Academy 08/",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U19",
+    "group_id": "400283"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307837",
+    "team_name": "SJEB FC 08/07G GA",
+    "club_name": "SJEB FC 08/",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U19",
+    "group_id": "400283"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3292980",
+    "team_name": "Sporting Athletic Club 08/07G GA",
+    "club_name": "Sporting Athletic Club 08/",
+    "conference": "Mid-Atlantic North",
+    "age_group": "U19",
+    "group_id": "400283"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279644",
+    "team_name": "Alexandria SA 08/07G GA",
+    "club_name": "Alexandria SA 08/",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U19",
+    "group_id": "400284"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3292499",
+    "team_name": "Charlotte Development Academy 08/07G GA",
+    "club_name": "Charlotte Development Academy 08/",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U19",
+    "group_id": "400284"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331630",
+    "team_name": "Charlotte Independence SC 08/07G GA",
+    "club_name": "Charlotte Independence SC 08/",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U19",
+    "group_id": "400284"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272683",
+    "team_name": "Loudoun Soccer Club 08/07G GA",
+    "club_name": "Loudoun Soccer Club 08/",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U19",
+    "group_id": "400284"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275708",
+    "team_name": "McLean YS 08/07G GA",
+    "club_name": "McLean YS 08/",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U19",
+    "group_id": "400284"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272903",
+    "team_name": "Northern Virginia Alliance 08/07G GA",
+    "club_name": "Northern Virginia Alliance 08/",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U19",
+    "group_id": "400284"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307595",
+    "team_name": "Skyline Elite 08/07G GA",
+    "club_name": "Skyline Elite 08/",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U19",
+    "group_id": "400284"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3294369",
+    "team_name": "Springfield SYC Soccer 08/07G GA",
+    "club_name": "Springfield SYC Soccer 08/",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U19",
+    "group_id": "400284"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283653",
+    "team_name": "The St. James Football Club 08/07G GA",
+    "club_name": "The St. James Football Club 08/",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U19",
+    "group_id": "400284"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308335",
+    "team_name": "Triangle United 08/07G GA",
+    "club_name": "Triangle United 08/",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U19",
+    "group_id": "400284"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275807",
+    "team_name": "Virginia Revolution SC 08/07G GA",
+    "club_name": "Virginia Revolution SC 08/",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U19",
+    "group_id": "400284"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299859",
+    "team_name": "Wake FC 08/07G GA",
+    "club_name": "Wake FC 08/",
+    "conference": "Mid-Atlantic South",
+    "age_group": "U19",
+    "group_id": "400284"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307746",
+    "team_name": "Central Illinois United 08/07G GA",
+    "club_name": "Central Illinois United 08/",
+    "conference": "Midwest East",
+    "age_group": "U19",
+    "group_id": "400285"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284104",
+    "team_name": "Elmbrook United 08/07G GA",
+    "club_name": "Elmbrook United 08/",
+    "conference": "Midwest East",
+    "age_group": "U19",
+    "group_id": "400285"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3283980",
+    "team_name": "FC United Soccer Club 08/07G GA",
+    "club_name": "FC United Soccer Club 08/",
+    "conference": "Midwest East",
+    "age_group": "U19",
+    "group_id": "400285"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300648",
+    "team_name": "Galaxy SC 08/07G GA",
+    "club_name": "Galaxy SC 08/",
+    "conference": "Midwest East",
+    "age_group": "U19",
+    "group_id": "400285"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3281550",
+    "team_name": "Madison 56ers 08/07G GA",
+    "club_name": "Madison 56ers 08/",
+    "conference": "Midwest East",
+    "age_group": "U19",
+    "group_id": "400285"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302449",
+    "team_name": "Michigan Jaguars 08/07G GA",
+    "club_name": "Michigan Jaguars 08/",
+    "conference": "Midwest East",
+    "age_group": "U19",
+    "group_id": "400285"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3244322",
+    "team_name": "Michigan Tigers FC 08/07G GA",
+    "club_name": "Michigan Tigers FC 08/",
+    "conference": "Midwest East",
+    "age_group": "U19",
+    "group_id": "400285"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279779",
+    "team_name": "Midwest United 08/07G GA",
+    "club_name": "Midwest United 08/",
+    "conference": "Midwest East",
+    "age_group": "U19",
+    "group_id": "400285"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275700",
+    "team_name": "Sockers FC 08/07G GA",
+    "club_name": "Sockers FC 08/",
+    "conference": "Midwest East",
+    "age_group": "U19",
+    "group_id": "400285"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3300986",
+    "team_name": "Kansas Rush 08/07G GA",
+    "club_name": "Kansas Rush 08/",
+    "conference": "Midwest West",
+    "age_group": "U19",
+    "group_id": "400286"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278011",
+    "team_name": "North Shore United 08/07G GA",
+    "club_name": "North Shore United 08/",
+    "conference": "Midwest West",
+    "age_group": "U19",
+    "group_id": "400286"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299609",
+    "team_name": "SC Wave 08/07G GA",
+    "club_name": "SC Wave 08/",
+    "conference": "Midwest West",
+    "age_group": "U19",
+    "group_id": "400286"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303411",
+    "team_name": "Salvo SC 08/07G GA",
+    "club_name": "Salvo SC 08/",
+    "conference": "Midwest West",
+    "age_group": "U19",
+    "group_id": "400286"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272842",
+    "team_name": "Sporting City Soccer Club 08/07G GA",
+    "club_name": "Sporting City Soccer Club 08/",
+    "conference": "Midwest West",
+    "age_group": "U19",
+    "group_id": "400286"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3296393",
+    "team_name": "Sporting Nebraska FC 08/07G GA",
+    "club_name": "Sporting Nebraska FC 08/",
+    "conference": "Midwest West",
+    "age_group": "U19",
+    "group_id": "400286"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308525",
+    "team_name": "Tonka Fusion Elite 08/07G GA",
+    "club_name": "Tonka Fusion Elite 08/",
+    "conference": "Midwest West",
+    "age_group": "U19",
+    "group_id": "400286"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272887",
+    "team_name": "Union KC Soccer Club 08/07G GA",
+    "club_name": "Union KC Soccer Club 08/",
+    "conference": "Midwest West",
+    "age_group": "U19",
+    "group_id": "400286"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273897",
+    "team_name": "VSA Rush 08/07G GA",
+    "club_name": "VSA Rush 08/",
+    "conference": "Midwest West",
+    "age_group": "U19",
+    "group_id": "400286"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309035",
+    "team_name": "ALBION SC Las Vegas 08/07G GA",
+    "club_name": "ALBION SC Las Vegas 08/",
+    "conference": "Mountain West",
+    "age_group": "U19",
+    "group_id": "400287"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274189",
+    "team_name": "Broomfield Soccer Club 08/07G GA",
+    "club_name": "Broomfield Soccer Club 08/",
+    "conference": "Mountain West",
+    "age_group": "U19",
+    "group_id": "400287"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272862",
+    "team_name": "Colorado United 08/07G GA",
+    "club_name": "Colorado United 08/",
+    "conference": "Mountain West",
+    "age_group": "U19",
+    "group_id": "400287"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3330808",
+    "team_name": "Las Vegas Sports Academy 08/07G GA",
+    "club_name": "Las Vegas Sports Academy 08/",
+    "conference": "Mountain West",
+    "age_group": "U19",
+    "group_id": "400287"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331721",
+    "team_name": "NM Rapids SC 08/07G GA",
+    "club_name": "NM Rapids SC 08/",
+    "conference": "Mountain West",
+    "age_group": "U19",
+    "group_id": "400287"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272907",
+    "team_name": "New Mexico Soccer Academy 08/07G GA",
+    "club_name": "New Mexico Soccer Academy 08/",
+    "conference": "Mountain West",
+    "age_group": "U19",
+    "group_id": "400287"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272723",
+    "team_name": "Utah Celtic 08/07G GA",
+    "club_name": "Utah Celtic 08/",
+    "conference": "Mountain West",
+    "age_group": "U19",
+    "group_id": "400287"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273837",
+    "team_name": "Wasatch SC 08/07G GA",
+    "club_name": "Wasatch SC 08/",
+    "conference": "Mountain West",
+    "age_group": "U19",
+    "group_id": "400287"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3273443",
+    "team_name": "Bayside FC 08/07G GA",
+    "club_name": "Bayside FC 08/",
+    "conference": "Northeast",
+    "age_group": "U19",
+    "group_id": "400288"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331794",
+    "team_name": "Cedar Stars Academy - Bergen 08/07G GA",
+    "club_name": "Cedar Stars Academy - Bergen 08/",
+    "conference": "Northeast",
+    "age_group": "U19",
+    "group_id": "400288"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3278240",
+    "team_name": "Cedar Stars Academy - Monmouth 08/07G GA",
+    "club_name": "Cedar Stars Academy - Monmouth 08/",
+    "conference": "Northeast",
+    "age_group": "U19",
+    "group_id": "400288"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331811",
+    "team_name": "DUSC 08/07G GA",
+    "club_name": "DUSC 08/",
+    "conference": "Northeast",
+    "age_group": "U19",
+    "group_id": "400288"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3305616",
+    "team_name": "Long Island SC 08/07G GA",
+    "club_name": "Long Island SC 08/",
+    "conference": "Northeast",
+    "age_group": "U19",
+    "group_id": "400288"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3311128",
+    "team_name": "NEFC 08/07G GA Navy",
+    "club_name": "NEFC 08/ GA Navy",
+    "conference": "Northeast",
+    "age_group": "U19",
+    "group_id": "400288"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3311133",
+    "team_name": "NEFC 08/07G GA Red",
+    "club_name": "NEFC 08/ GA Red",
+    "conference": "Northeast",
+    "age_group": "U19",
+    "group_id": "400288"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307346",
+    "team_name": "New York SC 08/07G GA",
+    "club_name": "New York SC 08/",
+    "conference": "Northeast",
+    "age_group": "U19",
+    "group_id": "400288"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3299765",
+    "team_name": "Oakwood Soccer Club 08/07G GA",
+    "club_name": "Oakwood Soccer Club 08/",
+    "conference": "Northeast",
+    "age_group": "U19",
+    "group_id": "400288"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277419",
+    "team_name": "RNY FC Youth 08/07G GA",
+    "club_name": "RNY FC Youth 08/",
+    "conference": "Northeast",
+    "age_group": "U19",
+    "group_id": "400288"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275004",
+    "team_name": "Rhode Island Surf 08/07G GA",
+    "club_name": "Rhode Island Surf 08/",
+    "conference": "Northeast",
+    "age_group": "U19",
+    "group_id": "400288"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307927",
+    "team_name": "STA 08/07G GA",
+    "club_name": "STA 08/",
+    "conference": "Northeast",
+    "age_group": "U19",
+    "group_id": "400288"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279007",
+    "team_name": "Seacoast United 08/07G GA",
+    "club_name": "Seacoast United 08/",
+    "conference": "Northeast",
+    "age_group": "U19",
+    "group_id": "400288"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307271",
+    "team_name": "Syracuse Development Academy (SDA) 08/07G GA",
+    "club_name": "Syracuse Development Academy (SDA) 08/",
+    "conference": "Northeast",
+    "age_group": "U19",
+    "group_id": "400288"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3319668",
+    "team_name": "1974 Newark FC 08/07G GA",
+    "club_name": "1974 Newark FC 08/",
+    "conference": "Northwest",
+    "age_group": "U19",
+    "group_id": "400289"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331910",
+    "team_name": "Ajax United 08/07G GA",
+    "club_name": "Ajax United 08/",
+    "conference": "Northwest",
+    "age_group": "U19",
+    "group_id": "400289"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284103",
+    "team_name": "Almaden FC 08/07G GA",
+    "club_name": "Almaden FC 08/",
+    "conference": "Northwest",
+    "age_group": "U19",
+    "group_id": "400289"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277820",
+    "team_name": "Blues FC 08/07G GA",
+    "club_name": "Blues FC 08/",
+    "conference": "Northwest",
+    "age_group": "U19",
+    "group_id": "400289"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331917",
+    "team_name": "Clovis Crossfire  08/07G GA",
+    "club_name": "Clovis Crossfire 08/",
+    "conference": "Northwest",
+    "age_group": "U19",
+    "group_id": "400289"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3275405",
+    "team_name": "Lamorinda SC 08/07G GA",
+    "club_name": "Lamorinda SC 08/",
+    "conference": "Northwest",
+    "age_group": "U19",
+    "group_id": "400289"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3282757",
+    "team_name": "Napa United 08/07G GA",
+    "club_name": "Napa United 08/",
+    "conference": "Northwest",
+    "age_group": "U19",
+    "group_id": "400289"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3286462",
+    "team_name": "Sacramento United 08/07G GA",
+    "club_name": "Sacramento United 08/",
+    "conference": "Northwest",
+    "age_group": "U19",
+    "group_id": "400289"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3306982",
+    "team_name": "San Francisco Glens Soccer Club 08/07G GA",
+    "club_name": "San Francisco Glens Soccer Club 08/",
+    "conference": "Northwest",
+    "age_group": "U19",
+    "group_id": "400289"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331926",
+    "team_name": "Santa Clara Sporting 08/07G GA",
+    "club_name": "Santa Clara Sporting 08/",
+    "conference": "Northwest",
+    "age_group": "U19",
+    "group_id": "400289"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3331946",
+    "team_name": "Silicon Valley SA 08/07G GA",
+    "club_name": "Silicon Valley SA 08/",
+    "conference": "Northwest",
+    "age_group": "U19",
+    "group_id": "400289"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309962",
+    "team_name": "South Valley Surf SC 08/07G GA",
+    "club_name": "South Valley Surf SC 08/",
+    "conference": "Northwest",
+    "age_group": "U19",
+    "group_id": "400289"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3297879",
+    "team_name": "Capital FC 08/07G GA",
+    "club_name": "Capital FC 08/",
+    "conference": "Pacific Northwest",
+    "age_group": "U19",
+    "group_id": "400290"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303581",
+    "team_name": "Columbia Premier Soccer Club 08/07G GA",
+    "club_name": "Columbia Premier Soccer Club 08/",
+    "conference": "Pacific Northwest",
+    "age_group": "U19",
+    "group_id": "400290"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3289345",
+    "team_name": "Eugene Metro FC 08/07G GA",
+    "club_name": "Eugene Metro FC 08/",
+    "conference": "Pacific Northwest",
+    "age_group": "U19",
+    "group_id": "400290"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3297440",
+    "team_name": "NPSA WW SURF 08/07G GA",
+    "club_name": "NPSA WW SURF 08/",
+    "conference": "Pacific Northwest",
+    "age_group": "U19",
+    "group_id": "400290"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3294863",
+    "team_name": "Oregon Premier FC 08/07G GA",
+    "club_name": "Oregon Premier FC 08/",
+    "conference": "Pacific Northwest",
+    "age_group": "U19",
+    "group_id": "400290"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3274455",
+    "team_name": "Seattle Celtic 08/07G GA",
+    "club_name": "Seattle Celtic 08/",
+    "conference": "Pacific Northwest",
+    "age_group": "U19",
+    "group_id": "400290"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308513",
+    "team_name": "Seattle Reign Academy 08/07G GA",
+    "club_name": "Seattle Reign Academy 08/",
+    "conference": "Pacific Northwest",
+    "age_group": "U19",
+    "group_id": "400290"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279232",
+    "team_name": "Spokane Shadow 08/07G GA",
+    "club_name": "Spokane Shadow 08/",
+    "conference": "Pacific Northwest",
+    "age_group": "U19",
+    "group_id": "400290"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284726",
+    "team_name": "United PDX 08/07G GA",
+    "club_name": "United PDX 08/",
+    "conference": "Pacific Northwest",
+    "age_group": "U19",
+    "group_id": "400290"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332010",
+    "team_name": "Washington East Surf Soccer Club 08/07G GA",
+    "club_name": "Washington East Surf Soccer Club 08/",
+    "conference": "Pacific Northwest",
+    "age_group": "U19",
+    "group_id": "400290"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308647",
+    "team_name": "Washington Rush 08/07G GA",
+    "club_name": "Washington Rush 08/",
+    "conference": "Pacific Northwest",
+    "age_group": "U19",
+    "group_id": "400290"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307985",
+    "team_name": "Westside Metros FC 08/07G GA",
+    "club_name": "Westside Metros FC 08/",
+    "conference": "Pacific Northwest",
+    "age_group": "U19",
+    "group_id": "400290"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3272626",
+    "team_name": "Florida United 08/07G GA",
+    "club_name": "Florida United 08/",
+    "conference": "Southeast",
+    "age_group": "U19",
+    "group_id": "400291"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3279291",
+    "team_name": "Hoover-Vestavia Soccer 08/07G GA",
+    "club_name": "Hoover-Vestavia Soccer 08/",
+    "conference": "Southeast",
+    "age_group": "U19",
+    "group_id": "400291"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3310807",
+    "team_name": "IMG Academy 08/07G GA",
+    "club_name": "IMG Academy 08/",
+    "conference": "Southeast",
+    "age_group": "U19",
+    "group_id": "400291"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308762",
+    "team_name": "Palm Beach Kicks 08/07G GA",
+    "club_name": "Palm Beach Kicks 08/",
+    "conference": "Southeast",
+    "age_group": "U19",
+    "group_id": "400291"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307396",
+    "team_name": "Pinecrest Premier Soccer 08/07G GA",
+    "club_name": "Pinecrest Premier Soccer 08/",
+    "conference": "Southeast",
+    "age_group": "U19",
+    "group_id": "400291"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3284060",
+    "team_name": "Southern Soccer Academy 08/07G GA",
+    "club_name": "Southern Soccer Academy 08/",
+    "conference": "Southeast",
+    "age_group": "U19",
+    "group_id": "400291"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3277726",
+    "team_name": "Space Coast United 08/07G GA",
+    "club_name": "Space Coast United 08/",
+    "conference": "Southeast",
+    "age_group": "U19",
+    "group_id": "400291"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312416",
+    "team_name": "TopHat 08/07G GA Gold",
+    "club_name": "TopHat 08/ GA Gold",
+    "conference": "Southeast",
+    "age_group": "U19",
+    "group_id": "400291"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3312423",
+    "team_name": "TopHat 08/07G GA Navy",
+    "club_name": "TopHat 08/ GA Navy",
+    "conference": "Southeast",
+    "age_group": "U19",
+    "group_id": "400291"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308923",
+    "team_name": "West Florida Flames 08/07G GA",
+    "club_name": "West Florida Flames 08/",
+    "conference": "Southeast",
+    "age_group": "U19",
+    "group_id": "400291"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3282907",
+    "team_name": "ALBION SC San Diego 08/07G GA",
+    "club_name": "ALBION SC San Diego 08/",
+    "conference": "Southwest",
+    "age_group": "U19",
+    "group_id": "400292"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3304696",
+    "team_name": "City SC 08/07G GA Blue",
+    "club_name": "City SC 08/ GA Blue",
+    "conference": "Southwest",
+    "age_group": "U19",
+    "group_id": "400292"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3304695",
+    "team_name": "City SC 08/07G GA White",
+    "club_name": "City SC 08/ GA White",
+    "conference": "Southwest",
+    "age_group": "U19",
+    "group_id": "400292"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307333",
+    "team_name": "City SC Southwest 08/07G GA",
+    "club_name": "City SC Southwest 08/",
+    "conference": "Southwest",
+    "age_group": "U19",
+    "group_id": "400292"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3303512",
+    "team_name": "FC Tucson Youth Soccer 08/07G GA",
+    "club_name": "FC Tucson Youth Soccer 08/",
+    "conference": "Southwest",
+    "age_group": "U19",
+    "group_id": "400292"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3285485",
+    "team_name": "FRAM SC 08/07G GA",
+    "club_name": "FRAM SC 08/",
+    "conference": "Southwest",
+    "age_group": "U19",
+    "group_id": "400292"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332136",
+    "team_name": "LA Surf Soccer Club 08/07G GA",
+    "club_name": "LA Surf Soccer Club 08/",
+    "conference": "Southwest",
+    "age_group": "U19",
+    "group_id": "400292"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3308944",
+    "team_name": "Rangers FC 08/07G GA",
+    "club_name": "Rangers FC 08/",
+    "conference": "Southwest",
+    "age_group": "U19",
+    "group_id": "400292"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3309239",
+    "team_name": "SC del Sol 08/07G GA",
+    "club_name": "SC del Sol 08/",
+    "conference": "Southwest",
+    "age_group": "U19",
+    "group_id": "400292"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3302945",
+    "team_name": "SDSC Surf 08/07G GA",
+    "club_name": "SDSC Surf 08/",
+    "conference": "Southwest",
+    "age_group": "U19",
+    "group_id": "400292"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3307064",
+    "team_name": "SoCal Reds FC 08/07G GA",
+    "club_name": "SoCal Reds FC 08/",
+    "conference": "Southwest",
+    "age_group": "U19",
+    "group_id": "400292"
+  },
+  {
+    "event_id": "42137",
+    "team_id": "3332140",
+    "team_name": "West Coast F.C.  08/07G GA",
+    "club_name": "West Coast F.C. 08/",
+    "conference": "Southwest",
+    "age_group": "U19",
+    "group_id": "400292"
+  }
+]

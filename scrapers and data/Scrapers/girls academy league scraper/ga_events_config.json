@@ -1,0 +1,1497 @@
+{
+  "last_discovery": "2025-12-08T12:20:15.626210",
+  "events": {
+    "47820": {
+      "event_id": "47820",
+      "name": "Winter Showcase",
+      "event_type": "CHAMPIONS_CUP",
+      "source_url": "https://girlsacademyleague.com/winter-showcase/",
+      "gotsport_url": "https://system.gotsport.com/org_event/events/47820",
+      "start_date": "2024-12-05",
+      "end_date": "2024-12-09",
+      "discovered_at": "2025-12-08T12:20:06.031744",
+      "last_scraped": "2025-12-12T11:56:24.101786",
+      "groups": [
+        {
+          "group_id": "419731",
+          "division_name": "U13 Champions Cup",
+          "url": "https://system.gotsport.com/org_event/events/47820/schedules?group=419731"
+        },
+        {
+          "group_id": "419732",
+          "division_name": "U14 Champions Cup",
+          "url": "https://system.gotsport.com/org_event/events/47820/schedules?group=419732"
+        },
+        {
+          "group_id": "419734",
+          "division_name": "U15 Champions Cup",
+          "url": "https://system.gotsport.com/org_event/events/47820/schedules?group=419734"
+        },
+        {
+          "group_id": "419733",
+          "division_name": "U15 Showcase",
+          "url": "https://system.gotsport.com/org_event/events/47820/schedules?group=419733"
+        },
+        {
+          "group_id": "419736",
+          "division_name": "U16 Champions Cup",
+          "url": "https://system.gotsport.com/org_event/events/47820/schedules?group=419736"
+        },
+        {
+          "group_id": "419735",
+          "division_name": "U16 Showcase",
+          "url": "https://system.gotsport.com/org_event/events/47820/schedules?group=419735"
+        },
+        {
+          "group_id": "419738",
+          "division_name": "U17 Champions Cup",
+          "url": "https://system.gotsport.com/org_event/events/47820/schedules?group=419738"
+        },
+        {
+          "group_id": "419737",
+          "division_name": "U17 Showcase",
+          "url": "https://system.gotsport.com/org_event/events/47820/schedules?group=419737"
+        },
+        {
+          "group_id": "419740",
+          "division_name": "U19 Champions Cup",
+          "url": "https://system.gotsport.com/org_event/events/47820/schedules?group=419740"
+        },
+        {
+          "group_id": "419739",
+          "division_name": "U19 Showcase",
+          "url": "https://system.gotsport.com/org_event/events/47820/schedules?group=419739"
+        }
+      ]
+    },
+    "47750": {
+      "event_id": "47750",
+      "name": "East Regional",
+      "event_type": "REGIONAL",
+      "source_url": "https://girlsacademyleague.com/regional-east-2024/",
+      "gotsport_url": "https://system.gotsport.com/org_event/events/47750",
+      "start_date": "2025-11-07",
+      "end_date": "2025-11-09",
+      "discovered_at": "2025-12-08T12:20:13.983378",
+      "last_scraped": "2025-12-12T11:57:07.417250",
+      "groups": [
+        {
+          "group_id": "418758",
+          "division_name": "U12 Showcase",
+          "url": "https://system.gotsport.com/org_event/events/47750/schedules?group=418758"
+        },
+        {
+          "group_id": "418759",
+          "division_name": "U13 Showcase",
+          "url": "https://system.gotsport.com/org_event/events/47750/schedules?group=418759"
+        },
+        {
+          "group_id": "418760",
+          "division_name": "U14 Showcase",
+          "url": "https://system.gotsport.com/org_event/events/47750/schedules?group=418760"
+        }
+      ]
+    },
+    "37249": {
+      "event_id": "37249",
+      "name": "Champions Cup Finals 2024-25",
+      "event_type": "FINALS",
+      "source_url": "https://system.gotsport.com/org_event/events/37249",
+      "gotsport_url": "https://system.gotsport.com/org_event/events/37249",
+      "start_date": "2025-03-06",
+      "end_date": "2025-03-11",
+      "discovered_at": "2025-12-12T00:00:00",
+      "last_scraped": "2025-12-12T11:58:12.325907",
+      "groups": [
+        {
+          "group_id": "306678",
+          "division_name": "U13 Champions Cup Finals",
+          "url": "https://system.gotsport.com/org_event/events/37249/schedules?group=306678"
+        },
+        {
+          "group_id": "306680",
+          "division_name": "U14 Champions Cup Finals",
+          "url": "https://system.gotsport.com/org_event/events/37249/schedules?group=306680"
+        },
+        {
+          "group_id": "306679",
+          "division_name": "U14 Showcase",
+          "url": "https://system.gotsport.com/org_event/events/37249/schedules?group=306679"
+        },
+        {
+          "group_id": "306681",
+          "division_name": "U15 Champions Cup Finals",
+          "url": "https://system.gotsport.com/org_event/events/37249/schedules?group=306681"
+        },
+        {
+          "group_id": "306682",
+          "division_name": "U15 Showcase",
+          "url": "https://system.gotsport.com/org_event/events/37249/schedules?group=306682"
+        },
+        {
+          "group_id": "306683",
+          "division_name": "U16 Champions Cup Finals",
+          "url": "https://system.gotsport.com/org_event/events/37249/schedules?group=306683"
+        },
+        {
+          "group_id": "306684",
+          "division_name": "U16 Showcase",
+          "url": "https://system.gotsport.com/org_event/events/37249/schedules?group=306684"
+        },
+        {
+          "group_id": "306685",
+          "division_name": "U17 Champions Cup Finals",
+          "url": "https://system.gotsport.com/org_event/events/37249/schedules?group=306685"
+        },
+        {
+          "group_id": "306686",
+          "division_name": "U17 Showcase",
+          "url": "https://system.gotsport.com/org_event/events/37249/schedules?group=306686"
+        },
+        {
+          "group_id": "306687",
+          "division_name": "U19 Champions Cup Finals",
+          "url": "https://system.gotsport.com/org_event/events/37249/schedules?group=306687"
+        },
+        {
+          "group_id": "306688",
+          "division_name": "U19 Showcase",
+          "url": "https://system.gotsport.com/org_event/events/37249/schedules?group=306688"
+        }
+      ]
+    },
+    "37251": {
+      "event_id": "37251",
+      "name": "Summer Showcase & Playoffs 2024-25",
+      "event_type": "PLAYOFFS",
+      "source_url": "https://system.gotsport.com/org_event/events/37251",
+      "gotsport_url": "https://system.gotsport.com/org_event/events/37251",
+      "start_date": "2025-06-19",
+      "end_date": "2025-06-24",
+      "discovered_at": "2025-12-12T00:00:00",
+      "last_scraped": "2025-12-12T11:59:56.860545",
+      "groups": [
+        {
+          "group_id": "306693",
+          "division_name": "U13 Playoffs",
+          "url": "https://system.gotsport.com/org_event/events/37251/schedules?group=306693"
+        },
+        {
+          "group_id": "306694",
+          "division_name": "U14 Playoffs",
+          "url": "https://system.gotsport.com/org_event/events/37251/schedules?group=306694"
+        },
+        {
+          "group_id": "306695",
+          "division_name": "U15 Playoffs",
+          "url": "https://system.gotsport.com/org_event/events/37251/schedules?group=306695"
+        },
+        {
+          "group_id": "306696",
+          "division_name": "U15 Showcase",
+          "url": "https://system.gotsport.com/org_event/events/37251/schedules?group=306696"
+        },
+        {
+          "group_id": "306697",
+          "division_name": "U16 Playoffs",
+          "url": "https://system.gotsport.com/org_event/events/37251/schedules?group=306697"
+        },
+        {
+          "group_id": "306698",
+          "division_name": "U16 Showcase",
+          "url": "https://system.gotsport.com/org_event/events/37251/schedules?group=306698"
+        },
+        {
+          "group_id": "306699",
+          "division_name": "U17 Playoffs",
+          "url": "https://system.gotsport.com/org_event/events/37251/schedules?group=306699"
+        },
+        {
+          "group_id": "306700",
+          "division_name": "U17 Showcase",
+          "url": "https://system.gotsport.com/org_event/events/37251/schedules?group=306700"
+        },
+        {
+          "group_id": "306701",
+          "division_name": "U19 Playoffs",
+          "url": "https://system.gotsport.com/org_event/events/37251/schedules?group=306701"
+        }
+      ]
+    }
+  },
+  "team_mapping": {
+    "NEFC 13G GA Red": {
+      "47820": "3516260"
+    },
+    "Spokane Shadow": {
+      "47820": "3513502",
+      "37249": "2803898",
+      "37251": "2922779"
+    },
+    "Beadling SC": {
+      "47820": "3427288",
+      "37249": "2803127",
+      "37251": "2906018"
+    },
+    "Michigan Jaguars": {
+      "47820": "3467477",
+      "47750": "3467359",
+      "37249": "2793143",
+      "37251": "2934719"
+    },
+    "FRAM SC": {
+      "47820": "3492531",
+      "37249": "2840783",
+      "37251": "2941831"
+    },
+    "TopHat 13G GA Gold": {
+      "47820": "3509279"
+    },
+    "HTX": {
+      "47820": "3423925",
+      "37249": "2794183",
+      "37251": "2895898"
+    },
+    "New York SC": {
+      "47820": "3472969",
+      "37251": "2897472"
+    },
+    "Florida United": {
+      "47820": "3423866",
+      "37249": "2804973",
+      "37251": "3101711"
+    },
+    "Indy Premier SC": {
+      "47820": "3427783",
+      "47750": "3481863",
+      "37249": "2806625",
+      "37251": "2908257"
+    },
+    "Virginia Revolution SC": {
+      "47820": "3491334",
+      "37251": "3100644"
+    },
+    "Lamorinda SC": {
+      "47820": "3420423",
+      "37249": "2785626",
+      "37251": "2910237"
+    },
+    "Galaxy SC": {
+      "47820": "3513622",
+      "47750": "3506877",
+      "37249": "2797319",
+      "37251": "2937351"
+    },
+    "City SC 13G GA White": {
+      "47820": "3432095"
+    },
+    "Lou Fusz Athletic": {
+      "47820": "3456325",
+      "37249": "2805645",
+      "37251": "2913027"
+    },
+    "Utah Celtic": {
+      "47820": "3470331",
+      "37249": "2795224",
+      "37251": "3102575"
+    },
+    "NEFC 12G GA Red": {
+      "47820": "3516262",
+      "37249": "2805482"
+    },
+    "SJEB FC": {
+      "47820": "3495555",
+      "47750": "3495548",
+      "37251": "3085937"
+    },
+    "Cincinnati United": {
+      "47820": "3504018",
+      "47750": "3495603"
+    },
+    "Rhode Island Surf": {
+      "47820": "3431294",
+      "47750": "3431090",
+      "37251": "2897674"
+    },
+    "FC United Soccer Club": {
+      "47820": "3506279",
+      "47750": "3451393",
+      "37249": "2801607",
+      "37251": "2943992"
+    },
+    "City SC 12G GA White": {
+      "47820": "3432091",
+      "37249": "2805610",
+      "37251": "3009961"
+    },
+    "TopHat 12G GA Gold": {
+      "47820": "3509268",
+      "37249": "2804835",
+      "37251": "3101289"
+    },
+    "NEFC 11G GA Red": {
+      "47820": "3516263",
+      "37249": "2794723",
+      "37251": "3144903"
+    },
+    "Union KC Soccer Club": {
+      "47820": "3488737",
+      "47750": "3486420",
+      "37251": "2944451"
+    },
+    "City SC 11G GA White": {
+      "47820": "3432088",
+      "37249": "2805608",
+      "37251": "3009966"
+    },
+    "Columbus United": {
+      "47820": "3483311",
+      "47750": "3483236",
+      "37251": "2945276"
+    },
+    "Real Futbol Academy": {
+      "47820": "3452037",
+      "47750": "3452021",
+      "37249": "2823405",
+      "37251": "2940164"
+    },
+    "TopHat 11G GA Gold": {
+      "47820": "3509264",
+      "37249": "2804830",
+      "37251": "3101285"
+    },
+    "Kings Hammer Soccer Club": {
+      "47820": "3448615",
+      "47750": "3448538"
+    },
+    "Midwest United": {
+      "47820": "3422759",
+      "47750": "3422707"
+    },
+    "SDSC Surf": {
+      "47820": "3514769",
+      "37249": "2803854",
+      "37251": "2934849"
+    },
+    "STA": {
+      "47820": "3512941",
+      "47750": "3489997",
+      "37249": "2800252",
+      "37251": "3114644"
+    },
+    "St. Louis Development Academy": {
+      "47820": "3513818",
+      "37249": "2806779",
+      "37251": "2895945"
+    },
+    "Silicon Valley SA": {
+      "47820": "3473806",
+      "37249": "2811909",
+      "37251": "2943746"
+    },
+    "SoCal Reds FC": {
+      "47820": "3516246",
+      "37251": "2922063"
+    },
+    "NJ Premier FC 11G Aspire": {
+      "47820": "3529339"
+    },
+    "Madison 56ers": {
+      "47820": "3447654",
+      "47750": "3440444"
+    },
+    "Wasatch SC Wasatch SC": {
+      "47820": "3513036"
+    },
+    "Oakwood Soccer Club": {
+      "47820": "3474194",
+      "47750": "3474176",
+      "37251": "2900671"
+    },
+    "Elmbrook United": {
+      "47820": "3436357",
+      "47750": "3436272"
+    },
+    "TopHat 11G GA Navy": {
+      "47820": "3509335"
+    },
+    "Sacramento United": {
+      "47820": "3429614",
+      "37251": "2903011"
+    },
+    "Colorado United": {
+      "47820": "3456421",
+      "37249": "2875498",
+      "37251": "2944352"
+    },
+    "City SC Southwest": {
+      "47820": "3449867",
+      "37251": "2897571"
+    },
+    "Northern Virginia Alliance": {
+      "47820": "3514353",
+      "47750": "3468635"
+    },
+    "Sporting Nebraska FC": {
+      "47820": "3479035",
+      "37251": "3021643"
+    },
+    "Central Illinois United": {
+      "47820": "3481048",
+      "47750": "3481058",
+      "37251": "2940681"
+    },
+    "South Valley Surf SC": {
+      "47820": "3513194",
+      "37251": "3025079"
+    },
+    "Tulsa Soccer Club": {
+      "47820": "3420634",
+      "47750": "3420606"
+    },
+    "LA Surf Soccer Club": {
+      "47820": "3433577",
+      "37251": "3104538"
+    },
+    "Seattle Celtic": {
+      "47820": "3451383",
+      "37251": "2917023"
+    },
+    "ALBION SC Las Vegas": {
+      "47820": "3513674",
+      "37249": "2801012",
+      "37251": "2895829"
+    },
+    "North Shore United": {
+      "47820": "3456402",
+      "47750": "3456398",
+      "37249": "2806763",
+      "37251": "2895387"
+    },
+    "City SC 11G GA Blue": {
+      "47820": "3432085"
+    },
+    "Columbia Premier Soccer Club": {
+      "47820": "3496651",
+      "37249": "2803885",
+      "37251": "2909407"
+    },
+    "Michigan Tigers FC": {
+      "47820": "3435416",
+      "47750": "3435409"
+    },
+    "Club Ohio": {
+      "47820": "3432333",
+      "47750": "3431114"
+    },
+    "ALBION SC Colorado ALBION SC Colorado": {
+      "47820": "3509321",
+      "47750": "3484202"
+    },
+    "IMG Academy": {
+      "47820": "3482710",
+      "47750": "3482705",
+      "37249": "2841075",
+      "37251": "2912646"
+    },
+    "Blues FC": {
+      "47820": "3514791",
+      "37251": "2912396"
+    },
+    "West Coast F.C.": {
+      "47820": "3494158",
+      "37251": "2939379"
+    },
+    "San Antonio City SC": {
+      "47820": "3513187",
+      "37251": "3091847"
+    },
+    "Sockers FC": {
+      "47820": "3451091",
+      "47750": "3508760",
+      "37251": "2944476"
+    },
+    "ALBION SC San Diego": {
+      "47820": "3430315",
+      "37251": "2908481"
+    },
+    "Eugene Metro FC": {
+      "47820": "3515649",
+      "37251": "2937022"
+    },
+    "Hoover-Vestavia Soccer": {
+      "47820": "3486774",
+      "47750": "3463870",
+      "37251": "2937086"
+    },
+    "NM Rapids SC": {
+      "47820": "3429910",
+      "37251": "2913096"
+    },
+    "Southern Soccer Academy SSA Swarm": {
+      "47820": "3513793",
+      "37251": "3022401"
+    },
+    "SC Wave": {
+      "47820": "3496853",
+      "47750": "3496764",
+      "37249": "2800942",
+      "37251": "2942823"
+    },
+    "Seattle Reign Academy": {
+      "47820": "3445067",
+      "37251": "2898631"
+    },
+    "Oregon Premier FC": {
+      "47820": "3509544",
+      "37251": "2944670"
+    },
+    "Bayside FC": {
+      "47820": "3524425",
+      "47750": "3473764",
+      "37251": "2912573"
+    },
+    "Kansas Rush": {
+      "47820": "3513867",
+      "37251": "2943692"
+    },
+    "Santa Barbara Soccer Club 11G Aspire": {
+      "47820": "3660249"
+    },
+    "Tonka Fusion Elite": {
+      "47820": "3476615",
+      "47750": "3476599",
+      "37249": "2799895",
+      "37251": "2909340"
+    },
+    "United PDX": {
+      "47820": "3437945"
+    },
+    "Loudoun Soccer Club": {
+      "47820": "3514342",
+      "47750": "3481886"
+    },
+    "1974 Newark FC": {
+      "47820": "3513077"
+    },
+    "New Mexico Soccer Academy": {
+      "47820": "3442476",
+      "37251": "2931173"
+    },
+    "BVB International Academy Texas": {
+      "47820": "3512562",
+      "37251": "2944962"
+    },
+    "Salvo SC": {
+      "47820": "3514436",
+      "37251": "2940851"
+    },
+    "Alexandria SA": {
+      "47820": "3511985",
+      "47750": "3494459"
+    },
+    "Las Vegas Sports Academy": {
+      "47820": "3489141",
+      "37251": "3090239"
+    },
+    "Clovis Crossfire": {
+      "47820": "3514265",
+      "37251": "2944005"
+    },
+    "Washington Rush": {
+      "47820": "3514291",
+      "37251": "2939114"
+    },
+    "RISE Soccer Club": {
+      "47820": "3421173",
+      "37251": "2895401"
+    },
+    "Ajax United": {
+      "47820": "3549151",
+      "47750": "3484074",
+      "37251": "3027591"
+    },
+    "Broomfield Soccer Club": {
+      "47820": "3428207",
+      "47750": "3428193",
+      "37249": "2796477",
+      "37251": "2941934"
+    },
+    "Sporting City Soccer Club": {
+      "47820": "3491754",
+      "47750": "3491663"
+    },
+    "NPSA WW SURF": {
+      "47820": "3467507"
+    },
+    "VSA Rush": {
+      "47820": "3513895",
+      "37251": "2899724"
+    },
+    "Napa United Napa United": {
+      "47820": "3513223"
+    },
+    "Westside Metros FC": {
+      "47820": "3513098",
+      "37251": "2937030"
+    },
+    "Rangers FC": {
+      "47820": "3507153"
+    },
+    "TopHat 10G GA Gold": {
+      "47820": "3509226",
+      "37249": "2804824",
+      "37251": "3101284"
+    },
+    "West Florida Flames": {
+      "47820": "3596854",
+      "47750": "3495706",
+      "37249": "2802426",
+      "37251": "3102765"
+    },
+    "NEFC 10G GA Red": {
+      "47820": "3516267",
+      "37249": "2805488",
+      "37251": "2944643"
+    },
+    "City SC 10G GA White": {
+      "47820": "3432062",
+      "37251": "3110923"
+    },
+    "McLean YS": {
+      "47820": "3512591",
+      "47750": "3448497"
+    },
+    "Century United Soccer": {
+      "47820": "3513951",
+      "47750": "3472622",
+      "37249": "2777621",
+      "37251": "2939688"
+    },
+    "RNY FC Youth": {
+      "47820": "3491376",
+      "47750": "3478945",
+      "37251": "2940613"
+    },
+    "Sporting Nebraska FC 10G GA*": {
+      "47820": "3479715"
+    },
+    "Washington East Surf Soccer Club": {
+      "47820": "3515499",
+      "37251": "2930009"
+    },
+    "Atletico Dallas Youth": {
+      "47820": "3480630",
+      "37249": "2807672",
+      "37251": "2936382"
+    },
+    "SC del Sol": {
+      "47820": "3514651",
+      "37249": "2798791",
+      "37251": "2941519"
+    },
+    "Pinecrest Premier Soccer": {
+      "47820": "3514834",
+      "47750": "3495542",
+      "37251": "3104289"
+    },
+    "Santa Barbara Soccer Club 10G Aspire": {
+      "47820": "3660256"
+    },
+    "TopHat 10G GA Navy": {
+      "47820": "3509328",
+      "37251": "3101293"
+    },
+    "Wasatch SC": {
+      "47820": "3513043",
+      "37249": "2807589",
+      "37251": "2912617"
+    },
+    "Triangle United": {
+      "47820": "3513893",
+      "47750": "3423780",
+      "37251": "2895224"
+    },
+    "Dallas Surf": {
+      "47820": "3496106"
+    },
+    "City SC 10G GA Blue": {
+      "47820": "3432027",
+      "37251": "3009960"
+    },
+    "NJ Premier FC 10G Aspire": {
+      "47820": "3529335"
+    },
+    "DUSC": {
+      "47820": "3489150",
+      "47750": "3480734",
+      "37251": "2931735"
+    },
+    "Space Coast United SCU": {
+      "47820": "3509055",
+      "47750": "3475995"
+    },
+    "The St. James Football Club": {
+      "47820": "3467622",
+      "47750": "3474185",
+      "37249": "2794100",
+      "37251": "3111113"
+    },
+    "Capital FC": {
+      "47820": "3484238",
+      "37251": "2935547"
+    },
+    "Syracuse Development Academy (SDA)": {
+      "47820": "3514345",
+      "47750": "3479839",
+      "37251": "3023793"
+    },
+    "City SC 09G GA White": {
+      "47820": "3431961",
+      "37249": "2805606",
+      "37251": "3009965"
+    },
+    "NEFC 09G GA Red": {
+      "47820": "3516268",
+      "37249": "2805493",
+      "37251": "2944650"
+    },
+    "Louisiana TDP Elite": {
+      "47820": "3508597",
+      "47750": "3508591",
+      "37251": "3102257"
+    },
+    "TopHat 09G GA Gold": {
+      "47820": "3509217",
+      "37249": "2804813",
+      "37251": "3101282"
+    },
+    "Seacoast United": {
+      "47820": "3513163",
+      "47750": "3492594",
+      "37251": "2928703"
+    },
+    "Sporting Athletic Club": {
+      "47820": "3514932",
+      "47750": "3496788",
+      "37251": "2915987"
+    },
+    "City SC 09G GA Blue": {
+      "47820": "3431971",
+      "37251": "3009963"
+    },
+    "NJ Premier FC 09G Aspire": {
+      "47820": "3529320"
+    },
+    "TopHat 09G GA Navy": {
+      "47820": "3509319",
+      "37251": "3101292"
+    },
+    "California Football Academy 09G Aspire": {
+      "47820": "3656280"
+    },
+    "City SC Southwest City SW": {
+      "47820": "3498454"
+    },
+    "Sand and Surf SC 09G Aspire": {
+      "47820": "3666667"
+    },
+    "Sporting Athletic Club 08/07G": {
+      "47820": "3514941"
+    },
+    "NEFC 08/07G GA Red": {
+      "47820": "3516272"
+    },
+    "Lou Fusz Athletic 08/07G": {
+      "47820": "3456330"
+    },
+    "Spokane Shadow 08/07G": {
+      "47820": "3513497"
+    },
+    "STA 08/07G": {
+      "47820": "3512935"
+    },
+    "West Coast F.C.  08/07G": {
+      "47820": "3494154"
+    },
+    "HTX 08/07G": {
+      "47820": "3423864"
+    },
+    "Florida United 08/07G": {
+      "47820": "3423847"
+    },
+    "Lamorinda SC 08/07G": {
+      "47820": "3420419"
+    },
+    "FRAM SC 08/07G": {
+      "47820": "3469738"
+    },
+    "Indy Premier SC 08/07G": {
+      "47820": "3427795"
+    },
+    "New York SC 08/07G": {
+      "47820": "3472972"
+    },
+    "City SC 08/07G GA White": {
+      "47820": "3431952"
+    },
+    "Michigan Jaguars 08/07G": {
+      "47820": "3467471"
+    },
+    "TopHat 08/07G GA Gold": {
+      "47820": "3509201"
+    },
+    "Beadling SC 08/07G": {
+      "47820": "3427132"
+    },
+    "IMG Academy 08/07G": {
+      "47820": "3482708"
+    },
+    "Virginia Revolution SC 08/07G": {
+      "47820": "3491320"
+    },
+    "Galaxy SC 08/07G": {
+      "47820": "3423316"
+    },
+    "Utah Celtic 08/07G": {
+      "47820": "3454455"
+    },
+    "NJ Premier FC 08/07G Aspire": {
+      "47820": "3529313"
+    },
+    "NEFC 08/07G GA Navy": {
+      "47820": "3516273"
+    },
+    "Northern Virginia Alliance 08/07G": {
+      "47820": "3514382"
+    },
+    "Cincinnati United 08/07G": {
+      "47820": "3504020"
+    },
+    "Midwest United 08/07G": {
+      "47820": "3422761"
+    },
+    "Oakwood Soccer Club 08/07G": {
+      "47820": "3474190"
+    },
+    "NM Rapids SC 08/07G": {
+      "47820": "3429890"
+    },
+    "South Valley Surf SC 08/07G": {
+      "47820": "3513185"
+    },
+    "Michigan Tigers FC 08/07G": {
+      "47820": "3435424"
+    },
+    "Silicon Valley SA 08/07G": {
+      "47820": "3473802"
+    },
+    "ALBION SC Las Vegas 08/07G": {
+      "47820": "3513671"
+    },
+    "Atletico Dallas Youth 08/07G": {
+      "47820": "3475612"
+    },
+    "Sockers FC 08/07G": {
+      "47820": "3423593"
+    },
+    "Seattle Reign Academy 08/07G": {
+      "47820": "3445041"
+    },
+    "LA Surf Soccer Club 08/07G": {
+      "47820": "3433529"
+    },
+    "Wasatch SC 08/07G": {
+      "47820": "3513045"
+    },
+    "FC United Soccer Club 08/07G": {
+      "47820": "3506286"
+    },
+    "SC Wave 08/07G": {
+      "47820": "3496856"
+    },
+    "SoCal Reds FC 08/07G": {
+      "47820": "3515136"
+    },
+    "Southern Soccer Academy SSA Swarm 07/08G": {
+      "47820": "3513790"
+    },
+    "Washington East Surf Soccer Club 08/07G": {
+      "47820": "3515497"
+    },
+    "Central Illinois United 08/07G": {
+      "47820": "3481050"
+    },
+    "Tonka Fusion Elite 08/07G": {
+      "47820": "3476614"
+    },
+    "City SC Southwest 08/07G": {
+      "47820": "3498427"
+    },
+    "Pinecrest Premier Soccer 08/07G": {
+      "47820": "3514842"
+    },
+    "Union KC Soccer Club 08/07G": {
+      "47820": "3488731"
+    },
+    "Dallas Surf 08/07G": {
+      "47820": "3489679"
+    },
+    "SC del Sol 08/07G": {
+      "47820": "3515175"
+    },
+    "Kings Hammer Soccer Club 08/07G": {
+      "47820": "3448646"
+    },
+    "St. Louis Development Academy 08/07G": {
+      "47820": "3513811"
+    },
+    "City SC 08/07G GA Blue": {
+      "47820": "3431967"
+    },
+    "United PDX 08/07G": {
+      "47820": "3437912"
+    },
+    "Sacramento United 08/07G": {
+      "47820": "3425522"
+    },
+    "Sporting Nebraska FC 08/07G": {
+      "47820": "3478971"
+    },
+    "ALBION SC San Diego 08/07G": {
+      "47820": "3430313"
+    },
+    "Eugene Metro FC 08/07G": {
+      "47820": "3515639"
+    },
+    "North Shore United 08/07G": {
+      "47820": "3456399"
+    },
+    "DUSC 08/07G": {
+      "47820": "3489143"
+    },
+    "San Antonio City SC 08/07G": {
+      "47820": "3513182"
+    },
+    "Hoover-Vestavia Soccer 08/07G": {
+      "47820": "3486771"
+    },
+    "RISE Soccer Club 08/07G": {
+      "47820": "3421167"
+    },
+    "RNY FC Youth 08/07G": {
+      "47820": "3491369"
+    },
+    "Space Coast United SCU 2007/08": {
+      "47820": "3509065"
+    },
+    "SDSC Surf 08/07G": {
+      "47820": "3514763"
+    },
+    "Rangers FC 08/07G": {
+      "47820": "3512508"
+    },
+    "TopHat 08/07G GA Navy": {
+      "47820": "3509209"
+    },
+    "Columbia Premier Soccer Club 08/07G": {
+      "47820": "3496649"
+    },
+    "Clovis Crossfire  08/07G": {
+      "47820": "3514065"
+    },
+    "Washington Rush 08/07G": {
+      "47820": "3514313"
+    },
+    "Bayside FC 08/07G": {
+      "47820": "3525921"
+    },
+    "Madison 56ers 08/07G": {
+      "47820": "3447646"
+    },
+    "The St. James Football Club 08/07G": {
+      "47820": "3467626"
+    },
+    "Rhode Island Surf 08/07G": {
+      "47820": "3431296"
+    },
+    "Seattle Celtic 08/07G": {
+      "47820": "3451372"
+    },
+    "Napa United Napa United 07/08G": {
+      "47820": "3513220"
+    },
+    "Salvo SC 08/07G": {
+      "47820": "3514419"
+    },
+    "Elmbrook United 08/07G": {
+      "47820": "3436360"
+    },
+    "1974 Newark FC 08/07G": {
+      "47820": "3513074"
+    },
+    "Tulsa Soccer Club 08/07G": {
+      "47820": "3420625"
+    },
+    "ALBION SC Colorado ALBION SC Colorado 07/08G": {
+      "47820": "3509313"
+    },
+    "Club Ohio 08/07G": {
+      "47820": "3432340"
+    },
+    "Colorado United 08/07G": {
+      "47820": "3456389"
+    },
+    "Kansas Rush 08/07G": {
+      "47820": "3512286"
+    },
+    "Westside Metros FC 08/07G": {
+      "47820": "3513078"
+    },
+    "Alexandria SA 08/07G": {
+      "47820": "3511986"
+    },
+    "Oregon Premier FC 08/07G": {
+      "47820": "3515199"
+    },
+    "Broomfield Soccer Club 08/07G": {
+      "47820": "3428216"
+    },
+    "Blues FC 08/07G": {
+      "47820": "3514797"
+    },
+    "Las Vegas Sports Academy 08/07G": {
+      "47820": "3489136"
+    },
+    "Ajax United 08/07G": {
+      "47820": "3549141"
+    },
+    "McLean YS 08/07G": {
+      "47820": "3512520"
+    },
+    "Capital FC 08/07G": {
+      "47820": "3484236"
+    },
+    "San Francisco Glens Soccer Club 08/07G": {
+      "47820": "3515042"
+    },
+    "NPSA WW SURF 08/07G": {
+      "47820": "3467500"
+    },
+    "New Mexico Soccer Academy 08/07G": {
+      "47820": "3442472"
+    },
+    "Sporting City Soccer Club 08/07G": {
+      "47820": "3491739"
+    },
+    "Cincinnati United CUP 14G Gold": {
+      "47750": "3455973"
+    },
+    "New York SC 14G GA Blue": {
+      "47750": "3472883"
+    },
+    "Springfield SYC Soccer SYC 2014G Pre-GA": {
+      "47750": "3470463"
+    },
+    "Michigan Jaguars Michigan Jaguars 2014 Girls Pre GA 1": {
+      "47750": "3467421"
+    },
+    "Club Ohio Club Ohio Pre GA": {
+      "47750": "3420473"
+    },
+    "Wake FC 14 WFC PA G": {
+      "47750": "3489856"
+    },
+    "Madison 56ers 2014 U12 Girls Red Pre": {
+      "47750": "3440457"
+    },
+    "Rhode Island Surf 14G GA Blue": {
+      "47750": "3422878"
+    },
+    "Michigan Jaguars Michigan Jaguars 2014 Girls Pre GA 2": {
+      "47750": "3467455"
+    },
+    "IMG Academy IMG Academy U12 Girls": {
+      "47750": "3482680"
+    },
+    "Cincinnati United CUP 14G Black": {
+      "47750": "3456853"
+    },
+    "NEFC 14G GA Red": {
+      "47750": "3496962"
+    },
+    "FC United Soccer Club Chicago FC United Girls 2014 Red Copa": {
+      "47750": "3451414"
+    },
+    "Tulsa Soccer Club 14G Pre": {
+      "47750": "3420620"
+    },
+    "McLean YS McLean Youth Soccer 2014 Girls Green": {
+      "47750": "3429840"
+    },
+    "Virginia Revolution SC VRSC 14G Pre-GA": {
+      "47750": "3474337"
+    },
+    "Broomfield Soccer Club Broomfield Soccer Club 2014G Prestige": {
+      "47750": "3428116"
+    },
+    "New York SC 14G GA White": {
+      "47750": "3472886"
+    },
+    "Pinecrest Premier Soccer 2014 Pre": {
+      "47750": "3495530"
+    },
+    "NEFC 14G GA Navy-ME": {
+      "47750": "3496973"
+    },
+    "FC United Soccer Club Chicago FC United Girls 2014 Red Predator": {
+      "47750": "3451422"
+    },
+    "Triangle United 2014G Triangle United Pre-GA": {
+      "47750": "3423746"
+    },
+    "Palm Beach Kicks PBG 14 GIRLS FGAL Pre GA1": {
+      "47750": "3468352"
+    },
+    "Bayside FC 14G pre-GA": {
+      "47750": "3495577"
+    },
+    "One Knoxville Youth Club One Knox 14G- Yellow": {
+      "47750": "3489214"
+    },
+    "Loudoun Soccer Club Loudoun Pre-GA 14G Red": {
+      "47750": "3468415"
+    },
+    "LVU Rush": {
+      "47750": "3469017"
+    },
+    "Charlotte Independence SC": {
+      "47750": "3496061"
+    },
+    "Baltimore Celtic Soccer Club": {
+      "47750": "3421805",
+      "37251": "2896361"
+    },
+    "Springfield SYC Soccer": {
+      "47750": "3421740",
+      "37251": "2939962"
+    },
+    "Southern Soccer Academy SSA Swarm 2013G": {
+      "47750": "3483002"
+    },
+    "Baltimore Armour": {
+      "47750": "3432523",
+      "37249": "2806705",
+      "37251": "2942219"
+    },
+    "Palm Beach Kicks": {
+      "47750": "3468342",
+      "37251": "3078507"
+    },
+    "Skyline Elite 13": {
+      "47750": "3421853"
+    },
+    "PA Classics": {
+      "47750": "3423826",
+      "37251": "2897746"
+    },
+    "Long Island SC": {
+      "47750": "3423130",
+      "37249": "2815757",
+      "37251": "2936696"
+    },
+    "Wake FC": {
+      "47750": "3489831",
+      "37249": "2795697",
+      "37251": "3087116"
+    },
+    "Cedar Stars Academy - Bergen": {
+      "47750": "3423601",
+      "37251": "3101824"
+    },
+    "NEFC 13G GA Navy": {
+      "47750": "3496967"
+    },
+    "Nashville United Soccer Academy": {
+      "47750": "3467369",
+      "37251": "2936762"
+    },
+    "One Knoxville Youth Club": {
+      "47750": "3438120"
+    },
+    "Charlotte Development Academy": {
+      "47750": "3551142",
+      "37251": "3099407"
+    },
+    "Coppermine Soccer Club": {
+      "47750": "3494155",
+      "37251": "3005997"
+    },
+    "Cedar Stars Academy - Monmouth": {
+      "47750": "3506170",
+      "37251": "2897995"
+    },
+    "Keystone FC": {
+      "47750": "3609984",
+      "37249": "2790265",
+      "37251": "2895929"
+    },
+    "BVB International Academy Texas BVB 12": {
+      "47750": "3457982"
+    },
+    "Southern Soccer Academy SSA Swarm 2012G": {
+      "47750": "3482913"
+    },
+    "Skyline Elite": {
+      "47750": "3424266",
+      "37251": "2942260"
+    },
+    "NEFC 12G GA Navy": {
+      "47750": "3496972"
+    },
+    "Kings Hammer Swan City Soccer Club KH Elite Swan City G12-R": {
+      "47750": "3619280"
+    },
+    "Cincinnati United 12G GA Gold": {
+      "37249": "2794109",
+      "37251": "3143347"
+    },
+    "Almaden FC": {
+      "37249": "2863712",
+      "37251": "2949066"
+    },
+    "South Carolina Surf SC 11": {
+      "37249": "2816586",
+      "37251": "3113032"
+    },
+    "Cincinnati United 11G GA Gold": {
+      "37249": "2794149",
+      "37251": "3105380"
+    },
+    "Cincinnati United 10G GA Gold": {
+      "37249": "2794157",
+      "37251": "2939843"
+    },
+    "City SC City SC San Diego": {
+      "37249": "2805607"
+    },
+    "Cincinnati United 09G GA Gold": {
+      "37249": "2794165",
+      "37251": "2939957"
+    },
+    "South Carolina Surf SC 09": {
+      "37249": "2816576"
+    },
+    "City SC 08G GA White": {
+      "37249": "2805603",
+      "37251": "3009964"
+    },
+    "NEFC NEFC 08G GA Red": {
+      "37249": "2805494",
+      "37251": "2944652"
+    },
+    "TopHat 08G GA Gold": {
+      "37249": "2804805",
+      "37251": "3101279"
+    },
+    "Cincinnati United 08G GA Gold": {
+      "37249": "2794169",
+      "37251": "2939961"
+    },
+    "Baltimore Armour 08": {
+      "37249": "2814823",
+      "37251": "2942220"
+    },
+    "NEFC 07/06G GA Red": {
+      "37249": "2805496",
+      "37251": "3144934"
+    },
+    "IMG Academy 07/06G": {
+      "37249": "2840836",
+      "37251": "2912643"
+    },
+    "City SC 07/06G GA White": {
+      "37249": "2800489",
+      "37251": "2938243"
+    },
+    "Columbia Premier Soccer Club 07/06G": {
+      "37249": "2801586",
+      "37251": "3144822"
+    },
+    "TopHat 07/06G GA Gold": {
+      "37249": "2800635",
+      "37251": "3101276"
+    },
+    "Wasatch SC 07/06G": {
+      "37249": "2803246",
+      "37251": "3136872"
+    },
+    "Lamorinda SC 07/06G": {
+      "37249": "2785623"
+    },
+    "Utah Celtic 07/06G": {
+      "37249": "2776258"
+    },
+    "HTX 07/06G": {
+      "37249": "2794177",
+      "37251": "2895858"
+    },
+    "Michigan Jaguars 07/06G": {
+      "37249": "2793067"
+    },
+    "SC Wave 06/07G": {
+      "37249": "2802747"
+    },
+    "New York SC 07/06G": {
+      "37249": "2797523"
+    },
+    "STA 07/06G": {
+      "37249": "2800257"
+    },
+    "SC del Sol 07/06G": {
+      "37249": "2798770",
+      "37251": "2941509"
+    },
+    "Beadling SC 07/06G": {
+      "37249": "2803119"
+    },
+    "LA Surf Soccer Club 07/06G": {
+      "37249": "2850640"
+    },
+    "Florida United 07/06G": {
+      "37249": "2806727"
+    },
+    "Keystone FC 07/06G": {
+      "37249": "2790284"
+    },
+    "Salvo SC 07/06G": {
+      "37249": "2813256"
+    },
+    "FRAM SC 07/06G": {
+      "37249": "2835545"
+    },
+    "Long Island SC 07/06G": {
+      "37249": "2807279"
+    },
+    "Cincinnati United 07/06G GA Gold": {
+      "37249": "2794173"
+    },
+    "West Florida Flames 07/06G": {
+      "37249": "2826227"
+    },
+    "City SC 12G GA Blue": {
+      "37251": "3009962"
+    },
+    "FC United Soccer Club Chicago FC United": {
+      "37251": "3103748"
+    },
+    "BVB International Academy Texas BVB": {
+      "37251": "3077110"
+    },
+    "Springfield SYC Soccer 11GA": {
+      "37251": "3119963"
+    },
+    "SF Elite": {
+      "37251": "3116493"
+    },
+    "South Carolina Surf SC": {
+      "37251": "3113030"
+    },
+    "Santa Clara Sporting": {
+      "37251": "3115919"
+    },
+    "Leahi Soccer Club 10GA": {
+      "37251": "3010214"
+    },
+    "Lexington Sporting": {
+      "37251": "3103114"
+    },
+    "Coppermine Soccer Club Coppermine": {
+      "37251": "3005978"
+    },
+    "FC Tucson Youth Soccer": {
+      "37251": "2941990"
+    },
+    "Capital City SC": {
+      "37251": "2941605"
+    },
+    "AFC Lightning": {
+      "37251": "3091662"
+    },
+    "Tudela FC Los Angeles Tudela FC LA 2010 White": {
+      "37251": "3048990"
+    },
+    "NEFC 10G GA Navy": {
+      "37251": "2944657"
+    },
+    "One Knoxville Youth Club One Knox": {
+      "37251": "2896416"
+    },
+    "Cincinnati United 10G GA Black": {
+      "37251": "2939955"
+    },
+    "Atletico Dallas Youth Renegades": {
+      "37251": "2959898"
+    },
+    "Southern Soccer Academy": {
+      "37251": "3022395"
+    },
+    "Leahi Soccer Club 09GA": {
+      "37251": "3010075"
+    },
+    "West Coast Soccer": {
+      "37251": "2952421"
+    },
+    "Cincinnati United 09G GA Black": {
+      "37251": "2939959"
+    },
+    "NEFC 09G GA Navy": {
+      "37251": "2944661"
+    },
+    "NM Rapids SC NM Rapids": {
+      "37251": "2919843"
+    },
+    "NEFC 08G GA Navy": {
+      "37251": "2944667"
+    },
+    "ALBION SC Las Vegas Albion SC LV 08": {
+      "37251": "2895815"
+    },
+    "RISE Soccer Club RISE": {
+      "37251": "2895382"
+    },
+    "TopHat 08G GA Navy": {
+      "37251": "3101290"
+    },
+    "Tudela FC Los Angeles Tudela FC LA 2008 White": {
+      "37251": "3048988"
+    },
+    "City SC 08G GA Blue": {
+      "37251": "3009939"
+    },
+    "Cincinnati United 08G GA Black": {
+      "37251": "2939965"
+    },
+    "South Carolina Surf SC 08": {
+      "37251": "3113028"
+    },
+    "Leahi Soccer Club 08GA": {
+      "37251": "3010062"
+    },
+    "Sporting United FC": {
+      "37251": "2939439"
+    },
+    "Lou Fusz Athletic 07/06G": {
+      "37251": "2913035"
+    },
+    "Indy Premier SC 07/06G": {
+      "37251": "3111523"
+    },
+    "South Valley Surf SC 07/06G": {
+      "37251": "3107233"
+    },
+    "FC United Soccer Club 07/06G": {
+      "37251": "3101860"
+    }
+  }
+}

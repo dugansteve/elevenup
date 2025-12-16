@@ -1,0 +1,16 @@
+DIAGNOSTIC RUN SUMMARY - 20251207_113034
+============================================================
+
+Teams scraped: 5
+Players extracted: 89
+Games extracted: 96
+
+Games with opponent: 96/96
+Games with score: 48/96
+
+Teams:
+  - Arlington Soccer (G12 ECNL)
+  - NC Courage Academy (G13 ECNL)
+  - NC Courage Academy (G12 ECNL)
+  - Wilmington Hammerheads Youth FC (G12 ECNL)
+  - Beach FC (VA) (G12 ECNL)

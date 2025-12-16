@@ -1,0 +1,17 @@
+DIAGNOSTIC RUN SUMMARY - 20251207_111805
+============================================================
+
+Teams scraped: 6
+Players extracted: 105
+Games extracted: 110
+
+Games with opponent: 110/110
+Games with score: 68/110
+
+Teams:
+  - Richmond United (G08 ECNL)
+  - Richmond United (G09 ECNL)
+  - Beach FC (VA) (G10 ECNL)
+  - Virginia Development Academy (G11 ECNL)
+  - Richmond United (G12 ECNL)
+  - NCFC Youth (G13 ECNL)

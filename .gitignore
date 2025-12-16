@@ -1,0 +1,81 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+.env
+*.egg-info/
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+nul
+
+# Large generated data files (keep in separate data management)
+*.db
+*.sqlite
+*.sqlite3
+rankings_for_react.json
+players_for_react.json
+seedlinedata_export.json
+
+# CSV exports (generated data)
+csv_exports/
+*.csv
+
+# Excel files
+*.xlsx
+*.xls
+
+# Zip/backup files
+*.zip
+*.bak
+
+# Log files
+*.log
+logs/
+
+# Temp files
+*.tmp
+*_temp.*
+~$*
+
+# Old/archive folders (too large, use separate archiving)
+old/
+**/old/
+**/old files/
+**/old data and files/
+**/Old Files/
+App FrontEnd/old/
+
+# Large video files
+*.mp4
+*.avi
+*.mov
+
+# Test environment (parallel copy)
+app frontend test/
+
+# Dropbox conflicts
+*conflicted copy*

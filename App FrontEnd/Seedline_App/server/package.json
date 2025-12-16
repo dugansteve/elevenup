@@ -1,0 +1,17 @@
+{
+  "name": "seedline-url-validator",
+  "version": "1.0.0",
+  "description": "URL validation server for Seedline user-submitted games",
+  "main": "urlValidator.js",
+  "scripts": {
+    "start": "node urlValidator.js",
+    "dev": "node urlValidator.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="rankings app colors.svg"
+   inkscape:export-filename="C:\Users\dugan\Seedline\logos\rankings app colors.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.71891835"
+     inkscape:cx="396.42889"
+     inkscape:cy="561.25984"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1904"
+     inkscape:window-y="1080"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="swatch2"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#5bdb08;stop-opacity:1;"
+         offset="0"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#swatch2"
+       id="linearGradient2"
+       x1="34.996414"
+       y1="92.007431"
+       x2="174.04447"
+       y2="92.007431"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#d2cec4;stroke:#67fe03;stroke-width:0;stroke-dasharray:none;fill-opacity:1"
+       id="rect1"
+       width="117.76952"
+       height="189.90335"
+       x="44.163567"
+       y="71.7658" />
+    <rect
+       style="fill:#326f2b;stroke:url(#linearGradient2);stroke-width:0;stroke-dasharray:none;fill-opacity:1"
+       id="rect2"
+       width="136.90706"
+       height="50.788101"
+       x="36.066914"
+       y="66.61338" />
+    <text
+       xml:space="preserve"
+       style="font-size:9.91822px;font-family:'Microsoft YaHei UI';-inkscape-font-specification:'Microsoft YaHei UI, Normal';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#d2f0d1;fill-opacity:1;stroke:#67fe03;stroke-width:0;stroke-dasharray:none"
+       x="62.565056"
+       y="89.063202"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="stroke-width:0;fill:#d2f0d1;fill-opacity:1"
+         x="62.565056"
+         y="89.063202">Test Text</tspan></text>
+    <rect
+       style="fill:#85c759;fill-opacity:1;stroke:#67fe03;stroke-width:0;stroke-dasharray:none"
+       id="rect3"
+       width="6.2565055"
+       height="32.386616"
+       x="65.141266"
+       y="161.56505" />
+    <text
+       xml:space="preserve"
+       style="font-size:9.91822px;font-family:'Microsoft YaHei UI';-inkscape-font-specification:'Microsoft YaHei UI, Normal';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#2c2c2c;fill-opacity:1;stroke:#67fe03;stroke-width:0;stroke-dasharray:none"
+       x="82.070633"
+       y="144.26765"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="stroke-width:0;fill:#2c2c2c;fill-opacity:1"
+         x="82.070633"
+         y="144.26765">Test Text</tspan></text>
+  </g>
+</svg>

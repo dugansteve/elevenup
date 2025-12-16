@@ -1,0 +1,70 @@
+╔════════════════════════════════════════════════════════════════╗
+║     YOUTH SOCCER RANKING SYSTEM - QUICK REFERENCE 🏆⚽        ║
+╚════════════════════════════════════════════════════════════════╝
+
+📁 TO RUN THE PROGRAM:
+   python3 rank_teams.py
+   
+   OR
+   
+   ./run_ranking.sh
+
+⏱️  TIME TO RUN:
+   Usually takes 5-10 seconds
+
+📤 OUTPUT FILES:
+   • Girls Soccer Rankings [date] [time].db
+   • Girls Soccer Rankings [date] [time].xlsx
+
+📊 WHAT YOU GET:
+   Excel file with 12+ sheets:
+   ✓ All Teams (complete rankings)
+   ✓ By League (ECNL, GA separate)
+   ✓ By Age Group (G12, G13, U13-U19)
+   ✓ Top 100 Teams
+
+💯 UNDERSTANDING POWER SCORES:
+   130+  = Dominant (top 0.1%)
+   120+  = Elite (top 1%)
+   110   = Excellent (top 10%)
+   100   = Average
+   90    = Below Average
+   <80   = Struggling
+
+🔧 TO UPDATE WEEKLY:
+   1. Get new game data
+   2. Replace old database files
+   3. Run the program again
+   4. Compare new file to last week's
+
+⚙️  CUSTOMIZATION:
+   Edit these values in rank_teams.py:
+   
+   League Bonuses (line ~28):
+   self.league_bonuses = {
+       'ECNL': 1.15,  ← Change this
+       'GA': 1.0,
+   }
+   
+   K-Factor (line ~27):
+   self.k_factor = 32  ← Change this (16-64)
+
+📞 COMMON ISSUES:
+   ❌ "Module not found"
+      → pip install pandas openpyxl --break-system-packages
+   
+   ❌ "File not found"  
+      → Update file paths in main() function
+   
+   ❌ "No data"
+      → Check that your database has completed games
+
+📈 WEEKLY WORKFLOW:
+   Monday:    Get new game data
+   Tuesday:   Run ranking program
+   Wednesday: Compare to last week
+   Thursday:  Share rankings with teams/parents
+
+╔════════════════════════════════════════════════════════════════╗
+║  Need help? Check README.md for detailed documentation        ║
+╚════════════════════════════════════════════════════════════════╝

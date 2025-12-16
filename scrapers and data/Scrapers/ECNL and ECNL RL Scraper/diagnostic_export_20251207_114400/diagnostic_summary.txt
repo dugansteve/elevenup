@@ -1,0 +1,14 @@
+DIAGNOSTIC RUN SUMMARY - 20251207_114400
+============================================================
+
+Teams scraped: 3
+Players extracted: 72
+Games extracted: 42
+
+Games with opponent: 42/42
+Games with score: 34/42
+
+Teams:
+  - Mississippi Rush United (B08 ECNL RL)
+  - Nuu Avalanche (B09 ECNL RL)
+  - Utah Avalanche (B10 ECNL RL)
