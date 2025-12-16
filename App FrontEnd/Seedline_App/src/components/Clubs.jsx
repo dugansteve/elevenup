@@ -597,7 +597,7 @@ function Clubs() {
                   </th>
                   <th className="col-team">Club</th>
                   <th
-                    className="sortable-header"
+                    className="sortable-header hide-mobile"
                     onClick={() => handleSort('ageGroups')}
                     style={{ cursor: 'pointer', textAlign: 'center' }}
                     title="Number of age groups"
@@ -605,7 +605,7 @@ function Clubs() {
                     Ages{getSortIndicator('ageGroups')}
                   </th>
                   <th
-                    className="sortable-header"
+                    className="sortable-header hide-mobile"
                     onClick={() => handleSort('teams')}
                     style={{ cursor: 'pointer', textAlign: 'center' }}
                     title="Total teams"
@@ -613,25 +613,23 @@ function Clubs() {
                     Teams{getSortIndicator('teams')}
                   </th>
                   <th className="col-league">Leagues</th>
-                  <th className="col-state">ST</th>
+                  <th className="col-state hide-mobile">ST</th>
                   <th
-                    className="col-power sortable-header"
+                    className="col-power sortable-header hide-mobile"
                     onClick={() => handleSort('power')}
                     style={{ cursor: 'pointer' }}
                     title="Average Power Score (top team per age group)"
                   >
                     Power{getSortIndicator('power')}
                   </th>
-                  {showDetails && (
-                    <th
-                      className="sortable-header"
-                      onClick={() => handleSort('record')}
-                      style={{ cursor: 'pointer' }}
-                      title="Sort by Record (3 pts/win, 1 pt/draw)"
-                    >
-                      Record{getSortIndicator('record')}
-                    </th>
-                  )}
+                  <th
+                    className="sortable-header"
+                    onClick={() => handleSort('record')}
+                    style={{ cursor: 'pointer' }}
+                    title="Sort by Record (3 pts/win, 1 pt/draw)"
+                  >
+                    Record{getSortIndicator('record')}
+                  </th>
                   {showDetails && (
                     <th
                       className="sortable-header"
@@ -664,8 +662,8 @@ function Clubs() {
                         {club.name}
                       </Link>
                     </td>
-                    <td style={{ textAlign: 'center', fontWeight: '500' }}>{club.ageGroupCount}</td>
-                    <td style={{ textAlign: 'center', fontWeight: '500' }}>{club.teamCount}</td>
+                    <td className="hide-mobile" style={{ textAlign: 'center', fontWeight: '500' }}>{club.ageGroupCount}</td>
+                    <td className="hide-mobile" style={{ textAlign: 'center', fontWeight: '500' }}>{club.teamCount}</td>
                     <td className="col-league">
                       {club.leagues.length <= 2 ? (
                         club.leagues.map(league => (
@@ -690,7 +688,7 @@ function Clubs() {
                         </span>
                       )}
                     </td>
-                    <td className="col-state">
+                    <td className="col-state hide-mobile">
                       {club.states.length === 1 ? club.states[0] :
                        club.states.length > 1 ? (
                         <span title={club.states.join(', ')} style={{ cursor: 'help' }}>
@@ -698,8 +696,8 @@ function Clubs() {
                         </span>
                        ) : '-'}
                     </td>
-                    <td className="col-power power-score">{club.avgPowerScore?.toFixed(1) || '0.0'}</td>
-                    {showDetails && <td>{club.totalWins}-{club.totalLosses}-{club.totalDraws}</td>}
+                    <td className="col-power power-score hide-mobile">{club.avgPowerScore?.toFixed(1) || '0.0'}</td>
+                    <td>{club.totalWins}-{club.totalLosses}-{club.totalDraws}</td>
                     {showDetails && (
                       <td style={{
                         color: club.avgGD > 0 ? '#2e7d32' : club.avgGD < 0 ? '#c62828' : '#666',

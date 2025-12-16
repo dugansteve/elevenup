@@ -953,4 +953,15 @@ body {
     font-size: 0.65rem;
     padding: 0.2rem 0.1rem;
   }
+
+  /* Hide columns on mobile for Clubs page default view */
+  .hide-mobile {
+    display: none !important;
+  }
+
+  /* Narrower club name column on mobile */
+  .rankings-table .col-team {
+    min-width: 80px;
+    max-width: 100px;
+  }
 }
