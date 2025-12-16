@@ -27,7 +27,7 @@ function getLeagueBadgeStyle(league) {
 }
 
 // League categorization
-const NATIONAL_LEAGUES = ['ECNL', 'ECNL RL', 'GA', 'ASPIRE', 'NPL', 'MLS NEXT'];
+const NATIONAL_LEAGUES = ['ECNL', 'ECNL-RL', 'GA', 'ASPIRE', 'NPL', 'MLS NEXT'];
 const REGIONAL_LEAGUES = [
   'Southeastern CCL Fall',
   'Southeastern CCL U11/U12',
