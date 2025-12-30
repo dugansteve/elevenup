@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { userGameHelpers, VERIFICATION_STATUS } from '../data/sampleData';
 import { useUser } from '../context/UserContext';
 import { validateGameUrl, getValidationDisplay } from '../data/urlValidatorService';
+import { TeamsIcon, TournamentIcon, PlayersIcon } from './PaperIcons';
 
 export default function PendingGames({ team, onRefresh }) {
   const { canPerform } = useUser();
@@ -252,8 +253,8 @@ export default function PendingGames({ team, onRefresh }) {
                     flexWrap: 'wrap'
                   }}>
                     <span>📅 {formatDate(game.date)}</span>
-                    <span>🏆 {game.eventTypeName}</span>
-                    {game.location && <span>📍 {game.location}</span>}
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}><TeamsIcon size={14} color="green" /> {game.eventTypeName}</span>
+                    {game.location && <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}><TournamentIcon size={14} color="green" /> {game.location}</span>}
                   </div>
                 </div>
               </div>

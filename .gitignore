@@ -34,6 +34,8 @@ nul
 
 # Large generated data files (keep in separate data management)
 *.db
+*.db-shm
+*.db-wal
 *.sqlite
 *.sqlite3
 rankings_for_react.json
@@ -79,3 +81,23 @@ app frontend test/
 
 # Dropbox conflicts
 *conflicted copy*
+
+# Firebase
+.firebase/
+
+# Build output
+**/dist/
+
+# Vite temp files
+*.mjs
+
+# Firebase service account keys (NEVER commit these!)
+*-firebase-adminsdk-*.json
+
+# Claude Code local settings (contains OAuth tokens)
+.claude/settings.local.json
+
+# Large data files (too big for GitHub)
+conference_games.json
+rankings_history.json
+tournaments_data.json

@@ -1,0 +1,526 @@
+/* ElevenUp Youth Soccer Rankings - Light Theme */
+/* Light theme with green-cyan gradient accents and gray header */
+
+:root {
+  /* Light theme base colors */
+  --bg-light: #ffffff;
+  --bg-page: #d0d0d0;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fafafa;
+  --bg-surface: #f5f5f5;
+  --bg-header: #4a4a4a;
+
+  /* Text colors for light theme */
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --text-on-dark: #ffffff;
+
+  /* ElevenUp accent colors - green to cyan gradient */
+  --elevenup-green: #00C853;
+  --elevenup-cyan: #00ACC1;
+  --elevenup-gradient: linear-gradient(135deg, #00C853 0%, #00ACC1 100%);
+
+  /* Override default vars */
+  --primary-green: #00C853;
+  --secondary-green: #00BFA5;
+  --accent-green: #00ACC1;
+  --light-green: #B2DFDB;
+  --text-dark: #333333;
+  --text-light: #ffffff;
+  --border-color: #e0e0e0;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-strong: rgba(0, 0, 0, 0.15);
+}
+
+/* Global light background */
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+}
+
+.app {
+  min-height: 100vh;
+  background-color: var(--bg-page);
+}
+
+/* Gray header */
+.app-header {
+  background: var(--bg-header);
+  color: var(--text-on-dark);
+  box-shadow: 0 2px 8px var(--shadow-strong);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem 0 0;
+  height: 80px;
+  overflow: hidden;
+}
+
+/* Logo section - full height */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 100%;
+}
+
+/* ElevenUp logo - fit exactly to header height (80px desktop) */
+.elevenup-theme .logo,
+body.elevenup-theme .logo,
+.app .logo {
+  height: 80px !important;
+  width: auto !important;
+  max-height: 80px !important;
+  min-height: 80px !important;
+  margin: 0 !important;
+  margin-left: 32px !important;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* Mobile-only display class */
+.show-on-mobile-only {
+  display: none;
+}
+
+/* Navigation - hidden on desktop for cleaner look */
+.main-nav {
+  display: none;
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  padding: 1.5rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  background: var(--bg-page);
+}
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px var(--shadow);
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Filter buttons */
+.filters-card {
+  background: var(--bg-card);
+}
+
+.filter-select,
+.mobile-filter-btn {
+  background: var(--bg-card) !important;
+  border: 2px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+}
+
+.filter-select:focus,
+.mobile-filter-btn:focus {
+  border-color: var(--elevenup-green) !important;
+  outline: none;
+}
+
+/* Search input */
+.form-input,
+input[type="text"],
+input[type="search"] {
+  background: var(--bg-card) !important;
+  border: 2px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+}
+
+.form-input:focus,
+input[type="text"]:focus {
+  border-color: var(--elevenup-green) !important;
+  outline: none;
+}
+
+input::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Tables */
+.data-table,
+.rankings-table,
+.clubs-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+}
+
+.data-table thead,
+.rankings-table thead,
+.clubs-table thead {
+  background: var(--bg-surface);
+}
+
+.data-table thead th,
+.rankings-table thead th,
+.clubs-table thead th {
+  background: var(--bg-surface) !important;
+  color: var(--text-primary) !important;
+  font-weight: 600;
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 2px solid var(--elevenup-green);
+}
+
+/* Sortable column headers */
+.sortable-header {
+  cursor: pointer !important;
+  color: var(--elevenup-green) !important;
+  text-decoration: underline !important;
+  text-decoration-style: dotted !important;
+  text-underline-offset: 3px !important;
+}
+
+.sortable-header:hover {
+  color: var(--elevenup-cyan) !important;
+  text-decoration-style: solid !important;
+}
+
+.data-table td,
+.rankings-table td,
+.clubs-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  background: var(--bg-card);
+}
+
+.rankings-table tbody tr:hover td,
+.clubs-table tbody tr:hover td,
+.data-table tbody tr:hover td {
+  background: var(--bg-card-hover);
+}
+
+/* Sticky columns */
+.rankings-table tbody .sticky-col-1,
+.rankings-table tbody .sticky-col-2,
+.clubs-table tbody .sticky-col-1,
+.clubs-table tbody .sticky-col-2 {
+  background: var(--bg-card) !important;
+}
+
+.rankings-table tbody tr:hover .sticky-col-1,
+.rankings-table tbody tr:hover .sticky-col-2 {
+  background: var(--bg-card-hover) !important;
+}
+
+.rankings-table thead th.sticky-col-1,
+.rankings-table thead th.sticky-col-2,
+.rankings-table thead .sticky-col-1,
+.rankings-table thead .sticky-col-2,
+.clubs-table thead th.sticky-col-1,
+.clubs-table thead th.sticky-col-2 {
+  background: var(--bg-surface) !important;
+}
+
+/* Rank cell - green accent */
+.rank-cell {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--elevenup-green) !important;
+}
+
+/* Team name links */
+.team-name-link {
+  color: var(--elevenup-green);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.team-name-link:hover {
+  color: var(--elevenup-cyan);
+  text-decoration: underline;
+}
+
+/* Power score */
+.power-score {
+  font-weight: 600;
+  color: var(--elevenup-cyan);
+}
+
+/* League badges */
+.league-badge,
+.league-badge-sm {
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--elevenup-gradient);
+  color: white;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: var(--border-color);
+}
+
+/* Hamburger button - visible on gray header */
+.hamburger-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hamburger-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hamburger-icon span {
+  background: white;
+}
+
+/* Links */
+a {
+  color: var(--elevenup-green);
+}
+
+a:hover {
+  color: var(--elevenup-cyan);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  /* Remove shadows from everything EXCEPT cards */
+  .elevenup-theme *:not(.card),
+  .elevenup-theme *::before,
+  .elevenup-theme *::after {
+    box-shadow: none !important;
+    filter: none !important;
+    -webkit-box-shadow: none !important;
+  }
+  .header-top {
+    padding: 0 0.75rem 0 0;
+    height: 60px;
+  }
+
+  .main-nav {
+    display: none !important;
+  }
+
+  .user-info.hide-mobile,
+  .hide-mobile {
+    display: none !important;
+  }
+
+  .show-on-mobile-only {
+    display: inline !important;
+  }
+
+  /* Logo sizing on mobile */
+  .elevenup-theme .logo,
+  body.elevenup-theme .logo,
+  .app .logo,
+  .logo {
+    height: 60px !important;
+    max-height: 60px !important;
+    min-height: 60px !important;
+    margin-left: 14px !important;
+  }
+
+  .logo-section {
+    flex: 1;
+    height: 100%;
+  }
+
+  .main-content {
+    padding: 0.5rem 0.75rem;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  html, body, .app {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  .elevenup-theme .card,
+  .card {
+    padding: 0.75rem;
+    margin-bottom: 8px !important;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* Remove ALL shadows on mobile for elevenup theme */
+  .elevenup-theme .rankings-table .sticky-col-1,
+  .elevenup-theme .rankings-table .sticky-col-2,
+  .elevenup-theme .clubs-table .sticky-col-1,
+  .elevenup-theme .clubs-table .sticky-col-2,
+  .elevenup-theme .app-header,
+  .elevenup-theme .table-scroll-container,
+  .elevenup-theme .rankings-table,
+  .elevenup-theme .clubs-table,
+  .elevenup-theme .rankings-table thead,
+  .elevenup-theme .rankings-table th,
+  .elevenup-theme .data-table thead,
+  .rankings-table .sticky-col-1,
+  .rankings-table .sticky-col-2,
+  .clubs-table .sticky-col-1,
+  .clubs-table .sticky-col-2,
+  .app-header,
+  .table-scroll-container,
+  .rankings-table,
+  .clubs-table,
+  .rankings-table thead,
+  .rankings-table th,
+  .data-table thead {
+    box-shadow: none !important;
+  }
+
+  .filter-row {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 0.35rem !important;
+  }
+
+  .search-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.35rem !important;
+  }
+
+  .search-row .search-group {
+    min-width: 180px !important;
+    max-width: 250px !important;
+  }
+
+  .filter-select,
+  .mobile-filter-btn {
+    font-size: 0.75rem !important;
+    padding: 0.4rem 0.5rem !important;
+  }
+
+  .filters-card {
+    padding: 0.5rem 0.75rem !important;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .header-top {
+    padding: 0.4rem 0.5rem 0.4rem 0;
+  }
+
+  .logo {
+    height: 50px !important;
+    margin-left: 10px !important;
+  }
+
+  .main-content {
+    padding: 0.5rem;
+  }
+
+  .search-row .search-group {
+    min-width: 160px !important;
+    max-width: 220px !important;
+  }
+
+  .filters-card {
+    padding: 0.4rem 0.5rem !important;
+  }
+}
+
+/* Slide menu - light theme */
+.elevenup-theme .slide-menu {
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.elevenup-theme .slide-menu.open {
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.elevenup-theme .menu-header {
+  background: var(--bg-header);
+}
+
+.elevenup-theme .menu-item {
+  color: var(--text-primary);
+}
+
+.elevenup-theme .menu-item:hover {
+  background: var(--bg-surface);
+}
+
+.elevenup-theme .menu-item.active {
+  background: rgba(0, 200, 83, 0.1);
+  color: var(--elevenup-green);
+}
+
+.elevenup-theme .menu-item-indicator {
+  background: var(--elevenup-green);
+}
+
+.elevenup-theme .menu-footer {
+  border-top-color: var(--border-color);
+}
+
+.elevenup-theme .menu-logout-btn {
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+}
+
+.elevenup-theme .menu-logout-btn:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+}

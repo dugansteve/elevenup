@@ -24,10 +24,29 @@ import subprocess
 import threading
 import argparse
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from http.server import HTTPServer, BaseHTTPRequestHandler
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import urlparse, parse_qs, unquote
+import time
+
+# Import activity logging and auth middleware
+try:
+    from activity_logger import (
+        init_database as init_activity_db,
+        create_session, update_session_user, log_page_view, update_page_time,
+        log_api_call, check_rate_limit, get_session_stats, get_suspicious_activity,
+        get_daily_stats, add_to_blocklist, ACTIVITY_DB_PATH
+    )
+    from auth_middleware import (
+        get_auth_from_request, verify_firebase_token, get_account_type_from_user,
+        check_user_rate_limit
+    )
+    ACTIVITY_TRACKING_ENABLED = True
+    print("[INFO] Activity tracking and auth middleware loaded")
+except ImportError as e:
+    ACTIVITY_TRACKING_ENABLED = False
+    print(f"[WARN] Activity tracking not available: {e}")
 import webbrowser
 
 # ============================================================================
@@ -61,16 +80,16 @@ def find_scrapers_folder():
         Path(r"C:\Users\dugan\Smart Human Dynamics Dropbox\Steve Dugan\Seedline\scrapers and data"),
     ]
     
-    print(f"🔍 Looking for 'scrapers and data' folder...")
+    print(f"[SEARCH] Looking for 'scrapers and data' folder...")
     print(f"   Script location: {SCRIPT_DIR}")
-    
+
     for path in candidates:
         print(f"   Checking: {path}")
         if path.exists():
-            print(f"   ✅ Found: {path}")
+            print(f"   [OK] Found: {path}")
             return path
-    
-    print(f"   ❌ Not found - using script directory")
+
+    print(f"   [WARN] Not found - using script directory")
     return SCRIPT_DIR
 
 SCRAPERS_FOLDER = find_scrapers_folder()
@@ -118,7 +137,7 @@ def get_scraper_paths():
     # Also check in scrapers subfolder of Seedline_App (bundled with app)
     app_scrapers = SCRIPT_DIR / "scrapers"
     
-    print(f"\n🔧 Configuring scraper paths...")
+    print(f"\n[CONFIG] Configuring scraper paths...")
     print(f"   SCRAPERS_FOLDER: {SCRAPERS_FOLDER}")
     print(f"   Scrapers subfolder: {scrapers_subfolder} (exists: {scrapers_subfolder.exists()})")
     print(f"   App scrapers folder: {app_scrapers} (exists: {app_scrapers.exists()})")
@@ -126,27 +145,27 @@ def get_scraper_paths():
     scrapers = {
         "ecnl": {
             "name": "ECNL + ECNL-RL Scraper",
-            "path": find_latest_scraper(ecnl_folder, "ecnl_scraper_v*.py"),
+            "path": ecnl_folder / "ecnl_scraper_final.py",
             "description": "Scrapes ECNL and ECNL Regional League games and players"
         },
         "ga": {
-            "name": "Girls Academy Scraper", 
-            "path": find_latest_scraper(ga_league_folder, "GA_scraper_v*.py"),
+            "name": "Girls Academy Scraper",
+            "path": ga_league_folder / "GA_league_scraper_final.py",
             "description": "Scrapes Girls Academy league games"
         },
         "ga_events": {
             "name": "GA Events Scraper",
-            "path": find_latest_scraper(ga_events_folder, "GA_events_scraper_v*.py"),
+            "path": ga_events_folder / "GA_events_scraper_final.py",
             "description": "Scrapes GA showcases, playoffs, regionals, and Champions Cup"
         },
         "aspire": {
             "name": "ASPIRE Scraper",
-            "path": find_latest_scraper(aspire_folder, "ASPIRE_scraper_v*.py"),
+            "path": aspire_folder / "ASPIRE_league_scraper_final.py",
             "description": "Scrapes ASPIRE league games"
         },
         "npl": {
             "name": "NPL League Scraper",
-            "path": find_latest_scraper(npl_folder, "us_club_npl_league_scraper_v*.py"),
+            "path": npl_folder / "us_club_npl_league_scraper_final.py",
             "description": "Scrapes US Club Soccer NPL and Sub-NPL league games"
         }
     }
@@ -156,10 +175,10 @@ def get_scraper_paths():
     # bundled scrapers as fallback
     if app_scrapers.exists():
         bundled_scrapers = {
-            "ecnl": "ecnl_scraper_v*.py",
-            "ga": "GA_scraper_v*.py", 
-            "ga_events": "GA_events_scraper_v*.py",
-            "aspire": "ASPIRE_scraper_v*.py"
+            "ecnl": "ecnl_scraper_final.py",
+            "ga": "GA_league_scraper_final.py",
+            "ga_events": "GA_events_scraper_final.py",
+            "aspire": "ASPIRE_league_scraper_final.py"
         }
         
         for scraper_id, pattern in bundled_scrapers.items():
@@ -174,40 +193,42 @@ def get_scraper_paths():
                 print(f"   {scraper_id}: Using {current_path.name} from {current_path.parent.name}")
     
     # Final status
-    print(f"\n📋 Scraper configuration:")
+    print(f"\n[INFO] Scraper configuration:")
     for sid, s in scrapers.items():
         exists = s["path"].exists()
-        print(f"   {sid}: {s['path']} ({'✅' if exists else '❌'})")
+        print(f"   {sid}: {s['path']} ({'OK' if exists else 'MISSING'})")
     
     return scrapers
 
 SCRAPERS = get_scraper_paths()
 
-# Team ranker location - find latest version
+# Team ranker location - use final version
 def find_team_ranker():
-    """Find the latest team ranker version"""
+    """Find the team ranker (now using 'final' naming convention)"""
     ranker_folder = SCRAPERS_FOLDER / "Run Rankings"
-    if not ranker_folder.exists():
-        return ranker_folder / "team_ranker_v38.py"
-    
-    # Look for team_ranker_v*.py files
-    import re
-    ranker_files = list(ranker_folder.glob("team_ranker_v*.py"))
-    if not ranker_files:
-        return ranker_folder / "team_ranker_v38.py"
-    
-    # Sort by version (handle versions like v39, v39b, v39c)
-    def get_version(f):
-        match = re.search(r'v(\d+)([a-z])?', f.name)
-        if match:
-            num = int(match.group(1))
-            letter = match.group(2) or ''
-            return (num, letter)
-        return (0, '')
-    
-    ranker_files.sort(key=get_version, reverse=True)
-    print(f"   Found team ranker: {ranker_files[0].name}")
-    return ranker_files[0]
+    ranker_path = ranker_folder / "team_ranker_final.py"
+
+    if ranker_path.exists():
+        print(f"   Found team ranker: {ranker_path.name}")
+        return ranker_path
+
+    # Fallback to old versioned naming if final doesn't exist
+    if ranker_folder.exists():
+        import re
+        ranker_files = list(ranker_folder.glob("team_ranker_v*.py"))
+        if ranker_files:
+            def get_version(f):
+                match = re.search(r'v(\d+)([a-z])?', f.name)
+                if match:
+                    num = int(match.group(1))
+                    letter = match.group(2) or ''
+                    return (num, letter)
+                return (0, '')
+            ranker_files.sort(key=get_version, reverse=True)
+            print(f"   Found team ranker (fallback): {ranker_files[0].name}")
+            return ranker_files[0]
+
+    return ranker_folder / "team_ranker_final.py"
 
 RANKER_PATH = find_team_ranker()
 RANKINGS_OUTPUT = SCRAPERS_FOLDER / "Run Rankings" / "rankings_for_react.json"
@@ -1097,6 +1118,309 @@ def delete_user(user_id):
     return {"success": True}
 
 # ============================================================================
+# SCHEDULE MANAGEMENT
+# ============================================================================
+
+# Schedule settings file
+SCHEDULE_SETTINGS_FILE = SCRAPERS_FOLDER / "schedule_settings.json"
+
+# Default schedule settings
+DEFAULT_SCHEDULE_SETTINGS = {
+    "scrapers": {
+        "ECNL": {"enabled": True, "name": "ECNL + ECNL RL", "headless": True},
+        "GA": {"enabled": True, "name": "Girls Academy", "headless": True},
+        "ASPIRE": {"enabled": True, "name": "ASPIRE", "headless": True},
+    },
+    "schedule": {
+        "saturday_enabled": True,
+        "saturday_time": "22:00",
+        "sunday_enabled": True,
+        "sunday_time": "22:00",
+        "monday_followup": True,
+        "monday_time": "07:00",
+        "tuesday_cleanup": True,
+        "tuesday_time": "07:00",
+    },
+    "options": {
+        "run_if_missed": True,
+        "retry_count": 3,
+        "retry_interval_hours": 1,
+    }
+}
+
+def load_schedule_settings():
+    """Load schedule settings from file"""
+    if SCHEDULE_SETTINGS_FILE.exists():
+        try:
+            with open(SCHEDULE_SETTINGS_FILE, 'r') as f:
+                settings = json.load(f)
+                # Merge with defaults for any missing keys
+                for key in DEFAULT_SCHEDULE_SETTINGS:
+                    if key not in settings:
+                        settings[key] = DEFAULT_SCHEDULE_SETTINGS[key]
+                return settings
+        except:
+            pass
+    return DEFAULT_SCHEDULE_SETTINGS.copy()
+
+def save_schedule_settings(settings):
+    """Save schedule settings to file"""
+    try:
+        with open(SCHEDULE_SETTINGS_FILE, 'w') as f:
+            json.dump(settings, f, indent=2)
+        return {"success": True}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+def get_scraper_logs(scraper_id=None, lines=100):
+    """Get recent scraper log entries"""
+    logs = {}
+    log_files = {
+        "schedule": SCRAPERS_FOLDER / "scraper_schedule.log",
+        "ecnl": SCRAPERS_FOLDER / "scraper_ecnl.log",
+        "ga": SCRAPERS_FOLDER / "scraper_ga.log",
+        "aspire": SCRAPERS_FOLDER / "scraper_aspire.log",
+    }
+
+    files_to_read = {scraper_id: log_files[scraper_id]} if scraper_id and scraper_id in log_files else log_files
+
+    for name, log_path in files_to_read.items():
+        if log_path.exists():
+            try:
+                with open(log_path, 'r', encoding='utf-8', errors='ignore') as f:
+                    all_lines = f.readlines()
+                    logs[name] = {
+                        "path": str(log_path),
+                        "lines": all_lines[-lines:] if len(all_lines) > lines else all_lines,
+                        "total_lines": len(all_lines),
+                        "last_modified": datetime.fromtimestamp(log_path.stat().st_mtime).isoformat()
+                    }
+            except Exception as e:
+                logs[name] = {"error": str(e)}
+        else:
+            logs[name] = {"exists": False, "path": str(log_path)}
+
+    return logs
+
+def get_scrape_reports():
+    """Get list of scrape report files"""
+    reports = []
+    report_pattern = SCRAPERS_FOLDER / "scrape_report_*.txt"
+
+    for report_file in sorted(SCRAPERS_FOLDER.glob("scrape_report_*.txt"), reverse=True)[:10]:
+        try:
+            with open(report_file, 'r') as f:
+                content = f.read()
+            reports.append({
+                "filename": report_file.name,
+                "date": report_file.name.replace("scrape_report_", "").replace(".txt", ""),
+                "content": content,
+                "size": report_file.stat().st_size,
+                "modified": datetime.fromtimestamp(report_file.stat().st_mtime).isoformat()
+            })
+        except Exception as e:
+            reports.append({"filename": report_file.name, "error": str(e)})
+
+    return reports
+
+def get_scheduled_tasks():
+    """Get status of Windows scheduled tasks for scraping"""
+    import subprocess
+
+    tasks = []
+    # Updated task names for smart schedule
+    task_names = [
+        "Seedline Saturday Scrape",
+        "Seedline Sunday Scrape",
+        "Seedline Monday Follow-up",
+        "Seedline Tuesday Cleanup",
+        # Legacy tasks (may still exist)
+        "Seedline Daily Scrape - Evening",
+        "Seedline Daily Scrape - Morning",
+        "Seedline Weekly Deep Scan"
+    ]
+
+    for task_name in task_names:
+        task_info = {
+            "name": task_name,
+            "exists": False,
+            "state": "Unknown",
+            "last_run": None,
+            "next_run": None,
+            "last_result": None
+        }
+
+        try:
+            # Get task info using PowerShell
+            result = subprocess.run(
+                ["powershell", "-Command",
+                 f"Get-ScheduledTask -TaskName '{task_name}' -TaskPath '\\Seedline\\' -ErrorAction Stop | "
+                 f"Select-Object TaskName, State | ConvertTo-Json"],
+                capture_output=True, text=True, timeout=10
+            )
+
+            if result.returncode == 0 and result.stdout.strip():
+                data = json.loads(result.stdout)
+                task_info["exists"] = True
+                task_info["state"] = data.get("State", 3)  # 3 = Ready
+
+                # Map state number to string
+                state_map = {0: "Unknown", 1: "Disabled", 2: "Queued", 3: "Ready", 4: "Running"}
+                task_info["state"] = state_map.get(task_info["state"], str(task_info["state"]))
+
+                # Get additional info
+                result2 = subprocess.run(
+                    ["powershell", "-Command",
+                     f"Get-ScheduledTaskInfo -TaskName '{task_name}' -TaskPath '\\Seedline\\' -ErrorAction Stop | "
+                     f"Select-Object LastRunTime, NextRunTime, LastTaskResult | ConvertTo-Json"],
+                    capture_output=True, text=True, timeout=10
+                )
+
+                if result2.returncode == 0 and result2.stdout.strip():
+                    info_data = json.loads(result2.stdout)
+                    task_info["last_run"] = info_data.get("LastRunTime")
+                    task_info["next_run"] = info_data.get("NextRunTime")
+                    task_info["last_result"] = info_data.get("LastTaskResult", 0)
+
+                tasks.append(task_info)
+
+        except Exception as e:
+            task_info["error"] = str(e)
+
+    # Filter to only existing tasks
+    return [t for t in tasks if t.get("exists", False)]
+
+def run_scheduled_task(task_name):
+    """Run a scheduled task immediately"""
+    import subprocess
+
+    try:
+        result = subprocess.run(
+            ["powershell", "-Command",
+             f"Start-ScheduledTask -TaskName '{task_name}' -TaskPath '\\Seedline\\'"],
+            capture_output=True, text=True, timeout=30
+        )
+
+        if result.returncode == 0:
+            return {"success": True, "message": f"Started {task_name}"}
+        else:
+            return {"success": False, "error": result.stderr}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+def toggle_scheduled_task(task_name, enable):
+    """Enable or disable a scheduled task"""
+    import subprocess
+
+    action = "Enable" if enable else "Disable"
+
+    try:
+        result = subprocess.run(
+            ["powershell", "-Command",
+             f"{action}-ScheduledTask -TaskName '{task_name}' -TaskPath '\\Seedline\\'"],
+            capture_output=True, text=True, timeout=30
+        )
+
+        if result.returncode == 0:
+            return {"success": True, "message": f"{action}d {task_name}"}
+        else:
+            return {"success": False, "error": result.stderr}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+def get_games_needing_scrape():
+    """Get count of games that need scraping (missing results from past 7 days)"""
+    if not DATABASE_PATH.exists():
+        return {"error": "Database not found"}
+
+    try:
+        conn = sqlite3.connect(str(DATABASE_PATH))
+        cursor = conn.cursor()
+
+        today = datetime.now().strftime("%Y-%m-%d")
+        week_ago = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
+
+        # Games missing results from past week
+        cursor.execute("""
+            SELECT COUNT(*) FROM games
+            WHERE game_date >= ? AND game_date <= ?
+            AND (home_score IS NULL OR away_score IS NULL)
+        """, (week_ago, today))
+        missing_results = cursor.fetchone()[0]
+
+        # Today's games
+        cursor.execute("""
+            SELECT COUNT(*) FROM games WHERE game_date = ?
+        """, (today,))
+        today_games = cursor.fetchone()[0]
+
+        # Yesterday's games
+        yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+        cursor.execute("""
+            SELECT COUNT(*) FROM games WHERE game_date = ?
+        """, (yesterday,))
+        yesterday_games = cursor.fetchone()[0]
+
+        # By league
+        cursor.execute("""
+            SELECT league, COUNT(*) FROM games
+            WHERE game_date >= ? AND game_date <= ?
+            AND (home_score IS NULL OR away_score IS NULL)
+            GROUP BY league
+        """, (week_ago, today))
+        by_league = dict(cursor.fetchall())
+
+        conn.close()
+
+        return {
+            "missing_results": missing_results,
+            "today_games": today_games,
+            "yesterday_games": yesterday_games,
+            "by_league": by_league
+        }
+    except Exception as e:
+        return {"error": str(e)}
+
+def run_scrape_now(scrape_type="full"):
+    """Run the scheduled scraper immediately"""
+    scraper_path = SCRAPERS_FOLDER / "scheduled_scraper.py"
+
+    if not scraper_path.exists():
+        return {"success": False, "error": f"Scheduled scraper not found: {scraper_path}"}
+
+    try:
+        args = []
+        if scrape_type == "missing":
+            args.append("--missing-only")
+        elif scrape_type == "today":
+            args.append("--today-only")
+        elif scrape_type == "ecnl":
+            args.append("--ecnl-only")
+        elif scrape_type == "ga":
+            args.append("--ga-only")
+        elif scrape_type == "aspire":
+            args.append("--aspire-only")
+
+        # Open in a new CMD window
+        if sys.platform == 'win32':
+            window_title = f"Seedline - Scheduled Scrape ({scrape_type})"
+            python_cmd = f'"{sys.executable}" -X utf8 -u "{scraper_path}" {" ".join(args)}'
+            full_cmd = f'cd /d "{scraper_path.parent}" && {python_cmd} && echo. && echo Scrape complete. Press any key... && pause'
+            start_cmd = f'start "{window_title}" cmd /k "{full_cmd}"'
+            os.system(start_cmd)
+            return {"success": True, "message": f"Started {scrape_type} scrape in new window"}
+        else:
+            # Run in background on non-Windows
+            subprocess.Popen(
+                [sys.executable, str(scraper_path)] + args,
+                cwd=str(scraper_path.parent)
+            )
+            return {"success": True, "message": f"Started {scrape_type} scrape"}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
+# ============================================================================
 # SCRAPER MANAGEMENT
 # ============================================================================
 
@@ -1577,19 +1901,484 @@ pause
         return {"success": False, "error": str(e)}
 
 # ============================================================================
+# TEAM RATINGS - Claude Moderation & CRUD Functions
+# ============================================================================
+
+import urllib.request
+import ssl
+
+# Claude API configuration for content moderation
+ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY', '')
+CLAUDE_MODEL = 'claude-sonnet-4-20250514'  # Fast model for moderation
+
+# Rating categories (must match frontend and database columns)
+RATING_CATEGORIES = [
+    'possession', 'direct_attack', 'passing', 'fast', 'shooting', 'footwork', 'physical',
+    'coaching', 'allstar_players', 'player_sportsmanship', 'parent_sportsmanship',
+    'strong_defense', 'strong_midfield', 'strong_offense'
+]
+
+
+def init_ratings_table():
+    """Initialize the team_ratings table in the activity database."""
+    if not ACTIVITY_TRACKING_ENABLED:
+        print("[RATINGS] Activity tracking not enabled - skipping ratings table init")
+        return
+
+    try:
+        conn = sqlite3.connect(str(ACTIVITY_DB_PATH))
+        cursor = conn.cursor()
+
+        # Create the team_ratings table
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS team_ratings (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                team_id INTEGER NOT NULL,
+                team_name TEXT NOT NULL,
+                team_age_group TEXT,
+                team_league TEXT,
+                user_id TEXT NOT NULL,
+                session_id TEXT,
+                relationship TEXT NOT NULL DEFAULT 'neither',
+                comment TEXT NOT NULL,
+                rating_possession INTEGER CHECK (rating_possession IS NULL OR rating_possession BETWEEN 1 AND 5),
+                rating_direct_attack INTEGER CHECK (rating_direct_attack IS NULL OR rating_direct_attack BETWEEN 1 AND 5),
+                rating_passing INTEGER CHECK (rating_passing IS NULL OR rating_passing BETWEEN 1 AND 5),
+                rating_fast INTEGER CHECK (rating_fast IS NULL OR rating_fast BETWEEN 1 AND 5),
+                rating_shooting INTEGER CHECK (rating_shooting IS NULL OR rating_shooting BETWEEN 1 AND 5),
+                rating_footwork INTEGER CHECK (rating_footwork IS NULL OR rating_footwork BETWEEN 1 AND 5),
+                rating_physical INTEGER CHECK (rating_physical IS NULL OR rating_physical BETWEEN 1 AND 5),
+                rating_coaching INTEGER CHECK (rating_coaching IS NULL OR rating_coaching BETWEEN 1 AND 5),
+                rating_allstar_players INTEGER CHECK (rating_allstar_players IS NULL OR rating_allstar_players BETWEEN 1 AND 5),
+                rating_player_sportsmanship INTEGER CHECK (rating_player_sportsmanship IS NULL OR rating_player_sportsmanship BETWEEN 1 AND 5),
+                rating_parent_sportsmanship INTEGER CHECK (rating_parent_sportsmanship IS NULL OR rating_parent_sportsmanship BETWEEN 1 AND 5),
+                rating_strong_defense INTEGER CHECK (rating_strong_defense IS NULL OR rating_strong_defense BETWEEN 1 AND 5),
+                rating_strong_midfield INTEGER CHECK (rating_strong_midfield IS NULL OR rating_strong_midfield BETWEEN 1 AND 5),
+                rating_strong_offense INTEGER CHECK (rating_strong_offense IS NULL OR rating_strong_offense BETWEEN 1 AND 5),
+                moderation_status TEXT DEFAULT 'pending',
+                moderation_reason TEXT,
+                moderated_at TEXT,
+                created_at TEXT NOT NULL DEFAULT (datetime('now')),
+                updated_at TEXT DEFAULT (datetime('now')),
+                is_deleted INTEGER DEFAULT 0,
+                deleted_at TEXT,
+                FOREIGN KEY (session_id) REFERENCES sessions(session_id)
+            )
+        ''')
+
+        # Create indexes
+        cursor.execute('CREATE INDEX IF NOT EXISTS idx_ratings_team ON team_ratings(team_id)')
+        cursor.execute('CREATE INDEX IF NOT EXISTS idx_ratings_user ON team_ratings(user_id)')
+        cursor.execute('CREATE INDEX IF NOT EXISTS idx_ratings_status ON team_ratings(moderation_status)')
+        cursor.execute('CREATE INDEX IF NOT EXISTS idx_ratings_created ON team_ratings(created_at)')
+        cursor.execute('CREATE INDEX IF NOT EXISTS idx_ratings_team_approved ON team_ratings(team_id, moderation_status, is_deleted)')
+
+        conn.commit()
+        print("[RATINGS] Team ratings table initialized successfully")
+    except Exception as e:
+        print(f"[RATINGS] Error initializing ratings table: {e}")
+    finally:
+        conn.close()
+
+
+def moderate_comment_with_claude(comment: str) -> dict:
+    """
+    Use Claude API to moderate comment content.
+
+    Returns:
+        {
+            "approved": bool,
+            "reason": str or None  # Reason if rejected
+        }
+    """
+    if not ANTHROPIC_API_KEY:
+        # If no API key, approve with warning (for development)
+        print("[MODERATION] No ANTHROPIC_API_KEY - auto-approving comment (dev mode)")
+        return {"approved": True, "reason": None}
+
+    moderation_prompt = f"""You are a content moderator for a youth soccer team rating platform. Your job is to review comments about soccer teams and determine if they are appropriate for publication.
+
+APPROVE comments that:
+- Describe team playing style (e.g., "They play a possession-based game with strong midfield")
+- Offer constructive observations about team strengths/weaknesses
+- Are neutral or positive in tone
+- Discuss coaching style or team culture professionally
+
+REJECT comments that contain:
+1. Foul language, profanity, or vulgar content
+2. Personal attacks on specific players, coaches, or parents by name
+3. Personal identifying information (phone numbers, addresses, emails)
+4. Content that could be hurtful to child players (bullying, mocking, humiliation)
+5. Defamatory or libelous statements
+6. Content promoting violence or hate
+7. Extremely negative generalizations about an entire team
+
+The comment to review is:
+<comment>
+{comment}
+</comment>
+
+Respond in JSON format only:
+{{"approved": true}}
+OR
+{{"approved": false, "reason": "Brief explanation of why this was rejected (one sentence)"}}
+
+JSON response:"""
+
+    try:
+        request_data = json.dumps({
+            "model": CLAUDE_MODEL,
+            "max_tokens": 150,
+            "messages": [{"role": "user", "content": moderation_prompt}]
+        }).encode()
+
+        req = urllib.request.Request(
+            "https://api.anthropic.com/v1/messages",
+            data=request_data,
+            headers={
+                "Content-Type": "application/json",
+                "x-api-key": ANTHROPIC_API_KEY,
+                "anthropic-version": "2023-06-01"
+            }
+        )
+
+        ctx = ssl.create_default_context()
+        with urllib.request.urlopen(req, context=ctx, timeout=15) as response:
+            result = json.loads(response.read().decode())
+            content = result.get("content", [{}])[0].get("text", "")
+
+            # Parse JSON response from Claude - handle markdown code blocks
+            if "```" in content:
+                parts = content.split("```")
+                if len(parts) >= 2:
+                    content = parts[1]
+                    if content.startswith("json"):
+                        content = content[4:]
+
+            moderation_result = json.loads(content.strip())
+            print(f"[MODERATION] Comment review result: {moderation_result}")
+            return moderation_result
+
+    except json.JSONDecodeError as e:
+        print(f"[MODERATION] Failed to parse Claude response: {e}")
+        return {"approved": False, "reason": "Moderation service returned invalid response - pending manual review"}
+    except Exception as e:
+        print(f"[MODERATION] Claude API error: {e}")
+        # On API failure, mark as pending for manual review
+        return {"approved": False, "reason": "Moderation service unavailable - pending manual review"}
+
+
+def submit_team_rating(user_id: str, data: dict) -> dict:
+    """Submit a new team rating with Claude moderation."""
+
+    team_id = data.get('team_id')
+    comment = data.get('comment', '').strip()
+    relationship = data.get('relationship', 'neither')
+    ratings = data.get('ratings', {})
+    session_id = data.get('session_id')
+
+    # Validate required fields
+    if not team_id:
+        return {"success": False, "error": "Team ID required"}
+
+    if not comment or len(comment) < 10:
+        return {"success": False, "error": "Comment must be at least 10 characters"}
+
+    if len(comment) > 1000:
+        return {"success": False, "error": "Comment must be less than 1000 characters"}
+
+    if relationship not in ['my_team', 'followed', 'neither']:
+        return {"success": False, "error": "Invalid relationship value"}
+
+    if not ACTIVITY_TRACKING_ENABLED:
+        return {"success": False, "error": "Rating system not available"}
+
+    conn = sqlite3.connect(str(ACTIVITY_DB_PATH))
+    conn.row_factory = sqlite3.Row
+    try:
+        cursor = conn.cursor()
+
+        # Check for existing rating from this user for this team
+        cursor.execute("""
+            SELECT id FROM team_ratings
+            WHERE user_id = ? AND team_id = ? AND is_deleted = 0
+        """, (user_id, team_id))
+
+        existing = cursor.fetchone()
+        if existing:
+            return {"success": False, "error": "You have already rated this team. Delete your existing rating first."}
+
+        # Rate limit: max 10 new ratings per day
+        cursor.execute("""
+            SELECT COUNT(*) FROM team_ratings
+            WHERE user_id = ? AND date(created_at) = date('now')
+        """, (user_id,))
+
+        daily_count = cursor.fetchone()[0]
+        if daily_count >= 10:
+            return {"success": False, "error": "Daily rating limit reached (10 per day)"}
+
+        # Moderate comment with Claude
+        moderation = moderate_comment_with_claude(comment)
+
+        if not moderation.get('approved'):
+            return {
+                "success": False,
+                "error": "Comment not approved",
+                "moderation_reason": moderation.get('reason', 'Content policy violation'),
+                "code": "MODERATION_REJECTED"
+            }
+
+        # Build insert with optional rating columns
+        columns = ['team_id', 'team_name', 'team_age_group', 'team_league',
+                   'user_id', 'session_id', 'relationship', 'comment',
+                   'moderation_status', 'moderated_at']
+        values = [team_id, data.get('team_name', ''), data.get('team_age_group'),
+                  data.get('team_league'), user_id, session_id, relationship, comment,
+                  'approved', datetime.now().isoformat()]
+
+        # Add rating columns (only if provided and valid)
+        for category in RATING_CATEGORIES:
+            value = ratings.get(category)
+            if value is not None:
+                try:
+                    int_value = int(value)
+                    if not (1 <= int_value <= 5):
+                        return {"success": False, "error": f"Invalid rating value for {category}: must be 1-5"}
+                    columns.append(f'rating_{category}')
+                    values.append(int_value)
+                except (ValueError, TypeError):
+                    return {"success": False, "error": f"Invalid rating value for {category}"}
+
+        placeholders = ','.join(['?' for _ in values])
+        column_list = ','.join(columns)
+
+        cursor.execute(f"""
+            INSERT INTO team_ratings ({column_list}) VALUES ({placeholders})
+        """, values)
+
+        rating_id = cursor.lastrowid
+        conn.commit()
+
+        print(f"[RATINGS] New rating {rating_id} submitted for team {team_id} by user {user_id}")
+        return {"success": True, "rating_id": rating_id, "moderation_status": "approved"}
+
+    except sqlite3.IntegrityError as e:
+        print(f"[RATINGS] Integrity error: {e}")
+        return {"success": False, "error": "You have already rated this team"}
+    except Exception as e:
+        print(f"[RATINGS] Error submitting rating: {e}")
+        return {"success": False, "error": str(e)}
+    finally:
+        conn.close()
+
+
+def get_team_ratings(team_id: str, include_pending: bool = False) -> dict:
+    """Get all approved ratings for a team with category averages."""
+
+    if not ACTIVITY_TRACKING_ENABLED:
+        return {"team_id": team_id, "total_ratings": 0, "averages": {}, "ratings": []}
+
+    conn = sqlite3.connect(str(ACTIVITY_DB_PATH))
+    conn.row_factory = sqlite3.Row
+    try:
+        cursor = conn.cursor()
+
+        # Base query for approved ratings
+        if include_pending:
+            status_filter = "IN ('approved', 'pending')"
+        else:
+            status_filter = "= 'approved'"
+
+        cursor.execute(f"""
+            SELECT * FROM team_ratings
+            WHERE team_id = ? AND moderation_status {status_filter} AND is_deleted = 0
+            ORDER BY created_at DESC
+        """, (team_id,))
+
+        rows = cursor.fetchall()
+
+        # Calculate category averages
+        averages = {}
+        for category in RATING_CATEGORIES:
+            col_name = f'rating_{category}'
+            values = [row[col_name] for row in rows if row[col_name] is not None]
+            if values:
+                averages[category] = round(sum(values) / len(values), 1)
+            else:
+                averages[category] = None
+
+        # Format individual ratings
+        ratings_list = []
+        for row in rows:
+            rating = {
+                "id": row['id'],
+                "relationship": row['relationship'],
+                "comment": row['comment'],
+                "created_at": row['created_at'],
+                "moderation_status": row['moderation_status'],
+                "ratings": {}
+            }
+            for category in RATING_CATEGORIES:
+                col_name = f'rating_{category}'
+                if row[col_name] is not None:
+                    rating['ratings'][category] = row[col_name]
+            ratings_list.append(rating)
+
+        return {
+            "team_id": team_id,
+            "total_ratings": len(ratings_list),
+            "averages": averages,
+            "ratings": ratings_list
+        }
+
+    except Exception as e:
+        print(f"[RATINGS] Error fetching ratings: {e}")
+        return {"team_id": team_id, "total_ratings": 0, "averages": {}, "ratings": [], "error": str(e)}
+    finally:
+        conn.close()
+
+
+def get_user_ratings(user_id: str) -> dict:
+    """Get all ratings submitted by a user."""
+
+    if not ACTIVITY_TRACKING_ENABLED:
+        return {"ratings": [], "total": 0}
+
+    conn = sqlite3.connect(str(ACTIVITY_DB_PATH))
+    conn.row_factory = sqlite3.Row
+    try:
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            SELECT * FROM team_ratings
+            WHERE user_id = ? AND is_deleted = 0
+            ORDER BY created_at DESC
+        """, (user_id,))
+
+        rows = cursor.fetchall()
+
+        ratings_list = []
+        for row in rows:
+            rating = {
+                "id": row['id'],
+                "team_id": row['team_id'],
+                "team_name": row['team_name'],
+                "team_age_group": row['team_age_group'],
+                "team_league": row['team_league'],
+                "relationship": row['relationship'],
+                "comment": row['comment'],
+                "moderation_status": row['moderation_status'],
+                "moderation_reason": row['moderation_reason'],
+                "created_at": row['created_at'],
+                "ratings": {}
+            }
+            for category in RATING_CATEGORIES:
+                col_name = f'rating_{category}'
+                if row[col_name] is not None:
+                    rating['ratings'][category] = row[col_name]
+            ratings_list.append(rating)
+
+        return {"ratings": ratings_list, "total": len(ratings_list)}
+
+    except Exception as e:
+        print(f"[RATINGS] Error fetching user ratings: {e}")
+        return {"ratings": [], "total": 0, "error": str(e)}
+    finally:
+        conn.close()
+
+
+def delete_team_rating(rating_id: str, user_id: str) -> dict:
+    """Soft delete a rating (users can only delete their own)."""
+
+    if not ACTIVITY_TRACKING_ENABLED:
+        return {"success": False, "error": "Rating system not available"}
+
+    conn = sqlite3.connect(str(ACTIVITY_DB_PATH))
+    try:
+        cursor = conn.cursor()
+
+        # Verify ownership
+        cursor.execute("""
+            SELECT user_id FROM team_ratings WHERE id = ? AND is_deleted = 0
+        """, (rating_id,))
+
+        row = cursor.fetchone()
+        if not row:
+            return {"success": False, "error": "Rating not found"}
+
+        if row[0] != user_id:
+            return {"success": False, "error": "Cannot delete another user's rating"}
+
+        # Soft delete
+        cursor.execute("""
+            UPDATE team_ratings
+            SET is_deleted = 1, deleted_at = datetime('now'), updated_at = datetime('now')
+            WHERE id = ?
+        """, (rating_id,))
+
+        conn.commit()
+        print(f"[RATINGS] Rating {rating_id} deleted by user {user_id}")
+        return {"success": True}
+
+    except Exception as e:
+        print(f"[RATINGS] Error deleting rating: {e}")
+        return {"success": False, "error": str(e)}
+    finally:
+        conn.close()
+
+
+# ============================================================================
 # HTTP SERVER
 # ============================================================================
 
 class AdminHandler(BaseHTTPRequestHandler):
     """HTTP request handler for the admin API"""
     
-    def _set_headers(self, status=200, content_type='application/json'):
+    def _set_headers(self, status=200, content_type='application/json', extra_headers=None):
         self.send_response(status)
         self.send_header('Content-type', content_type)
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Session-ID')
+        self.send_header('Access-Control-Expose-Headers', 'X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset')
+        if extra_headers:
+            for key, value in extra_headers.items():
+                self.send_header(key, value)
         self.end_headers()
+
+    def _get_client_ip(self):
+        """Get client IP address, checking X-Forwarded-For for proxied requests."""
+        forwarded = self.headers.get('X-Forwarded-For')
+        if forwarded:
+            return forwarded.split(',')[0].strip()
+        real_ip = self.headers.get('X-Real-IP')
+        if real_ip:
+            return real_ip
+        return self.client_address[0] if self.client_address else 'unknown'
+
+    def _get_auth_info(self):
+        """Get authentication info from request headers."""
+        if not ACTIVITY_TRACKING_ENABLED:
+            return None, 'guest'
+        headers = {k: v for k, v in self.headers.items()}
+        user_info = get_auth_from_request(headers)
+        if user_info:
+            account_type = get_account_type_from_user(user_info, get_user_by_email)
+            return user_info, account_type
+        return None, 'guest'
+
+    def _check_rate_limit(self, ip_address, account_type='guest'):
+        """Check rate limit and return headers."""
+        if not ACTIVITY_TRACKING_ENABLED:
+            return True, 999, 60, {}
+        allowed, remaining, reset = check_rate_limit(ip_address, account_type)
+        headers = {
+            'X-RateLimit-Limit': str(check_rate_limit.__code__.co_freevars),  # Will be fixed
+            'X-RateLimit-Remaining': str(remaining),
+            'X-RateLimit-Reset': str(reset)
+        }
+        return allowed, remaining, reset, headers
     
     def do_OPTIONS(self):
         self._set_headers()
@@ -1605,7 +2394,14 @@ class AdminHandler(BaseHTTPRequestHandler):
             return values[0] if values else default
         
         try:
-            if path == '/api/stats':
+            # Debug: Print path for troubleshooting
+            print(f"[DEBUG] Received path: '{path}'")
+
+            if path == '/api/test-new':
+                self._set_headers()
+                self.wfile.write(json.dumps({"message": "New code is loaded!"}).encode())
+
+            elif path == '/api/stats':
                 self._set_headers()
                 self.wfile.write(json.dumps(get_database_stats()).encode())
             
@@ -1621,7 +2417,26 @@ class AdminHandler(BaseHTTPRequestHandler):
             elif path == '/api/users':
                 self._set_headers()
                 self.wfile.write(json.dumps(get_users()).encode())
-            
+
+            elif path.startswith('/api/user/lookup'):
+                # Look up user account type by email: GET /api/user/lookup?email=xxx
+                email = get_param('email')
+                if email:
+                    user = get_user_by_email(email)
+                    if user:
+                        self._set_headers()
+                        self.wfile.write(json.dumps({
+                            "found": True,
+                            "account_type": user.get("account_type", "free"),
+                            "username": user.get("username", "")
+                        }).encode())
+                    else:
+                        self._set_headers()
+                        self.wfile.write(json.dumps({"found": False}).encode())
+                else:
+                    self._set_headers()
+                    self.wfile.write(json.dumps({"error": "Email required"}).encode())
+
             elif path.startswith('/api/user/') and path.endswith('/data'):
                 # Get user data: GET /api/user/<username>/data
                 parts = path.split('/')
@@ -1704,7 +2519,31 @@ class AdminHandler(BaseHTTPRequestHandler):
                         break
                 
                 self.wfile.write(json.dumps(file_info).encode())
-            
+
+            elif path == '/api/schedule/tasks':
+                self._set_headers()
+                self.wfile.write(json.dumps(get_scheduled_tasks()).encode())
+
+            elif path == '/api/schedule/status':
+                self._set_headers()
+                self.wfile.write(json.dumps(get_games_needing_scrape()).encode())
+
+            elif path == '/api/schedule/settings':
+                self._set_headers()
+                self.wfile.write(json.dumps(load_schedule_settings()).encode())
+
+            elif path == '/api/schedule/logs':
+                self._set_headers()
+                # Get optional query params
+                params = parse_qs(urlparse(self.path).query)
+                scraper_id = params.get('scraper', [None])[0]
+                lines = int(params.get('lines', [100])[0])
+                self.wfile.write(json.dumps(get_scraper_logs(scraper_id, lines)).encode())
+
+            elif path == '/api/schedule/reports':
+                self._set_headers()
+                self.wfile.write(json.dumps(get_scrape_reports()).encode())
+
             elif path == '/api/config':
                 self._set_headers()
                 config = load_config()
@@ -1715,15 +2554,341 @@ class AdminHandler(BaseHTTPRequestHandler):
                     "ranker": str(RANKER_PATH)
                 }
                 self.wfile.write(json.dumps(config).encode())
-            
+
+            # ========== API V1 - RANKINGS ENDPOINTS ==========
+            elif path == '/api/v1/rankings':
+                # Get rankings with optional filters
+                start_time = time.time()
+                ip_address = self._get_client_ip()
+                user_info, account_type = self._get_auth_info()
+
+                # Check rate limit
+                allowed, remaining, reset, rate_headers = self._check_rate_limit(ip_address, account_type)
+                if not allowed:
+                    self._set_headers(429, extra_headers=rate_headers)
+                    self.wfile.write(json.dumps({
+                        "error": "Rate limit exceeded",
+                        "retry_after": reset
+                    }).encode())
+                    return
+
+                # Get filter parameters
+                gender = get_param('gender')
+                age_group = get_param('age_group')
+                league = get_param('league')
+                state = get_param('state')
+                limit = min(int(get_param('limit', 100)), 500)  # Cap at 500
+                offset = int(get_param('offset', 0))
+                search = get_param('search')
+
+                # Load rankings from JSON file (for now)
+                rankings_path = SCRIPT_DIR / "public" / "rankings_for_react.json"
+                if not rankings_path.exists():
+                    rankings_path = RANKINGS_OUTPUT
+
+                if rankings_path.exists():
+                    with open(rankings_path, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+
+                    all_teams = data.get('teamsData', [])
+
+                    # Extract metadata from FULL dataset before filtering
+                    all_age_groups = sorted(set(t.get('ageGroup', '') for t in all_teams if t.get('ageGroup')),
+                                           key=lambda x: (x[0] != 'G', -int(x[1:]) if x[1:].isdigit() else 0))
+                    all_genders = sorted(set(t.get('gender', '') for t in all_teams if t.get('gender')))
+                    all_leagues = sorted(set(t.get('league', '') for t in all_teams if t.get('league')))
+                    all_states = sorted(set(t.get('state', '') for t in all_teams if t.get('state')))
+
+                    teams = all_teams
+
+                    # Apply filters
+                    if gender:
+                        teams = [t for t in teams if t.get('gender', '').lower() == gender.lower()]
+                    if age_group:
+                        age_groups = [a.strip() for a in age_group.split(',')]
+                        teams = [t for t in teams if t.get('age_group') in age_groups]
+                    if league:
+                        leagues = [l.strip() for l in league.split(',')]
+                        teams = [t for t in teams if t.get('league') in leagues]
+                    if state:
+                        states = [s.strip().upper() for s in state.split(',')]
+                        teams = [t for t in teams if t.get('state', '').upper() in states]
+                    if search:
+                        search_lower = search.lower()
+                        teams = [t for t in teams if
+                                 search_lower in t.get('name', '').lower() or
+                                 search_lower in t.get('club', '').lower()]
+
+                    total = len(teams)
+                    teams = teams[offset:offset + limit]
+
+                    response_data = {
+                        "teams": teams,
+                        "total": total,
+                        "limit": limit,
+                        "offset": offset,
+                        "lastUpdated": data.get('lastUpdated'),
+                        # Metadata for dropdowns (from full dataset, not filtered)
+                        "ageGroups": all_age_groups,
+                        "genders": all_genders,
+                        "leagues": all_leagues,
+                        "states": all_states
+                    }
+
+                    # Log API call
+                    if ACTIVITY_TRACKING_ENABLED:
+                        session_id = self.headers.get('X-Session-ID')
+                        log_api_call(
+                            endpoint='/api/v1/rankings',
+                            method='GET',
+                            session_id=session_id,
+                            user_id=user_info.get('uid') if user_info else None,
+                            ip_address=ip_address,
+                            params={'gender': gender, 'age_group': age_group, 'league': league,
+                                    'state': state, 'limit': limit, 'offset': offset},
+                            status_code=200,
+                            response_time_ms=int((time.time() - start_time) * 1000),
+                            response_size_bytes=len(json.dumps(response_data))
+                        )
+
+                    self._set_headers(extra_headers=rate_headers)
+                    self.wfile.write(json.dumps(response_data).encode())
+                else:
+                    self._set_headers(404)
+                    self.wfile.write(json.dumps({"error": "Rankings data not found"}).encode())
+
+            elif path.startswith('/api/v1/rankings/team/'):
+                # Get single team profile
+                team_id = unquote(path.split('/api/v1/rankings/team/')[1])
+                ip_address = self._get_client_ip()
+                user_info, account_type = self._get_auth_info()
+
+                # Check rate limit
+                allowed, remaining, reset, rate_headers = self._check_rate_limit(ip_address, account_type)
+                if not allowed:
+                    self._set_headers(429, extra_headers=rate_headers)
+                    self.wfile.write(json.dumps({"error": "Rate limit exceeded"}).encode())
+                    return
+
+                # Load rankings and find team
+                rankings_path = SCRIPT_DIR / "public" / "rankings_for_react.json"
+                if not rankings_path.exists():
+                    rankings_path = RANKINGS_OUTPUT
+
+                if rankings_path.exists():
+                    with open(rankings_path, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+
+                    teams = data.get('teamsData', [])
+                    team = None
+
+                    # Find by various identifiers
+                    for t in teams:
+                        if (str(t.get('rank')) == team_id or
+                            t.get('name', '').lower() == team_id.lower() or
+                            t.get('team_url', '') == team_id):
+                            team = t
+                            break
+
+                    if team:
+                        # Log page view for activity tracking
+                        if ACTIVITY_TRACKING_ENABLED:
+                            session_id = self.headers.get('X-Session-ID')
+                            if session_id:
+                                log_page_view(
+                                    session_id=session_id,
+                                    page_type='team',
+                                    page_path=f'/team/{team_id}',
+                                    entity_type='team',
+                                    entity_id=team_id,
+                                    entity_name=team.get('name'),
+                                    user_id=user_info.get('uid') if user_info else None
+                                )
+
+                        self._set_headers(extra_headers=rate_headers)
+                        self.wfile.write(json.dumps({"team": team}).encode())
+                    else:
+                        self._set_headers(404)
+                        self.wfile.write(json.dumps({"error": "Team not found"}).encode())
+                else:
+                    self._set_headers(404)
+                    self.wfile.write(json.dumps({"error": "Rankings data not found"}).encode())
+
+            elif path.startswith('/api/v1/rankings/club/'):
+                # Get all teams for a club
+                club_name = unquote(path.split('/api/v1/rankings/club/')[1])
+                ip_address = self._get_client_ip()
+                user_info, account_type = self._get_auth_info()
+
+                allowed, remaining, reset, rate_headers = self._check_rate_limit(ip_address, account_type)
+                if not allowed:
+                    self._set_headers(429, extra_headers=rate_headers)
+                    self.wfile.write(json.dumps({"error": "Rate limit exceeded"}).encode())
+                    return
+
+                rankings_path = SCRIPT_DIR / "public" / "rankings_for_react.json"
+                if not rankings_path.exists():
+                    rankings_path = RANKINGS_OUTPUT
+
+                if rankings_path.exists():
+                    with open(rankings_path, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+
+                    teams = data.get('teamsData', [])
+                    club_teams = [t for t in teams if t.get('club', '').lower() == club_name.lower()]
+
+                    if club_teams:
+                        self._set_headers(extra_headers=rate_headers)
+                        self.wfile.write(json.dumps({
+                            "club": club_name,
+                            "teams": club_teams,
+                            "count": len(club_teams)
+                        }).encode())
+                    else:
+                        self._set_headers(404)
+                        self.wfile.write(json.dumps({"error": "Club not found"}).encode())
+                else:
+                    self._set_headers(404)
+                    self.wfile.write(json.dumps({"error": "Rankings data not found"}).encode())
+
+            elif path == '/api/v1/rankings/search':
+                # Search teams, clubs, players
+                q = get_param('q', '')
+                search_type = get_param('type', 'all')  # all, team, club, player
+                limit = min(int(get_param('limit', 20)), 50)
+
+                if len(q) < 2:
+                    self._set_headers(400)
+                    self.wfile.write(json.dumps({"error": "Query must be at least 2 characters"}).encode())
+                    return
+
+                rankings_path = SCRIPT_DIR / "public" / "rankings_for_react.json"
+                if not rankings_path.exists():
+                    rankings_path = RANKINGS_OUTPUT
+
+                results = {"teams": [], "clubs": [], "players": []}
+
+                if rankings_path.exists():
+                    with open(rankings_path, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+
+                    q_lower = q.lower()
+
+                    if search_type in ['all', 'team']:
+                        teams = data.get('teamsData', [])
+                        matching_teams = [t for t in teams if q_lower in t.get('name', '').lower()][:limit]
+                        results["teams"] = matching_teams
+
+                    if search_type in ['all', 'club']:
+                        teams = data.get('teamsData', [])
+                        clubs = {}
+                        for t in teams:
+                            club = t.get('club', '')
+                            if q_lower in club.lower() and club not in clubs:
+                                clubs[club] = {"name": club, "team_count": 0}
+                            if club in clubs:
+                                clubs[club]["team_count"] += 1
+                        results["clubs"] = list(clubs.values())[:limit]
+
+                    if search_type in ['all', 'player']:
+                        players = data.get('playersData', [])
+                        matching_players = [p for p in players if q_lower in p.get('name', '').lower()][:limit]
+                        results["players"] = matching_players
+
+                self._set_headers()
+                self.wfile.write(json.dumps(results).encode())
+
+            # ========== API V1 - ACTIVITY TRACKING ENDPOINTS ==========
+            elif path == '/api/v1/activity/stats':
+                # Get activity statistics (admin only)
+                user_info, account_type = self._get_auth_info()
+
+                if account_type != 'admin':
+                    self._set_headers(403)
+                    self.wfile.write(json.dumps({"error": "Admin access required"}).encode())
+                    return
+
+                if ACTIVITY_TRACKING_ENABLED:
+                    date = get_param('date')
+                    stats = get_daily_stats(date)
+                    self._set_headers()
+                    self.wfile.write(json.dumps(stats).encode())
+                else:
+                    self._set_headers(503)
+                    self.wfile.write(json.dumps({"error": "Activity tracking not enabled"}).encode())
+
+            elif path == '/api/v1/activity/suspicious':
+                # Get suspicious activity (admin only)
+                user_info, account_type = self._get_auth_info()
+
+                if account_type != 'admin':
+                    self._set_headers(403)
+                    self.wfile.write(json.dumps({"error": "Admin access required"}).encode())
+                    return
+
+                if ACTIVITY_TRACKING_ENABLED:
+                    limit = int(get_param('limit', 100))
+                    severity = get_param('severity')
+                    activity = get_suspicious_activity(limit=limit, severity=severity)
+                    self._set_headers()
+                    self.wfile.write(json.dumps({"suspicious_activity": activity}).encode())
+                else:
+                    self._set_headers(503)
+                    self.wfile.write(json.dumps({"error": "Activity tracking not enabled"}).encode())
+
+            elif path.startswith('/api/v1/activity/session/'):
+                # Get session stats
+                session_id = path.split('/api/v1/activity/session/')[1]
+                user_info, account_type = self._get_auth_info()
+
+                if account_type != 'admin':
+                    self._set_headers(403)
+                    self.wfile.write(json.dumps({"error": "Admin access required"}).encode())
+                    return
+
+                if ACTIVITY_TRACKING_ENABLED:
+                    stats = get_session_stats(session_id)
+                    if stats:
+                        self._set_headers()
+                        self.wfile.write(json.dumps(stats).encode())
+                    else:
+                        self._set_headers(404)
+                        self.wfile.write(json.dumps({"error": "Session not found"}).encode())
+                else:
+                    self._set_headers(503)
+                    self.wfile.write(json.dumps({"error": "Activity tracking not enabled"}).encode())
+
+            # ========== TEAM RATINGS API (GET) ==========
+            elif path.startswith('/api/v1/ratings/team/'):
+                # Get all ratings for a team
+                team_id = path.split('/api/v1/ratings/team/')[1]
+                include_pending = get_param('include_pending', 'false') == 'true'
+
+                result = get_team_ratings(team_id, include_pending)
+                self._set_headers()
+                self.wfile.write(json.dumps(result).encode())
+
+            elif path == '/api/v1/ratings/user':
+                # Get current user's ratings
+                user_info, account_type = self._get_auth_info()
+
+                if not user_info:
+                    self._set_headers(401)
+                    self.wfile.write(json.dumps({"error": "Authentication required"}).encode())
+                    return
+
+                result = get_user_ratings(user_info.get('uid'))
+                self._set_headers()
+                self.wfile.write(json.dumps(result).encode())
+
             else:
                 self._set_headers(404)
                 self.wfile.write(json.dumps({"error": "Not found"}).encode())
-        
+
         except Exception as e:
             self._set_headers(500)
             self.wfile.write(json.dumps({"error": str(e)}).encode())
-    
+
     def do_POST(self):
         parsed = urlparse(self.path)
         path = parsed.path
@@ -1814,15 +2979,245 @@ class AdminHandler(BaseHTTPRequestHandler):
             elif path == '/api/launch-react':
                 self._set_headers()
                 self.wfile.write(json.dumps(launch_react_app()).encode())
-            
+
+            elif path == '/api/schedule/run':
+                task_name = body.get('task_name')
+                if task_name:
+                    result = run_scheduled_task(task_name)
+                else:
+                    result = run_scrape_now(body.get('type', 'full'))
+                self._set_headers()
+                self.wfile.write(json.dumps(result).encode())
+
+            elif path == '/api/schedule/toggle':
+                task_name = body.get('task_name')
+                enable = body.get('enable', True)
+                self._set_headers()
+                self.wfile.write(json.dumps(toggle_scheduled_task(task_name, enable)).encode())
+
+            elif path == '/api/schedule/settings':
+                # Save schedule settings
+                self._set_headers()
+                result = save_schedule_settings(body)
+                self.wfile.write(json.dumps(result).encode())
+
+            elif path == '/api/schedule/run-scraper':
+                # Run a specific scraper immediately
+                scraper_id = body.get('scraper_id', 'all')
+                visible = body.get('visible', False)
+                result = run_scrape_now(scraper_id if scraper_id != 'all' else 'full')
+                self._set_headers()
+                self.wfile.write(json.dumps(result).encode())
+
+            # ========== API V1 - ACTIVITY TRACKING ENDPOINTS ==========
+            elif path == '/api/v1/activity/session':
+                # Create a new session
+                if not ACTIVITY_TRACKING_ENABLED:
+                    self._set_headers(503)
+                    self.wfile.write(json.dumps({"error": "Activity tracking not enabled"}).encode())
+                    return
+
+                ip_address = self._get_client_ip()
+                user_info, account_type = self._get_auth_info()
+
+                # Extract device info from body
+                device_info = {
+                    "userAgent": body.get("userAgent"),
+                    "screenWidth": body.get("screenWidth"),
+                    "screenHeight": body.get("screenHeight"),
+                    "colorDepth": body.get("colorDepth"),
+                    "pixelRatio": body.get("pixelRatio"),
+                    "timezone": body.get("timezone"),
+                    "timezoneOffset": body.get("timezoneOffset"),
+                    "language": body.get("language"),
+                    "languages": body.get("languages"),
+                    "platform": body.get("platform"),
+                    "vendor": body.get("vendor"),
+                    "hardwareConcurrency": body.get("hardwareConcurrency"),
+                    "maxTouchPoints": body.get("maxTouchPoints"),
+                    "cookiesEnabled": body.get("cookiesEnabled"),
+                    "doNotTrack": body.get("doNotTrack"),
+                    "referrer": body.get("referrer"),
+                    "landingPage": body.get("landingPage"),
+                    "utm_source": body.get("utm_source"),
+                    "utm_medium": body.get("utm_medium"),
+                    "utm_campaign": body.get("utm_campaign"),
+                    "utm_term": body.get("utm_term"),
+                    "utm_content": body.get("utm_content"),
+                }
+
+                session_id = create_session(
+                    device_info=device_info,
+                    ip_address=ip_address,
+                    user_id=user_info.get('uid') if user_info else None,
+                    firebase_uid=user_info.get('uid') if user_info else None,
+                    account_type=account_type
+                )
+
+                self._set_headers()
+                self.wfile.write(json.dumps({
+                    "session_id": session_id,
+                    "account_type": account_type
+                }).encode())
+
+            elif path == '/api/v1/activity/pageview':
+                # Log a page view
+                if not ACTIVITY_TRACKING_ENABLED:
+                    self._set_headers(503)
+                    self.wfile.write(json.dumps({"error": "Activity tracking not enabled"}).encode())
+                    return
+
+                session_id = body.get('session_id') or self.headers.get('X-Session-ID')
+                if not session_id:
+                    self._set_headers(400)
+                    self.wfile.write(json.dumps({"error": "session_id required"}).encode())
+                    return
+
+                user_info, _ = self._get_auth_info()
+
+                page_view_id = log_page_view(
+                    session_id=session_id,
+                    page_type=body.get('page_type', 'unknown'),
+                    page_path=body.get('page_path', '/'),
+                    entity_type=body.get('entity_type'),
+                    entity_id=body.get('entity_id'),
+                    entity_name=body.get('entity_name'),
+                    previous_page=body.get('previous_page'),
+                    previous_entity_id=body.get('previous_entity_id'),
+                    navigation_method=body.get('navigation_method'),
+                    page_params=body.get('page_params'),
+                    user_id=user_info.get('uid') if user_info else None
+                )
+
+                self._set_headers()
+                self.wfile.write(json.dumps({
+                    "success": True,
+                    "page_view_id": page_view_id
+                }).encode())
+
+            elif path == '/api/v1/activity/heartbeat':
+                # Update time on page
+                if not ACTIVITY_TRACKING_ENABLED:
+                    self._set_headers(503)
+                    self.wfile.write(json.dumps({"error": "Activity tracking not enabled"}).encode())
+                    return
+
+                page_view_id = body.get('page_view_id')
+                if not page_view_id:
+                    self._set_headers(400)
+                    self.wfile.write(json.dumps({"error": "page_view_id required"}).encode())
+                    return
+
+                update_page_time(
+                    page_view_id=page_view_id,
+                    time_on_page_ms=body.get('time_on_page_ms', 0),
+                    max_scroll_depth=body.get('max_scroll_depth')
+                )
+
+                self._set_headers()
+                self.wfile.write(json.dumps({"success": True}).encode())
+
+            elif path == '/api/v1/activity/update-user':
+                # Update session with authenticated user info
+                if not ACTIVITY_TRACKING_ENABLED:
+                    self._set_headers(503)
+                    self.wfile.write(json.dumps({"error": "Activity tracking not enabled"}).encode())
+                    return
+
+                session_id = body.get('session_id') or self.headers.get('X-Session-ID')
+                if not session_id:
+                    self._set_headers(400)
+                    self.wfile.write(json.dumps({"error": "session_id required"}).encode())
+                    return
+
+                user_info, account_type = self._get_auth_info()
+
+                if user_info:
+                    update_session_user(
+                        session_id=session_id,
+                        user_id=user_info.get('uid'),
+                        firebase_uid=user_info.get('uid'),
+                        account_type=account_type
+                    )
+                    self._set_headers()
+                    self.wfile.write(json.dumps({
+                        "success": True,
+                        "account_type": account_type
+                    }).encode())
+                else:
+                    self._set_headers(401)
+                    self.wfile.write(json.dumps({"error": "Not authenticated"}).encode())
+
+            elif path == '/api/v1/activity/block':
+                # Block an IP or fingerprint (admin only)
+                user_info, account_type = self._get_auth_info()
+
+                if account_type != 'admin':
+                    self._set_headers(403)
+                    self.wfile.write(json.dumps({"error": "Admin access required"}).encode())
+                    return
+
+                if not ACTIVITY_TRACKING_ENABLED:
+                    self._set_headers(503)
+                    self.wfile.write(json.dumps({"error": "Activity tracking not enabled"}).encode())
+                    return
+
+                block_type = body.get('block_type')  # 'ip' or 'fingerprint'
+                block_value = body.get('block_value')
+                reason = body.get('reason', 'Manual block')
+                expires_hours = body.get('expires_hours')  # None = permanent
+
+                if not block_type or not block_value:
+                    self._set_headers(400)
+                    self.wfile.write(json.dumps({"error": "block_type and block_value required"}).encode())
+                    return
+
+                add_to_blocklist(
+                    block_type=block_type,
+                    block_value=block_value,
+                    reason=reason,
+                    expires_hours=expires_hours,
+                    created_by=user_info.get('email') if user_info else 'admin'
+                )
+
+                self._set_headers()
+                self.wfile.write(json.dumps({"success": True}).encode())
+
+            # ========== TEAM RATINGS API (POST) ==========
+            elif path == '/api/v1/ratings/submit':
+                # Submit a new team rating
+                user_info, account_type = self._get_auth_info()
+
+                if not user_info:
+                    self._set_headers(401)
+                    self.wfile.write(json.dumps({
+                        "error": "Authentication required",
+                        "code": "AUTH_REQUIRED"
+                    }).encode())
+                    return
+
+                # Check account type (PAID+ only)
+                if account_type not in ['paid', 'pro', 'coach', 'admin']:
+                    self._set_headers(403)
+                    self.wfile.write(json.dumps({
+                        "error": "Pro account required to submit ratings",
+                        "code": "PAID_REQUIRED"
+                    }).encode())
+                    return
+
+                result = submit_team_rating(user_info.get('uid'), body)
+                status_code = 200 if result.get('success') else 400
+                self._set_headers(status_code)
+                self.wfile.write(json.dumps(result).encode())
+
             else:
                 self._set_headers(404)
                 self.wfile.write(json.dumps({"error": "Not found"}).encode())
-        
+
         except Exception as e:
             self._set_headers(500)
             self.wfile.write(json.dumps({"error": str(e)}).encode())
-    
+
     def do_PUT(self):
         parsed = urlparse(self.path)
         path = parsed.path
@@ -1884,30 +3279,50 @@ class AdminHandler(BaseHTTPRequestHandler):
                 result = delete_game(rowid)
                 self._set_headers()
                 self.wfile.write(json.dumps(result).encode())
-            
+
+            # ========== TEAM RATINGS API (DELETE) ==========
+            elif path.startswith('/api/v1/ratings/'):
+                # Delete a rating: DELETE /api/v1/ratings/{ratingId}
+                rating_id = path.split('/api/v1/ratings/')[1]
+
+                user_info, account_type = self._get_auth_info()
+
+                if not user_info:
+                    self._set_headers(401)
+                    self.wfile.write(json.dumps({"error": "Authentication required"}).encode())
+                    return
+
+                result = delete_team_rating(rating_id, user_info.get('uid'))
+                status_code = 200 if result.get('success') else 400
+                self._set_headers(status_code)
+                self.wfile.write(json.dumps(result).encode())
+
             else:
                 self._set_headers(404)
                 self.wfile.write(json.dumps({"error": "Not found"}).encode())
-        
+
         except Exception as e:
             self._set_headers(500)
             self.wfile.write(json.dumps({"error": str(e)}).encode())
-    
+
     def log_message(self, format, *args):
         # Custom logging
         print(f"[{datetime.now().strftime('%H:%M:%S')}] {args[0]}")
 
 def run_server(port=5050, open_browser=True):
     """Start the admin server"""
+    # Initialize ratings table on startup
+    init_ratings_table()
+
     server = HTTPServer(('localhost', port), AdminHandler)
     
     print("\n" + "=" * 60)
-    print("  🌱 SEEDLINE ADMIN SERVER")
+    print("  SEEDLINE ADMIN SERVER")
     print("=" * 60)
     print(f"\n  Server running at: http://localhost:{port}")
     print(f"  Dashboard: Open admin_dashboard.html in your browser")
     print(f"\n  Database: {DATABASE_PATH}")
-    print(f"  Exists: {'✅ Yes' if DATABASE_PATH.exists() else '❌ No'}")
+    print(f"  Exists: {'Yes' if DATABASE_PATH.exists() else 'No'}")
     print("\n  Press Ctrl+C to stop")
     print("=" * 60 + "\n")
     
@@ -1919,7 +3334,7 @@ def run_server(port=5050, open_browser=True):
     try:
         server.serve_forever()
     except KeyboardInterrupt:
-        print("\n\n  👋 Server stopped")
+        print("\n\n  Server stopped")
         server.shutdown()
 
 # ============================================================================

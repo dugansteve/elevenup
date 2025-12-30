@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+  <defs>
+    <style>
+      .sil { fill:#000; stroke:none; }
+    </style>
+
+    <!-- Simple silhouette variants (original artwork; not a trace/copy of the reference image) -->
+    <g id="p_stand_f" class="sil">
+      <!-- ponytail -->
+      <path d="M74 66c10 6 18 16 20 30c-10-10-22-14-34-14z"/>
+      <circle cx="60" cy="60" r="26"/>
+      <!-- torso / dress -->
+      <path d="M40 90c-12 8-18 22-18 40v70c0 10 6 18 14 18h48c8 0 14-8 14-18v-70c0-18-6-32-18-40z"/>
+      <path d="M22 220l76 0l22 70H0z"/>
+      <!-- legs -->
+      <rect x="18" y="290" width="36" height="120" rx="10"/>
+      <rect x="66" y="290" width="36" height="120" rx="10"/>
+      <!-- arms down -->
+      <path d="M22 120c-12 10-16 24-14 44l8 54c2 12 12 18 22 16c10-2 16-12 14-22l-10-58c-1-6 1-10 6-14z"/>
+      <path d="M98 120c12 10 16 24 14 44l-8 54c-2 12-12 18-22 16c-10-2-16-12-14-22l10-58c1-6-1-10-6-14z"/>
+      <!-- feet -->
+      <rect x="10" y="405" width="52" height="18" rx="9"/>
+      <rect x="58" y="405" width="52" height="18" rx="9"/>
+    </g>
+
+    <g id="p_stand_m" class="sil">
+      <circle cx="60" cy="60" r="26"/>
+      <!-- torso -->
+      <path d="M38 92c-14 10-20 24-20 44v86c0 12 8 20 18 20h48c10 0 18-8 18-20v-86c0-20-6-34-20-44z"/>
+      <!-- shorts -->
+      <path d="M18 220h84v48c0 10-8 18-18 18H36c-10 0-18-8-18-18z"/>
+      <!-- legs -->
+      <rect x="24" y="286" width="32" height="126" rx="10"/>
+      <rect x="68" y="286" width="32" height="126" rx="10"/>
+      <!-- arms on hips -->
+      <path d="M18 136c-18 8-26 22-26 42v18c0 10 8 18 18 18h12v-24c0-12 6-18 18-22z"/>
+      <path d="M102 136c18 8 26 22 26 42v18c0 10-8 18-18 18h-12v-24c0-12-6-18-18-22z"/>
+      <!-- feet -->
+      <rect x="14" y="405" width="48" height="18" rx="9"/>
+      <rect x="58" y="405" width="48" height="18" rx="9"/>
+    </g>
+
+    <g id="p_lean" class="sil">
+      <circle cx="62" cy="58" r="24"/>
+      <path d="M36 86c-14 10-20 26-18 50l10 116c1 12 10 20 22 20h44c12 0 22-10 22-22V134c0-18-6-32-18-44z"/>
+      <path d="M38 276l66-8l10 50c2 10-4 20-14 22l-22 4c-10 2-20-4-22-14z"/>
+      <rect x="32" y="340" width="32" height="92" rx="10" transform="rotate(-10 48 386)"/>
+      <rect x="72" y="330" width="32" height="104" rx="10" transform="rotate(8 88 382)"/>
+      <path d="M28 140c-14 12-18 26-14 48l10 54c2 10 12 16 22 14c10-2 16-12 14-22l-10-54c-1-6 1-10 6-14z"/>
+      <path d="M104 140c16 8 24 22 24 40v40c0 10-8 18-18 18h-10v-44c0-12-6-18-18-22z"/>
+      <rect x="18" y="430" width="56" height="18" rx="9"/>
+      <rect x="70" y="430" width="56" height="18" rx="9"/>
+    </g>
+
+    <!-- Players with arms raised (for trophy pose) -->
+    <g id="p_raise_left" class="sil">
+      <circle cx="60" cy="60" r="26"/>
+      <path d="M38 92c-14 10-20 24-20 44v86c0 12 8 20 18 20h48c10 0 18-8 18-20v-86c0-20-6-34-20-44z"/>
+      <path d="M18 220h84v48c0 10-8 18-18 18H36c-10 0-18-8-18-18z"/>
+      <rect x="24" y="286" width="32" height="126" rx="10"/>
+      <rect x="68" y="286" width="32" height="126" rx="10"/>
+      <!-- left arm up -->
+      <path d="M46 128c-24-40-44-56-60-48c-8 4-10 14-6 22c10 20 24 40 44 68c6 8 18 10 26 4c8-6 10-18 4-26z"/>
+      <!-- right arm angled up -->
+      <path d="M92 132c18-20 34-28 48-22c10 4 14 16 8 26c-10 18-22 34-38 54c-6 8-18 10-26 4c-8-6-10-18-4-26z"/>
+      <rect x="14" y="405" width="48" height="18" rx="9"/>
+      <rect x="58" y="405" width="48" height="18" rx="9"/>
+    </g>
+
+    <g id="p_raise_center" class="sil">
+      <circle cx="60" cy="60" r="26"/>
+      <path d="M38 92c-14 10-20 24-20 44v86c0 12 8 20 18 20h48c10 0 18-8 18-20v-86c0-20-6-34-20-44z"/>
+      <path d="M18 220h84v48c0 10-8 18-18 18H36c-10 0-18-8-18-18z"/>
+      <rect x="24" y="286" width="32" height="126" rx="10"/>
+      <rect x="68" y="286" width="32" height="126" rx="10"/>
+      <!-- both arms straight up -->
+      <path d="M36 140c-12-44-24-70-36-78c-8-6-18-2-22 6c-4 8-2 16 4 24c12 16 20 42 24 78c2 10 12 18 22 16c10-2 18-12 16-22z"/>
+      <path d="M84 140c12-44 24-70 36-78c8-6 18-2 22 6c4 8 2 16-4 24c-12 16-20 42-24 78c-2 10-12 18-22 16c-10-2-18-12-16-22z"/>
+      <rect x="14" y="405" width="48" height="18" rx="9"/>
+      <rect x="58" y="405" width="48" height="18" rx="9"/>
+    </g>
+
+    <g id="p_raise_right" class="sil">
+      <circle cx="60" cy="60" r="26"/>
+      <path d="M38 92c-14 10-20 24-20 44v86c0 12 8 20 18 20h48c10 0 18-8 18-20v-86c0-20-6-34-20-44z"/>
+      <path d="M18 220h84v48c0 10-8 18-18 18H36c-10 0-18-8-18-18z"/>
+      <rect x="24" y="286" width="32" height="126" rx="10"/>
+      <rect x="68" y="286" width="32" height="126" rx="10"/>
+      <!-- right arm up -->
+      <path d="M74 128c24-40 44-56 60-48c8 4 10 14 6 22c-10 20-24 40-44 68c-6 8-18 10-26 4c-8-6-10-18-4-26z"/>
+      <!-- left arm angled up -->
+      <path d="M28 132c-18-20-34-28-48-22c-10 4-14 16-8 26c10 18 22 34 38 54c6 8 18 10 26 4c8-6 10-18 4-26z"/>
+      <rect x="14" y="405" width="48" height="18" rx="9"/>
+      <rect x="58" y="405" width="48" height="18" rx="9"/>
+    </g>
+
+    <!-- Trophy (cup) -->
+    <g id="trophy" class="sil">
+      <!-- cup -->
+      <path d="M-35 -8h70v44c0 26-16 50-35 58c-19-8-35-32-35-58z"/>
+      <!-- rim -->
+      <rect x="-42" y="-18" width="84" height="14" rx="7"/>
+      <!-- handles -->
+      <path d="M-45 0c-26 0-40 12-40 34c0 18 14 32 34 32h16v-18h-10c-12 0-20-6-20-16c0-12 8-18 20-18h10z"/>
+      <path d="M45 0c26 0 40 12 40 34c0 18-14 32-34 32H35v-18h10c12 0 20-6 20-16c0-12-8-18-20-18H35z"/>
+      <!-- stem + base -->
+      <rect x="-10" y="92" width="20" height="24" rx="6"/>
+      <rect x="-40" y="112" width="80" height="18" rx="9"/>
+      <rect x="-26" y="130" width="52" height="22" rx="10"/>
+    </g>
+  </defs>
+
+  <!-- sky (white background is default) -->
+
+  <!-- grassy hill -->
+  <path class="sil" d="M0 720
+    C140 680, 260 700, 360 690
+    C520 675, 640 690, 760 705
+    C910 725, 1040 690, 1160 700
+    C1270 710, 1350 745, 1400 760
+    L1400 1000 L0 1000 Z"/>
+
+  <!-- player lineup (11 players) -->
+  <!-- left side -->
+  <g transform="translate(70,300) scale(1.05)"><use href="#p_stand_m"/></g>
+  <g transform="translate(190,310) scale(0.98)"><use href="#p_stand_f"/></g>
+  <g transform="translate(310,305) scale(1.02)"><use href="#p_lean"/></g>
+  <g transform="translate(430,315) scale(0.95)"><use href="#p_stand_f"/></g>
+  <g transform="translate(560,300) scale(1.06)"><use href="#p_stand_m"/></g>
+
+  <!-- center-right trio holding trophy (5th, 4th, 3rd from the right) -->
+  <g transform="translate(690,300) scale(1.04)"><use href="#p_raise_left"/></g>
+  <g transform="translate(820,295) scale(1.06)"><use href="#p_raise_center"/></g>
+  <g transform="translate(950,300) scale(1.04)"><use href="#p_raise_right"/></g>
+
+  <!-- trophy above them -->
+  <g transform="translate(890,420)"><use href="#trophy"/></g>
+
+  <!-- remaining right side players -->
+  <g transform="translate(1080,310) scale(0.98)"><use href="#p_stand_f"/></g>
+  <g transform="translate(1200,300) scale(1.06)"><use href="#p_stand_m"/></g>
+  <g transform="translate(1320,310) scale(0.98)"><use href="#p_lean"/></g>
+
+</svg>

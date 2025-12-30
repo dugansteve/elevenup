@@ -1,0 +1,777 @@
+{
+  "ac connecticut": {
+    "filename": "AC_Connecticut_logo.jpeg",
+    "display_name": "AC Connecticut",
+    "club_patterns": [
+      "AC Connecticut"
+    ]
+  },
+  "alabama fc": {
+    "filename": "Alabama_FC_logo.png",
+    "display_name": "Alabama FC",
+    "club_patterns": [
+      "Alabama FC"
+    ]
+  },
+  "albany alleycats": {
+    "filename": "Albany_Alleycats_logo.jpeg",
+    "display_name": "Albany Alleycats",
+    "club_patterns": [
+      "Albany Alleycats"
+    ]
+  },
+  "albion hurricanes": {
+    "filename": "Albion_Hurricanes_logo.png",
+    "display_name": "Albion Hurricanes",
+    "club_patterns": [
+      "Albion Hurricanes FC"
+    ]
+  },
+  "arizona arsenal": {
+    "filename": "Arizona_Arsenal_logo.jpeg",
+    "display_name": "Arizona Arsenal",
+    "club_patterns": [
+      "Arizona Arsenal"
+    ]
+  },
+  "arlington soccer": {
+    "filename": "Arlington_Soccer_logo.png",
+    "display_name": "Arlington Soccer",
+    "club_patterns": [
+      "Arlington Soccer Association"
+    ]
+  },
+  "arsenal colorado": {
+    "filename": "Arsenal_Colorado_logo.png",
+    "display_name": "Arsenal Colorado",
+    "club_patterns": [
+      "Arsenal Colorado"
+    ]
+  },
+  "association fc": {
+    "filename": "Association_FC_logo.png",
+    "display_name": "Association FC",
+    "club_patterns": [
+      "Association Football Club"
+    ]
+  },
+  "atl\u00e9tico dallas youth": {
+    "filename": "Atl\u00e9tico_Dallas_Youth_logo.png",
+    "display_name": "Atl\u00e9tico Dallas Youth",
+    "club_patterns": [
+      "Atl\u00e9tico Dallas Youth"
+    ]
+  },
+  "avanti sa": {
+    "filename": "Avanti_SA_logo.png",
+    "display_name": "Avanti SA",
+    "club_patterns": [
+      "Avanti Soccer Academy",
+      "Avanti SA"
+    ]
+  },
+  "beach fc ca": {
+    "filename": "Beach_FC_CA_logo.jpeg",
+    "display_name": "Beach FC CA",
+    "club_patterns": [
+      "BEACH FC",
+      "Beach FC"
+    ]
+  },
+  "beach fc va": {
+    "filename": "Beach_FC_VA_logo.png",
+    "display_name": "Beach FC VA",
+    "club_patterns": [
+      "Beach FC VA"
+    ]
+  },
+  "bethesda sc": {
+    "filename": "Bethesda_SC_logo.png",
+    "display_name": "Bethesda SC",
+    "club_patterns": [
+      "Bethesda SC"
+    ]
+  },
+  "boerne sc": {
+    "filename": "Boerne_SC_logo.png",
+    "display_name": "Boerne SC",
+    "club_patterns": [
+      "Boerne SC"
+    ]
+  },
+  "boise thorns fc": {
+    "filename": "Boise_Thorns_FC_logo.png",
+    "display_name": "Boise Thorns FC",
+    "club_patterns": [
+      "Boise Thorns FC",
+      "Boise Timbers Thorns FC"
+    ]
+  },
+  "bryc academy": {
+    "filename": "BRYC_Academy_logo.png",
+    "display_name": "BRYC Academy",
+    "club_patterns": [
+      "BRYC",
+      "BRYC Academy"
+    ]
+  },
+  "bvbia": {
+    "filename": "BVBIA_logo.png",
+    "display_name": "BVBIA",
+    "club_patterns": [
+      "BVBIA",
+      "BVB IA"
+    ]
+  },
+  "cesa liberty": {
+    "filename": "CESA_Liberty_logo.jpeg",
+    "display_name": "CESA Liberty",
+    "club_patterns": [
+      "CESA",
+      "CESA Liberty"
+    ]
+  },
+  "charlotte sa gold": {
+    "filename": "Charlotte_SA_Gold_logo.jpeg",
+    "display_name": "Charlotte SA Gold",
+    "club_patterns": [
+      "Charlotte SA",
+      "Charlotte Soccer Academy"
+    ]
+  },
+  "chattanooga": {
+    "filename": "Chattanooga_logo.jpeg",
+    "display_name": "Chattanooga",
+    "club_patterns": [
+      "Chattanooga FC",
+      "Chattanooga Red Wolves"
+    ]
+  },
+  "city sc utah": {
+    "filename": "City_SC_Utah_logo.png",
+    "display_name": "City SC Utah",
+    "club_patterns": [
+      "City SC Utah"
+    ]
+  },
+  "coastal rush": {
+    "filename": "Coastal_Rush_logo.png",
+    "display_name": "Coastal Rush",
+    "club_patterns": [
+      "Coastal Rush"
+    ]
+  },
+  "colorado edge": {
+    "filename": "Colorado_EDGE_logo.png",
+    "display_name": "Colorado EDGE",
+    "club_patterns": [
+      "Colorado EDGE"
+    ]
+  },
+  "colorado rapids central": {
+    "filename": "Colorado_Rapids_Central_logo.png",
+    "display_name": "Colorado Rapids Central",
+    "club_patterns": [
+      "Colorado Rapids",
+      "Colorado Rapids Youth"
+    ]
+  },
+  "colorado rush academy": {
+    "filename": "Colorado_Rush_Academy_logo.png",
+    "display_name": "Colorado Rush Academy",
+    "club_patterns": [
+      "Colorado Rush",
+      "Colorado Rush Soccer Club"
+    ]
+  },
+  "concorde fire": {
+    "filename": "Concorde_Fire_logo.jpeg",
+    "display_name": "Concorde Fire",
+    "club_patterns": [
+      "Concorde Fire"
+    ]
+  },
+  "connecticut fc": {
+    "filename": "Connecticut_FC_logo.jpeg",
+    "display_name": "Connecticut FC",
+    "club_patterns": [
+      "Connecticut FC"
+    ]
+  },
+  "dallas cosmos sc": {
+    "filename": "Dallas_Cosmos_SC_logo.png",
+    "display_name": "Dallas Cosmos SC",
+    "club_patterns": [
+      "Dallas Cosmos SC"
+    ]
+  },
+  "dallas surf": {
+    "filename": "Dallas_Surf_logo.png",
+    "display_name": "Dallas Surf",
+    "club_patterns": [
+      "Dallas Surf",
+      "Surf"
+    ]
+  },
+  "dallas texans": {
+    "filename": "Dallas_Texans_logo.jpeg",
+    "display_name": "Dallas Texans",
+    "club_patterns": [
+      "Dallas Texans",
+      "Texans"
+    ]
+  },
+  "dksc white": {
+    "filename": "DKSC_WHITE_logo.jpeg",
+    "display_name": "DKSC WHITE",
+    "club_patterns": [
+      "DKSC",
+      "Dallas Kicks SC"
+    ]
+  },
+  "eagles sc": {
+    "filename": "Eagles_SC_logo.png",
+    "display_name": "Eagles SC",
+    "club_patterns": [
+      "Eagles SC"
+    ]
+  },
+  "eastside timbers": {
+    "filename": "Eastside_Timbers_logo.png",
+    "display_name": "Eastside Timbers",
+    "club_patterns": [
+      "Eastside Timbers FC",
+      "Eastside Timbers"
+    ]
+  },
+  "evolution": {
+    "filename": "Evolution_logo.png",
+    "display_name": "Evolution",
+    "club_patterns": [
+      "Evolution SC"
+    ]
+  },
+  "fc copa academy": {
+    "filename": "FC_Copa_Academy_logo.png",
+    "display_name": "FC Copa Academy",
+    "club_patterns": [
+      "FC Copa Academy",
+      "FC Copa"
+    ]
+  },
+  "fc dallas": {
+    "filename": "FC_Dallas_logo.png",
+    "display_name": "FC Dallas",
+    "club_patterns": [
+      "FC Dallas"
+    ]
+  },
+  "fc stars": {
+    "filename": "FC_Stars_logo.png",
+    "display_name": "FC Stars",
+    "club_patterns": [
+      "FC Stars",
+      "FC Stars of Mass"
+    ]
+  },
+  "force": {
+    "filename": "Force_logo.png",
+    "display_name": "Force",
+    "club_patterns": [
+      "Force SC"
+    ]
+  },
+  "fsa fc": {
+    "filename": "FSA_FC_logo.png",
+    "display_name": "FSA FC",
+    "club_patterns": [
+      "FSA FC"
+    ]
+  },
+  "great falls reston soccer": {
+    "filename": "Great_Falls_Reston_Soccer_logo.png",
+    "display_name": "Great Falls Reston Soccer",
+    "club_patterns": [
+      "Great Falls Reston Soccer",
+      "GFRSC"
+    ]
+  },
+  "gsa": {
+    "filename": "GSA_logo.jpeg",
+    "display_name": "GSA",
+    "club_patterns": [
+      "GSA",
+      "Georgia Soccer Academy"
+    ]
+  },
+  "gulf coast": {
+    "filename": "Gulf_Coast_logo.jpeg",
+    "display_name": "Gulf Coast",
+    "club_patterns": [
+      "Gulf Coast Soccer Club",
+      "Gulf Coast SC"
+    ]
+  },
+  "hex fc": {
+    "filename": "HEX_FC_logo.png",
+    "display_name": "HEX FC",
+    "club_patterns": [
+      "HEX FC"
+    ]
+  },
+  "highland fc": {
+    "filename": "Highland_FC_logo.png",
+    "display_name": "Highland FC",
+    "club_patterns": [
+      "Highland FC"
+    ]
+  },
+  "idaho rush": {
+    "filename": "Idaho_Rush_logo.jpeg",
+    "display_name": "Idaho Rush",
+    "club_patterns": [
+      "Idaho Rush"
+    ]
+  },
+  "indiana": {
+    "filename": "Indiana_logo.png",
+    "display_name": "Indiana",
+    "club_patterns": [
+      "Indiana Fire",
+      "Indiana Fire Academy"
+    ]
+  },
+  "kansas rush": {
+    "filename": "Kansas_Rush_logo.png",
+    "display_name": "Kansas Rush",
+    "club_patterns": [
+      "Kansas Rush"
+    ]
+  },
+  "kernow storm fc": {
+    "filename": "Kernow_Storm_FC_logo.png",
+    "display_name": "Kernow Storm FC",
+    "club_patterns": [
+      "Kernow Storm FC"
+    ]
+  },
+  "la roca fc": {
+    "filename": "La_Roca_FC_logo.jpeg",
+    "display_name": "La Roca FC",
+    "club_patterns": [
+      "La Roca FC"
+    ]
+  },
+  "lions": {
+    "filename": "Lions_logo.png",
+    "display_name": "Lions",
+    "club_patterns": [
+      "Lions FC"
+    ]
+  },
+  "livermore fusion sc": {
+    "filename": "Livermore_Fusion_SC_logo.jpeg",
+    "display_name": "Livermore Fusion SC",
+    "club_patterns": [
+      "Livermore Fusion SC",
+      "Livermore Fusion"
+    ]
+  },
+  "liverpool fc ia gma": {
+    "filename": "Liverpool_FC_IA_GMA_logo.jpeg",
+    "display_name": "Liverpool FC IA GMA",
+    "club_patterns": [
+      "Liverpool FC IA",
+      "Liverpool IA"
+    ]
+  },
+  "manhattan sc": {
+    "filename": "Manhattan_SC_logo.png",
+    "display_name": "Manhattan SC",
+    "club_patterns": [
+      "Manhattan SC"
+    ]
+  },
+  "mercury": {
+    "filename": "Mercury_logo.png",
+    "display_name": "Mercury",
+    "club_patterns": [
+      "Mercury"
+    ]
+  },
+  "michigan": {
+    "filename": "Michigan_logo.png",
+    "display_name": "Michigan",
+    "club_patterns": [
+      "Michigan Hawks",
+      "Michigan Jaguars"
+    ]
+  },
+  "mississippi": {
+    "filename": "Mississippi_logo.png",
+    "display_name": "Mississippi",
+    "club_patterns": [
+      "Mississippi FC",
+      "Mississippi Rush"
+    ]
+  },
+  "missouri": {
+    "filename": "Missouri_logo.png",
+    "display_name": "Missouri",
+    "club_patterns": [
+      "Missouri Rush"
+    ]
+  },
+  "ncfc youth": {
+    "filename": "NCFC_Youth_logo.png",
+    "display_name": "NCFC Youth",
+    "club_patterns": [
+      "NCFC Youth",
+      "NCFC"
+    ]
+  },
+  "nc fusion": {
+    "filename": "NC_Fusion_logo.png",
+    "display_name": "NC Fusion",
+    "club_patterns": [
+      "NC Fusion"
+    ]
+  },
+  "nlsa": {
+    "filename": "NLSA_logo.png",
+    "display_name": "NLSA",
+    "club_patterns": [
+      "NLSA"
+    ]
+  },
+  "ntx celtic fc green": {
+    "filename": "NTX_Celtic_FC_Green_logo.jpeg",
+    "display_name": "NTX Celtic FC Green",
+    "club_patterns": [
+      "NTX Celtic FC",
+      "NTX Celtic"
+    ]
+  },
+  "ohio": {
+    "filename": "Ohio_logo.png",
+    "display_name": "Ohio",
+    "club_patterns": [
+      "Ohio Premier",
+      "Ohio Elite SA"
+    ]
+  },
+  "pateadores": {
+    "filename": "Pateadores_logo.png",
+    "display_name": "Pateadores",
+    "club_patterns": [
+      "Pateadores",
+      "Pateadores Soccer Club"
+    ]
+  },
+  "pda scp": {
+    "filename": "PDA_SCP_logo.png",
+    "display_name": "PDA SCP",
+    "club_patterns": [
+      "PDA",
+      "PDA South"
+    ]
+  },
+  "pda south white": {
+    "filename": "PDA_SOUTH_WHITE_logo.jpeg",
+    "display_name": "PDA SOUTH WHITE",
+    "club_patterns": [
+      "PDA South"
+    ]
+  },
+  "philadelphia": {
+    "filename": "Philadelphia_logo.png",
+    "display_name": "Philadelphia",
+    "club_patterns": [
+      "Philadelphia SC",
+      "Philadelphia Union"
+    ]
+  },
+  "phoenix rising": {
+    "filename": "Phoenix_Rising_logo.png",
+    "display_name": "Phoenix Rising",
+    "club_patterns": [
+      "Phoenix Rising",
+      "Phoenix Rising FC"
+    ]
+  },
+  "pittsburgh riverhounds": {
+    "filename": "Pittsburgh_Riverhounds_logo.png",
+    "display_name": "Pittsburgh Riverhounds",
+    "club_patterns": [
+      "Pittsburgh Riverhounds",
+      "Riverhounds"
+    ]
+  },
+  "plymouth reign sc": {
+    "filename": "Plymouth_Reign_SC_logo.jpeg",
+    "display_name": "Plymouth Reign SC",
+    "club_patterns": [
+      "Plymouth Reign SC"
+    ]
+  },
+  "pride sc": {
+    "filename": "Pride_SC_logo.png",
+    "display_name": "Pride SC",
+    "club_patterns": [
+      "Pride SC",
+      "Pride Soccer Club"
+    ]
+  },
+  "psa": {
+    "filename": "PSA_logo.png",
+    "display_name": "PSA",
+    "club_patterns": [
+      "PSA",
+      "Players Soccer Academy"
+    ]
+  },
+  "psa north": {
+    "filename": "PSA_North_logo.png",
+    "display_name": "PSA North",
+    "club_patterns": [
+      "PSA North"
+    ]
+  },
+  "pwsi": {
+    "filename": "PWSI_logo.png",
+    "display_name": "PWSI",
+    "club_patterns": [
+      "PWSI",
+      "Prince William Soccer Inc"
+    ]
+  },
+  "racing louisville academy": {
+    "filename": "Racing_Louisville_Academy_logo.jpeg",
+    "display_name": "Racing Louisville Academy",
+    "club_patterns": [
+      "Racing Louisville",
+      "Racing Louisville Academy"
+    ]
+  },
+  "reading rage surf": {
+    "filename": "Reading_Rage_Surf_logo.png",
+    "display_name": "Reading Rage Surf",
+    "club_patterns": [
+      "Reading Rage SC",
+      "Reading Rage Surf"
+    ]
+  },
+  "real colorado": {
+    "filename": "Real_Colorado_logo.jpeg",
+    "display_name": "Real Colorado",
+    "club_patterns": [
+      "Real Colorado"
+    ]
+  },
+  "rebels sc": {
+    "filename": "Rebels_SC_logo.png",
+    "display_name": "Rebels SC",
+    "club_patterns": [
+      "Rebels SC"
+    ]
+  },
+  "rockford raptors": {
+    "filename": "Rockford_Raptors_logo.jpeg",
+    "display_name": "Rockford Raptors",
+    "club_patterns": [
+      "Rockford Raptors"
+    ]
+  },
+  "rush select": {
+    "filename": "Rush_Select_logo.jpeg",
+    "display_name": "Rush Select",
+    "club_patterns": [
+      "Rush Select",
+      "Rush"
+    ]
+  },
+  "scorpions": {
+    "filename": "Scorpions_logo.png",
+    "display_name": "Scorpions",
+    "club_patterns": [
+      "Scorpions SC"
+    ]
+  },
+  "seattle": {
+    "filename": "Seattle_logo.jpeg",
+    "display_name": "Seattle",
+    "club_patterns": [
+      "Seattle United",
+      "Seattle Sounders"
+    ]
+  },
+  "slammers fc hb koge": {
+    "filename": "Slammers_FC_HB_Koge_logo.png",
+    "display_name": "Slammers FC HB Koge",
+    "club_patterns": [
+      "Slammers FC",
+      "SLAMMERS FC"
+    ]
+  },
+  "slammers fc": {
+    "filename": "SLAMMERS_FC_logo.png",
+    "display_name": "SLAMMERS FC",
+    "club_patterns": [
+      "Slammers FC",
+      "SLAMMERS FC"
+    ]
+  },
+  "slsg": {
+    "filename": "SLSG_logo.png",
+    "display_name": "SLSG",
+    "club_patterns": [
+      "SLSG",
+      "St. Louis Scott Gallagher"
+    ]
+  },
+  "solar blue": {
+    "filename": "SOLAR_BLUE_logo.png",
+    "display_name": "SOLAR BLUE",
+    "club_patterns": [
+      "Solar SC",
+      "Solar"
+    ]
+  },
+  "south": {
+    "filename": "South_logo.jpeg",
+    "display_name": "South",
+    "club_patterns": [
+      "South Florida United"
+    ]
+  },
+  "sporting iowa": {
+    "filename": "Sporting_Iowa_logo.png",
+    "display_name": "Sporting Iowa",
+    "club_patterns": [
+      "Sporting Iowa"
+    ]
+  },
+  "sporting kansas city": {
+    "filename": "Sporting_Kansas_City_logo.jpeg",
+    "display_name": "Sporting Kansas City",
+    "club_patterns": [
+      "Sporting Kansas City",
+      "Sporting KC"
+    ]
+  },
+  "sporting": {
+    "filename": "Sporting_logo.jpeg",
+    "display_name": "Sporting",
+    "club_patterns": [
+      "Sporting"
+    ]
+  },
+  "sporting springfield": {
+    "filename": "Sporting_Springfield_logo.png",
+    "display_name": "Sporting Springfield",
+    "club_patterns": [
+      "Sporting Springfield"
+    ]
+  },
+  "stafford": {
+    "filename": "Stafford_logo.png",
+    "display_name": "Stafford",
+    "club_patterns": [
+      "Stafford Soccer"
+    ]
+  },
+  "stanford strikers": {
+    "filename": "Stanford_Strikers_logo.png",
+    "display_name": "Stanford Strikers",
+    "club_patterns": [
+      "Stanford Strikers"
+    ]
+  },
+  "sting nebraska": {
+    "filename": "Sting_Nebraska_logo.png",
+    "display_name": "Sting Nebraska",
+    "club_patterns": [
+      "Sting Nebraska"
+    ]
+  },
+  "susa fc": {
+    "filename": "SUSA_FC_logo.png",
+    "display_name": "SUSA FC",
+    "club_patterns": [
+      "SUSA FC",
+      "SUSA"
+    ]
+  },
+  "tennessee sc": {
+    "filename": "Tennessee_SC_logo.jpeg",
+    "display_name": "Tennessee SC",
+    "club_patterns": [
+      "Tennessee SC",
+      "Tennessee Soccer Club"
+    ]
+  },
+  "texoma soccer academy": {
+    "filename": "Texoma_Soccer_Academy_logo.png",
+    "display_name": "Texoma Soccer Academy",
+    "club_patterns": [
+      "Texoma Soccer Academy"
+    ]
+  },
+  "united": {
+    "filename": "United_logo.png",
+    "display_name": "United",
+    "club_patterns": [
+      "United FC"
+    ]
+  },
+  "utah avalanche": {
+    "filename": "Utah_Avalanche_logo.png",
+    "display_name": "Utah Avalanche",
+    "club_patterns": [
+      "Utah Avalanche"
+    ]
+  },
+  "utah": {
+    "filename": "Utah_logo.png",
+    "display_name": "Utah",
+    "club_patterns": [
+      "Utah Celtic",
+      "Utah FC"
+    ]
+  },
+  "utah surf": {
+    "filename": "Utah_Surf_logo.png",
+    "display_name": "Utah Surf",
+    "club_patterns": [
+      "Utah Surf"
+    ]
+  },
+  "vienna": {
+    "filename": "Vienna_logo.png",
+    "display_name": "Vienna",
+    "club_patterns": [
+      "Vienna Youth Soccer"
+    ]
+  },
+  "west mont united": {
+    "filename": "West_Mont_United_logo.png",
+    "display_name": "West Mont United",
+    "club_patterns": [
+      "West Mont United SA"
+    ]
+  },
+  "wilmington hammerheads": {
+    "filename": "Wilmington_Hammerheads_logo.png",
+    "display_name": "Wilmington Hammerheads",
+    "club_patterns": [
+      "Wilmington Hammerheads"
+    ]
+  },
+  "world class fc": {
+    "filename": "World_Class_FC_logo.png",
+    "display_name": "World Class FC",
+    "club_patterns": [
+      "World Class FC"
+    ]
+  }
+}

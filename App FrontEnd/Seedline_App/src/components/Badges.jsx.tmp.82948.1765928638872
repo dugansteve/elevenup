@@ -1,0 +1,635 @@
+import { useState, useMemo } from 'react';
+import BadgeLeaderboard from './BadgeLeaderboard';
+import { storage, BADGE_TYPES } from '../data/sampleData';
+import { useRankingsData } from '../data/useRankingsData';
+import { useUser } from '../context/UserContext';
+
+function Badges() {
+  const { canPerform, isPaid } = useUser();
+  const canAwardBadges = canPerform('canAwardBadges');
+  const { playersData, ageGroups, isLoading } = useRankingsData();
+  
+  const [activeTab, setActiveTab] = useState(canAwardBadges ? 'award' : 'leaderboard');
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const [refreshKey, setRefreshKey] = useState(0);
+  
+  // Search filters
+  const [nameSearch, setNameSearch] = useState('');
+  const [teamSearch, setTeamSearch] = useState('');
+  const [numberSearch, setNumberSearch] = useState('');
+  const [genderFilter, setGenderFilter] = useState('ALL');
+  const [ageFilter, setAgeFilter] = useState('ALL');
+
+  const badges = storage.getBadges();
+
+  // Extract unique ages from ageGroups (strip G/B prefix)
+  const uniqueAges = useMemo(() => {
+    const ages = new Set();
+    ageGroups.forEach(ag => {
+      const num = ag.replace(/^[GB]/i, '');
+      if (num) ages.add(num);
+    });
+    return [...ages].sort((a, b) => {
+      // Handle "08/07" type ages
+      const aNum = parseInt(a.split('/')[0]) || 0;
+      const bNum = parseInt(b.split('/')[0]) || 0;
+      return bNum - aNum;
+    });
+  }, [ageGroups]);
+
+  // Filter players based on search criteria
+  const filteredPlayers = useMemo(() => {
+    if (!playersData || playersData.length === 0) return [];
+    
+    // Need at least one filter to show results (prevent showing 109k players)
+    const hasFilter = nameSearch.length >= 2 || teamSearch.length >= 2 || 
+                      numberSearch.length >= 1 || genderFilter !== 'ALL' || ageFilter !== 'ALL';
+    
+    if (!hasFilter) return [];
+    
+    return playersData
+      .filter(player => {
+        // Name filter
+        if (nameSearch.length >= 2) {
+          const searchLower = nameSearch.toLowerCase();
+          const nameMatch = (player.name || '').toLowerCase().includes(searchLower) ||
+                           (player.firstName || '').toLowerCase().includes(searchLower) ||
+                           (player.lastName || '').toLowerCase().includes(searchLower);
+          if (!nameMatch) return false;
+        }
+        
+        // Team filter
+        if (teamSearch.length >= 2) {
+          const teamLower = teamSearch.toLowerCase();
+          const teamMatch = (player.teamName || '').toLowerCase().includes(teamLower) ||
+                           (player.club || '').toLowerCase().includes(teamLower);
+          if (!teamMatch) return false;
+        }
+        
+        // Number filter
+        if (numberSearch.length >= 1) {
+          const numMatch = String(player.jerseyNumber || '') === numberSearch ||
+                          String(player.number || '') === numberSearch;
+          if (!numMatch) return false;
+        }
+        
+        // Gender filter
+        if (genderFilter !== 'ALL') {
+          const playerGender = player.ageGroup ? player.ageGroup.charAt(0).toUpperCase() : '';
+          const expectedPrefix = genderFilter === 'Girls' ? 'G' : 'B';
+          if (playerGender !== expectedPrefix) return false;
+        }
+        
+        // Age filter (just the number part)
+        if (ageFilter !== 'ALL') {
+          const playerAge = player.ageGroup ? player.ageGroup.replace(/^[GB]/i, '') : '';
+          if (playerAge !== ageFilter) return false;
+        }
+        
+        return true;
+      })
+      .slice(0, 100); // Limit results
+  }, [playersData, nameSearch, teamSearch, numberSearch, genderFilter, ageFilter]);
+
+  // Create a unique key for storing badges (use db id or name+team combo)
+  const getPlayerBadgeKey = (player) => {
+    if (player.id) return `db_${player.id}`;
+    return `${player.name}_${player.teamName}`.toLowerCase().replace(/\s+/g, '_');
+  };
+
+  // Handle clicking a badge - award if not awarded, unaward if already awarded
+  const handleBadgeClick = (badge) => {
+    if (!selectedPlayer) return;
+
+    const playerKey = getPlayerBadgeKey(selectedPlayer);
+    const currentBadges = storage.getBadges();
+    const playerBadges = currentBadges[playerKey] || {};
+    const badgeType = badge.id;
+    const currentCount = playerBadges[badgeType] || 0;
+
+    if (currentCount > 0) {
+      // Unaward: decrease by 1
+      playerBadges[badgeType] = currentCount - 1;
+      if (playerBadges[badgeType] === 0) {
+        delete playerBadges[badgeType];
+      }
+    } else {
+      // Award: add 1
+      playerBadges[badgeType] = 1;
+    }
+
+    // Store player info along with badges for display later
+    if (Object.keys(playerBadges).filter(k => k !== '_playerInfo').length > 0) {
+      playerBadges._playerInfo = {
+        name: selectedPlayer.name,
+        teamName: selectedPlayer.teamName,
+        position: selectedPlayer.position,
+        ageGroup: selectedPlayer.ageGroup,
+        league: selectedPlayer.league,
+        jerseyNumber: selectedPlayer.jerseyNumber
+      };
+    }
+
+    currentBadges[playerKey] = playerBadges;
+    storage.setBadges(currentBadges);
+    setRefreshKey(prev => prev + 1);
+  };
+
+  // Get all players with badges for "My Badges" tab
+  const getPlayerBadgeSummary = () => {
+    const summary = [];
+    const allBadges = storage.getBadges();
+    
+    Object.entries(allBadges).forEach(([playerKey, playerBadges]) => {
+      const badgeList = Object.entries(playerBadges)
+        .filter(([key, count]) => key !== '_playerInfo' && count > 0)
+        .map(([badgeId, count]) => {
+          const badgeInfo = BADGE_TYPES.find(b => b.id === badgeId);
+          return badgeInfo ? { ...badgeInfo, count } : null;
+        })
+        .filter(Boolean);
+      
+      if (badgeList.length > 0) {
+        // Get player info from stored data
+        const playerInfo = playerBadges._playerInfo || {};
+        
+        summary.push({
+          playerKey,
+          player: {
+            name: playerInfo.name || playerKey,
+            teamName: playerInfo.teamName || '',
+            position: playerInfo.position || '',
+            league: playerInfo.league || '',
+            ageGroup: playerInfo.ageGroup || ''
+          },
+          badges: badgeList,
+          totalBadges: badgeList.reduce((sum, b) => sum + b.count, 0)
+        });
+      }
+    });
+    
+    return summary.sort((a, b) => b.totalBadges - a.totalBadges);
+  };
+
+  const playerBadgeSummary = useMemo(() => getPlayerBadgeSummary(), [badges, refreshKey]);
+
+  // Get current badges for selected player
+  const selectedPlayerBadges = useMemo(() => {
+    if (!selectedPlayer) return {};
+    const playerKey = getPlayerBadgeKey(selectedPlayer);
+    const allBadges = storage.getBadges();
+    return allBadges[playerKey] || {};
+  }, [selectedPlayer, refreshKey]);
+
+  return (
+    <div>
+      <div className="page-header">
+        <h1 className="page-title">Badges</h1>
+        <p className="page-description">
+          Award badges to any player and view the leaderboard
+        </p>
+      </div>
+
+      <div className="card">
+        <div className="tabs">
+          <button
+            className={`tab ${activeTab === 'award' ? 'active' : ''}`}
+            onClick={() => setActiveTab('award')}
+          >
+            🎖️ Award Badges
+          </button>
+          <button
+            className={`tab ${activeTab === 'mybadges' ? 'active' : ''}`}
+            onClick={() => setActiveTab('mybadges')}
+          >
+            ⭐ My Badges
+          </button>
+          <button
+            className={`tab ${activeTab === 'leaderboard' ? 'active' : ''}`}
+            onClick={() => setActiveTab('leaderboard')}
+          >
+            🏆 Leaderboard
+          </button>
+        </div>
+
+        {activeTab === 'award' ? (
+          <div>
+            {!canAwardBadges ? (
+              <div className="empty-state">
+                <div className="empty-state-icon">🔒</div>
+                <div className="empty-state-text">Pro Account Required</div>
+                <p style={{ color: '#888', marginTop: '0.5rem', fontSize: '0.9rem', maxWidth: '400px', margin: '0.5rem auto 0' }}>
+                  Upgrade to a Pro account to award badges to players. You can still view the leaderboard and existing badges.
+                </p>
+              </div>
+            ) : (
+              <>
+                {/* Player Search Section */}
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <h3 style={{ 
+                    fontSize: '1.1rem', 
+                    fontWeight: '600', 
+                    marginBottom: '1rem',
+                    color: 'var(--primary-green)'
+                  }}>
+                    Find Player
+                  </h3>
+                  
+                  <div style={{ 
+                    display: 'grid', 
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+                    gap: '0.75rem',
+                    marginBottom: '1rem'
+                  }}>
+                    <div>
+                      <label style={{ fontSize: '0.8rem', color: '#666', display: 'block', marginBottom: '0.25rem' }}>
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Search name..."
+                        value={nameSearch}
+                        onChange={(e) => setNameSearch(e.target.value)}
+                        style={{
+                          width: '100%',
+                          padding: '0.5rem',
+                          borderRadius: '6px',
+                          border: '1px solid #ddd',
+                          fontSize: '0.9rem'
+                        }}
+                      />
+                    </div>
+                    
+                    <div>
+                      <label style={{ fontSize: '0.8rem', color: '#666', display: 'block', marginBottom: '0.25rem' }}>
+                        Team
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Search team..."
+                        value={teamSearch}
+                        onChange={(e) => setTeamSearch(e.target.value)}
+                        style={{
+                          width: '100%',
+                          padding: '0.5rem',
+                          borderRadius: '6px',
+                          border: '1px solid #ddd',
+                          fontSize: '0.9rem'
+                        }}
+                      />
+                    </div>
+                    
+                    <div>
+                      <label style={{ fontSize: '0.8rem', color: '#666', display: 'block', marginBottom: '0.25rem' }}>
+                        Number
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="#"
+                        value={numberSearch}
+                        onChange={(e) => setNumberSearch(e.target.value)}
+                        style={{
+                          width: '100%',
+                          padding: '0.5rem',
+                          borderRadius: '6px',
+                          border: '1px solid #ddd',
+                          fontSize: '0.9rem'
+                        }}
+                      />
+                    </div>
+                    
+                    <div>
+                      <label style={{ fontSize: '0.8rem', color: '#666', display: 'block', marginBottom: '0.25rem' }}>
+                        Gender
+                      </label>
+                      <select
+                        value={genderFilter}
+                        onChange={(e) => setGenderFilter(e.target.value)}
+                        style={{
+                          width: '100%',
+                          padding: '0.5rem',
+                          borderRadius: '6px',
+                          border: '1px solid #ddd',
+                          fontSize: '0.9rem',
+                          background: 'white'
+                        }}
+                      >
+                        <option value="ALL">All</option>
+                        <option value="Girls">Girls</option>
+                        <option value="Boys">Boys</option>
+                      </select>
+                    </div>
+                    
+                    <div>
+                      <label style={{ fontSize: '0.8rem', color: '#666', display: 'block', marginBottom: '0.25rem' }}>
+                        Age
+                      </label>
+                      <select
+                        value={ageFilter}
+                        onChange={(e) => setAgeFilter(e.target.value)}
+                        style={{
+                          width: '100%',
+                          padding: '0.5rem',
+                          borderRadius: '6px',
+                          border: '1px solid #ddd',
+                          fontSize: '0.9rem',
+                          background: 'white'
+                        }}
+                      >
+                        <option value="ALL">All</option>
+                        {uniqueAges.map(age => (
+                          <option key={age} value={age}>{age}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  
+                  {/* Help text */}
+                  {!nameSearch && !teamSearch && !numberSearch && genderFilter === 'ALL' && ageFilter === 'ALL' && (
+                    <p style={{ color: '#888', fontSize: '0.85rem', textAlign: 'center', padding: '1rem' }}>
+                      Enter at least 2 characters in Name or Team, or select Gender/Age to search
+                    </p>
+                  )}
+                  
+                  {/* Search Results */}
+                  {filteredPlayers.length > 0 && (
+                    <div style={{ 
+                      maxHeight: '300px', 
+                      overflowY: 'auto',
+                      border: '1px solid #e0e0e0',
+                      borderRadius: '8px'
+                    }}>
+                      {filteredPlayers.map((player, idx) => {
+                        const isSelected = selectedPlayer && getPlayerBadgeKey(selectedPlayer) === getPlayerBadgeKey(player);
+                        return (
+                          <div
+                            key={`${player.id || idx}-${player.name}`}
+                            onClick={() => setSelectedPlayer(player)}
+                            style={{
+                              padding: '0.75rem 1rem',
+                              borderBottom: idx < filteredPlayers.length - 1 ? '1px solid #eee' : 'none',
+                              cursor: 'pointer',
+                              background: isSelected ? '#f0f7ed' : 'white',
+                              borderLeft: isSelected ? '3px solid var(--accent-green)' : '3px solid transparent',
+                              transition: 'all 0.15s ease'
+                            }}
+                            onMouseEnter={(e) => {
+                              if (!isSelected) e.currentTarget.style.background = '#f8f9fa';
+                            }}
+                            onMouseLeave={(e) => {
+                              if (!isSelected) e.currentTarget.style.background = 'white';
+                            }}
+                          >
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                              <div>
+                                <span style={{ fontWeight: '600', color: '#333' }}>
+                                  {player.name}
+                                </span>
+                                {player.jerseyNumber && (
+                                  <span style={{ 
+                                    marginLeft: '0.5rem',
+                                    background: '#e0e0e0',
+                                    padding: '0.1rem 0.4rem',
+                                    borderRadius: '4px',
+                                    fontSize: '0.8rem'
+                                  }}>
+                                    #{player.jerseyNumber}
+                                  </span>
+                                )}
+                                <div style={{ fontSize: '0.8rem', color: '#666', marginTop: '0.25rem' }}>
+                                  {player.teamName} • {player.ageGroup} • {player.league}
+                                </div>
+                              </div>
+                              {isSelected && (
+                                <span style={{ color: 'var(--accent-green)', fontWeight: '700' }}>✓</span>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                  
+                  {(nameSearch.length >= 2 || teamSearch.length >= 2 || numberSearch || ageFilter !== 'ALL') &&
+                   filteredPlayers.length === 0 && (
+                    <p style={{ color: '#888', fontSize: '0.85rem', textAlign: 'center', padding: '1rem' }}>
+                      No players found matching your search
+                    </p>
+                  )}
+                </div>
+
+                {/* Selected Player & Badge Awards */}
+                {selectedPlayer && (
+                  <>
+                    <div style={{
+                      padding: '1rem',
+                      background: '#f0f7ed',
+                      borderRadius: '8px',
+                      marginBottom: '1.5rem',
+                      border: '2px solid var(--accent-green)'
+                    }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
+                        <div>
+                          <strong style={{ color: 'var(--primary-green)', fontSize: '1.1rem' }}>
+                            {selectedPlayer.name}
+                          </strong>
+                          {selectedPlayer.jerseyNumber && (
+                            <span style={{ marginLeft: '0.5rem', color: '#666' }}>
+                              #{selectedPlayer.jerseyNumber}
+                            </span>
+                          )}
+                          <div style={{ fontSize: '0.85rem', color: '#666' }}>
+                            {selectedPlayer.teamName} • {selectedPlayer.ageGroup}
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => setSelectedPlayer(null)}
+                          style={{
+                            background: 'none',
+                            border: '1px solid #ccc',
+                            padding: '0.25rem 0.75rem',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                            fontSize: '0.85rem'
+                          }}
+                        >
+                          Clear
+                        </button>
+                      </div>
+                      <p style={{ margin: '0.75rem 0 0', color: 'var(--primary-green)', fontSize: '0.9rem' }}>
+                        💡 Click a badge to award it. Click an awarded badge to remove it.
+                      </p>
+                    </div>
+                    
+                    <h3 style={{ 
+                      fontSize: '1.1rem', 
+                      fontWeight: '600', 
+                      marginBottom: '1rem',
+                      color: 'var(--primary-green)'
+                    }}>
+                      Select Badge Type
+                    </h3>
+                    
+                    <div className="badge-grid">
+                      {BADGE_TYPES.map(badge => {
+                        const count = selectedPlayerBadges[badge.id] || 0;
+                        const isAwarded = count > 0;
+                        
+                        return (
+                          <div
+                            key={badge.id}
+                            className="badge-card"
+                            onClick={() => handleBadgeClick(badge)}
+                            style={{
+                              borderColor: isAwarded ? 'var(--accent-green)' : 'transparent',
+                              background: isAwarded 
+                                ? 'linear-gradient(135deg, #f0f7ed 0%, #e8f5e0 100%)' 
+                                : 'white',
+                              position: 'relative',
+                              cursor: 'pointer'
+                            }}
+                          >
+                            {isAwarded && (
+                              <div style={{
+                                position: 'absolute',
+                                top: '10px',
+                                right: '10px',
+                                background: 'var(--accent-green)',
+                                color: 'white',
+                                borderRadius: '50%',
+                                width: '24px',
+                                height: '24px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontSize: '14px',
+                                fontWeight: '700'
+                              }}>
+                                ✓
+                              </div>
+                            )}
+                            <div className="badge-emoji">{badge.emoji}</div>
+                            <div className="badge-name">{badge.name}</div>
+                            <div className="badge-description">{badge.description}</div>
+                            {count > 0 && (
+                              <div style={{
+                                marginTop: '0.75rem',
+                                padding: '0.5rem',
+                                background: 'var(--accent-green)',
+                                color: 'white',
+                                borderRadius: '6px',
+                                fontWeight: '600',
+                                fontSize: '0.9rem'
+                              }}>
+                                Awarded: {count} badge{count !== 1 ? 's' : ''}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </>
+                )}
+              </>
+            )}
+          </div>
+        ) : activeTab === 'mybadges' ? (
+          <div>
+            {playerBadgeSummary.length === 0 ? (
+              <div className="empty-state">
+                <div className="empty-state-icon">🎖️</div>
+                <div className="empty-state-text">No badges awarded yet</div>
+                <button 
+                  onClick={() => setActiveTab('award')} 
+                  className="btn btn-primary"
+                  style={{ marginTop: '1rem' }}
+                >
+                  Award Your First Badge
+                </button>
+              </div>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                {playerBadgeSummary.map(({ playerKey, player, badges: playerBadges, totalBadges }) => (
+                  <div
+                    key={playerKey}
+                    style={{
+                      background: 'linear-gradient(135deg, #fff 0%, #f8f9fa 100%)',
+                      borderRadius: '12px',
+                      padding: '1.5rem',
+                      border: '2px solid #e0e0e0'
+                    }}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
+                      <div>
+                        <h3 style={{ 
+                          fontSize: '1.25rem', 
+                          fontWeight: '700', 
+                          color: 'var(--primary-green)',
+                          marginBottom: '0.25rem'
+                        }}>
+                          {player.name}
+                        </h3>
+                        <div style={{ fontSize: '0.9rem', color: '#666' }}>
+                          {player.position && `${player.position} • `}{player.teamName} {player.league && `(${player.league})`}
+                        </div>
+                      </div>
+                      <div style={{
+                        background: 'var(--accent-green)',
+                        color: 'white',
+                        padding: '0.5rem 1rem',
+                        borderRadius: '8px',
+                        fontWeight: '700'
+                      }}>
+                        {totalBadges} Total
+                      </div>
+                    </div>
+                    
+                    <div style={{ 
+                      display: 'flex', 
+                      flexWrap: 'wrap', 
+                      gap: '0.75rem' 
+                    }}>
+                      {playerBadges.map(badge => (
+                        <div
+                          key={badge.id}
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            padding: '0.5rem 0.75rem',
+                            background: '#f0f7ed',
+                            borderRadius: '8px',
+                            border: '1px solid var(--light-green)'
+                          }}
+                        >
+                          <span style={{ fontSize: '1.25rem' }}>{badge.emoji}</span>
+                          <span style={{ fontWeight: '600', color: 'var(--primary-green)' }}>
+                            {badge.name}
+                          </span>
+                          <span style={{
+                            background: 'var(--accent-green)',
+                            color: 'white',
+                            padding: '0.125rem 0.5rem',
+                            borderRadius: '4px',
+                            fontSize: '0.8rem',
+                            fontWeight: '600'
+                          }}>
+                            ×{badge.count}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ) : (
+          <BadgeLeaderboard key={refreshKey} />
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default Badges;

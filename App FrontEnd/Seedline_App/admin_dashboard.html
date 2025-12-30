@@ -186,6 +186,7 @@
                 
                 <div class="nav-section">
                     <div class="nav-section-title">Data</div>
+                    <div class="nav-item" onclick="showPage('schedule')">📅 Schedule</div>
                     <div class="nav-item" onclick="showPage('scrapers')">🔄 Scrapers</div>
                     <div class="nav-item" onclick="showPage('teams')">⚽ Teams</div>
                     <div class="nav-item" onclick="showPage('players')">👤 Players</div>
@@ -258,15 +259,239 @@
                 </div>
             </div>
             
+            <!-- Schedule Page -->
+            <div class="page" id="page-schedule">
+                <div class="page-header">
+                    <h2>Scraping Schedule</h2>
+                    <p>Manage automated scraping for league games and tournaments</p>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div style="display: flex; gap: 5px; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+                    <button class="btn btn-primary schedule-tab active" onclick="showScheduleTab('status')">Status</button>
+                    <button class="btn btn-secondary schedule-tab" onclick="showScheduleTab('settings')">Settings</button>
+                    <button class="btn btn-secondary schedule-tab" onclick="showScheduleTab('logs')">Logs</button>
+                    <button class="btn btn-secondary schedule-tab" onclick="showScheduleTab('reports')">Reports</button>
+                </div>
+
+                <!-- Status Tab -->
+                <div id="schedule-tab-status" class="schedule-tab-content">
+                    <!-- Quick Stats -->
+                    <div class="stats-grid" style="margin-bottom: 20px;">
+                        <div class="stat-card" style="cursor: pointer;" onclick="runScrapeNow('full')">
+                            <div class="stat-label">RUN NOW</div>
+                            <div class="stat-value" style="font-size: 1.5rem;">Full Scrape</div>
+                            <div class="stat-sub">Click to run all scrapers</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">MISSING RESULTS</div>
+                            <div class="stat-value" id="schedule-missing">-</div>
+                            <div class="stat-sub">Games from past 7 days</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">TODAY'S GAMES</div>
+                            <div class="stat-value" id="schedule-today">-</div>
+                            <div class="stat-sub">Games scheduled for today</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">YESTERDAY</div>
+                            <div class="stat-value" id="schedule-yesterday">-</div>
+                            <div class="stat-sub">Games from yesterday</div>
+                        </div>
+                    </div>
+
+                    <!-- Run Individual Scrapers -->
+                    <div class="card">
+                        <h3>Run Scrapers Now</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 15px;">Click a button to immediately start that scraper (opens in new window)</p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <button class="btn btn-primary" onclick="runScrapeNow('full')" type="button">&#9658; Run All Scrapers</button>
+                            <button class="btn btn-secondary" onclick="runScrapeNow('ecnl')" type="button">&#9658; Run ECNL</button>
+                            <button class="btn btn-secondary" onclick="runScrapeNow('ga')" type="button">&#9658; Run GA</button>
+                            <button class="btn btn-secondary" onclick="runScrapeNow('aspire')" type="button">&#9658; Run ASPIRE</button>
+                            <button class="btn btn-secondary" onclick="runScrapeNow('missing')" type="button">&#9658; Missing Only</button>
+                        </div>
+                    </div>
+
+                    <!-- Missing by League -->
+                    <div class="card">
+                        <h3>Missing Results by League</h3>
+                        <div class="data-list" id="schedule-by-league"></div>
+                    </div>
+
+                    <!-- Scheduled Tasks -->
+                    <div class="card">
+                        <h3>Windows Scheduled Tasks</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 15px;">Automated scraping tasks</p>
+                        <div id="scheduled-tasks-list">
+                            <div style="color: var(--text-secondary);">Loading scheduled tasks...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div id="schedule-tab-settings" class="schedule-tab-content" style="display: none;">
+                    <!-- Scraper Settings -->
+                    <div class="card">
+                        <h3>Scraper Settings</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 15px;">Configure which scrapers run automatically</p>
+                        <div id="scraper-settings-list">
+                            <div class="scraper-setting-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px; background: var(--bg-primary); border-radius: 8px; margin-bottom: 10px;">
+                                <div>
+                                    <div style="font-weight: 600;">ECNL + ECNL RL</div>
+                                    <div style="color: var(--text-secondary); font-size: 0.85rem;">Uses Playwright browser (headless)</div>
+                                </div>
+                                <label style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="checkbox" id="scraper-ecnl-enabled" checked onchange="updateScraperSetting('ECNL', this.checked)">
+                                    <span>Enabled</span>
+                                </label>
+                            </div>
+                            <div class="scraper-setting-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px; background: var(--bg-primary); border-radius: 8px; margin-bottom: 10px;">
+                                <div>
+                                    <div style="font-weight: 600;">Girls Academy</div>
+                                    <div style="color: var(--text-secondary); font-size: 0.85rem;">Uses HTTP requests (no browser)</div>
+                                </div>
+                                <label style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="checkbox" id="scraper-ga-enabled" checked onchange="updateScraperSetting('GA', this.checked)">
+                                    <span>Enabled</span>
+                                </label>
+                            </div>
+                            <div class="scraper-setting-item" style="display: flex; justify-content: space-between; align-items: center; padding: 15px; background: var(--bg-primary); border-radius: 8px; margin-bottom: 10px;">
+                                <div>
+                                    <div style="font-weight: 600;">ASPIRE</div>
+                                    <div style="color: var(--text-secondary); font-size: 0.85rem;">Uses HTTP requests (no browser)</div>
+                                </div>
+                                <label style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="checkbox" id="scraper-aspire-enabled" checked onchange="updateScraperSetting('ASPIRE', this.checked)">
+                                    <span>Enabled</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Schedule Settings -->
+                    <div class="card">
+                        <h3>Schedule Days</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 15px;">Configure when scrapers run (based on game day patterns - 95%+ games on weekends)</p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
+                            <div style="padding: 15px; background: var(--bg-primary); border-radius: 8px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <span style="font-weight: 600;">Saturday Evening</span>
+                                    <input type="checkbox" id="schedule-saturday" checked onchange="updateScheduleSetting('saturday_enabled', this.checked)">
+                                </div>
+                                <input type="time" id="schedule-saturday-time" value="22:00" class="form-input" style="width: 100%;" onchange="updateScheduleSetting('saturday_time', this.value)">
+                                <div style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 5px;">Full scrape - game day</div>
+                            </div>
+                            <div style="padding: 15px; background: var(--bg-primary); border-radius: 8px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <span style="font-weight: 600;">Sunday Evening</span>
+                                    <input type="checkbox" id="schedule-sunday" checked onchange="updateScheduleSetting('sunday_enabled', this.checked)">
+                                </div>
+                                <input type="time" id="schedule-sunday-time" value="22:00" class="form-input" style="width: 100%;" onchange="updateScheduleSetting('sunday_time', this.value)">
+                                <div style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 5px;">Full scrape - game day</div>
+                            </div>
+                            <div style="padding: 15px; background: var(--bg-primary); border-radius: 8px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <span style="font-weight: 600;">Monday Morning</span>
+                                    <input type="checkbox" id="schedule-monday" checked onchange="updateScheduleSetting('monday_followup', this.checked)">
+                                </div>
+                                <input type="time" id="schedule-monday-time" value="07:00" class="form-input" style="width: 100%;" onchange="updateScheduleSetting('monday_time', this.value)">
+                                <div style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 5px;">Follow-up for Sunday games</div>
+                            </div>
+                            <div style="padding: 15px; background: var(--bg-primary); border-radius: 8px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <span style="font-weight: 600;">Tuesday Morning</span>
+                                    <input type="checkbox" id="schedule-tuesday" checked onchange="updateScheduleSetting('tuesday_cleanup', this.checked)">
+                                </div>
+                                <input type="time" id="schedule-tuesday-time" value="07:00" class="form-input" style="width: 100%;" onchange="updateScheduleSetting('tuesday_time', this.value)">
+                                <div style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 5px;">Final weekend cleanup</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Options -->
+                    <div class="card">
+                        <h3>Advanced Options</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                            <div>
+                                <label class="form-label">Run if missed (computer was off)</label>
+                                <select id="option-run-if-missed" class="form-select" onchange="updateOption('run_if_missed', this.value === 'true')">
+                                    <option value="true" selected>Yes - run ASAP when back online</option>
+                                    <option value="false">No - skip missed runs</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label">Retry count on failure</label>
+                                <select id="option-retry-count" class="form-select" onchange="updateOption('retry_count', parseInt(this.value))">
+                                    <option value="0">No retries</option>
+                                    <option value="1">1 retry</option>
+                                    <option value="2">2 retries</option>
+                                    <option value="3" selected>3 retries</option>
+                                    <option value="5">5 retries</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label">Retry interval</label>
+                                <select id="option-retry-interval" class="form-select" onchange="updateOption('retry_interval_hours', parseInt(this.value))">
+                                    <option value="1" selected>1 hour</option>
+                                    <option value="2">2 hours</option>
+                                    <option value="4">4 hours</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <button class="btn btn-primary" onclick="saveScheduleSettings()">Save Settings</button>
+                            <button class="btn btn-secondary" onclick="applyScheduleToWindows()">Apply to Windows Task Scheduler</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logs Tab -->
+                <div id="schedule-tab-logs" class="schedule-tab-content" style="display: none;">
+                    <div class="card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h3 style="margin: 0;">Scraper Logs</h3>
+                            <div style="display: flex; gap: 10px;">
+                                <select id="log-select" class="form-select" style="width: auto;" onchange="loadSpecificLog(this.value)">
+                                    <option value="schedule">Schedule Log</option>
+                                    <option value="ecnl">ECNL Log</option>
+                                    <option value="ga">GA Log</option>
+                                    <option value="aspire">ASPIRE Log</option>
+                                </select>
+                                <button class="btn btn-secondary btn-sm" onclick="refreshLogs()">Refresh</button>
+                            </div>
+                        </div>
+                        <div id="log-info" style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 10px;"></div>
+                        <div class="console" id="log-content" style="max-height: 500px; min-height: 300px;">Loading logs...</div>
+                    </div>
+                </div>
+
+                <!-- Reports Tab -->
+                <div id="schedule-tab-reports" class="schedule-tab-content" style="display: none;">
+                    <div class="card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h3 style="margin: 0;">Scrape Reports</h3>
+                            <button class="btn btn-secondary btn-sm" onclick="loadReports()">Refresh</button>
+                        </div>
+                        <div id="reports-list">Loading reports...</div>
+                    </div>
+
+                    <div class="card" id="report-detail-card" style="display: none;">
+                        <h3 id="report-detail-title">Report Details</h3>
+                        <pre id="report-detail-content" style="background: var(--bg-primary); padding: 15px; border-radius: 8px; overflow-x: auto; white-space: pre-wrap; font-size: 0.85rem;"></pre>
+                    </div>
+                </div>
+            </div>
+
             <!-- Scrapers Page -->
             <div class="page" id="page-scrapers">
                 <div class="page-header">
                     <h2>Scrapers</h2>
                     <p>Run and manage data scrapers</p>
                 </div>
-                
+
                 <div class="scraper-grid" id="scraper-list"></div>
-                
+
                 <div class="card" style="margin-top: 20px;">
                     <h3>Console Output</h3>
                     <div class="console" id="console-output">Ready...</div>
@@ -819,6 +1044,7 @@
             
             // Load page data
             if (page === 'dashboard') loadDashboard();
+            if (page === 'schedule') loadSchedule();
             if (page === 'scrapers') loadScrapers();
             if (page === 'teams') loadTeams();
             if (page === 'players') loadPlayers();
@@ -937,7 +1163,393 @@
                 gamesEl.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--text-secondary)">No games found</td></tr>';
             }
         }
-        
+
+        // Schedule
+        async function loadSchedule() {
+            // Load schedule status
+            const status = await api('/api/schedule/status');
+            if (!status.error) {
+                document.getElementById('schedule-missing').textContent = (status.missing_results || 0).toLocaleString();
+                document.getElementById('schedule-today').textContent = (status.today_games || 0).toLocaleString();
+                document.getElementById('schedule-yesterday').textContent = (status.yesterday_games || 0).toLocaleString();
+
+                // Missing by league
+                const byLeagueEl = document.getElementById('schedule-by-league');
+                if (status.by_league && Object.keys(status.by_league).length > 0) {
+                    byLeagueEl.innerHTML = Object.entries(status.by_league).map(([league, count]) => `
+                        <div class="data-list-item">
+                            <span class="badge badge-${getLeagueBadge(league)}">${league}</span>
+                            <span><strong>${count.toLocaleString()}</strong> games missing results</span>
+                        </div>
+                    `).join('');
+                } else {
+                    byLeagueEl.innerHTML = '<div style="color: var(--accent-green);">All games have results!</div>';
+                }
+            }
+
+            // Load scheduled tasks
+            const tasks = await api('/api/schedule/tasks');
+            const tasksEl = document.getElementById('scheduled-tasks-list');
+
+            if (Array.isArray(tasks) && tasks.length > 0) {
+                tasksEl.innerHTML = `
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>Task</th><th>Status</th><th>Last Run</th><th>Next Run</th><th>Actions</th></tr>
+                        </thead>
+                        <tbody>
+                            ${tasks.map(task => `
+                                <tr>
+                                    <td>${task.name}</td>
+                                    <td>
+                                        <span class="badge ${task.exists ? (task.state === 'Ready' ? 'badge-green' : task.state === 'Running' ? 'badge-yellow' : 'badge-red') : 'badge-red'}">
+                                            ${task.exists ? task.state : 'Not Found'}
+                                        </span>
+                                    </td>
+                                    <td>${task.last_run ? formatDateTime(task.last_run) : 'Never'}</td>
+                                    <td>${task.next_run ? formatDateTime(task.next_run) : 'N/A'}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary" onclick="runScheduledTask('${task.name}')" ${!task.exists ? 'disabled' : ''}>Run Now</button>
+                                        <button class="btn btn-sm btn-secondary" onclick="toggleScheduledTask('${task.name}', ${task.state !== 'Ready'})" ${!task.exists ? 'disabled' : ''}>
+                                            ${task.state === 'Ready' ? 'Disable' : 'Enable'}
+                                        </button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            } else {
+                tasksEl.innerHTML = `
+                    <div style="color: var(--accent-yellow); padding: 15px; background: rgba(234, 179, 8, 0.1); border-radius: 8px;">
+                        <strong>Scheduled tasks not found.</strong><br>
+                        Run <code>setup_scheduled_tasks.ps1</code> as Administrator to create them.
+                    </div>
+                `;
+            }
+        }
+
+        function formatDateTime(dateStr) {
+            if (!dateStr) return 'N/A';
+            // Handle PowerShell date format: /Date(timestamp)/
+            if (dateStr.startsWith('/Date(')) {
+                const timestamp = parseInt(dateStr.match(/\d+/)[0]);
+                const date = new Date(timestamp);
+                return date.toLocaleString();
+            }
+            // ISO format or other
+            const date = new Date(dateStr);
+            if (isNaN(date)) return dateStr;
+            return date.toLocaleString();
+        }
+
+        async function runScrapeNow(type) {
+            const result = await api('/api/schedule/run', 'POST', { type });
+            if (result.success) {
+                alert(result.message || 'Scrape started!');
+            } else {
+                alert('Error: ' + (result.error || 'Failed to start scrape'));
+            }
+        }
+
+        async function runScheduledTask(taskName) {
+            const result = await api('/api/schedule/run', 'POST', { task_name: taskName });
+            if (result.success) {
+                alert(result.message || 'Task started!');
+                loadSchedule(); // Refresh
+            } else {
+                alert('Error: ' + (result.error || 'Failed to start task'));
+            }
+        }
+
+        async function toggleScheduledTask(taskName, enable) {
+            const result = await api('/api/schedule/toggle', 'POST', { task_name: taskName, enable });
+            if (result.success) {
+                alert(result.message || 'Task updated!');
+                loadSchedule(); // Refresh
+            } else {
+                alert('Error: ' + (result.error || 'Failed to update task'));
+            }
+        }
+
+        // Schedule tab switching
+        function showScheduleTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.schedule-tab-content').forEach(el => {
+                el.style.display = 'none';
+            });
+
+            // Deactivate all tab buttons
+            document.querySelectorAll('.schedule-tab').forEach(btn => {
+                btn.classList.remove('active', 'btn-primary');
+                btn.classList.add('btn-secondary');
+            });
+
+            // Show selected tab content
+            const tabContent = document.getElementById(`schedule-tab-${tabName}`);
+            if (tabContent) {
+                tabContent.style.display = 'block';
+            }
+
+            // Activate selected tab button
+            const activeBtn = document.querySelector(`.schedule-tab[onclick*="${tabName}"]`);
+            if (activeBtn) {
+                activeBtn.classList.remove('btn-secondary');
+                activeBtn.classList.add('btn-primary', 'active');
+            }
+
+            // Load tab-specific data
+            if (tabName === 'settings') {
+                loadScheduleSettings();
+            } else if (tabName === 'logs') {
+                loadScheduleLogs();
+            } else if (tabName === 'reports') {
+                loadScheduleReports();
+            }
+        }
+
+        let scheduleSettings = {};
+
+        async function loadScheduleSettings() {
+            const settings = await api('/api/schedule/settings');
+            if (settings.error) {
+                console.error('Failed to load schedule settings:', settings.error);
+                return;
+            }
+            scheduleSettings = settings;
+
+            // Update scraper toggles (IDs from HTML: scraper-ecnl-enabled, etc.)
+            ['ecnl', 'ga', 'aspire'].forEach(scraper => {
+                const toggle = document.getElementById(`scraper-${scraper}-enabled`);
+                if (toggle) {
+                    toggle.checked = settings.scrapers?.[scraper.toUpperCase()]?.enabled !== false;
+                }
+            });
+
+            // Update schedule day checkboxes and times
+            ['saturday', 'sunday', 'monday', 'tuesday'].forEach(day => {
+                const dayCheckbox = document.getElementById(`schedule-${day}`);
+                const dayTime = document.getElementById(`schedule-${day}-time`);
+                if (dayCheckbox) {
+                    dayCheckbox.checked = settings.schedule?.[day]?.enabled !== false;
+                }
+                if (dayTime && settings.schedule?.[day]?.time) {
+                    dayTime.value = settings.schedule[day].time;
+                }
+            });
+
+            // Update advanced options
+            const runIfMissed = document.getElementById('option-run-if-missed');
+            const retryCount = document.getElementById('option-retry-count');
+            const retryInterval = document.getElementById('option-retry-interval');
+
+            if (runIfMissed) runIfMissed.value = settings.advanced?.run_if_missed !== false ? 'true' : 'false';
+            if (retryCount) retryCount.value = String(settings.advanced?.retry_count ?? 3);
+            if (retryInterval) retryInterval.value = String(settings.advanced?.retry_interval_hours ?? 1);
+        }
+
+        async function saveScheduleSettings() {
+            // Gather settings from form
+            const settings = {
+                scrapers: {
+                    ECNL: { enabled: document.getElementById('scraper-ecnl-enabled')?.checked !== false },
+                    GA: { enabled: document.getElementById('scraper-ga-enabled')?.checked !== false },
+                    ASPIRE: { enabled: document.getElementById('scraper-aspire-enabled')?.checked !== false }
+                },
+                schedule: {
+                    saturday: {
+                        enabled: document.getElementById('schedule-saturday')?.checked !== false,
+                        time: document.getElementById('schedule-saturday-time')?.value || '22:00'
+                    },
+                    sunday: {
+                        enabled: document.getElementById('schedule-sunday')?.checked !== false,
+                        time: document.getElementById('schedule-sunday-time')?.value || '22:00'
+                    },
+                    monday: {
+                        enabled: document.getElementById('schedule-monday')?.checked !== false,
+                        time: document.getElementById('schedule-monday-time')?.value || '07:00'
+                    },
+                    tuesday: {
+                        enabled: document.getElementById('schedule-tuesday')?.checked !== false,
+                        time: document.getElementById('schedule-tuesday-time')?.value || '07:00'
+                    }
+                },
+                advanced: {
+                    run_if_missed: document.getElementById('option-run-if-missed')?.value === 'true',
+                    retry_count: parseInt(document.getElementById('option-retry-count')?.value || '3'),
+                    retry_interval_hours: parseInt(document.getElementById('option-retry-interval')?.value || '1')
+                }
+            };
+
+            const result = await api('/api/schedule/settings', 'POST', settings);
+            if (result.success) {
+                alert('Settings saved successfully!');
+                scheduleSettings = settings;
+            } else {
+                alert('Error saving settings: ' + (result.error || 'Unknown error'));
+            }
+        }
+
+        function updateScheduleSetting(key, value) {
+            // For real-time UI updates, just store in local settings object
+            if (!scheduleSettings.schedule) scheduleSettings.schedule = {};
+            scheduleSettings.schedule[key] = value;
+        }
+
+        function updateOption(key, value) {
+            // For real-time UI updates, just store in local settings object
+            if (!scheduleSettings.advanced) scheduleSettings.advanced = {};
+            scheduleSettings.advanced[key] = value;
+        }
+
+        async function applyScheduleToWindows() {
+            const result = await api('/api/schedule/apply-to-windows', 'POST', scheduleSettings);
+            if (result.success) {
+                alert('Windows Task Scheduler updated successfully!');
+                loadSchedule(); // Refresh to show updated tasks
+            } else {
+                alert('Error: ' + (result.error || 'Failed to update Windows Task Scheduler. You may need to run as Administrator.'));
+            }
+        }
+
+        async function loadScheduleLogs(scraper = null) {
+            const logsContainer = document.getElementById('log-content');
+            const logInfo = document.getElementById('log-info');
+            if (!logsContainer) return;
+
+            // If no scraper specified, use the selected one
+            if (!scraper) {
+                const selector = document.getElementById('log-select');
+                scraper = selector?.value || 'schedule';
+            }
+
+            logsContainer.innerHTML = 'Loading logs...';
+
+            const result = await api(`/api/schedule/logs?scraper=${scraper}`);
+            if (result.error) {
+                logsContainer.innerHTML = `Error loading logs: ${result.error}`;
+                if (logInfo) logInfo.textContent = '';
+                return;
+            }
+
+            // API returns { scraper_name: { lines: [...], path: ..., last_modified: ... } }
+            const logData = result[scraper];
+            if (logData && logData.lines) {
+                const content = logData.lines.join('');
+                logsContainer.innerHTML = escapeHtml(content);
+                if (logInfo) {
+                    const modified = logData.last_modified ? new Date(logData.last_modified).toLocaleString() : '-';
+                    logInfo.textContent = `File: ${logData.path || scraper + '.log'} | Lines: ${logData.total_lines || '-'} | Modified: ${modified}`;
+                }
+                // Scroll to bottom to show latest entries
+                logsContainer.scrollTop = logsContainer.scrollHeight;
+            } else if (logData && logData.exists === false) {
+                logsContainer.innerHTML = `Log file not found: ${logData.path || scraper + '.log'}`;
+                if (logInfo) logInfo.textContent = '';
+            } else if (logData && logData.error) {
+                logsContainer.innerHTML = `Error reading log: ${logData.error}`;
+                if (logInfo) logInfo.textContent = '';
+            } else {
+                logsContainer.innerHTML = 'No logs found for this scraper.';
+                if (logInfo) logInfo.textContent = '';
+            }
+        }
+
+        function loadSpecificLog(scraper) {
+            loadScheduleLogs(scraper);
+        }
+
+        function refreshLogs() {
+            const selector = document.getElementById('log-select');
+            loadScheduleLogs(selector?.value || 'schedule');
+        }
+
+        async function loadScheduleReports() {
+            const reportsContainer = document.getElementById('reports-list');
+            if (!reportsContainer) return;
+
+            reportsContainer.innerHTML = '<div style="text-align: center; padding: 20px;">Loading reports...</div>';
+
+            // API returns array of reports directly (not wrapped in {reports: ...})
+            const reports = await api('/api/schedule/reports');
+            if (reports.error) {
+                reportsContainer.innerHTML = `<div style="color: var(--accent-red);">Error loading reports: ${reports.error}</div>`;
+                return;
+            }
+
+            if (Array.isArray(reports) && reports.length > 0) {
+                reportsContainer.innerHTML = `
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>File</th>
+                                <th>Date</th>
+                                <th>Size</th>
+                                <th>Modified</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${reports.map((r, i) => `
+                                <tr>
+                                    <td>${r.filename || '-'}</td>
+                                    <td>${r.date || '-'}</td>
+                                    <td>${r.size ? formatBytes(r.size) : '-'}</td>
+                                    <td>${r.modified ? new Date(r.modified).toLocaleString() : '-'}</td>
+                                    <td><button class="btn btn-sm btn-secondary" onclick="showReportDetail(${i})">View</button></td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+                // Store reports for detail view
+                window.scraperReports = reports;
+            } else {
+                reportsContainer.innerHTML = '<div style="color: var(--text-secondary);">No scrape reports found yet. Reports are generated when scheduled scrapes run.</div>';
+            }
+        }
+
+        function formatBytes(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        function showReportDetail(index) {
+            const report = window.scraperReports?.[index];
+            if (!report) return;
+
+            const detailCard = document.getElementById('report-detail-card');
+            const detailTitle = document.getElementById('report-detail-title');
+            const detailContent = document.getElementById('report-detail-content');
+
+            if (detailCard && detailTitle && detailContent) {
+                detailCard.style.display = 'block';
+                detailTitle.textContent = report.filename || 'Report Details';
+                // Show the actual content if available, otherwise show the JSON
+                detailContent.textContent = report.content || JSON.stringify(report, null, 2);
+                // Scroll the detail into view
+                detailCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function loadReports() {
+            loadScheduleReports();
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function updateScraperSetting(scraper, enabled) {
+            // Just updates the local state, actual save happens on Save Settings button
+            if (!scheduleSettings.scrapers) scheduleSettings.scrapers = {};
+            if (!scheduleSettings.scrapers[scraper]) scheduleSettings.scrapers[scraper] = {};
+            scheduleSettings.scrapers[scraper].enabled = enabled;
+        }
+
         // Scrapers
         let currentScraperId = null;
         
@@ -1254,8 +1866,8 @@
                     name: "🔄 Scrapers",
                     files: [
                         {
-                            name: "ecnl_scraper_v*.py",
-                            path: "scrapers and data/ecnl scraper/ecnl_scraper_v*.py",
+                            name: "ecnl_scraper_final.py",
+                            path: "scrapers and data/Scrapers/ECNL and ECNL RL Scraper/ecnl_scraper_final.py",
                             type: "Python Script",
                             icon: "🐍",
                             description: "Scrapes ECNL and ECNL-RL league games and player rosters from the official ECNL website.",
@@ -1265,8 +1877,8 @@
                             notes: "Supports both ECNL Premier and ECNL Regional League. Uses Selenium for dynamic content."
                         },
                         {
-                            name: "ga_scraper_v*.py",
-                            path: "scrapers and data/GA scraper/ga_scraper_v*.py",
+                            name: "GA_league_scraper_final.py",
+                            path: "scrapers and data/Scrapers/girls academy league scraper/GA_league_scraper_final.py",
                             type: "Python Script",
                             icon: "🐍",
                             description: "Scrapes Girls Academy league games from the official GA website.",
@@ -1276,8 +1888,8 @@
                             notes: "Girls Academy only has girls teams. Some games may have missing scores."
                         },
                         {
-                            name: "ASPIRE_scraper_v*.py",
-                            path: "scrapers and data/aspire scraper/ASPIRE_scraper_v*.py",
+                            name: "ASPIRE_league_scraper_final.py",
+                            path: "scrapers and data/Scrapers/aspire scraper/ASPIRE_league_scraper_final.py",
                             type: "Python Script",
                             icon: "🐍",
                             description: "Scrapes ASPIRE league games from the official ASPIRE website.",
@@ -1292,8 +1904,8 @@
                     name: "📊 Rankings",
                     files: [
                         {
-                            name: "team_ranker_v*.py",
-                            path: "scrapers and data/Run Rankings/team_ranker_v*.py",
+                            name: "team_ranker_final.py",
+                            path: "scrapers and data/Run Rankings/team_ranker_final.py",
                             type: "Python Script",
                             icon: "🐍",
                             description: "Calculates team power scores and rankings using a PageRank-based algorithm that considers win/loss records, goal differentials, and strength of schedule.",
@@ -1303,8 +1915,8 @@
                             notes: "Uses iterative algorithm to calculate strength of schedule. Higher-ranked opponents = more points for wins."
                         },
                         {
-                            name: "cleanup_database_v*.py",
-                            path: "scrapers and data/Run Rankings/cleanup_database_v*.py",
+                            name: "database_cleanup_safe.py",
+                            path: "scrapers and data/database_cleanup_safe.py",
                             type: "Python Script",
                             icon: "🐍",
                             description: "Cleans up duplicate games, fixes team name inconsistencies, and normalizes data before ranking.",

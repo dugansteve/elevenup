@@ -2,7 +2,12 @@ import { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useRankingsData } from '../data/useRankingsData';
 import { useUser } from '../context/UserContext';
+import { dailyUpdateHelpers, findTeamInRankings } from '../data/sampleData';
+import BottomSheetSelect from './BottomSheetSelect';
+import { TeamsIcon, TournamentIcon } from './PaperIcons';
+import { isElevenUpBrand } from '../config/brand';
 
+import RankingsMap from './RankingsMap';
 // Pagination constants
 const TEAMS_PER_PAGE = 200;
 
@@ -10,7 +15,8 @@ const TEAMS_PER_PAGE = 200;
 const STORAGE_KEYS = {
   scrollPosition: 'rankings_scroll_position',
   filters: 'rankings_filters',
-  showDetails: 'rankings_show_details'
+  showDetails: 'rankings_show_details',
+  viewMode: 'rankings_view_mode'
 };
 
 // Helper function for league badge colors
@@ -21,22 +27,68 @@ function getLeagueBadgeStyle(league) {
     'ECNL-RL': { background: '#ffebee', color: '#c62828' },   // Red
     'ASPIRE': { background: '#e8f5e9', color: '#2e7d32' },    // Green
     'NPL': { background: '#fff3e0', color: '#e65100' },       // Orange
-    'MLS NEXT': { background: '#e0f7fa', color: '#00838f' },  // Teal
+    'MLS NEXT HD': { background: '#006064', color: '#ffffff' },  // Dark Teal (MLS pro clubs - Homegrown Division)
+    'MLS NEXT AD': { background: '#e0f7fa', color: '#00838f' },  // Light Teal (Academy Division)
   };
   return styles[league] || { background: '#f5f5f5', color: '#666' };
 }
 
+// Helper function to strip age/gender suffix from team names for cleaner display
+function stripAgeFromName(name) {
+  if (!name) return name;
+  // Remove patterns like " G13", " B12", " 2012G", " 2013B", " 12G", " 13B" at end
+  // Also handles "08/07G", "08/07B" combo age groups
+  return name
+    .replace(/\s+\d{2}\/\d{2}[GB]\s*$/i, '')  // " 08/07G" combo ages
+    .replace(/\s+[GB]\d{1,2}\s*$/i, '')        // " G13", " B12"
+    .replace(/\s+\d{4}[GB]\s*$/i, '')          // " 2012G", " 2013B"
+    .replace(/\s+\d{2}[GB]\s*$/i, '')          // " 12G", " 13B"
+    .trim();
+}
+
 // League categorization
-const NATIONAL_LEAGUES = ['ECNL', 'ECNL-RL', 'GA', 'ASPIRE', 'NPL', 'MLS NEXT'];
+const NATIONAL_LEAGUES = ['ECNL', 'ECNL-RL', 'GA', 'ASPIRE', 'NPL', 'MLS NEXT', 'MLS NEXT HD', 'MLS NEXT AD'];
+// Girls-only leagues (no boys teams)
+const GIRLS_ONLY_LEAGUES = ['GA', 'ASPIRE'];
+// Boys-only leagues (no girls teams)
+const BOYS_ONLY_LEAGUES = ['MLS NEXT', 'MLS NEXT HD', 'MLS NEXT AD'];
 const REGIONAL_LEAGUES = [
-  'Southeastern CCL Fall',
-  'Southeastern CCL U11/U12',
-  'Florida WFPL',
+  'Baltimore Mania',
+  'Chesapeake PSL YPL',
+  'Eastern PA Challenge Cup',
+  'Florida CFPL',
   'Florida NFPL',
   'Florida SEFPL',
-  'Florida CFPL',
-  'Chesapeake PSL YPL'
+  'Florida WFPL',
+  'ICSL',
+  'Illinois Cup',
+  'Mid South Conference',
+  'MSPSP',
+  'Northwest Conference',
+  'Presidents Cup',
+  'Real CO Cup',
+  'SEFPL',
+  'SLYSA',
+  'SOCAL',
+  'Southeastern CCL Fall',
+  'Southeastern CCL U11/U12',
+  'State Cup',
+  'Virginia Cup',
+  'WFPL',
+  'WVFC Capital Cup'
 ];
+
+// Helper function to sort age groups numerically (G06, G07, G08/07, G09...G19)
+function sortAgeGroupsNumerically(ageGroups) {
+  return [...ageGroups].sort((a, b) => {
+    // Extract number from age group (e.g., "G13" -> 13, "G08/07" -> 8)
+    const getNum = (ag) => {
+      const match = ag.match(/\d+/);
+      return match ? parseInt(match[0], 10) : 0;
+    };
+    return getNum(a) - getNum(b);
+  });
+}
 
 // Truncated text component with tap-to-expand for mobile
 function TruncatedCell({ text, color, maxWidth = '150px' }) {
@@ -108,10 +160,13 @@ function TruncatedCell({ text, color, maxWidth = '150px' }) {
 function Rankings() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { teamsData, ageGroups, leagues, states, genders, isLoading, error, lastUpdated } = useRankingsData();
-  const { canPerform, getMyTeams, addToMyTeams, removeFromMyTeams, isInMyTeams, isGuest } = useUser();
+  const { teamsData, gamesData, ageGroups, leagues, states, genders, isLoading, error, lastUpdated } = useRankingsData();
+  const { canPerform, getMyTeams, addToMyTeams, removeFromMyTeams, isInMyTeams, isGuest, getFollowedTeams, followTeam, unfollowTeam, isFollowing, userDataReady } = useUser();
   const tableContainerRef = useRef(null);
-  
+
+  // Mobile bottom sheet for Gender/Age filter
+  const [showGenderAgeSheet, setShowGenderAgeSheet] = useState(false);
+
   // Drag scrolling state
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -166,16 +221,28 @@ function Rankings() {
   const [selectedAgeGroup, setSelectedAgeGroup] = useState(savedFilters?.ageGroup || 'ALL');
   const [selectedLeague, setSelectedLeague] = useState(savedFilters?.league || 'ALL');
   const [selectedState, setSelectedState] = useState(savedFilters?.state || 'ALL');
-  const [selectedGender, setSelectedGender] = useState(savedFilters?.gender || 'ALL');
-  const [viewMode, setViewMode] = useState('rankings'); // 'rankings' or 'myteams'
+  const [selectedGender, setSelectedGender] = useState(savedFilters?.gender || 'Girls');
+  const [viewMode, setViewMode] = useState(() => {
+    try {
+      const saved = sessionStorage.getItem(STORAGE_KEYS.viewMode);
+      return saved || 'rankings';
+    } catch { return 'rankings'; }
+  }); // 'rankings', 'myteams', or 'following'
   const [filterSearch, setFilterSearch] = useState(savedFilters?.search || ''); // For rankings table filter
   const [modalSearch, setModalSearch] = useState('');   // For Add Team modal
   const [showAddTeamModal, setShowAddTeamModal] = useState(false);
+  const [showMap, setShowMap] = useState(false);
   const [myTeamsRefreshKey, setMyTeamsRefreshKey] = useState(0);
+  const [followedTeamsRefreshKey, setFollowedTeamsRefreshKey] = useState(0);
+  const [followingQuickView, setFollowingQuickView] = useState(false);
   const [displayLimit, setDisplayLimit] = useState(savedFilters?.displayLimit || TEAMS_PER_PAGE); // Pagination
   const [showDetails, setShowDetails] = useState(() => {
     try {
       const saved = sessionStorage.getItem(STORAGE_KEYS.showDetails);
+      // If no saved preference, default based on screen size (desktop = true, mobile = false)
+      if (saved === null) {
+        return window.innerWidth >= 768;
+      }
       return saved === 'true';
     } catch { return false; }
   });
@@ -201,6 +268,11 @@ function Rankings() {
   useEffect(() => {
     sessionStorage.setItem(STORAGE_KEYS.showDetails, showDetails.toString());
   }, [showDetails]);
+
+  // Save viewMode state
+  useEffect(() => {
+    sessionStorage.setItem(STORAGE_KEYS.viewMode, viewMode);
+  }, [viewMode]);
 
   // Restore scroll position when component mounts
   useEffect(() => {
@@ -237,39 +309,69 @@ function Rankings() {
     return getMyTeams();
   }, [getMyTeams, myTeamsRefreshKey]);
 
-  // Filter teams based on selections
+  // Get current Followed Teams
+  const followedTeams = useMemo(() => {
+    const _ = followedTeamsRefreshKey;
+    return getFollowedTeams();
+  }, [getFollowedTeams, followedTeamsRefreshKey]);
+
+  // Calculate national ranks by gender+age group (based on power score)
+  const nationalRanks = useMemo(() => {
+    const rankMap = {};
+
+    // Group teams by gender+age group
+    const groupedTeams = {};
+    teamsData.forEach(team => {
+      if (!team.ageGroup) return;
+      const key = team.ageGroup; // e.g., "G13", "B14" - already includes gender
+      if (!groupedTeams[key]) groupedTeams[key] = [];
+      groupedTeams[key].push(team);
+    });
+
+    // Sort each group by power score and assign national ranks
+    Object.keys(groupedTeams).forEach(ageGroup => {
+      const sorted = [...groupedTeams[ageGroup]].sort((a, b) =>
+        (b.powerScore || 0) - (a.powerScore || 0)
+      );
+      sorted.forEach((team, index) => {
+        rankMap[team.id] = index + 1;
+      });
+    });
+
+    return rankMap;
+  }, [teamsData]);
+
+  // Filter teams based on selections - rankings are assigned BEFORE search filter is applied
   const filteredTeams = useMemo(() => {
     let filtered = [...teamsData];
-    
-    // Filter by search term (team name or club name)
-    if (filterSearch) {
-      const term = filterSearch.toLowerCase();
-      filtered = filtered.filter(team =>
-        team.name.toLowerCase().includes(term) ||
-        (team.club && team.club.toLowerCase().includes(term))
-      );
-    }
-    
+
+    // Apply all filters EXCEPT search first (these affect ranking)
     // Filter by gender (based on age group prefix G or B)
     if (selectedGender !== 'ALL') {
       const genderPrefix = selectedGender === 'Girls' ? 'G' : 'B';
-      filtered = filtered.filter(team => 
+      filtered = filtered.filter(team =>
         team.ageGroup && team.ageGroup.charAt(0).toUpperCase() === genderPrefix
       );
     }
-    
+
     if (selectedAgeGroup !== 'ALL') {
       filtered = filtered.filter(team => team.ageGroup === selectedAgeGroup);
     }
-    
+
     if (selectedLeague !== 'ALL') {
-      filtered = filtered.filter(team => team.league === selectedLeague);
+      if (selectedLeague === 'ALL_NATIONAL') {
+        filtered = filtered.filter(team => NATIONAL_LEAGUES.includes(team.league));
+      } else if (selectedLeague === 'ALL_REGIONAL') {
+        filtered = filtered.filter(team => REGIONAL_LEAGUES.includes(team.league));
+      } else {
+        filtered = filtered.filter(team => team.league === selectedLeague);
+      }
     }
-    
+
     if (selectedState !== 'ALL') {
       filtered = filtered.filter(team => team.state === selectedState);
     }
-    
+
     // Calculate points per game for record sorting (3 pts for win, 1 pt for draw, 0 for loss)
     const getPointsPerGame = (team) => {
       const gamesPlayed = (team.wins || 0) + (team.losses || 0) + (team.draws || 0);
@@ -277,18 +379,18 @@ function Rankings() {
       const points = (team.wins || 0) * 3 + (team.draws || 0) * 1;
       return points / gamesPlayed;
     };
-    
+
     // Calculate average goal diff per game
     const getAvgGD = (team) => {
       const gamesPlayed = (team.wins || 0) + (team.losses || 0) + (team.draws || 0);
       if (gamesPlayed === 0) return 0;
       return (team.goalDiff || 0) / gamesPlayed;
     };
-    
-    // Sort based on selected field
-    return filtered.sort((a, b) => {
+
+    // Sort to determine rankings
+    filtered.sort((a, b) => {
       let comparison = 0;
-      
+
       switch (sortField) {
         case 'record':
           const aPPG = getPointsPerGame(a);
@@ -321,13 +423,47 @@ function Rankings() {
           comparison = (b.powerScore || 0) - (a.powerScore || 0);
           break;
       }
-      
+
       // Apply direction (ranks are already in proper direction)
       if (sortField !== 'offRank' && sortField !== 'defRank') {
         return sortDirection === 'asc' ? -comparison : comparison;
       }
       return sortDirection === 'asc' ? comparison : -comparison;
     });
+
+    // V43: Separate ranked and unranked teams
+    const rankedTeams = filtered.filter(team => team.isRanked !== false);
+    const unrankedTeams = filtered.filter(team => team.isRanked === false);
+
+    // Assign rankings AFTER sorting but BEFORE search filter
+    // This ensures rankings stay consistent regardless of search
+    const totalRankedBeforeSearch = rankedTeams.length;
+    const rankedWithDisplayRank = rankedTeams.map((team, index) => ({
+      ...team,
+      displayRank: index + 1,
+      totalRanked: totalRankedBeforeSearch
+    }));
+
+    // Unranked teams don't get a display rank - they appear at the bottom
+    const unrankedWithFlag = unrankedTeams.map(team => ({
+      ...team,
+      displayRank: null,
+      totalRanked: totalRankedBeforeSearch
+    }));
+
+    // Combine: ranked first, then unranked
+    let combined = [...rankedWithDisplayRank, ...unrankedWithFlag];
+
+    // NOW apply search filter (this only filters display, doesn't affect rankings)
+    if (filterSearch) {
+      const term = filterSearch.toLowerCase();
+      combined = combined.filter(team =>
+        team.name.toLowerCase().includes(term) ||
+        (team.club && team.club.toLowerCase().includes(term))
+      );
+    }
+
+    return combined;
   }, [teamsData, selectedAgeGroup, selectedLeague, selectedState, selectedGender, filterSearch, sortField, sortDirection]);
   
   // Handle column header click for sorting
@@ -355,27 +491,105 @@ function Rankings() {
     return ageGroups.filter(ag => ag.charAt(0).toUpperCase() === genderPrefix);
   }, [ageGroups, selectedGender]);
 
-  // Get full team data for My Teams (match by ID first, then by name)
+  // Get full team data for My Teams
+  // CRITICAL: Uses findTeamInRankings() helper which does NOT use ID fallback
+  // Team IDs are regenerated when rankings are updated and will match wrong teams if used
   const myTeamsFullData = useMemo(() => {
     return myTeams.map(savedTeam => {
-      // Match by name + ageGroup (stable across JSON regeneration)
-      let fullTeam = teamsData.find(t => 
-        t.name?.toLowerCase() === savedTeam.name?.toLowerCase() && 
-        t.ageGroup?.toLowerCase() === savedTeam.ageGroup?.toLowerCase()
-      );
-      
-      // Fallback: try ID match (legacy support)
-      if (!fullTeam) {
-        fullTeam = teamsData.find(t => t.id === savedTeam.id);
-      }
-      
-      // Return the full team data if found, otherwise return saved data with flag
+      // Use the central helper function - it matches by name/ageGroup/club only
+      const fullTeam = findTeamInRankings(savedTeam, teamsData);
+
       if (fullTeam) {
         return { ...fullTeam, savedId: savedTeam.id };
       }
+      // Team not found in current rankings - return saved data with flag
       return { ...savedTeam, notInRankings: true };
     }).filter(Boolean);
   }, [myTeams, teamsData]);
+
+  // Get full team data for Followed Teams
+  // CRITICAL: Uses findTeamInRankings() helper which does NOT use ID fallback
+  const followedTeamsFullData = useMemo(() => {
+    return followedTeams.map(savedTeam => {
+      // Use the central helper function - it matches by name/ageGroup/club only
+      const fullTeam = findTeamInRankings(savedTeam, teamsData);
+
+      if (fullTeam) {
+        return { ...fullTeam, savedId: savedTeam.id, followedAt: savedTeam.followedAt };
+      }
+      return { ...savedTeam, notInRankings: true };
+    }).filter(Boolean);
+  }, [followedTeams, teamsData]);
+
+  // Helper to normalize team names for comparison
+  const normalizeTeamName = (name) => {
+    if (!name) return '';
+    return name.toLowerCase()
+      .replace(/\s+(ga|ecnl|ecnl-rl|ecnl rl|aspire|npl)$/i, '')
+      .trim();
+  };
+
+  // Helper to get most recent and next game for a team
+  const getTeamGames = useCallback((team) => {
+    if (!team || !gamesData) return { recentGame: null, nextGame: null };
+
+    const normalizedTeamName = normalizeTeamName(team.name);
+    const teamLeague = (team.league || '').toUpperCase();
+    const teamAgeGroup = team.ageGroup || '';
+    const today = new Date().toISOString().split('T')[0];
+
+    // Find all games for this team
+    const teamGamesFiltered = gamesData.filter(game => {
+      const normalizedHome = normalizeTeamName(game.homeTeam);
+      const normalizedAway = normalizeTeamName(game.awayTeam);
+      const gameLeague = (game.league || '').toUpperCase();
+
+      // Check if team name matches
+      const homeMatch = normalizedHome === normalizedTeamName;
+      const awayMatch = normalizedAway === normalizedTeamName;
+
+      // Check league match (normalize common variants)
+      const normalizeLeague = (lg) => {
+        if (!lg) return '';
+        lg = lg.toUpperCase();
+        if (lg === 'ECNL-RL' || lg === 'ECNL RL') return 'ECNL-RL';
+        if (lg === 'GIRLS ACADEMY') return 'GA';
+        if (lg.startsWith('MLS NEXT')) return 'MLS NEXT';
+        return lg;
+      };
+      const leagueMatch = normalizeLeague(gameLeague) === normalizeLeague(teamLeague);
+
+      // Check age group if available
+      const ageMatch = !game.ageGroup || game.ageGroup === teamAgeGroup;
+
+      return (homeMatch || awayMatch) && leagueMatch && ageMatch;
+    });
+
+    // Separate past and future games
+    const pastGames = [];
+    const futureGames = [];
+
+    teamGamesFiltered.forEach(game => {
+      const gameDate = game.date || '';
+      const hasScore = game.homeScore !== null && game.homeScore !== undefined &&
+                       game.awayScore !== null && game.awayScore !== undefined;
+
+      if (gameDate <= today && hasScore) {
+        pastGames.push({ ...game, dateStr: gameDate });
+      } else if (gameDate > today) {
+        futureGames.push({ ...game, dateStr: gameDate });
+      }
+    });
+
+    // Sort past games (most recent first) and future games (soonest first)
+    pastGames.sort((a, b) => b.dateStr.localeCompare(a.dateStr));
+    futureGames.sort((a, b) => a.dateStr.localeCompare(b.dateStr));
+
+    return {
+      recentGame: pastGames[0] || null,
+      nextGame: futureGames[0] || null
+    };
+  }, [gamesData]);
 
   // Teams for the add modal (filtered by search)
   const searchableTeams = useMemo(() => {
@@ -465,8 +679,8 @@ function Rankings() {
 
   return (
     <div>
-      {/* View Mode Toggle and Last Updated - compact header */}
-      <div className="card rankings-header-card" style={{ marginBottom: '0.75rem', padding: '0.75rem 1rem' }}>
+      {/* View Mode Toggle and Last Updated - compact header (hidden on mobile) */}
+      <div className="card rankings-header-card hide-on-mobile" style={{ marginBottom: '0.75rem', padding: '0.75rem 1rem' }}>
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', gap: '0.5rem' }}>
             <button
@@ -486,7 +700,7 @@ function Rankings() {
                 transition: 'all 0.2s ease'
               }}
             >
-              🏆 All Rankings
+              <TeamsIcon size={16} color="green" /> All Teams
             </button>
             <button
               onClick={() => setViewMode('myteams')}
@@ -508,7 +722,7 @@ function Rankings() {
                 gap: '0.25rem'
               }}
             >
-              ⭐ My Teams
+              My Teams
               {myTeams.length > 0 && (
               <span style={{
                 background: viewMode === 'myteams' ? 'rgba(255,255,255,0.3)' : 'var(--accent-green)',
@@ -535,141 +749,267 @@ function Rankings() {
         <>
           <div className="card filters-card" style={{ marginBottom: '0.75rem', padding: '0.75rem 1rem' }}>
             <div className="filters-compact">
-              {/* Team Name Search */}
-              <div className="filter-group search-group">
-                <label className="filter-label">Search Team</label>
-                <input
-                  type="text"
-                  className="form-input"
-                  placeholder="Search by team or club name..."
-                  value={filterSearch}
-                  onChange={(e) => setFilterSearch(e.target.value)}
-                />
-              </div>
-              
-              {/* Filter row - Gender/Age, League, State */}
-              <div className="filter-row">
+              {/* Filter row - Gender/Age, League, State on single row (ABOVE search) */}
+              <div className="filter-row" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'nowrap', marginBottom: '0.5rem' }}>
                 <div className="filter-group">
-                  <label className="filter-label">Gender/Age</label>
-                  <select 
-                    className="filter-select"
-                    value={`${selectedGender}|${selectedAgeGroup}`}
-                    onChange={(e) => {
-                      const [gender, age] = e.target.value.split('|');
-                      setSelectedGender(gender);
-                      setSelectedAgeGroup(age);
+                  {/* Mobile: button that opens bottom sheet */}
+                  <button
+                    className="filter-select mobile-filter-btn"
+                    onClick={() => setShowGenderAgeSheet(true)}
+                    style={{
+                      textAlign: 'left',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between'
                     }}
                   >
-                    <option value="ALL|ALL">All</option>
-                    <optgroup label="Girls">
-                      <option value="Girls|ALL">Girls - All Ages</option>
-                      {ageGroups.filter(a => a.startsWith('G')).map(age => (
-                        <option key={age} value={`Girls|${age}`}>Girls {age}</option>
-                      ))}
-                    </optgroup>
-                    <optgroup label="Boys">
-                      <option value="Boys|ALL">Boys - All Ages</option>
-                      {ageGroups.filter(a => a.startsWith('B')).map(age => (
-                        <option key={age} value={`Boys|${age}`}>Boys {age}</option>
-                      ))}
-                    </optgroup>
-                  </select>
+                    <span>
+                      {selectedGender === 'ALL' && selectedAgeGroup === 'ALL'
+                        ? 'All'
+                        : selectedAgeGroup === 'ALL'
+                          ? `${selectedGender} - All`
+                          : `${selectedGender === 'Girls' ? 'Girls' : 'Boys'} ${selectedAgeGroup}`}
+                    </span>
+                    <span style={{ marginLeft: '0.5rem', opacity: 0.6 }}>▼</span>
+                  </button>
                 </div>
                 
                 <div className="filter-group">
-                  <label className="filter-label">League</label>
-                  <select
-                    className="filter-select"
+                  <BottomSheetSelect
+                    label="League"
                     value={selectedLeague}
-                    onChange={(e) => setSelectedLeague(e.target.value)}
-                  >
-                    <option value="ALL">All Leagues</option>
-                    <optgroup label="National Leagues">
-                      {NATIONAL_LEAGUES.filter(l => leagues.includes(l)).map(league => (
-                        <option key={league} value={league}>{league}</option>
-                      ))}
-                    </optgroup>
-                    <optgroup label="Regional Leagues">
-                      {REGIONAL_LEAGUES.filter(l => leagues.includes(l)).map(league => (
-                        <option key={league} value={league}>{league}</option>
-                      ))}
-                    </optgroup>
-                  </select>
+                    onChange={setSelectedLeague}
+                    options={(() => {
+                      // Determine effective gender from selection or age group
+                      let effectiveGender = selectedGender;
+                      if (selectedGender === 'ALL' && selectedAgeGroup !== 'ALL') {
+                        effectiveGender = selectedAgeGroup.startsWith('G') ? 'Girls' : 'Boys';
+                      }
+
+                      // Filter leagues based on gender
+                      const filterByGender = (league) => {
+                        if (effectiveGender === 'Boys' && GIRLS_ONLY_LEAGUES.includes(league)) return false;
+                        if (effectiveGender === 'Girls' && BOYS_ONLY_LEAGUES.includes(league)) return false;
+                        return true;
+                      };
+
+                      const nationalOptions = NATIONAL_LEAGUES
+                        .filter(l => leagues.includes(l) && filterByGender(l))
+                        .map(league => ({ value: league, label: league }));
+                      const regionalOptions = REGIONAL_LEAGUES
+                        .filter(l => leagues.includes(l) && filterByGender(l))
+                        .map(league => ({ value: league, label: league }));
+
+                      return [
+                        { value: 'ALL', label: 'All Leagues' },
+                        {
+                          group: 'National Leagues',
+                          options: [
+                            ...(nationalOptions.length > 1 ? [{ value: 'ALL_NATIONAL', label: isElevenUpBrand ? '★ All National Leagues' : '⭐ All National Leagues' }] : []),
+                            ...nationalOptions
+                          ]
+                        },
+                        {
+                          group: 'Regional Leagues',
+                          options: [
+                            ...(regionalOptions.length > 1 ? [{ value: 'ALL_REGIONAL', label: isElevenUpBrand ? '★ All Regional Leagues' : '⭐ All Regional Leagues' }] : []),
+                            ...regionalOptions
+                          ]
+                        }
+                      ].filter(opt => !opt.group || opt.options.length > 0);
+                    })()}
+                  />
                 </div>
-                
+
                 <div className="filter-group">
-                  <label className="filter-label">State</label>
-                  <select 
-                    className="filter-select"
+                  <BottomSheetSelect
+                    label="State"
                     value={selectedState}
-                    onChange={(e) => setSelectedState(e.target.value)}
-                  >
-                    <option value="ALL">All</option>
-                    {states.map(state => (
-                      <option key={state} value={state}>{state}</option>
-                    ))}
-                  </select>
+                    onChange={setSelectedState}
+                    options={[
+                      { value: 'ALL', label: 'All States' },
+                      { group: 'States', options: states.map(state => ({ value: state, label: state })) }
+                    ]}
+                  />
                 </div>
+              </div>
+
+              {/* Search row with Map, My Teams and Following icons (BELOW filters) */}
+              <div className="search-row" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                <div className="filter-group search-group" style={{ flex: '1', minWidth: '120px', maxWidth: '200px' }}>
+                  <input
+                    type="text"
+                    className="form-input"
+                    placeholder="Search team or club..."
+                    value={filterSearch}
+                    onChange={(e) => setFilterSearch(e.target.value)}
+                  />
+                </div>
+
+                {/* Map - Trifold map with pin */}
+                <span
+                  onClick={() => setShowMap(true)}
+                  title="Show Map"
+                  style={{
+                    cursor: filteredTeams.length > 0 ? 'pointer' : 'not-allowed',
+                    fontSize: '1.4rem',
+                    opacity: filteredTeams.length > 0 ? 0.8 : 0.4,
+                    transition: 'opacity 0.2s'
+                  }}
+                >
+                  🗺️
+                </span>
+
+                {/* My Teams - Teal Heart with count to the right */}
+                <span
+                  onClick={() => setViewMode(viewMode === 'myteams' ? 'rankings' : 'myteams')}
+                  title="My Teams"
+                  style={{
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '2px',
+                    opacity: viewMode === 'myteams' ? 1 : 0.7,
+                    transition: 'opacity 0.2s'
+                  }}
+                >
+                  {isElevenUpBrand ? (
+                    <svg width="22" height="22" viewBox="0 0 24 24" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' }}>
+                      <defs>
+                        <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#00E676" />
+                          <stop offset="50%" stopColor="#1DE9B6" />
+                          <stop offset="100%" stopColor="#00BCD4" />
+                        </linearGradient>
+                        <linearGradient id="heartHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stopColor="#FFFFFF" />
+                          <stop offset="100%" stopColor="#69F0AE" />
+                        </linearGradient>
+                      </defs>
+                      <path fill="url(#heartGradient)" stroke="#00ACC1" strokeWidth="0.5" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                      <path fill="url(#heartHighlight)" opacity="0.4" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" clipPath="inset(0 50% 50% 0)"/>
+                    </svg>
+                  ) : (
+                    <span style={{ fontSize: '1.3rem' }}>❤️</span>
+                  )}
+                  {myTeams.length > 0 && (
+                    <span style={{
+                      color: isElevenUpBrand ? '#1DE9B6' : '#e91e63',
+                      fontSize: '0.75rem',
+                      fontWeight: '700'
+                    }}>
+                      {myTeams.length}
+                    </span>
+                  )}
+                </span>
+
+                {/* Following - Star with count to the right */}
+                <span
+                  onClick={() => setViewMode(viewMode === 'following' ? 'rankings' : 'following')}
+                  title="Following"
+                  style={{
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '2px',
+                    opacity: viewMode === 'following' ? 1 : 0.7,
+                    transition: 'opacity 0.2s'
+                  }}
+                >
+                  {isElevenUpBrand ? (
+                    <svg width="22" height="22" viewBox="0 0 24 24" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))' }}>
+                      <defs>
+                        <linearGradient id="starGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#B2FF59" />
+                          <stop offset="50%" stopColor="#76FF03" />
+                          <stop offset="100%" stopColor="#00E676" />
+                        </linearGradient>
+                        <linearGradient id="starHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stopColor="#FFFFFF" />
+                          <stop offset="100%" stopColor="#CCFF90" />
+                        </linearGradient>
+                      </defs>
+                      <path fill="url(#starGradient)" stroke="#00C853" strokeWidth="0.5" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      <path fill="url(#starHighlight)" opacity="0.4" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" clipPath="inset(0 50% 50% 0)"/>
+                    </svg>
+                  ) : (
+                    <span style={{ fontSize: '1.3rem' }}>⭐</span>
+                  )}
+                  {followedTeams.length > 0 && (
+                    <span style={{
+                      color: isElevenUpBrand ? '#76FF03' : '#FFD700',
+                      fontSize: '0.75rem',
+                      fontWeight: '700'
+                    }}>
+                      {followedTeams.length}
+                    </span>
+                  )}
+                </span>
+
+                {/* Spacer to push details button right */}
+                <span style={{ flex: '1' }}></span>
+
+                {/* Details toggle - text with arrow, green to match table */}
+                <span
+                  onClick={() => setShowDetails(!showDetails)}
+                  title={showDetails ? 'Hide details' : 'Show details'}
+                  style={{
+                    cursor: 'pointer',
+                    fontSize: '0.85rem',
+                    color: '#00C853',
+                    fontWeight: '500',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.2rem',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  details {showDetails ? '◀' : '▶'}
+                </span>
               </div>
             </div>
           </div>
 
-          <div className="card">
-            <div className="card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
-              <span className="card-title" style={{ fontSize: '0.9rem' }}>
-                {displayLimit < filteredTeams.length 
-                  ? `${displayLimit} of ${filteredTeams.length} teams`
-                  : `${filteredTeams.length} teams`}
-              </span>
-              <button
-                onClick={() => setShowDetails(!showDetails)}
-                style={{
-                  padding: '0.4rem 0.75rem',
-                  borderRadius: '6px',
-                  border: '1px solid #ddd',
-                  background: showDetails ? 'var(--primary-green)' : '#f8f9fa',
-                  color: showDetails ? 'white' : '#666',
-                  cursor: 'pointer',
-                  fontSize: '0.85rem',
-                  fontWeight: '500',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  transition: 'all 0.2s ease'
-                }}
-              >
-                {showDetails ? '◀ Hide details' : '▶ See more details'}
-              </button>
-            </div>
-            
+          <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
             {filteredTeams.length === 0 ? (
-              <div className="empty-state">
+              <div className="empty-state" style={{ padding: '2rem' }}>
                 <div className="empty-state-icon">🔍</div>
                 <div className="empty-state-text">No teams found matching your filters</div>
               </div>
             ) : (
-              <div 
+              <div
                 className="table-scroll-container"
                 ref={tableContainerRef}
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                style={{ cursor: 'grab' }}
+                style={{
+                  cursor: 'grab',
+                  overflowX: 'auto',
+                  touchAction: 'auto'
+                }}
               >
-                <table className="data-table rankings-table">
+                <table className={`data-table rankings-table ${!showDetails ? 'compact-view' : ''}`}>
                   <thead>
                     <tr>
-                      <th 
-                        className="col-rank sortable-header"
+                      <th
+                        className="col-rank"
                         onClick={() => handleSort('power')}
                         style={{ cursor: 'pointer' }}
                         title="Sort by Power Score (default ranking)"
                       >
-                        Rank{getSortIndicator('power')}
+                        {getSortIndicator('power')}
                       </th>
-                      <th className="col-team">Team</th>
-                      <th className="col-age">Age</th>
+                      <th className="col-natl-rank sticky-col sticky-col-1" style={{ color: 'white', whiteSpace: 'normal', lineHeight: '1.1' }} title="National rank within gender and age group">Nat'l<br/>Rank</th>
+                      <th className="col-team sticky-col sticky-col-2" style={{ whiteSpace: 'normal', lineHeight: '1.1' }}>
+                        Team<br/>
+                        <span style={{ fontWeight: '400', fontSize: '0.7rem', color: '#555' }}>
+                          ({filteredTeams.length})
+                        </span>
+                      </th>
+                      {selectedAgeGroup === 'ALL' && <th className="col-age">Age</th>}
                       <th className="col-league">League</th>
                       <th className="col-state">ST</th>
                       {showDetails && <th className="col-power">Power</th>}
@@ -715,11 +1055,24 @@ function Rankings() {
                         </th>
                       )}
                       {showDetails && <th className="col-narrow" style={{ whiteSpace: 'normal', lineHeight: '1.1' }} title="Defensive Power Score">Def<br/>Score</th>}
-                      {showDetails && <th title="Best Win">Best Win</th>}
-                      {showDetails && <th title="2nd Best Win">2nd Best</th>}
-                      {showDetails && <th title="Worst Loss">Worst Loss</th>}
-                      {showDetails && <th title="2nd Worst Loss">2nd Worst</th>}
-                      {canPerform('canSaveMyTeams') && <th style={{ width: '40px' }}></th>}
+                      {showDetails && <th className="col-win-loss" title="Best Win">Best Win</th>}
+                      {showDetails && <th className="col-win-loss" title="2nd Best Win">2nd Best</th>}
+                      {showDetails && <th className="col-win-loss" title="Worst Loss">Worst Loss</th>}
+                      {showDetails && <th className="col-win-loss" title="2nd Worst Loss">2nd Worst</th>}
+                      <th style={{ width: '40px' }} title="Follow Team">
+                        {isElevenUpBrand ? (
+                          <svg width="20" height="20" viewBox="0 0 24 24" style={{ filter: 'drop-shadow(0 1px 1px rgba(0,0,0,0.2))' }}>
+                            <defs>
+                              <linearGradient id="headerStarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stopColor="#B2FF59" />
+                                <stop offset="50%" stopColor="#76FF03" />
+                                <stop offset="100%" stopColor="#00E676" />
+                              </linearGradient>
+                            </defs>
+                            <path fill="url(#headerStarGrad)" stroke="#00C853" strokeWidth="0.5" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                          </svg>
+                        ) : '⭐'}
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -727,31 +1080,33 @@ function Rankings() {
                       // Calculate average GD per game
                       const gamesPlayed = (team.wins || 0) + (team.losses || 0) + (team.draws || 0);
                       const avgGD = gamesPlayed > 0 ? (team.goalDiff || 0) / gamesPlayed : 0;
-                      
+                      const isUnranked = team.isRanked === false;
+
                       return (
-                      <tr key={team.id}>
-                        <td className="rank-cell col-rank">#{index + 1}</td>
-                        <td className="col-team">
-                          <Link 
+                      <tr key={team.id} style={isUnranked ? { opacity: 0.7, backgroundColor: '#f9f9f9' } : {}}>
+                        <td className="rank-cell col-rank">{isUnranked ? '—' : `#${team.displayRank}`}</td>
+                        <td className="col-natl-rank sticky-col sticky-col-1">{isUnranked ? '—' : `#${nationalRanks[team.id] || '—'}`}</td>
+                        <td className="col-team sticky-col sticky-col-2">
+                          <Link
                             to={`/team/${team.id}`}
                             className="team-name-link"
                             onClick={saveScrollPosition}
                           >
-                            {team.name}
+                            {team.name} {team.ageGroup}{isUnranked ? ' (unranked)' : ''}
                           </Link>
                         </td>
-                        <td className="col-age">{team.ageGroup}</td>
+                        {selectedAgeGroup === 'ALL' && <td className="col-age">{team.ageGroup}</td>}
                         <td className="col-league">
                           <span className="league-badge-sm" style={getLeagueBadgeStyle(team.league)}>
                             {team.league}
                           </span>
                         </td>
                         <td className="col-state">{team.state || '-'}</td>
-                        {showDetails && <td className="col-power power-score">{team.powerScore?.toFixed(1) || '0.0'}</td>}
+                        {showDetails && <td className="col-power power-score" style={{ fontWeight: '600' }}>{team.powerScore?.toFixed(1) || '0.0'}</td>}
                         {showDetails && <td>{team.wins}-{team.losses}-{team.draws}</td>}
                         {showDetails && (
                           <td style={{ 
-                            color: avgGD > 0 ? '#2e7d32' : avgGD < 0 ? '#c62828' : '#666',
+                            color: avgGD > 0 ? '#66bb6a' : avgGD < 0 ? '#ef5350' : '#888',
                             fontWeight: '600',
                             textAlign: 'center'
                           }}>
@@ -764,9 +1119,8 @@ function Rankings() {
                           </td>
                         )}
                         {showDetails && (
-                          <td className="col-narrow" style={{ 
+                          <td className="col-narrow" style={{
                             textAlign: 'center',
-                            color: '#1976d2',
                             fontWeight: '600'
                           }}>
                             {team.offensivePowerScore?.toFixed(0) || '-'}
@@ -778,79 +1132,86 @@ function Rankings() {
                           </td>
                         )}
                         {showDetails && (
-                          <td className="col-narrow" style={{ 
+                          <td className="col-narrow" style={{
                             textAlign: 'center',
-                            color: '#7b1fa2',
                             fontWeight: '600'
                           }}>
                             {team.defensivePowerScore?.toFixed(0) || '-'}
                           </td>
                         )}
                         {showDetails && (
-                          <td>
-                            <TruncatedCell text={team.bestWin} color="#2e7d32" />
+                          <td className="col-win-loss">
+                            <TruncatedCell text={team.bestWin} color="#66bb6a" maxWidth="200px" />
                           </td>
                         )}
                         {showDetails && (
-                          <td>
-                            <TruncatedCell text={team.secondBestWin} color="#2e7d32" />
+                          <td className="col-win-loss">
+                            <TruncatedCell text={team.secondBestWin} color="#66bb6a" maxWidth="200px" />
                           </td>
                         )}
                         {showDetails && (
-                          <td>
-                            <TruncatedCell text={team.worstLoss} color="#c62828" />
+                          <td className="col-win-loss">
+                            <TruncatedCell text={team.worstLoss} color="#ef5350" maxWidth="200px" />
                           </td>
                         )}
                         {showDetails && (
-                          <td>
-                            <TruncatedCell text={team.secondWorstLoss} color="#c62828" />
+                          <td className="col-win-loss">
+                            <TruncatedCell text={team.secondWorstLoss} color="#ef5350" maxWidth="200px" />
                           </td>
                         )}
-                        {canPerform('canSaveMyTeams') && (
-                          <td>
-                            {isInMyTeams(team) ? (
-                              <button
-                                onClick={() => handleRemoveTeam(team)}
-                                style={{
-                                  background: 'none',
-                                  border: 'none',
-                                  cursor: 'pointer',
-                                  fontSize: '1.2rem',
-                                  padding: '0.25rem'
-                                }}
-                                title="Remove from My Teams"
-                              >
-                                ⭐
-                              </button>
-                            ) : myTeams.length < 5 ? (
-                              <button
-                                onClick={() => handleAddTeam(team)}
-                                style={{
-                                  background: 'none',
-                                  border: 'none',
-                                  cursor: 'pointer',
-                                  fontSize: '1.2rem',
-                                  padding: '0.25rem',
-                                  opacity: 0.3
-                                }}
-                                title="Add to My Teams"
-                                onMouseEnter={(e) => e.currentTarget.style.opacity = 1}
-                                onMouseLeave={(e) => e.currentTarget.style.opacity = 0.3}
-                              >
-                                ☆
-                              </button>
+                        {showDetails && (
+                          <td className="col-league">
+                            <span className="league-badge-sm" style={getLeagueBadgeStyle(team.league)}>
+                              {team.league}
+                            </span>
+                          </td>
+                        )}
+                        <td>
+                          <button
+                            onClick={() => {
+                              if (isFollowing(team)) {
+                                unfollowTeam(team);
+                              } else {
+                                followTeam(team);
+                              }
+                              setFollowedTeamsRefreshKey(prev => prev + 1);
+                            }}
+                            style={{
+                              background: 'none',
+                              border: 'none',
+                              cursor: 'pointer',
+                              padding: '0.25rem',
+                              opacity: isFollowing(team) ? 1 : 0.3,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}
+                            title={isFollowing(team) ? 'Unfollow Team' : 'Follow Team'}
+                            onMouseEnter={(e) => e.currentTarget.style.opacity = 1}
+                            onMouseLeave={(e) => e.currentTarget.style.opacity = isFollowing(team) ? 1 : 0.3}
+                          >
+                            {isFollowing(team) ? (
+                              isElevenUpBrand ? (
+                                <svg width="20" height="20" viewBox="0 0 24 24" style={{ filter: 'drop-shadow(0 1px 1px rgba(0,0,0,0.2))' }}>
+                                  <defs>
+                                    <linearGradient id={`rowStarGrad${team.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                                      <stop offset="0%" stopColor="#B2FF59" />
+                                      <stop offset="50%" stopColor="#76FF03" />
+                                      <stop offset="100%" stopColor="#00E676" />
+                                    </linearGradient>
+                                  </defs>
+                                  <path fill={`url(#rowStarGrad${team.id})`} stroke="#00C853" strokeWidth="0.5" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                              ) : <span style={{ fontSize: '1.2rem' }}>⭐</span>
                             ) : (
-                              <span style={{ 
-                                fontSize: '0.75rem', 
-                                color: '#999',
-                                display: 'block',
-                                textAlign: 'center'
-                              }}>
-                                Max 5
-                              </span>
+                              isElevenUpBrand ? (
+                                <svg width="20" height="20" viewBox="0 0 24 24">
+                                  <path fill="none" stroke="#999" strokeWidth="1.5" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                              ) : <span style={{ fontSize: '1.2rem' }}>☆</span>
                             )}
-                          </td>
-                        )}
+                          </button>
+                        </td>
                       </tr>
                     );
                     })}
@@ -894,9 +1255,31 @@ function Rankings() {
       {viewMode === 'myteams' && (
         <div className="card">
           <div className="card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <h2 className="card-title">
-              ⭐ My Teams ({myTeams.length}/5)
-            </h2>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              {/* All Teams button - mobile only */}
+              <button
+                className="all-teams-btn-mobile show-on-mobile"
+                onClick={() => setViewMode('rankings')}
+                style={{
+                  padding: '0.5rem 0.75rem',
+                  borderRadius: '6px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontWeight: '600',
+                  fontSize: '0.85rem',
+                  background: '#f5f5f5',
+                  color: '#666',
+                  display: 'none', // hidden by default, shown on mobile via CSS
+                  alignItems: 'center',
+                  gap: '0.25rem'
+                }}
+              >
+                ← All Teams
+              </button>
+              <h2 className="card-title" style={{ margin: 0 }}>
+                My Teams ({myTeams.length}/5)
+              </h2>
+            </div>
             {canPerform('canSaveMyTeams') && myTeams.length < 5 && (
               <button
                 onClick={() => setShowAddTeamModal(true)}
@@ -922,9 +1305,41 @@ function Rankings() {
             </div>
           )}
 
-          {myTeams.length === 0 ? (
+          {/* Show loading while user data is loading */}
+          {!userDataReady && !isGuest ? (
             <div className="empty-state">
-              <div className="empty-state-icon">⭐</div>
+              <div className="empty-state-icon" style={{ animation: 'pulse 1.5s ease-in-out infinite', fontSize: '3rem' }}>
+                {isElevenUpBrand ? (
+                  <svg width="48" height="48" viewBox="0 0 24 24" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))' }}>
+                    <defs>
+                      <linearGradient id="loadingStarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#B2FF59" />
+                        <stop offset="50%" stopColor="#76FF03" />
+                        <stop offset="100%" stopColor="#00E676" />
+                      </linearGradient>
+                    </defs>
+                    <path fill="url(#loadingStarGrad)" stroke="#00C853" strokeWidth="0.5" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ) : '⭐'}
+              </div>
+              <div className="empty-state-text">Loading your teams...</div>
+            </div>
+          ) : myTeams.length === 0 ? (
+            <div className="empty-state">
+              <div className="empty-state-icon" style={{ fontSize: '3rem' }}>
+                {isElevenUpBrand ? (
+                  <svg width="48" height="48" viewBox="0 0 24 24" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))' }}>
+                    <defs>
+                      <linearGradient id="emptyStateStarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#B2FF59" />
+                        <stop offset="50%" stopColor="#76FF03" />
+                        <stop offset="100%" stopColor="#00E676" />
+                      </linearGradient>
+                    </defs>
+                    <path fill="url(#emptyStateStarGrad)" stroke="#00C853" strokeWidth="0.5" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ) : '⭐'}
+              </div>
               <div className="empty-state-text">
                 {canPerform('canSaveMyTeams') 
                   ? "You haven't added any teams yet" 
@@ -1001,21 +1416,21 @@ function Rankings() {
                       </div>
 
                       {/* Team Info */}
-                      <div style={{ flex: 1, minWidth: '200px' }}>
-                        <Link 
+                      <div style={{ flex: 1, minWidth: '200px', paddingRight: '5rem' }}>
+                        <Link
                           to={`/team/${team.id}`}
-                          style={{ 
-                            fontSize: '1.35rem', 
-                            fontWeight: '700', 
+                          style={{
+                            fontSize: '1.35rem',
+                            fontWeight: '700',
                             color: 'var(--primary-green)',
                             textDecoration: 'none'
                           }}
                         >
-                          {team.name} →
+                          {team.name} {team.ageGroup} →
                         </Link>
-                        <div style={{ 
-                          display: 'flex', 
-                          gap: '0.75rem', 
+                        <div style={{
+                          display: 'flex',
+                          gap: '0.75rem',
                           marginTop: '0.5rem',
                           flexWrap: 'wrap',
                           alignItems: 'center'
@@ -1033,8 +1448,8 @@ function Rankings() {
                             {team.ageGroup}
                           </span>
                           {team.state && (
-                            <span style={{ color: '#888', fontSize: '0.9rem' }}>
-                              📍 {team.state}
+                            <span style={{ color: '#888', fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '2px' }}>
+                              <TournamentIcon size={14} color="gray" /> {team.state}
                             </span>
                           )}
                         </div>
@@ -1053,17 +1468,12 @@ function Rankings() {
                       </div>
 
                       {/* Stats */}
-                      <div style={{ 
-                        display: 'grid', 
-                        gridTemplateColumns: 'repeat(4, 1fr)', 
-                        gap: '1rem',
-                        minWidth: '300px'
-                      }}>
+                      <div className="my-teams-stats-grid">
                         <div style={{ textAlign: 'center' }}>
-                          <div style={{ 
-                            fontSize: '1.5rem', 
-                            fontWeight: '700', 
-                            color: 'var(--primary-green)' 
+                          <div style={{
+                            fontSize: '1.5rem',
+                            fontWeight: '700',
+                            color: 'var(--primary-green)'
                           }}>
                             {team.powerScore?.toFixed(1) || '—'}
                           </div>
@@ -1072,10 +1482,10 @@ function Rankings() {
                           </div>
                         </div>
                         <div style={{ textAlign: 'center' }}>
-                          <div style={{ 
-                            fontSize: '1.5rem', 
-                            fontWeight: '700', 
-                            color: '#333' 
+                          <div style={{
+                            fontSize: '1.5rem',
+                            fontWeight: '700',
+                            color: '#333'
                           }}>
                             {team.wins || 0}-{team.losses || 0}-{team.draws || 0}
                           </div>
@@ -1084,10 +1494,10 @@ function Rankings() {
                           </div>
                         </div>
                         <div style={{ textAlign: 'center' }}>
-                          <div style={{ 
-                            fontSize: '1.5rem', 
-                            fontWeight: '700', 
-                            color: team.goalDiff > 0 ? '#2e7d32' : team.goalDiff < 0 ? '#c62828' : '#666' 
+                          <div style={{
+                            fontSize: '1.5rem',
+                            fontWeight: '700',
+                            color: team.goalDiff > 0 ? '#2e7d32' : team.goalDiff < 0 ? '#c62828' : '#666'
                           }}>
                             {team.goalDiff > 0 ? '+' : ''}{team.goalDiff || 0}
                           </div>
@@ -1096,10 +1506,10 @@ function Rankings() {
                           </div>
                         </div>
                         <div style={{ textAlign: 'center' }}>
-                          <div style={{ 
-                            fontSize: '1.5rem', 
-                            fontWeight: '700', 
-                            color: '#333' 
+                          <div style={{
+                            fontSize: '1.5rem',
+                            fontWeight: '700',
+                            color: '#333'
                           }}>
                             {((team.winPct || 0) * 100).toFixed(0)}%
                           </div>
@@ -1109,6 +1519,707 @@ function Rankings() {
                         </div>
                       </div>
                     </div>
+
+                    {/* Daily Update Preview (Pro users only) */}
+                    {(() => {
+                      const teamKey = `${team.name?.toLowerCase() || ''}_${team.ageGroup?.toLowerCase() || ''}`;
+                      const latestUpdate = dailyUpdateHelpers.getLatestUpdate(teamKey);
+                      const updateCount = dailyUpdateHelpers.getUpdatesForTeam(teamKey).length;
+
+                      if (latestUpdate) {
+                        // Extract first section (before first double newline)
+                        const preview = latestUpdate.content?.split('\n\n')[0]?.replace(/\*\*/g, '') || '';
+                        const updateDate = new Date(latestUpdate.generatedAt);
+                        const isToday = updateDate.toDateString() === new Date().toDateString();
+
+                        return (
+                          <div style={{
+                            marginTop: '1rem',
+                            padding: '0.75rem',
+                            background: 'linear-gradient(135deg, #f0f7ff 0%, #e3f2fd 100%)',
+                            borderRadius: '8px',
+                            borderLeft: '3px solid var(--primary-green)'
+                          }}>
+                            <div style={{
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              alignItems: 'center',
+                              marginBottom: '0.5rem'
+                            }}>
+                              <span style={{
+                                fontSize: '0.75rem',
+                                fontWeight: '600',
+                                color: 'var(--primary-green)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.25rem'
+                              }}>
+                                ... Daily Update
+                                {isToday && (
+                                  <span style={{
+                                    background: 'var(--primary-green)',
+                                    color: 'white',
+                                    padding: '0.1rem 0.4rem',
+                                    borderRadius: '10px',
+                                    fontSize: '0.65rem'
+                                  }}>NEW</span>
+                                )}
+                              </span>
+                              <span style={{
+                                fontSize: '0.65rem',
+                                color: '#888'
+                              }}>
+                                {updateCount} update{updateCount > 1 ? 's' : ''}
+                              </span>
+                            </div>
+                            <p style={{
+                              fontSize: '0.8rem',
+                              color: '#555',
+                              margin: 0,
+                              lineHeight: '1.4',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                              display: '-webkit-box',
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: 'vertical'
+                            }}>
+                              {preview}
+                            </p>
+                            <Link
+                              to={`/team/${team.id}`}
+                              style={{
+                                display: 'inline-block',
+                                marginTop: '0.5rem',
+                                fontSize: '0.75rem',
+                                color: 'var(--primary-green)',
+                                fontWeight: '600',
+                                textDecoration: 'none'
+                              }}
+                            >
+                              View Full Update →
+                            </Link>
+                          </div>
+                        );
+                      }
+
+                      return null;
+                    })()}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Following View */}
+      {viewMode === 'following' && (
+        <div className="card">
+          <div className="card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <button
+                className="all-teams-btn-mobile show-on-mobile"
+                onClick={() => setViewMode('rankings')}
+                style={{
+                  padding: '0.5rem 0.75rem',
+                  borderRadius: '6px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontWeight: '600',
+                  fontSize: '0.85rem',
+                  background: '#f5f5f5',
+                  color: '#666',
+                  display: 'none',
+                  alignItems: 'center',
+                  gap: '0.25rem'
+                }}
+              >
+                ← All Teams
+              </button>
+              <h2 className="card-title" style={{ margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                {isElevenUpBrand ? (
+                  <svg width="24" height="24" viewBox="0 0 24 24" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.2))' }}>
+                    <defs>
+                      <linearGradient id="followingTitleStarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#B2FF59" />
+                        <stop offset="50%" stopColor="#76FF03" />
+                        <stop offset="100%" stopColor="#00E676" />
+                      </linearGradient>
+                    </defs>
+                    <path fill="url(#followingTitleStarGrad)" stroke="#00C853" strokeWidth="0.5" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ) : <span style={{ fontSize: '1.5rem' }}>⭐</span>}
+                Following ({followedTeams.length})
+              </h2>
+            </div>
+            {followedTeams.length > 0 && (
+              <button
+                onClick={() => setFollowingQuickView(!followingQuickView)}
+                style={{
+                  padding: '0.5rem 1rem',
+                  borderRadius: '6px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontWeight: '600',
+                  fontSize: '0.85rem',
+                  background: followingQuickView
+                    ? 'linear-gradient(135deg, var(--primary-green) 0%, #2e7d32 100%)'
+                    : '#f5f5f5',
+                  color: followingQuickView ? 'white' : '#666',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                {followingQuickView ? 'Detailed View' : 'Quick View'}
+              </button>
+            )}
+          </div>
+
+          {isGuest && (
+            <div style={{
+              padding: '1rem',
+              background: '#fff3e0',
+              borderRadius: '8px',
+              marginBottom: '1rem',
+              border: '1px solid #ffcc80'
+            }}>
+              <p style={{ margin: 0, color: '#e65100', fontWeight: '500' }}>
+                👤 You're browsing as a Guest. Create a free account to follow teams!
+              </p>
+            </div>
+          )}
+
+          {/* Show loading while user data is loading */}
+          {!userDataReady && !isGuest ? (
+            <div className="empty-state">
+              <div className="empty-state-icon" style={{ animation: 'pulse 1.5s ease-in-out infinite', fontSize: '3rem' }}>
+                {isElevenUpBrand ? (
+                  <svg width="48" height="48" viewBox="0 0 24 24" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))' }}>
+                    <defs>
+                      <linearGradient id="loadingStarGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#B2FF59" />
+                        <stop offset="50%" stopColor="#76FF03" />
+                        <stop offset="100%" stopColor="#00E676" />
+                      </linearGradient>
+                    </defs>
+                    <path fill="url(#loadingStarGrad2)" stroke="#00C853" strokeWidth="0.5" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ) : '⭐'}
+              </div>
+              <div className="empty-state-text">Loading followed teams...</div>
+            </div>
+          ) : followedTeams.length === 0 ? (
+            <div className="empty-state">
+              <div className="empty-state-icon" style={{ fontSize: '3rem' }}>
+                {isElevenUpBrand ? (
+                  <svg width="48" height="48" viewBox="0 0 24 24" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))' }}>
+                    <defs>
+                      <linearGradient id="emptyStateStarGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#B2FF59" />
+                        <stop offset="50%" stopColor="#76FF03" />
+                        <stop offset="100%" stopColor="#00E676" />
+                      </linearGradient>
+                    </defs>
+                    <path fill="url(#emptyStateStarGrad2)" stroke="#00C853" strokeWidth="0.5" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ) : '⭐'}
+              </div>
+              <div className="empty-state-text">
+                {!isGuest
+                  ? "You're not following any teams yet"
+                  : "Create a free account to follow teams"}
+              </div>
+              <p style={{ color: '#888', marginTop: '0.5rem', fontSize: '0.9rem' }}>
+                {!isGuest
+                  ? "Click the star ☆ next to any team in the rankings to follow them"
+                  : "As a guest, you can browse all rankings but can't follow teams"}
+              </p>
+            </div>
+          ) : followingQuickView ? (
+            /* Quick View - All Games Consolidated */
+            (() => {
+              // Gather all games from all followed teams
+              const allRecentGames = [];
+              const allUpcomingGames = [];
+
+              followedTeamsFullData.forEach(team => {
+                const { recentGame, nextGame } = getTeamGames(team);
+                const normalizedTeam = normalizeTeamName(team.name);
+
+                if (recentGame) {
+                  const isHome = normalizeTeamName(recentGame.homeTeam) === normalizedTeam;
+                  const teamScore = isHome ? recentGame.homeScore : recentGame.awayScore;
+                  const oppScore = isHome ? recentGame.awayScore : recentGame.homeScore;
+                  const opponent = isHome ? recentGame.awayTeam : recentGame.homeTeam;
+                  let result = 'D';
+                  let resultColor = '#666';
+                  if (teamScore > oppScore) { result = 'W'; resultColor = '#2e7d32'; }
+                  else if (teamScore < oppScore) { result = 'L'; resultColor = '#c62828'; }
+
+                  allRecentGames.push({
+                    team,
+                    game: recentGame,
+                    opponent,
+                    teamScore,
+                    oppScore,
+                    result,
+                    resultColor,
+                    date: recentGame.date
+                  });
+                }
+
+                if (nextGame) {
+                  const isHome = normalizeTeamName(nextGame.homeTeam) === normalizedTeam;
+                  const opponent = isHome ? nextGame.awayTeam : nextGame.homeTeam;
+
+                  allUpcomingGames.push({
+                    team,
+                    game: nextGame,
+                    opponent,
+                    date: nextGame.date
+                  });
+                }
+              });
+
+              // Sort recent games by date (most recent first)
+              allRecentGames.sort((a, b) => b.date.localeCompare(a.date));
+              // Sort upcoming games by date (soonest first)
+              allUpcomingGames.sort((a, b) => a.date.localeCompare(b.date));
+
+              const formatGameDate = (dateStr) => {
+                if (!dateStr) return '';
+                const date = new Date(dateStr + 'T12:00:00');
+                return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+              };
+
+              return (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                  {/* Recent Games Section */}
+                  <div>
+                    <h3 style={{
+                      margin: '0 0 0.75rem 0',
+                      fontSize: '1rem',
+                      fontWeight: '600',
+                      color: '#333',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem'
+                    }}>
+                      📊 Recent Results
+                      <span style={{
+                        background: '#e8f5e9',
+                        color: 'var(--primary-green)',
+                        padding: '0.15rem 0.5rem',
+                        borderRadius: '10px',
+                        fontSize: '0.75rem'
+                      }}>
+                        {allRecentGames.length}
+                      </span>
+                    </h3>
+                    {allRecentGames.length === 0 ? (
+                      <div style={{
+                        padding: '1rem',
+                        background: '#f5f5f5',
+                        borderRadius: '8px',
+                        color: '#888',
+                        textAlign: 'center'
+                      }}>
+                        No recent games found
+                      </div>
+                    ) : (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                        {allRecentGames.map((item, idx) => (
+                          <div
+                            key={`recent-${idx}`}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '0.75rem',
+                              padding: '0.75rem',
+                              background: '#fff',
+                              border: '1px solid #e0e0e0',
+                              borderRadius: '8px'
+                            }}
+                          >
+                            <div style={{
+                              fontWeight: '700',
+                              fontSize: '1rem',
+                              color: item.resultColor,
+                              width: '50px',
+                              textAlign: 'center'
+                            }}>
+                              {item.result} {item.teamScore}-{item.oppScore}
+                            </div>
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                              <Link
+                                to={`/team/${item.team.id}`}
+                                style={{
+                                  fontWeight: '600',
+                                  color: 'var(--primary-green)',
+                                  textDecoration: 'none',
+                                  fontSize: '0.9rem'
+                                }}
+                              >
+                                {item.team.name} {item.team.ageGroup}
+                              </Link>
+                              <div style={{ fontSize: '0.8rem', color: '#666' }}>
+                                vs {item.opponent} {item.opponentAgeGroup || ''}
+                              </div>
+                            </div>
+                            <div style={{
+                              fontSize: '0.75rem',
+                              color: '#888',
+                              textAlign: 'right',
+                              flexShrink: 0
+                            }}>
+                              {formatGameDate(item.date)}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Upcoming Games Section */}
+                  <div>
+                    <h3 style={{
+                      margin: '0 0 0.75rem 0',
+                      fontSize: '1rem',
+                      fontWeight: '600',
+                      color: '#333',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem'
+                    }}>
+                      📅 Upcoming Games
+                      <span style={{
+                        background: '#e3f2fd',
+                        color: '#1565c0',
+                        padding: '0.15rem 0.5rem',
+                        borderRadius: '10px',
+                        fontSize: '0.75rem'
+                      }}>
+                        {allUpcomingGames.length}
+                      </span>
+                    </h3>
+                    {allUpcomingGames.length === 0 ? (
+                      <div style={{
+                        padding: '1rem',
+                        background: '#e3f2fd',
+                        borderRadius: '8px',
+                        color: '#888',
+                        textAlign: 'center'
+                      }}>
+                        No upcoming games scheduled
+                      </div>
+                    ) : (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                        {allUpcomingGames.map((item, idx) => (
+                          <div
+                            key={`upcoming-${idx}`}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '0.75rem',
+                              padding: '0.75rem',
+                              background: '#e3f2fd',
+                              border: '1px solid #bbdefb',
+                              borderRadius: '8px'
+                            }}
+                          >
+                            <div style={{
+                              fontWeight: '600',
+                              fontSize: '0.85rem',
+                              color: '#1565c0',
+                              width: '50px',
+                              textAlign: 'center'
+                            }}>
+                              {formatGameDate(item.date)}
+                            </div>
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                              <Link
+                                to={`/team/${item.team.id}`}
+                                style={{
+                                  fontWeight: '600',
+                                  color: 'var(--primary-green)',
+                                  textDecoration: 'none',
+                                  fontSize: '0.9rem'
+                                }}
+                              >
+                                {item.team.name} {item.team.ageGroup}
+                              </Link>
+                              <div style={{ fontSize: '0.8rem', color: '#666' }}>
+                                vs {item.opponent} {item.opponentAgeGroup || ''}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })()
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              {followedTeamsFullData.map((team) => {
+                const rank = getTeamRank(team);
+                return (
+                  <div
+                    key={team.id}
+                    style={{
+                      background: '#fff',
+                      borderRadius: '12px',
+                      padding: '1rem',
+                      border: '1px solid #e0e0e0',
+                      position: 'relative'
+                    }}
+                  >
+                    {/* Unfollow button */}
+                    <button
+                      onClick={() => {
+                        unfollowTeam(team);
+                        setFollowedTeamsRefreshKey(prev => prev + 1);
+                      }}
+                      style={{
+                        position: 'absolute',
+                        top: '0.75rem',
+                        right: '0.75rem',
+                        background: '#fee',
+                        border: '1px solid #fcc',
+                        color: '#c33',
+                        padding: '0.25rem 0.5rem',
+                        borderRadius: '6px',
+                        cursor: 'pointer',
+                        fontSize: '0.75rem',
+                        fontWeight: '600'
+                      }}
+                    >
+                      Unfollow
+                    </button>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', paddingRight: '5rem' }}>
+                      {/* Rank Badge */}
+                      <div style={{
+                        background: 'var(--primary-green)',
+                        color: 'white',
+                        width: '50px',
+                        height: '50px',
+                        borderRadius: '8px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0
+                      }}>
+                        <div style={{ fontSize: '0.6rem', opacity: 0.9 }}>RANK</div>
+                        <div style={{ fontSize: '1.25rem', fontWeight: '700' }}>#{rank}</div>
+                      </div>
+
+                      {/* Team Info */}
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <Link
+                          to={`/team/${team.id}`}
+                          style={{
+                            fontSize: '1.1rem',
+                            fontWeight: '700',
+                            color: 'var(--primary-green)',
+                            textDecoration: 'none',
+                            display: 'block',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap'
+                          }}
+                        >
+                          {team.name} {team.ageGroup} →
+                        </Link>
+                        <div style={{
+                          display: 'flex',
+                          gap: '0.5rem',
+                          marginTop: '0.25rem',
+                          flexWrap: 'wrap',
+                          alignItems: 'center'
+                        }}>
+                          <span style={{
+                            padding: '0.15rem 0.5rem',
+                            borderRadius: '4px',
+                            fontSize: '0.75rem',
+                            fontWeight: '600',
+                            ...getLeagueBadgeStyle(team.league)
+                          }}>
+                            {team.league}
+                          </span>
+                          <span style={{ color: '#666', fontSize: '0.8rem' }}>
+                            {team.ageGroup}
+                          </span>
+                          {team.state && (
+                            <span style={{ color: '#888', fontSize: '0.8rem' }}>
+                              {team.state}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Stats Row */}
+                    <div style={{
+                      display: 'flex',
+                      gap: '1rem',
+                      marginTop: '0.75rem',
+                      paddingTop: '0.75rem',
+                      borderTop: '1px solid #eee',
+                      justifyContent: 'space-around',
+                      flexWrap: 'wrap'
+                    }}>
+                      <div style={{ textAlign: 'center' }}>
+                        <div style={{ fontSize: '1.1rem', fontWeight: '700', color: '#333' }}>
+                          {team.powerScore?.toFixed(1) || '—'}
+                        </div>
+                        <div style={{ fontSize: '0.7rem', color: '#888', textTransform: 'uppercase' }}>
+                          Power
+                        </div>
+                      </div>
+                      <div style={{ textAlign: 'center' }}>
+                        <div style={{ fontSize: '1.1rem', fontWeight: '700', color: '#333' }}>
+                          {team.wins || 0}-{team.losses || 0}-{team.draws || 0}
+                        </div>
+                        <div style={{ fontSize: '0.7rem', color: '#888', textTransform: 'uppercase' }}>
+                          Record
+                        </div>
+                      </div>
+                      <div style={{ textAlign: 'center' }}>
+                        <div style={{
+                          fontSize: '1.1rem',
+                          fontWeight: '700',
+                          color: team.goalDiff > 0 ? '#2e7d32' : team.goalDiff < 0 ? '#c62828' : '#666'
+                        }}>
+                          {team.goalDiff > 0 ? '+' : ''}{team.goalDiff || 0}
+                        </div>
+                        <div style={{ fontSize: '0.7rem', color: '#888', textTransform: 'uppercase' }}>
+                          Goal Diff
+                        </div>
+                      </div>
+                      <div style={{ textAlign: 'center' }}>
+                        <div style={{ fontSize: '1.1rem', fontWeight: '700', color: '#333' }}>
+                          {((team.winPct || 0) * 100).toFixed(0)}%
+                        </div>
+                        <div style={{ fontSize: '0.7rem', color: '#888', textTransform: 'uppercase' }}>
+                          Win %
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Recent & Upcoming Games */}
+                    {(() => {
+                      const { recentGame, nextGame } = getTeamGames(team);
+                      const normalizedTeam = normalizeTeamName(team.name);
+
+                      const formatGameDate = (game) => {
+                        if (!game.date) return '';
+                        const date = new Date(game.date + 'T12:00:00');
+                        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                      };
+
+                      const getOpponent = (game) => {
+                        const isHome = normalizeTeamName(game.homeTeam) === normalizedTeam;
+                        return isHome ? game.awayTeam : game.homeTeam;
+                      };
+
+                      const getResult = (game) => {
+                        const isHome = normalizeTeamName(game.homeTeam) === normalizedTeam;
+                        const teamScore = isHome ? game.homeScore : game.awayScore;
+                        const oppScore = isHome ? game.awayScore : game.homeScore;
+                        if (teamScore > oppScore) return { text: 'W', color: '#2e7d32' };
+                        if (teamScore < oppScore) return { text: 'L', color: '#c62828' };
+                        return { text: 'D', color: '#666' };
+                      };
+
+                      const getScore = (game) => {
+                        const isHome = normalizeTeamName(game.homeTeam) === normalizedTeam;
+                        const teamScore = isHome ? game.homeScore : game.awayScore;
+                        const oppScore = isHome ? game.awayScore : game.homeScore;
+                        return `${teamScore}-${oppScore}`;
+                      };
+
+                      return (
+                        <div style={{
+                          display: 'flex',
+                          gap: '1rem',
+                          marginTop: '0.75rem',
+                          flexWrap: 'wrap'
+                        }}>
+                          {recentGame ? (
+                            <div style={{
+                              flex: '1 1 200px',
+                              padding: '0.5rem',
+                              background: '#f5f5f5',
+                              borderRadius: '6px',
+                              fontSize: '0.8rem'
+                            }}>
+                              <div style={{ fontWeight: '600', color: '#555', marginBottom: '0.25rem' }}>
+                                Last Result
+                              </div>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                <span style={{
+                                  fontWeight: '700',
+                                  color: getResult(recentGame).color,
+                                  fontSize: '0.9rem'
+                                }}>
+                                  {getResult(recentGame).text} {getScore(recentGame)}
+                                </span>
+                                <span style={{ color: '#666' }}>vs {getOpponent(recentGame)}</span>
+                              </div>
+                              <div style={{ color: '#888', fontSize: '0.7rem', marginTop: '0.25rem' }}>
+                                {formatGameDate(recentGame)}
+                              </div>
+                            </div>
+                          ) : (
+                            <div style={{
+                              flex: '1 1 200px',
+                              padding: '0.5rem',
+                              background: '#f5f5f5',
+                              borderRadius: '6px',
+                              fontSize: '0.8rem',
+                              color: '#888'
+                            }}>
+                              <div style={{ fontWeight: '600', marginBottom: '0.25rem' }}>Last Result</div>
+                              <div>No recent games</div>
+                            </div>
+                          )}
+                          {nextGame ? (
+                            <div style={{
+                              flex: '1 1 200px',
+                              padding: '0.5rem',
+                              background: '#e3f2fd',
+                              borderRadius: '6px',
+                              fontSize: '0.8rem'
+                            }}>
+                              <div style={{ fontWeight: '600', color: '#1565c0', marginBottom: '0.25rem' }}>
+                                Next Game
+                              </div>
+                              <div style={{ color: '#333' }}>
+                                vs {getOpponent(nextGame)}
+                              </div>
+                              <div style={{ color: '#1565c0', fontSize: '0.7rem', marginTop: '0.25rem' }}>
+                                {formatGameDate(nextGame)}
+                                {nextGame.game_time && ` at ${nextGame.game_time}`}
+                              </div>
+                            </div>
+                          ) : (
+                            <div style={{
+                              flex: '1 1 200px',
+                              padding: '0.5rem',
+                              background: '#e3f2fd',
+                              borderRadius: '6px',
+                              fontSize: '0.8rem',
+                              color: '#888'
+                            }}>
+                              <div style={{ fontWeight: '600', marginBottom: '0.25rem' }}>Next Game</div>
+                              <div>No scheduled games</div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })()}
                   </div>
                 );
               })}
@@ -1175,10 +2286,10 @@ function Rankings() {
                         >
                           <div>
                             <div style={{ fontWeight: '600', color: '#333' }}>
-                              {team.name}
+                              {team.name} {team.ageGroup}
                             </div>
                             <div style={{ fontSize: '0.85rem', color: '#666' }}>
-                              {team.club} • {team.ageGroup} • {team.league}
+                              {team.club} • {team.league}
                               {team.state && ` • ${team.state}`}
                             </div>
                           </div>
@@ -1189,9 +2300,24 @@ function Rankings() {
                               color: 'white',
                               borderRadius: '6px',
                               fontSize: '0.85rem',
-                              fontWeight: '600'
+                              fontWeight: '600',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '0.35rem'
                             }}>
-                              ⭐ Added
+                              {isElevenUpBrand ? (
+                                <svg width="16" height="16" viewBox="0 0 24 24">
+                                  <defs>
+                                    <linearGradient id="addedStarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                      <stop offset="0%" stopColor="#B2FF59" />
+                                      <stop offset="50%" stopColor="#76FF03" />
+                                      <stop offset="100%" stopColor="#00E676" />
+                                    </linearGradient>
+                                  </defs>
+                                  <path fill="url(#addedStarGrad)" stroke="#00C853" strokeWidth="0.5" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                              ) : '⭐'}
+                              Added
                             </span>
                           ) : (
                             <button
@@ -1230,6 +2356,241 @@ function Rankings() {
               >
                 Close
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Rankings Map Modal */}
+      {showMap && (
+        <RankingsMap
+          teams={filteredTeams}
+          onClose={() => setShowMap(false)}
+        />
+      )}
+
+      {/* Gender/Age Bottom Sheet */}
+      {showGenderAgeSheet && (
+        <div
+          className="bottom-sheet-overlay"
+          onClick={() => setShowGenderAgeSheet(false)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.5)',
+            zIndex: 3000,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '1rem'
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: 'white',
+              borderRadius: '16px',
+              width: '100%',
+              maxWidth: '600px',
+              maxHeight: '85vh',
+              display: 'flex',
+              flexDirection: 'column',
+              boxShadow: '0 10px 40px rgba(0,0,0,0.2)'
+            }}
+          >
+            {/* Header */}
+            <div style={{
+              padding: '1rem 1.25rem',
+              borderBottom: '1px solid #e0e0e0',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              flexShrink: 0
+            }}>
+              <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: '600', color: 'var(--primary-green)' }}>
+                Select Gender/Age
+              </h3>
+              <button
+                onClick={() => setShowGenderAgeSheet(false)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  fontSize: '1.5rem',
+                  cursor: 'pointer',
+                  color: '#666',
+                  padding: '0.25rem',
+                  lineHeight: 1
+                }}
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Options */}
+            <div style={{
+              flex: 1,
+              overflowY: 'auto',
+              padding: '1rem 1.25rem'
+            }}>
+              {/* All Option */}
+              <button
+                onClick={() => {
+                  setSelectedGender('ALL');
+                  setSelectedAgeGroup('ALL');
+                  setShowGenderAgeSheet(false);
+                }}
+                style={{
+                  width: '100%',
+                  padding: '0.5rem 0.75rem',
+                  marginBottom: '1rem',
+                  border: selectedGender === 'ALL' && selectedAgeGroup === 'ALL' ? '2px solid var(--primary-green)' : '1px solid #ddd',
+                  borderRadius: '8px',
+                  background: selectedGender === 'ALL' && selectedAgeGroup === 'ALL' ? '#e8f5e9' : '#f0f0f0',
+                  fontSize: '0.9rem',
+                  cursor: 'pointer',
+                  fontWeight: '600',
+                  color: selectedGender === 'ALL' && selectedAgeGroup === 'ALL' ? 'var(--primary-green)' : '#333'
+                }}
+              >
+                All Genders & Ages
+              </button>
+
+              {/* Two-column layout for Girls and Boys */}
+              <div style={{
+                display: 'flex',
+                gap: '1rem'
+              }}>
+                {/* Girls Column */}
+                <div style={{ flex: 1 }}>
+                  <div style={{
+                    padding: '0.5rem 0',
+                    fontSize: '0.75rem',
+                    fontWeight: '600',
+                    color: '#888',
+                    textTransform: 'uppercase',
+                    borderBottom: '1px solid #eee',
+                    marginBottom: '0.5rem'
+                  }}>
+                    Girls
+                  </div>
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.5rem'
+                  }}>
+                    <button
+                      onClick={() => {
+                        setSelectedGender('Girls');
+                        setSelectedAgeGroup('ALL');
+                        setShowGenderAgeSheet(false);
+                      }}
+                      style={{
+                        padding: '0.5rem 0.75rem',
+                        border: selectedGender === 'Girls' && selectedAgeGroup === 'ALL' ? '2px solid var(--primary-green)' : '1px solid #ddd',
+                        borderRadius: '8px',
+                        background: selectedGender === 'Girls' && selectedAgeGroup === 'ALL' ? '#e8f5e9' : 'white',
+                        fontSize: '0.85rem',
+                        cursor: 'pointer',
+                        fontWeight: selectedGender === 'Girls' && selectedAgeGroup === 'ALL' ? '600' : '400',
+                        color: selectedGender === 'Girls' && selectedAgeGroup === 'ALL' ? 'var(--primary-green)' : '#333',
+                        textAlign: 'center'
+                      }}
+                    >
+                      All Girls
+                    </button>
+                    {sortAgeGroupsNumerically(ageGroups.filter(a => a.startsWith('G'))).map(age => (
+                      <button
+                        key={age}
+                        onClick={() => {
+                          setSelectedGender('Girls');
+                          setSelectedAgeGroup(age);
+                          setShowGenderAgeSheet(false);
+                        }}
+                        style={{
+                          padding: '0.5rem 0.75rem',
+                          border: selectedGender === 'Girls' && selectedAgeGroup === age ? '2px solid var(--primary-green)' : '1px solid #ddd',
+                          borderRadius: '8px',
+                          background: selectedGender === 'Girls' && selectedAgeGroup === age ? '#e8f5e9' : 'white',
+                          fontSize: '0.85rem',
+                          cursor: 'pointer',
+                          fontWeight: selectedGender === 'Girls' && selectedAgeGroup === age ? '600' : '400',
+                          color: selectedGender === 'Girls' && selectedAgeGroup === age ? 'var(--primary-green)' : '#333',
+                          textAlign: 'center'
+                        }}
+                      >
+                        {age}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Boys Column */}
+                <div style={{ flex: 1 }}>
+                  <div style={{
+                    padding: '0.5rem 0',
+                    fontSize: '0.75rem',
+                    fontWeight: '600',
+                    color: '#888',
+                    textTransform: 'uppercase',
+                    borderBottom: '1px solid #eee',
+                    marginBottom: '0.5rem'
+                  }}>
+                    Boys
+                  </div>
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.5rem'
+                  }}>
+                    <button
+                      onClick={() => {
+                        setSelectedGender('Boys');
+                        setSelectedAgeGroup('ALL');
+                        setShowGenderAgeSheet(false);
+                      }}
+                      style={{
+                        padding: '0.5rem 0.75rem',
+                        border: selectedGender === 'Boys' && selectedAgeGroup === 'ALL' ? '2px solid var(--primary-green)' : '1px solid #ddd',
+                        borderRadius: '8px',
+                        background: selectedGender === 'Boys' && selectedAgeGroup === 'ALL' ? '#e8f5e9' : 'white',
+                        fontSize: '0.85rem',
+                        cursor: 'pointer',
+                        fontWeight: selectedGender === 'Boys' && selectedAgeGroup === 'ALL' ? '600' : '400',
+                        color: selectedGender === 'Boys' && selectedAgeGroup === 'ALL' ? 'var(--primary-green)' : '#333',
+                        textAlign: 'center'
+                      }}
+                    >
+                      All Boys
+                    </button>
+                    {sortAgeGroupsNumerically(ageGroups.filter(a => a.startsWith('B'))).map(age => (
+                      <button
+                        key={age}
+                        onClick={() => {
+                          setSelectedGender('Boys');
+                          setSelectedAgeGroup(age);
+                          setShowGenderAgeSheet(false);
+                        }}
+                        style={{
+                          padding: '0.5rem 0.75rem',
+                          border: selectedGender === 'Boys' && selectedAgeGroup === age ? '2px solid var(--primary-green)' : '1px solid #ddd',
+                          borderRadius: '8px',
+                          background: selectedGender === 'Boys' && selectedAgeGroup === age ? '#e8f5e9' : 'white',
+                          fontSize: '0.85rem',
+                          cursor: 'pointer',
+                          fontWeight: selectedGender === 'Boys' && selectedAgeGroup === age ? '600' : '400',
+                          color: selectedGender === 'Boys' && selectedAgeGroup === age ? 'var(--primary-green)' : '#333',
+                          textAlign: 'center'
+                        }}
+                      >
+                        {age}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

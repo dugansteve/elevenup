@@ -3,6 +3,91 @@
 // Predicts game outcomes using empirical win probabilities and GPG/GAPG stats
 
 // ============================================================================
+// AGE GROUP UTILITIES
+// Handle cross-age-group predictions with appropriate adjustments
+// ============================================================================
+
+/**
+ * Parse ACTUAL age from age group string
+ * Age groups use BIRTH YEAR format - supports multiple formats:
+ * - "2013G" or "2011B" (full year)
+ * - "G13" or "B11" (2-digit year)
+ * - "G06" (2-digit with leading zero)
+ *
+ * Lower birth year numbers = OLDER players (2006 is oldest, 2019 is youngest)
+ *
+ * @param {string} ageGroup - e.g., "2013G", "G13", "B11", "2011B"
+ * @returns {number|null} - Actual age (e.g., 2011G -> 14, 2013G -> 12 in 2025)
+ */
+function parseAgeFromAgeGroup(ageGroup) {
+  if (!ageGroup) return null;
+
+  const currentYear = new Date().getFullYear();
+
+  // Try full 4-digit year first: "2013G", "2011B", "G2013", "B2011"
+  const fullYearMatch = ageGroup.match(/[GB]?(20\d{2})[GB]?/i);
+  if (fullYearMatch) {
+    const birthYear = parseInt(fullYearMatch[1], 10);
+    return currentYear - birthYear;
+  }
+
+  // Try 2-digit year: "G13", "B11", "G06", "13G", "11B"
+  const shortYearMatch = ageGroup.match(/[GB]?(\d{1,2})[GB]?/i);
+  if (shortYearMatch) {
+    const birthYearSuffix = parseInt(shortYearMatch[1], 10);
+    // Convert 2-digit to full year (06-25 = 2006-2025, youth soccer range)
+    const birthYear = 2000 + birthYearSuffix;
+    return currentYear - birthYear;
+  }
+
+  return null;
+}
+
+/**
+ * Calculate power score adjustment for age group differences
+ * Older teams are stronger - this converts to equivalent power score difference
+ *
+ * Key insights from real data:
+ * - A highly-ranked younger team vs low-ranked older team (2 year gap) = close game or older wins
+ * - Age gap is MASSIVE advantage - can overcome large ranking differences
+ * - Even a #5 ranked 13G team would struggle against a #150 ranked 11G team
+ *
+ * @param {number} homeAge - Actual age of home team (e.g., 12 for 2013 birth year)
+ * @param {number} awayAge - Actual age of away team (e.g., 14 for 2011 birth year)
+ * @param {number} homePower - Home team power score
+ * @param {number} awayPower - Away team power score
+ * @returns {number} Power adjustment to add to home team's effective power
+ */
+function calculateAgeGroupPowerAdjustment(homeAge, awayAge, homePower, awayPower) {
+  if (homeAge === null || awayAge === null) return 0;
+  if (homeAge === awayAge) return 0;
+
+  const ageDiff = homeAge - awayAge; // positive = home is older
+
+  // Base power adjustment per year of age difference
+  // VERY large - 1 year age gap is roughly equivalent to 300-400 ranking positions
+  const BASE_POWER_PER_YEAR = 425;
+
+  // Scale adjustment based on team quality
+  // Elite teams (high power) have smaller age gaps
+  // Lower-tier teams have larger age gaps
+  const avgPower = (homePower + awayPower) / 2;
+
+  // Scale factor based on power level:
+  // - Power 1100 (low): scale = 2.0 → 700 pts/year
+  // - Power 1400 (mid-low): scale = 1.5 → 525 pts/year
+  // - Power 1600 (mid): scale = 1.2 → 420 pts/year
+  // - Power 1800 (high): scale = 0.9 → 315 pts/year
+  // - Power 2000 (elite): scale = 0.6 → 210 pts/year
+  let scaleFactor = 2.0 - ((avgPower - 1100) / 600);
+  scaleFactor = Math.max(0.5, Math.min(2.2, scaleFactor));
+
+  const adjustment = ageDiff * BASE_POWER_PER_YEAR * scaleFactor;
+
+  return adjustment;
+}
+
+// ============================================================================
 // EMPIRICAL WIN PROBABILITY TABLE
 // Based on analysis of 50,394 matched games with team rankings
 // ============================================================================
@@ -59,34 +144,53 @@ function getWinProbabilitiesByPowerDiff(powerDiff) {
  * - 55% on the team's own scoring rate (GPG)
  * - 45% on the opponent's conceding rate (GAPG)
  * - Adjusted for off/def power differentials
- * - Adjusted for power score gap
+ * - Adjusted for power score gap (includes age adjustment)
+ *
+ * IMPORTANT: For cross-age predictions, GPG/GAPG stats are adjusted because
+ * a team's stats against their own age group don't translate directly to
+ * playing older/younger teams.
  */
 function calculateExpectedGoalsWithGPG(powerDiff, homeOff, homeDef, awayOff, awayDef,
-                                        homeGPG, homeGAPG, awayGPG, awayGAPG) {
+                                        homeGPG, homeGAPG, awayGPG, awayGAPG,
+                                        homeAge, awayAge) {
   // Configuration based on regression analysis
   const TEAM_GPG_WEIGHT = 0.55;
   const OPP_GAPG_WEIGHT = 0.45;
   const HOME_ADVANTAGE = 0.15;
-  const POWER_ADJUSTMENT = 0.003;  // Goals per power point difference
-  const OFF_DEF_FACTOR = 0.015;    // Goals per off/def point from 50
-  
+  const POWER_ADJUSTMENT = 0.0025;  // Goals per power point difference
+  const OFF_DEF_FACTOR = 0.015;     // Goals per off/def point from 50
+
+  // Age-adjust GPG/GAPG stats for cross-age predictions
+  // A younger team's low GAPG doesn't apply when playing older teams
+  // A younger team's high GPG won't translate against older defenders
+  const AGE_STAT_ADJUSTMENT = 0.25; // Goals per year of age difference
+  const ageDiff = (homeAge && awayAge) ? (homeAge - awayAge) : 0;
+
+  // Adjust stats based on age difference:
+  // If home is older (ageDiff > 0): home scores more, away concedes more
+  // If away is older (ageDiff < 0): away scores more, home concedes more
+  const adjustedHomeGPG = homeGPG + (ageDiff * AGE_STAT_ADJUSTMENT * 0.5);
+  const adjustedHomeGAPG = homeGAPG - (ageDiff * AGE_STAT_ADJUSTMENT * 0.5);
+  const adjustedAwayGPG = awayGPG - (ageDiff * AGE_STAT_ADJUSTMENT * 0.5);
+  const adjustedAwayGAPG = awayGAPG + (ageDiff * AGE_STAT_ADJUSTMENT * 0.5);
+
   // Home team expected goals
   // Weighted combination of home's scoring rate and away's concede rate
-  const homeBase = (homeGPG * TEAM_GPG_WEIGHT + awayGAPG * OPP_GAPG_WEIGHT);
-  
+  const homeBase = (adjustedHomeGPG * TEAM_GPG_WEIGHT + adjustedAwayGAPG * OPP_GAPG_WEIGHT);
+
   // Adjust for offensive/defensive quality differential
   const offDefAdjHome = (homeOff - 50) * OFF_DEF_FACTOR - (awayDef - 50) * OFF_DEF_FACTOR;
-  
-  // Power score adjustment (partial effect since GPG already captures some of this)
-  const powerAdjHome = powerDiff * POWER_ADJUSTMENT * 0.4;
-  
+
+  // Power score adjustment - accounts for age adjustments in cross-age predictions
+  const powerAdjHome = powerDiff * POWER_ADJUSTMENT * 0.7;
+
   let expectedHome = homeBase + HOME_ADVANTAGE + offDefAdjHome + powerAdjHome;
-  
+
   // Away team expected goals
-  const awayBase = (awayGPG * TEAM_GPG_WEIGHT + homeGAPG * OPP_GAPG_WEIGHT);
+  const awayBase = (adjustedAwayGPG * TEAM_GPG_WEIGHT + adjustedHomeGAPG * OPP_GAPG_WEIGHT);
   const offDefAdjAway = (awayOff - 50) * OFF_DEF_FACTOR - (homeDef - 50) * OFF_DEF_FACTOR;
-  const powerAdjAway = -powerDiff * POWER_ADJUSTMENT * 0.4;
-  
+  const powerAdjAway = -powerDiff * POWER_ADJUSTMENT * 0.7;
+
   let expectedAway = awayBase + offDefAdjAway + powerAdjAway;
   
   // Clamp to reasonable ranges
@@ -104,19 +208,19 @@ function calculateExpectedGoalsBasic(powerDiff, homeOff, homeDef, awayOff, awayD
   // Configuration
   const BASE_GOALS = 1.85;
   const HOME_ADVANTAGE = 0.15;
-  const POWER_FACTOR = 0.00265;  // From regression: ~0.00265 GD per power point
-  const OFF_DEF_FACTOR = 0.023;  // Impact per point from 50
-  
-  // Home expected goals
-  const powerAdjHome = powerDiff * POWER_FACTOR * 0.5;
+  const POWER_FACTOR = 0.0025;  // Goals per power point difference
+  const OFF_DEF_FACTOR = 0.023; // Impact per point from 50
+
+  // Home expected goals - increased multiplier for cross-age predictions
+  const powerAdjHome = powerDiff * POWER_FACTOR * 0.7;
   const offDefHome = (homeOff - 50) * OFF_DEF_FACTOR - (awayDef - 50) * OFF_DEF_FACTOR;
-  
+
   let expectedHome = BASE_GOALS + HOME_ADVANTAGE + powerAdjHome + offDefHome;
-  
+
   // Away expected goals
-  const powerAdjAway = -powerDiff * POWER_FACTOR * 0.5;
+  const powerAdjAway = -powerDiff * POWER_FACTOR * 0.7;
   const offDefAway = (awayOff - 50) * OFF_DEF_FACTOR - (homeDef - 50) * OFF_DEF_FACTOR;
-  
+
   let expectedAway = BASE_GOALS - 0.05 + powerAdjAway + offDefAway;
   
   // Clamp
@@ -151,6 +255,16 @@ function getBaseClubName(name) {
 }
 
 /**
+ * Common generic words that shouldn't be used for fuzzy matching alone
+ * These are too common across team names to be reliable identifiers
+ */
+const GENERIC_TEAM_WORDS = new Set([
+  'united', 'fc', 'sc', 'soccer', 'club', 'academy', 'athletic', 'athletics',
+  'city', 'county', 'youth', 'premier', 'elite', 'select', 'fire', 'heat',
+  'storm', 'thunder', 'lightning', 'rush', 'force', 'spirit', 'pride'
+]);
+
+/**
  * Find opponent in teams data with smart matching
  * Tries multiple strategies: exact match, normalized match, fuzzy match
  * IMPORTANT: Only matches within the SAME age group to ensure accurate predictions
@@ -159,50 +273,69 @@ export function findOpponentInData(opponentName, teamAgeGroup, teamsData) {
   if (!teamsData || !opponentName) {
     return createDefaultOpponent(opponentName, 1500);
   }
-  
+
   const oppNormalized = normalizeTeamNameForMatch(opponentName);
   const oppBase = getBaseClubName(opponentName);
-  
+
   // Strategy 1: Exact name match (same age group)
-  let match = teamsData.find(t => 
+  let match = teamsData.find(t =>
     t.name?.toLowerCase() === opponentName.toLowerCase() && t.ageGroup === teamAgeGroup
   );
   if (match) return match;
-  
+
   // Strategy 2: Normalized name match (same age group)
   match = teamsData.find(t => {
     const tNorm = normalizeTeamNameForMatch(t.name);
     return tNorm === oppNormalized && t.ageGroup === teamAgeGroup;
   });
   if (match) return match;
-  
+
   // Strategy 3: Base club name match in same age group
   match = teamsData.find(t => {
     const tBase = getBaseClubName(t.name);
     return tBase === oppBase && t.ageGroup === teamAgeGroup;
   });
   if (match) return match;
-  
+
   // Strategy 4: Partial match - opponent name contains team name or vice versa (same age group)
+  // Only match if the shorter name is at least 8 characters to avoid false positives
   match = teamsData.find(t => {
     if (t.ageGroup !== teamAgeGroup) return false;
     const tNorm = normalizeTeamNameForMatch(t.name);
+    const shorter = tNorm.length < oppNormalized.length ? tNorm : oppNormalized;
+    if (shorter.length < 8) return false; // Require meaningful substring
     return tNorm.includes(oppNormalized) || oppNormalized.includes(tNorm);
   });
   if (match) return match;
-  
+
   // Strategy 5: Word overlap matching (same age group)
-  const oppWords = oppNormalized.split(/\s+/).filter(w => w.length > 2);
-  match = teamsData.find(t => {
-    if (t.ageGroup !== teamAgeGroup) return false;
-    const tNorm = normalizeTeamNameForMatch(t.name);
-    const tWords = tNorm.split(/\s+/).filter(w => w.length > 2);
-    // Check if at least 2 significant words match
-    const matchingWords = oppWords.filter(w => tWords.includes(w));
-    return matchingWords.length >= 2 || (matchingWords.length >= 1 && oppWords.length <= 2);
-  });
-  if (match) return match;
-  
+  // Filter out generic words that are too common to be reliable
+  const oppWords = oppNormalized.split(/\s+/)
+    .filter(w => w.length > 2 && !GENERIC_TEAM_WORDS.has(w.toLowerCase()));
+
+  // Only attempt word matching if we have meaningful (non-generic) words
+  if (oppWords.length >= 1) {
+    match = teamsData.find(t => {
+      if (t.ageGroup !== teamAgeGroup) return false;
+      const tNorm = normalizeTeamNameForMatch(t.name);
+      const tWords = tNorm.split(/\s+/)
+        .filter(w => w.length > 2 && !GENERIC_TEAM_WORDS.has(w.toLowerCase()));
+
+      // Require at least 1 non-generic word to match
+      // AND the matching words must be a significant portion of both names
+      const matchingWords = oppWords.filter(w => tWords.includes(w));
+      if (matchingWords.length === 0) return false;
+
+      // For reliable matching, require either:
+      // - At least 2 non-generic words match, OR
+      // - 1 word matches AND it's at least 50% of the unique words in both names
+      const minWords = Math.min(oppWords.length, tWords.length);
+      return matchingWords.length >= 2 ||
+             (matchingWords.length >= 1 && minWords === 1 && matchingWords[0].length >= 5);
+    });
+    if (match) return match;
+  }
+
   // No match found in same age group - return default with estimated stats for unranked team
   return createDefaultOpponent(opponentName, 800);
 }
@@ -238,21 +371,22 @@ function createDefaultOpponent(name, powerScore) {
 /**
  * Predict game outcome between two teams
  * Returns predicted scores and win/loss/draw probabilities
- * 
+ * Handles cross-age-group predictions with appropriate adjustments
+ *
  * @param {Object} homeTeam - Home team object with powerScore, offensivePowerScore, etc.
  * @param {Object} awayTeam - Away team object
  * @param {Array} teamsData - Full teams array for lookups
  */
 export function predictGame(homeTeam, awayTeam, teamsData) {
   // Find full team data if only partial data provided
-  const home = homeTeam.powerScore ? homeTeam : teamsData?.find(t => 
+  const home = homeTeam.powerScore ? homeTeam : teamsData?.find(t =>
     t.name === homeTeam.name || t.id === homeTeam.id
   ) || homeTeam;
-  
-  const away = awayTeam.powerScore ? awayTeam : teamsData?.find(t => 
+
+  const away = awayTeam.powerScore ? awayTeam : teamsData?.find(t =>
     t.name === awayTeam.name || t.id === awayTeam.id
   ) || awayTeam;
-  
+
   // Extract team stats with defaults
   const homePower = home.powerScore || 1500;
   const awayPower = away.powerScore || 1500;
@@ -260,24 +394,33 @@ export function predictGame(homeTeam, awayTeam, teamsData) {
   const homeDef = home.defensivePowerScore || 50;
   const awayOff = away.offensivePowerScore || 50;
   const awayDef = away.defensivePowerScore || 50;
-  
+
   // GPG and GAPG stats (may not always be available)
   const homeGPG = home.goalsPerGame || home.gpg;
   const homeGAPG = home.goalsAgainstPerGame || home.gapg;
   const awayGPG = away.goalsPerGame || away.gpg;
   const awayGAPG = away.goalsAgainstPerGame || away.gapg;
-  
-  const powerDiff = homePower - awayPower;
+
+  // Parse age groups for cross-age-group adjustment
+  const homeAge = parseAgeFromAgeGroup(home.ageGroup);
+  const awayAge = parseAgeFromAgeGroup(away.ageGroup);
+
+  // Calculate age adjustment (older teams get power boost vs younger teams)
+  const ageAdjustment = calculateAgeGroupPowerAdjustment(homeAge, awayAge, homePower, awayPower);
+
+  // Effective power difference includes age adjustment
+  const powerDiff = (homePower - awayPower) + ageAdjustment;
   
   // Calculate expected goals
   let expectedHome, expectedAway;
   let confidence;
   
   if (homeGPG && homeGAPG && awayGPG && awayGAPG) {
-    // Use the more accurate GPG-based model
+    // Use the more accurate GPG-based model with age adjustment
     const result = calculateExpectedGoalsWithGPG(
       powerDiff, homeOff, homeDef, awayOff, awayDef,
-      homeGPG, homeGAPG, awayGPG, awayGAPG
+      homeGPG, homeGAPG, awayGPG, awayGAPG,
+      homeAge, awayAge
     );
     expectedHome = result.expectedHome;
     expectedAway = result.expectedAway;
@@ -295,6 +438,9 @@ export function predictGame(homeTeam, awayTeam, teamsData) {
   // Get win probabilities from empirical table
   const probs = getWinProbabilitiesByPowerDiff(powerDiff);
   
+  // Include age adjustment info for display
+  const isCrossAgeGroup = homeAge !== null && awayAge !== null && homeAge !== awayAge;
+
   return {
     predictedHomeScore: Math.round(expectedHome),
     predictedAwayScore: Math.round(expectedAway),
@@ -304,7 +450,12 @@ export function predictGame(homeTeam, awayTeam, teamsData) {
     drawProbability: Math.round(probs.draw * 100),
     awayWinProbability: Math.round(probs.awayWin * 100),
     expectedGoalDiff: (expectedHome - expectedAway).toFixed(2),
-    confidence
+    confidence,
+    // Age adjustment info
+    isCrossAgeGroup,
+    homeAgeGroup: home.ageGroup,
+    awayAgeGroup: away.ageGroup,
+    ageAdjustment: isCrossAgeGroup ? Math.round(ageAdjustment) : 0
   };
 }
 

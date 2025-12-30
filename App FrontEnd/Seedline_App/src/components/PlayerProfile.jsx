@@ -1,30 +1,74 @@
 // PlayerProfile.jsx - Individual player page
 // V39+: Now loads players from rankings JSON (playersData)
+// V40: Added player claiming system
 
 import { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useRankingsData } from '../data/useRankingsData';
-import { storage, BADGE_TYPES } from '../data/sampleData';
+import { storage, BADGE_TYPES, rosterHelpers } from '../data/sampleData';
 import { useUser } from '../context/UserContext';
+import ClaimPlayerButton from './ClaimPlayerButton';
+import ChallengeClaimButton from './ChallengeClaimButton';
+import ProfileEditorModal from './ProfileEditorModal';
 
 function PlayerProfile() {
   const { playerId } = useParams();
   const navigate = useNavigate();
   const { playersData, teamsData, isLoading } = useRankingsData();
-  const { canPerform } = useUser();
-  
+  const { canPerform, isPaid, isClaimedByMe, getMyClaimForPlayer, getPlayerClaimStatus, user } = useUser();
+
   const [localPlayers, setLocalPlayers] = useState([]);
   const [badges, setBadges] = useState({});
+  const [claimStatus, setClaimStatus] = useState({ claimed: false, loading: true });
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [teamHistory, setTeamHistory] = useState([]);
   
   useEffect(() => {
     // Load local players (user-created)
     const savedPlayers = storage.getPlayers();
     setLocalPlayers(savedPlayers);
-    
+
     // Load badges
     const savedBadges = storage.getBadges();
     setBadges(savedBadges);
+
+    // Load team history
+    const id = parseInt(playerId);
+    if (!isNaN(id)) {
+      const history = rosterHelpers.getPlayerTeamHistory(id);
+      setTeamHistory(history);
+    }
   }, [playerId]);
+
+  // Check claim status for this player
+  useEffect(() => {
+    async function checkClaimStatus() {
+      const id = parseInt(playerId);
+      if (isNaN(id)) {
+        setClaimStatus({ claimed: false, loading: false });
+        return;
+      }
+
+      try {
+        const status = await getPlayerClaimStatus(id);
+        setClaimStatus({ ...status, loading: false });
+      } catch (error) {
+        console.error('Error checking claim status:', error);
+        setClaimStatus({ claimed: false, loading: false });
+      }
+    }
+
+    checkClaimStatus();
+  }, [playerId, getPlayerClaimStatus]);
+
+  // Get my claim for this player if I own it
+  const myClaim = useMemo(() => {
+    const id = parseInt(playerId);
+    return getMyClaimForPlayer(id);
+  }, [playerId, getMyClaimForPlayer]);
+
+  // Determine if current user owns this player
+  const isOwnedByMe = myClaim !== undefined;
   
   // Find the player - check both database players and local players
   const player = useMemo(() => {
@@ -56,20 +100,42 @@ function PlayerProfile() {
   // Find the team this player belongs to
   const team = useMemo(() => {
     if (!player) return null;
-    
+
+    // Try to find by teamId first (most reliable)
+    if (player.teamId) {
+      const teamById = teamsData.find(t => t.id === player.teamId);
+      if (teamById) return teamById;
+    }
+
     // Try to find by team name
     if (player.teamName) {
-      return teamsData.find(t => 
-        t.name === player.teamName || 
-        t.name.toLowerCase().includes(player.teamName.toLowerCase())
+      const playerTeamLower = player.teamName.toLowerCase();
+
+      // Find all teams that match the name
+      const matchingTeams = teamsData.filter(t =>
+        t.name === player.teamName ||
+        t.name.toLowerCase().includes(playerTeamLower)
       );
+
+      if (matchingTeams.length === 0) return null;
+      if (matchingTeams.length === 1) return matchingTeams[0];
+
+      // If multiple matches, prefer one with matching age group
+      if (player.ageGroup) {
+        const ageMatch = matchingTeams.find(t => t.ageGroup === player.ageGroup);
+        if (ageMatch) return ageMatch;
+      }
+
+      // If no age group match, prefer one with matching league
+      if (player.league) {
+        const leagueMatch = matchingTeams.find(t => t.league === player.league);
+        if (leagueMatch) return leagueMatch;
+      }
+
+      // Fall back to first match
+      return matchingTeams[0];
     }
-    
-    // Try to find by teamId
-    if (player.teamId) {
-      return teamsData.find(t => t.id === player.teamId);
-    }
-    
+
     return null;
   }, [player, teamsData]);
   
@@ -89,12 +155,12 @@ function PlayerProfile() {
       .filter(b => b.id);  // Filter out any undefined badge types
   }, [player, badges, playerId]);
   
-  // Handle badge award/removal
+  // Handle badge award/removal - toggle: tap once to award, tap again to unaward
   const handleBadgeToggle = (badgeId) => {
     if (!canPerform('canAwardBadges')) return;
-    
+
     const currentCount = (badges[playerId]?.[badgeId]) || 0;
-    const newCount = currentCount >= 3 ? 0 : currentCount + 1;
+    const newCount = currentCount > 0 ? 0 : 1;  // Simple toggle: 0 or 1
     
     const newBadges = {
       ...badges,
@@ -143,16 +209,44 @@ function PlayerProfile() {
     );
   }
   
+  // Get photo URL from claim status or my claim
+  const photoUrl = myClaim?.photo_url || claimStatus?.photo_url || null;
+  const avatarConfig = myClaim?.avatar_config || claimStatus?.avatar_config || null;
+
+  // Get display name mode from claim
+  const displayNameMode = myClaim?.display_name_mode || claimStatus?.display_name_mode || 'full';
+
+  // Format display name based on privacy preference
+  const getDisplayName = () => {
+    // Get the full name
+    const fullName = player.name || `${player.firstName} ${player.lastName}`;
+
+    // If display mode is 'initial', show first name + last initial
+    if (displayNameMode === 'initial') {
+      const parts = fullName.trim().split(/\s+/);
+      if (parts.length >= 2) {
+        const firstName = parts[0];
+        const lastInitial = parts[parts.length - 1].charAt(0).toUpperCase();
+        return `${firstName} ${lastInitial}.`;
+      }
+    }
+
+    // Default: return full name
+    return fullName;
+  };
+
+  const displayName = getDisplayName();
+
   return (
     <div className="player-profile">
       <div className="profile-header">
-        <button 
+        <button
           className="back-button"
           onClick={() => navigate(-1)}
         >
           ← Back
         </button>
-        <h1>{player.name || `${player.firstName} ${player.lastName}`}</h1>
+        <h1>{displayName}</h1>
         {player.source === 'database' && (
           <span className="source-badge database">Database Player</span>
         )}
@@ -160,7 +254,34 @@ function PlayerProfile() {
           <span className="source-badge local">My Player</span>
         )}
       </div>
-      
+
+      {/* Player Photo Section */}
+      <div className="player-photo-section">
+        <div className="player-photo-container">
+          {photoUrl ? (
+            <img
+              src={photoUrl}
+              alt={displayName}
+              className="player-photo"
+            />
+          ) : (
+            <div className="player-photo-placeholder">
+              <span className="placeholder-icon">
+                {player.jerseyNumber ? `#${player.jerseyNumber}` : '⚽'}
+              </span>
+            </div>
+          )}
+        </div>
+        <div className="player-name-display">
+          <span className="player-display-name">
+            {displayName}
+          </span>
+          {player.position && (
+            <span className="player-position-badge">{player.position}</span>
+          )}
+        </div>
+      </div>
+
       <div className="profile-content">
         {/* Player Info Card */}
         <div className="profile-card info-card">
@@ -229,7 +350,7 @@ function PlayerProfile() {
           {team ? (
             <Link to={`/team/${team.id}`} className="team-link">
               <div className="team-info">
-                <span className="team-name">{team.name}</span>
+                <span className="team-name">{team.name} {team.ageGroup}</span>
                 <span className="team-league">{team.league}</span>
                 {team.state && <span className="team-state">{team.state}</span>}
               </div>
@@ -248,8 +369,119 @@ function PlayerProfile() {
           ) : (
             <p className="no-team">No team assigned</p>
           )}
+
+          {/* Team History Section */}
+          {teamHistory.length > 0 && (
+            <div className="team-history" style={{ marginTop: '1rem', borderTop: '1px solid #eee', paddingTop: '1rem' }}>
+              <h4 style={{ fontSize: '0.9rem', color: '#666', marginBottom: '0.5rem' }}>Team History</h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                {teamHistory
+                  .sort((a, b) => new Date(b.joinedAt) - new Date(a.joinedAt))
+                  .map((entry, idx) => {
+                    const joinDate = new Date(entry.joinedAt);
+                    const leftDate = entry.leftAt ? new Date(entry.leftAt) : null;
+                    const formatDate = (d) => d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+
+                    // Determine the action badge
+                    let actionBadge = null;
+                    if (entry.action === 'transferred_in') {
+                      actionBadge = <span style={{ fontSize: '0.7rem', background: '#e3f2fd', color: '#1976d2', padding: '2px 6px', borderRadius: '4px', marginLeft: '0.5rem' }}>Transferred In</span>;
+                    } else if (entry.leftAction === 'transferred_out') {
+                      actionBadge = <span style={{ fontSize: '0.7rem', background: '#fff3e0', color: '#e65100', padding: '2px 6px', borderRadius: '4px', marginLeft: '0.5rem' }}>Transferred Out</span>;
+                    } else if (entry.leftAction === 'removed') {
+                      actionBadge = <span style={{ fontSize: '0.7rem', background: '#ffebee', color: '#c62828', padding: '2px 6px', borderRadius: '4px', marginLeft: '0.5rem' }}>Left</span>;
+                    }
+
+                    return (
+                      <div
+                        key={idx}
+                        style={{
+                          padding: '0.5rem',
+                          background: idx === 0 && !leftDate ? '#f8f9fa' : 'white',
+                          borderRadius: '6px',
+                          border: '1px solid #eee'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+                          <span style={{ fontWeight: '500', fontSize: '0.85rem' }}>{entry.teamName}</span>
+                          {actionBadge}
+                        </div>
+                        <div style={{ fontSize: '0.75rem', color: '#888' }}>
+                          {formatDate(joinDate)}
+                          {leftDate ? ` - ${formatDate(leftDate)}` : ' - Present'}
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
+          )}
         </div>
-        
+
+        {/* Claim/Edit Card */}
+        <div className="profile-card claim-card">
+          <h3>Profile Ownership</h3>
+
+          {claimStatus.loading ? (
+            <div className="claim-loading">
+              <div className="loading-spinner small"></div>
+              <span>Checking claim status...</span>
+            </div>
+          ) : isOwnedByMe ? (
+            // Player is claimed by current user
+            <div className="claim-owned">
+              <div className="owned-badge">
+                <span className="owned-icon">✓</span>
+                <span>You own this profile</span>
+              </div>
+              <button
+                className="btn btn-edit"
+                onClick={() => setShowEditModal(true)}
+              >
+                Edit Profile
+              </button>
+              {myClaim?.has_pending_challenge && (
+                <div className="challenge-notice">
+                  <span className="warning-icon">⚠️</span>
+                  This profile has a pending challenge
+                </div>
+              )}
+            </div>
+          ) : claimStatus.claimed ? (
+            // Player is claimed by someone else
+            <div className="claim-other">
+              <div className="claimed-badge">
+                <span className="claimed-icon">👤</span>
+                <span>Profile claimed by another user</span>
+              </div>
+              {isPaid && (
+                <ChallengeClaimButton
+                  claimId={claimStatus.claim_id}
+                  playerName={displayName}
+                  onChallenged={() => {}}
+                />
+              )}
+            </div>
+          ) : (
+            // Player is not claimed
+            <div className="claim-available">
+              <p className="claim-desc">
+                This player profile is unclaimed. Claim it to customize the photo,
+                avatar, and display settings.
+              </p>
+              <ClaimPlayerButton
+                playerId={parseInt(playerId)}
+                teamId={team?.id}
+                playerName={displayName}
+                onClaimed={() => {
+                  // Refresh claim status
+                  getPlayerClaimStatus(parseInt(playerId)).then(setClaimStatus);
+                }}
+              />
+            </div>
+          )}
+        </div>
+
         {/* Badges Card */}
         <div className="profile-card badges-card">
           <h3>Badges {playerBadges.length > 0 && `(${playerBadges.length})`}</h3>
@@ -281,12 +513,13 @@ function PlayerProfile() {
                       key={badge.id}
                       className={`badge-button ${currentCount > 0 ? 'awarded' : ''}`}
                       onClick={() => handleBadgeToggle(badge.id)}
-                      title={`${badge.name} (${currentCount}/3)`}
+                      title={`${badge.name}: ${badge.description} (${currentCount}/3)`}
                     >
                       <span className="badge-emoji">{badge.emoji}</span>
                       {currentCount > 0 && (
                         <span className="badge-count">{currentCount}</span>
                       )}
+                      <span className="badge-name">{badge.name}</span>
                     </button>
                   );
                 })}
@@ -295,7 +528,20 @@ function PlayerProfile() {
           )}
         </div>
       </div>
-      
+
+      {/* Profile Editor Modal */}
+      {showEditModal && myClaim && (
+        <ProfileEditorModal
+          claim={myClaim}
+          onClose={() => setShowEditModal(false)}
+          onSaved={() => {
+            setShowEditModal(false);
+            // Refresh claim status
+            getPlayerClaimStatus(parseInt(playerId)).then(setClaimStatus);
+          }}
+        />
+      )}
+
       <style jsx>{`
         .player-profile {
           padding: 1rem;
@@ -392,7 +638,70 @@ function PlayerProfile() {
           background: #e3f2fd;
           color: #1976d2;
         }
-        
+
+        .player-photo-section {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 2rem;
+          padding: 1.5rem;
+          background: linear-gradient(135deg, #e8f5e9 0%, #fff 100%);
+          border-radius: 16px;
+        }
+
+        .player-photo-container {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 4px solid #2e7d32;
+          box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+          margin-bottom: 1rem;
+        }
+
+        .player-photo {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .player-photo-placeholder {
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, #43a047 0%, #2e7d32 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .placeholder-icon {
+          font-size: 2.5rem;
+          color: white;
+          font-weight: bold;
+        }
+
+        .player-name-display {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .player-display-name {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #333;
+        }
+
+        .player-position-badge {
+          padding: 0.25rem 0.75rem;
+          background: #2e7d32;
+          color: white;
+          border-radius: 20px;
+          font-size: 0.85rem;
+          font-weight: 500;
+        }
+
         .source-badge.local {
           background: #fff3e0;
           color: #f57c00;
@@ -564,38 +873,52 @@ function PlayerProfile() {
         
         .badge-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
           gap: 0.5rem;
         }
-        
+
         .badge-button {
           position: relative;
-          width: 50px;
-          height: 50px;
+          width: 70px;
+          height: 70px;
           border: 2px solid #e0e0e0;
           border-radius: 8px;
           background: white;
           cursor: pointer;
           display: flex;
+          flex-direction: column;
           align-items: center;
           justify-content: center;
+          padding: 0.25rem;
           transition: all 0.2s;
         }
-        
+
         .badge-button:hover {
           border-color: #2e7d32;
           background: #e8f5e9;
         }
-        
+
         .badge-button.awarded {
           border-color: #ff9800;
           background: #fff3e0;
         }
-        
+
         .badge-button .badge-emoji {
           font-size: 1.5rem;
         }
-        
+
+        .badge-button .badge-name {
+          font-size: 0.6rem;
+          color: #666;
+          margin-top: 2px;
+          text-align: center;
+          line-height: 1.1;
+          max-width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
         .badge-button .badge-count {
           position: absolute;
           top: -5px;
@@ -625,7 +948,97 @@ function PlayerProfile() {
         .btn-primary:hover {
           background: #1b5e20;
         }
-        
+
+        .btn-edit {
+          background: #2e7d32;
+          color: white;
+          margin-top: 0.75rem;
+        }
+
+        .btn-edit:hover {
+          background: #1b5e20;
+        }
+
+        .claim-card {
+          background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+        }
+
+        .claim-loading {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          color: #666;
+          padding: 1rem 0;
+        }
+
+        .loading-spinner.small {
+          width: 20px;
+          height: 20px;
+          border-width: 2px;
+        }
+
+        .claim-owned {
+          text-align: center;
+        }
+
+        .owned-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 1rem;
+          background: #e8f5e9;
+          color: #2e7d32;
+          border-radius: 20px;
+          font-weight: 500;
+        }
+
+        .owned-icon {
+          font-size: 1.1rem;
+        }
+
+        .challenge-notice {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          margin-top: 1rem;
+          padding: 0.75rem;
+          background: #fff3e0;
+          color: #e65100;
+          border-radius: 8px;
+          font-size: 0.9rem;
+        }
+
+        .claim-other {
+          text-align: center;
+        }
+
+        .claimed-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 1rem;
+          background: #f5f5f5;
+          color: #666;
+          border-radius: 20px;
+          margin-bottom: 1rem;
+        }
+
+        .claimed-icon {
+          font-size: 1.1rem;
+        }
+
+        .claim-available {
+          text-align: center;
+        }
+
+        .claim-desc {
+          color: #666;
+          font-size: 0.9rem;
+          margin-bottom: 1rem;
+          line-height: 1.5;
+        }
+
         @media (max-width: 600px) {
           .profile-header {
             flex-wrap: wrap;

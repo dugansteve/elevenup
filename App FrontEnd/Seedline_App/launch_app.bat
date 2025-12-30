@@ -26,14 +26,13 @@ if not exist "node_modules" (
 echo.
 echo Starting Seedline App...
 echo.
-echo The app will open at: http://localhost:5173
+echo NOTE: For login to work, the admin server must be running.
+echo       Run launch_admin.bat in a separate window first.
+echo.
 echo Press Ctrl+C to stop the server.
 echo.
 
-REM Wait 3 seconds then open browser
-start /b cmd /c "timeout /t 3 /nobreak >nul && start http://localhost:5173"
-
-REM Start the dev server
-call npm run dev
+REM Start the dev server with --open flag (opens browser at correct port)
+call npm run dev -- --open
 
 pause

@@ -1,0 +1,47 @@
+-R
+
+-make the scroll bar wider on mobile phones on the right side of the screen on the Teams, Clubs, and Players ranking pages so that if you scroll to the bottom after loading lots of data, you can easily get back to the top.
+
+-some teams on the Teams page just have the club name and others have the age listed.  Let's remove the age from all team names in the table of the Teams page since it is listed in the next column under Age. However, when you click on a team and it takes you to that teams page, lets add the age back onto the team name that is in large green font at the top of the page.  Right now the age is in small gray text underneath and hard to notice.
+
+-make the green boxes on the individual team pages smaller for power score, record, goal diff, and win %.  Put their US rank, state rank, and league rank by gender/age (eg G13, B09, etc...).
+
+-when Show Predictions is enabled in the Games tab of the individual Team page, allow the past results to be listed as Results by Date or Ranked by Performance with Ranked by Performance as the default.
+
+-enable the user to click on any team names in the list of games on a individual Team page to take them to that teams page.
+
+/clear
+
+-I added a player names Camille Dugan to the Lamorinda 11G team.  She shows up when i search on the Players page but she doesdnt show up on the roster when i go to the Lamorinda 11G team page
+
+/clear
+
+-Create a menu item called Best of the Best that lists the biggest upsets over a specified time range and other criteria. Filters include all the same ones as the Team Rankings page including search by name.
+
+/clear
+
+Go to US Youth Soccer https://www.usyouthsoccer.org/ and click on State Sites. Click on each state one by one and search the site for sanctioned tournaments.  Scrape those tournament sites for games and schedules. same all urls along the way so you can navigate back directly to those state pages and tournament pages at later dates to find new links and tournament results.
+
+/clear
+
+
+Many Players are missing Age, Club, League, St, and Grad info.  Most of this should be available in the seedlinedata.db.  
+
+/clear
+
+I need a robust system for player and parents to claim an existing player profile or create a new player profile and claim it.  Claiming it gives them the right to edit the profile including uploading a photo or building an avatar, choosing whether to show the last name or just the last name initial, associate the player with a specific team (and switch teams), you need a pro account to claim a player.  An individual parent can claim no more than 3 players on a single team and no more than 8 players in total.
+
+/clear
+
+Each Pro user gets an AI Team Analysis 2x a week. the AI analysis looks at all the teams in a particular conference, looks at the existing records and current standings in the conference and league, looks at the remaining games the rest of the year, takes all the teams individual rankings and certainty scores, and creates a detailed analysis of the odds of every team to win the conference with standard deviations, what the predicted order of finish will be of each team with standard deviations, and the probability and standard deviation for every single order of finish for a single team.
+
+The AI Team Analysis can also be done for a specific tournament. the user can choose any tournament that has the schedule populated and the rules available online that is in gotsport or total global soccer.  
+
+/clear
+
+Many team locations are incorrect on the Team page for those teams and in the ST column of the rankings table. All Lamorinda SC teams are listed as being in WA when they are actually in CA.  Strangely on maps, they are in the correct location.
+
+/clear
+
+allow users to get customized summaries of teams, conferences, age groups, or events they are interested in.  the summary will tell them results from the past X days (default is 7 but users can choose other numbers), highlighting biggest upsets or important matches of top teams. it will also list important matches coming up in next Y days (default is 7 but user can choose other numbers). Pro users can get up to 2 custom summaries per day.  Claude.ai will generate these summaries.
+

@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { ACCOUNT_TYPES } from '../context/UserContext';
+import { firebaseSignIn, firebaseSignUp, firebaseResetPassword } from '../config/firebase';
+import { currentBrand, isElevenUpBrand } from '../config/brand';
 
-// Admin server URL - port 5050 for admin server
-const ADMIN_API = 'http://localhost:5050/api';
+// Admin server API for local development (account type lookup)
+// Set VITE_ADMIN_API in .env for local dev, leave empty for production
+const ADMIN_API = import.meta.env.VITE_ADMIN_API || '';
 
 function AuthGate({ onLogin }) {
   const [mode, setMode] = useState('welcome'); // welcome, login, signup, forgot-username, forgot-password
@@ -33,40 +36,78 @@ function AuthGate({ onLogin }) {
     setError('');
     setLoading(true);
 
-    if (!username.trim() || !password.trim()) {
-      setError('Please enter username and password');
+    // For Firebase Auth, we use email to login (username field accepts email)
+    const loginEmail = email.trim() || username.trim();
+
+    if (!loginEmail || !password.trim()) {
+      setError('Please enter email and password');
       setLoading(false);
       return;
     }
 
     try {
-      // Call admin server to authenticate
-      const response = await fetch(`${ADMIN_API}/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: username.trim(), password: password.trim() })
-      });
+      const user = await firebaseSignIn(loginEmail, password.trim());
 
-      const data = await response.json();
+      // Look up account type from admin server (for local development)
+      let accountType = ACCOUNT_TYPES.FREE; // Default to free
+      if (ADMIN_API) {
+        try {
+          // Add 3-second timeout to prevent slow logins if admin server is down
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 3000);
 
-      if (data.success && data.user) {
-        // Login successful - storage is now user-specific so data loads automatically
-        onLogin({
-          id: data.user.id || data.user.username,
-          name: data.user.username,
-          username: data.user.username,
-          email: data.user.email,
-          role: data.user.role || 'Parent',
-          accountType: data.user.account_type === 'pro' ? ACCOUNT_TYPES.PAID : 
-                       data.user.account_type === 'free' ? ACCOUNT_TYPES.FREE : ACCOUNT_TYPES.FREE,
-          createdAt: data.user.created_at || new Date().toISOString()
-        });
-      } else {
-        setError(data.error || 'Invalid username or password');
+          const lookupResponse = await fetch(
+            `${ADMIN_API}/user/lookup?email=${encodeURIComponent(user.email)}`,
+            { signal: controller.signal }
+          );
+          clearTimeout(timeoutId);
+
+          if (lookupResponse.ok) {
+            const lookupData = await lookupResponse.json();
+            if (lookupData.found) {
+              // Map admin server account_type to app ACCOUNT_TYPES
+              const typeMap = {
+                'pro': ACCOUNT_TYPES.PAID,
+                'paid': ACCOUNT_TYPES.PAID,
+                'admin': ACCOUNT_TYPES.ADMIN,
+                'coach': ACCOUNT_TYPES.COACH,
+                'free': ACCOUNT_TYPES.FREE
+              };
+              accountType = typeMap[lookupData.account_type] || ACCOUNT_TYPES.FREE;
+              console.log(`User ${user.email} account type: ${lookupData.account_type} -> ${accountType}`);
+            }
+          }
+        } catch (lookupErr) {
+          // Admin server not available or timed out, use default
+          console.log('Account lookup not available, using free tier');
+        }
       }
+
+      // Login successful - use Firebase UID as stable userId to ensure consistent storage keys
+      onLogin({
+        id: user.uid,
+        userId: user.uid,  // CRITICAL: Use Firebase UID as stable userId for localStorage keys
+        name: user.displayName || loginEmail.split('@')[0],
+        username: user.displayName || loginEmail.split('@')[0],
+        email: user.email,
+        role: role || 'Parent',
+        accountType: accountType,
+        createdAt: user.metadata.creationTime || new Date().toISOString()
+      });
     } catch (err) {
       console.error('Login error:', err);
-      setError('Unable to connect to server. Please try again.');
+      // Firebase Auth error codes
+      if (err.code === 'auth/user-not-found') {
+        setError('No account found with this email');
+      } else if (err.code === 'auth/wrong-password') {
+        setError('Incorrect password');
+      } else if (err.code === 'auth/invalid-email') {
+        setError('Please enter a valid email address');
+      } else if (err.code === 'auth/invalid-credential') {
+        setError('Invalid email or password');
+      } else {
+        setError(err.message || 'Login failed. Please try again.');
+      }
     }
 
     setLoading(false);
@@ -96,31 +137,31 @@ function AuthGate({ onLogin }) {
     }
 
     try {
-      const response = await fetch(`${ADMIN_API}/auth/signup`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          username: username.trim(),
-          email: email.trim(),
-          password: password.trim(),
-          account_type: accountType === ACCOUNT_TYPES.PAID ? 'pro' : 'free',
-          role: role
-        })
+      const user = await firebaseSignUp(email.trim(), password.trim(), username.trim());
+
+      // Auto-login after signup - use Firebase UID as stable userId
+      onLogin({
+        id: user.uid,
+        userId: user.uid,  // CRITICAL: Use Firebase UID as stable userId for localStorage keys
+        name: username.trim(),
+        username: username.trim(),
+        email: user.email,
+        role: role || 'Parent',
+        accountType: accountType,
+        createdAt: new Date().toISOString()
       });
-
-      const data = await response.json();
-
-      if (data.success) {
-        setSuccess('Account created! Please sign in.');
-        setMode('login');
-        setPassword('');
-        setConfirmPassword('');
-      } else {
-        setError(data.error || 'Could not create account');
-      }
     } catch (err) {
       console.error('Signup error:', err);
-      setError('Unable to connect to server. Please try again.');
+      // Firebase Auth error codes
+      if (err.code === 'auth/email-already-in-use') {
+        setError('An account with this email already exists');
+      } else if (err.code === 'auth/invalid-email') {
+        setError('Please enter a valid email address');
+      } else if (err.code === 'auth/weak-password') {
+        setError('Password is too weak. Use at least 6 characters.');
+      } else {
+        setError(err.message || 'Could not create account. Please try again.');
+      }
     }
 
     setLoading(false);
@@ -134,6 +175,13 @@ function AuthGate({ onLogin }) {
 
     if (!email.trim()) {
       setError('Please enter your email address');
+      setLoading(false);
+      return;
+    }
+
+    if (!ADMIN_API) {
+      // Admin server not configured, show generic success message
+      setSuccess('If an account exists with this email, the username has been sent.');
       setLoading(false);
       return;
     }
@@ -173,21 +221,18 @@ function AuthGate({ onLogin }) {
     }
 
     try {
-      const response = await fetch(`${ADMIN_API}/auth/forgot-password`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim() })
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
+      await firebaseResetPassword(email.trim());
+      setSuccess('Password reset email sent! Check your inbox.');
+    } catch (err) {
+      console.error('Password reset error:', err);
+      if (err.code === 'auth/user-not-found') {
+        // Don't reveal if email exists for security
         setSuccess('If an account exists with this email, a password reset link has been sent.');
+      } else if (err.code === 'auth/invalid-email') {
+        setError('Please enter a valid email address');
       } else {
         setSuccess('If an account exists with this email, a password reset link has been sent.');
       }
-    } catch (err) {
-      setSuccess('If an account exists with this email, a password reset link has been sent.');
     }
 
     setLoading(false);
@@ -197,90 +242,77 @@ function AuthGate({ onLogin }) {
   if (mode === 'welcome') {
     return (
       <div className="auth-container">
-        <div className="auth-card" style={{ maxWidth: '500px' }}>
-          <div className="auth-logo">
-            <img src="/seedline-logo.png" alt="Seedline Logo" onError={(e) => e.target.style.display = 'none'} />
-          </div>
-          
-          <h1 className="auth-title">Welcome to Seedline</h1>
+        <div className="auth-logo-outside">
+          <img src={currentBrand.logo} alt={`${currentBrand.name} Logo`} onError={(e) => e.target.style.display = 'none'} />
+        </div>
+        <div className="auth-card auth-welcome-card">
+          <h1 className="auth-title">Welcome to {currentBrand.name}</h1>
           <p className="auth-subtitle">Soccer Rankings & Player Badge Management</p>
-          
-          <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+
+          <div className="auth-buttons">
             {/* Guest Button */}
-            <button onClick={handleGuestLogin} style={{
-              padding: '1rem 1.5rem', background: '#f5f5f5', border: '2px solid #e0e0e0',
-              borderRadius: '12px', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s ease'
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <button onClick={handleGuestLogin} className="auth-option-btn auth-option-guest">
+              <div className="auth-option-content">
                 <div>
-                  <div style={{ fontWeight: '600', fontSize: '1.1rem', color: '#333' }}>👤 Continue as Guest</div>
-                  <div style={{ fontSize: '0.85rem', color: '#666', marginTop: '0.25rem' }}>Browse rankings (no saved data)</div>
+                  <div className="auth-option-title">Continue as Guest</div>
+                  <div className="auth-option-desc">Browse rankings (no saved data)</div>
                 </div>
-                <span style={{ fontSize: '1.5rem', color: '#999' }}>→</span>
+                <span className="auth-option-arrow">→</span>
               </div>
             </button>
 
             {/* Sign In Button */}
-            <button onClick={() => setMode('login')} style={{
-              padding: '1rem 1.5rem', background: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)',
-              border: '2px solid #1976d2', borderRadius: '12px', cursor: 'pointer', textAlign: 'left'
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <button onClick={() => setMode('login')} className="auth-option-btn auth-option-signin">
+              <div className="auth-option-content">
                 <div>
-                  <div style={{ fontWeight: '600', fontSize: '1.1rem', color: '#1976d2' }}>🔐 Sign In</div>
-                  <div style={{ fontSize: '0.85rem', color: '#555', marginTop: '0.25rem' }}>Access your saved players and badges</div>
+                  <div className="auth-option-title" style={{ color: '#1976d2' }}>Sign In</div>
+                  <div className="auth-option-desc">Access your saved players and badges</div>
                 </div>
-                <span style={{ fontSize: '1.5rem', color: '#1976d2' }}>→</span>
+                <span className="auth-option-arrow" style={{ color: '#1976d2' }}>→</span>
               </div>
             </button>
 
             {/* Free Account Button */}
-            <button onClick={() => { setAccountType(ACCOUNT_TYPES.FREE); setMode('signup'); }} style={{
-              padding: '1rem 1.5rem', background: 'linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%)',
-              border: '2px solid var(--accent-green)', borderRadius: '12px', cursor: 'pointer', textAlign: 'left'
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <button onClick={() => { setAccountType(ACCOUNT_TYPES.FREE); setMode('signup'); }} className="auth-option-btn auth-option-free">
+              <div className="auth-option-content">
                 <div>
-                  <div style={{ fontWeight: '600', fontSize: '1.1rem', color: 'var(--primary-green)' }}>🌱 Create Free Account</div>
-                  <div style={{ fontSize: '0.85rem', color: '#555', marginTop: '0.25rem' }}>Browse + save up to 5 teams</div>
+                  <div className="auth-option-title" style={{ color: 'var(--primary-green)' }}>Create Free Account</div>
+                  <div className="auth-option-desc">Browse + save up to 5 teams</div>
                 </div>
-                <span style={{ background: '#fff', padding: '0.25rem 0.75rem', borderRadius: '20px', fontSize: '0.85rem', fontWeight: '600', color: 'var(--primary-green)' }}>FREE</span>
+                <span className="auth-option-badge auth-badge-free">FREE</span>
               </div>
             </button>
 
             {/* Pro Account Button */}
-            <button onClick={() => { setAccountType(ACCOUNT_TYPES.PAID); setMode('signup'); }} style={{
-              padding: '1rem 1.5rem', background: 'linear-gradient(135deg, var(--primary-green) 0%, #2e7d32 100%)',
-              border: 'none', borderRadius: '12px', cursor: 'pointer', textAlign: 'left', color: 'white'
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <button onClick={() => { setAccountType(ACCOUNT_TYPES.PAID); setMode('signup'); }} className="auth-option-btn auth-option-pro">
+              <div className="auth-option-content">
                 <div>
-                  <div style={{ fontWeight: '600', fontSize: '1.1rem' }}>⭐ Create Pro Account</div>
-                  <div style={{ fontSize: '0.85rem', opacity: 0.9, marginTop: '0.25rem' }}>Full access: badges, players & more</div>
+                  <div className="auth-option-title">Create Pro Account</div>
+                  <div className="auth-option-desc">Full access: badges, players & more</div>
                 </div>
-                <span style={{ background: 'rgba(255,255,255,0.2)', padding: '0.25rem 0.75rem', borderRadius: '20px', fontSize: '0.85rem', fontWeight: '600' }}>PRO</span>
+                <span className="auth-option-badge auth-badge-pro">PRO</span>
               </div>
             </button>
           </div>
 
           {/* Feature Comparison */}
-          <div style={{ marginTop: '2rem', padding: '1.5rem', background: '#f8f9fa', borderRadius: '12px', fontSize: '0.85rem' }}>
-            <h3 style={{ fontWeight: '600', marginBottom: '1rem', color: '#333', fontSize: '0.95rem' }}>Compare Account Types</h3>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <div className="auth-comparison">
+            <h3 className="auth-comparison-title">Compare Account Types</h3>
+            <table className="auth-comparison-table">
               <thead>
                 <tr>
-                  <th style={{ textAlign: 'left', padding: '0.5rem', borderBottom: '2px solid #ddd' }}>Feature</th>
-                  <th style={{ textAlign: 'center', padding: '0.5rem', borderBottom: '2px solid #ddd', width: '60px' }}>Guest</th>
-                  <th style={{ textAlign: 'center', padding: '0.5rem', borderBottom: '2px solid #ddd', width: '60px' }}>Free</th>
-                  <th style={{ textAlign: 'center', padding: '0.5rem', borderBottom: '2px solid #ddd', width: '60px' }}>Pro</th>
+                  <th style={{ textAlign: 'left' }}>Feature</th>
+                  <th>Guest</th>
+                  <th>Free</th>
+                  <th>Pro</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td style={{ padding: '0.5rem', color: '#555' }}>Browse rankings</td><td style={{ textAlign: 'center', color: '#4caf50' }}>✓</td><td style={{ textAlign: 'center', color: '#4caf50' }}>✓</td><td style={{ textAlign: 'center', color: '#4caf50' }}>✓</td></tr>
-                <tr style={{ background: '#fff' }}><td style={{ padding: '0.5rem', color: '#555' }}>Save My Teams</td><td style={{ textAlign: 'center', color: '#ccc' }}>—</td><td style={{ textAlign: 'center', color: '#4caf50' }}>✓</td><td style={{ textAlign: 'center', color: '#4caf50' }}>✓</td></tr>
-                <tr><td style={{ padding: '0.5rem', color: '#555' }}>Claim players</td><td style={{ textAlign: 'center', color: '#ccc' }}>—</td><td style={{ textAlign: 'center', color: '#ccc' }}>—</td><td style={{ textAlign: 'center', color: '#4caf50' }}>✓</td></tr>
-                <tr style={{ background: '#fff' }}><td style={{ padding: '0.5rem', color: '#555' }}>Award badges</td><td style={{ textAlign: 'center', color: '#ccc' }}>—</td><td style={{ textAlign: 'center', color: '#ccc' }}>—</td><td style={{ textAlign: 'center', color: '#4caf50' }}>✓</td></tr>
-                <tr><td style={{ padding: '0.5rem', color: '#555' }}>Submit scores</td><td style={{ textAlign: 'center', color: '#ccc' }}>—</td><td style={{ textAlign: 'center', color: '#ccc' }}>—</td><td style={{ textAlign: 'center', color: '#4caf50' }}>✓</td></tr>
+                <tr><td>Browse rankings</td><td className="check">✓</td><td className="check">✓</td><td className="check">✓</td></tr>
+                <tr><td>Save My Teams</td><td className="dash">—</td><td className="check">✓</td><td className="check">✓</td></tr>
+                <tr><td>Claim players</td><td className="dash">—</td><td className="dash">—</td><td className="check">✓</td></tr>
+                <tr><td>Award badges</td><td className="dash">—</td><td className="dash">—</td><td className="check">✓</td></tr>
+                <tr><td>Submit scores</td><td className="dash">—</td><td className="dash">—</td><td className="check">✓</td></tr>
               </tbody>
             </table>
           </div>
@@ -353,11 +385,10 @@ function AuthGate({ onLogin }) {
   if (mode === 'login') {
     return (
       <div className="auth-container">
+        <div className="auth-logo-outside">
+          <img src={currentBrand.logo} alt={`${currentBrand.name} Logo`} onError={(e) => e.target.style.display = 'none'} />
+        </div>
         <div className="auth-card">
-          <div className="auth-logo">
-            <img src="/seedline-logo.png" alt="Seedline Logo" onError={(e) => e.target.style.display = 'none'} />
-          </div>
-          
           <h1 className="auth-title">Welcome Back</h1>
           <p className="auth-subtitle">Sign in to your account</p>
           
@@ -366,23 +397,21 @@ function AuthGate({ onLogin }) {
           
           <form onSubmit={handleLogin}>
             <div className="form-group">
-              <label className="form-label">Username</label>
-              <input type="text" className="form-input" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter your username" required />
+              <label className="form-label">Email</label>
+              <input type="email" className="form-input" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" required />
             </div>
-            
+
             <div className="form-group">
               <label className="form-label">Password</label>
               <input type="password" className="form-input" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" required />
             </div>
-            
+
             <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '0.5rem' }} disabled={loading}>
               {loading ? 'Signing In...' : 'Sign In'}
             </button>
           </form>
 
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1rem', fontSize: '0.85rem' }}>
-            <button onClick={() => { setMode('forgot-username'); setError(''); setSuccess(''); }} style={{ background: 'none', border: 'none', color: 'var(--primary-green)', cursor: 'pointer' }}>Forgot Username?</button>
-            <span style={{ color: '#ccc' }}>|</span>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem', fontSize: '0.85rem' }}>
             <button onClick={() => { setMode('forgot-password'); setError(''); setSuccess(''); }} style={{ background: 'none', border: 'none', color: 'var(--primary-green)', cursor: 'pointer' }}>Forgot Password?</button>
           </div>
 
@@ -398,18 +427,17 @@ function AuthGate({ onLogin }) {
   // Signup Form
   return (
     <div className="auth-container">
+      <div className="auth-logo-outside">
+        <img src={currentBrand.logo} alt={`${currentBrand.name} Logo`} onError={(e) => e.target.style.display = 'none'} />
+      </div>
       <div className="auth-card">
-        <div className="auth-logo">
-          <img src="/seedline-logo.png" alt="Seedline Logo" onError={(e) => e.target.style.display = 'none'} />
-        </div>
-        
         <h1 className="auth-title">{accountType === ACCOUNT_TYPES.PAID ? 'Create Pro Account' : 'Create Free Account'}</h1>
         <p className="auth-subtitle">{accountType === ACCOUNT_TYPES.PAID ? 'Full access to all features' : 'Browse and save your favorite teams'}</p>
 
         <div style={{ display: 'inline-block', padding: '0.5rem 1rem', borderRadius: '20px', fontWeight: '600', fontSize: '0.85rem', marginBottom: '1.5rem',
           background: accountType === ACCOUNT_TYPES.PAID ? 'linear-gradient(135deg, var(--primary-green) 0%, #2e7d32 100%)' : 'linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%)',
           color: accountType === ACCOUNT_TYPES.PAID ? 'white' : 'var(--primary-green)' }}>
-          {accountType === ACCOUNT_TYPES.PAID ? '⭐ Pro Account' : '🌱 Free Account'}
+          {accountType === ACCOUNT_TYPES.PAID ? (isElevenUpBrand ? '★ Pro Account' : '⭐ Pro Account') : '🌱 Free Account'}
         </div>
         
         {error && <div style={{ padding: '0.75rem 1rem', background: '#ffebee', color: '#c62828', borderRadius: '8px', marginBottom: '1rem', fontSize: '0.9rem' }}>{error}</div>}

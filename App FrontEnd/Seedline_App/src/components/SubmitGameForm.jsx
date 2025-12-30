@@ -395,9 +395,9 @@ export default function SubmitGameForm({ team, onSubmit, onCancel }) {
                     onMouseEnter={(e) => e.target.style.background = '#f5f5f5'}
                     onMouseLeave={(e) => e.target.style.background = 'transparent'}
                   >
-                    <div style={{ fontWeight: '500' }}>{t.name}</div>
+                    <div style={{ fontWeight: '500' }}>{t.name} {t.ageGroup}</div>
                     <div style={{ fontSize: '0.8rem', color: '#888' }}>
-                      {t.league} • {t.ageGroup} • Rank #{t.rank}
+                      {t.league} • Rank #{t.rank}
                     </div>
                   </div>
                 ))}
@@ -466,7 +466,7 @@ export default function SubmitGameForm({ team, onSubmit, onCancel }) {
             }}>
               <div>
                 <div style={{ fontSize: '0.8rem', color: '#666', marginBottom: '0.25rem' }}>
-                  {team.name}
+                  {team.name} {team.ageGroup}
                 </div>
                 <input
                   type="number"

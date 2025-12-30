@@ -1,0 +1,1633 @@
+<html lang="en"><head id="ctl00_Head1"><link rel="icon" href="/assets/img/icon.png"><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MWQCTPQQ4B"></script><script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-MWQCTPQQ4B');</script> <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VPCZKRG724"></script><script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());gtag('config', 'G-VPCZKRG724');</script> 
+    <!-- Required meta tags -->
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><title>
+	Event Details - AFC Lightning Invitational
+</title><link rel="icon" type="image/ico" href="images/soccer.ico"><meta name="description">
+<link rel="stylesheet" href="/bs/all.css?v=1.3"><link rel="stylesheet" href="/css/tt10.css?v=3.0"><link href="/css/material/6.1.95/css/materialdesignicons.min.css" rel="stylesheet" type="text/css"><link href="/css/tid/AFCWIN.css?v=10302025.16332" type="text/css" rel="stylesheet"><style type="text/css"> #content { background-color:#fff !important;margin:5px; } </style><link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed|Economica|Roboto:100|Poppins|Cairo" rel="stylesheet" type="text/css">
+    <script src="/js/tt10.js?v=4.1"></script>
+    
+
+    <script type="text/javascript">
+       $(document).ready(function () {
+
+           $("li.draggable").mouseenter(function () {
+               $(this).addClass("sdw");
+           }).mouseleave(function () {
+               $(this).removeClass("sdw");
+           });
+           $("#thePageContainers").sortable({
+               placeholder: "ui-state-highlight",
+               revert: false,
+               handle: "i.dragMe",
+               start: function (event, ui) {
+                   $(ui.item).addClass("shrinkonmove");
+               },
+               stop: function (event, ui) {
+                   $(ui.item).removeClass("shrinkonmove");
+               },
+               update: function (event, ui) {
+
+                   var newOrder = "SECT"
+                   $(this).find("li.sincCont").each(function () {
+                       newOrder += $(this).attr("data-sect") + "|";
+                   });
+
+                   eo_Callback('cpSave', newOrder);
+               }
+           });
+           
+
+           $("ul.sortable").sortable({
+               placeholder: "ui-state-highlight",
+               revert: false,
+               connectWith: "ul.sortable",
+               handle: "i.dragControl",
+               start: function (event, ui) {
+                   $(ui.item).addClass("shrinkonmove");
+               },
+               stop: function (event, ui) {
+                   $(ui.item).removeClass("shrinkonmove");
+               },
+               update: function (event, ui) {
+
+                   var listQual = $(this).attr("data-qual");
+                   var newOrder = $(this).attr("data-qual") + "|" + $(this).attr("data-page") + "|";
+                   $(this).find("li.draggable").each(function () {
+                       newOrder += $(this).attr("data-pageid") + "|";
+                   });
+                   // alert("Update " + newOrder);
+                   eo_Callback('cpSave', newOrder);
+               },
+               receive: function (event, ui) {
+
+                   var listQual = $(this).attr("data-qual");
+                   var newOrder = $(this).attr("data-qual") + "|" + $(this).attr("data-page") + "|";
+                   $(this).find("li.draggable").each(function () {
+                       newOrder += $(this).attr("data-pageid") + "|";
+                   });
+               }
+           });
+           var view = GetParameterValues("view");
+           if (view != null)
+               $('html,body').animate({ scrollTop: $("li").find("[data-pageid='" + view + "']").offset().top + 160 }, 'slow');
+       });
+        function clearContainer() {
+            $("#ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_pnlLayouts div").each(function (div) {
+                $(this).removeClass("sect-active");
+            });
+        }
+        function GetParameterValues(param) {
+            var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < url.length; i++) {
+                var urlparam = url[i].split('=');
+                if (urlparam[0] == param) {
+                    return urlparam[1];
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="/js/camera/css/camera.css" type="text/css" media="all">
+    <script type="text/javascript" src="/js/camera/js/camera.min.js?v=2"></script> 
+    <script type="text/javascript" src="js/jquery.li-scroller.1.0.js?v=2"></script>
+    <script src="js/jcarousellite_1.0.1.min.js?v=2" type="text/javascript"></script>
+    <script src="js/jquery.fitvids.js" type="text/javascript"></script>
+    <style type="text/css">  .nextColor-1 { color: ; }  .nextColor2 { color: #ffffff; }  .nextColor3 { color: #ffffff; } </style>
+    <style type="text/css">
+        #thePageContainers { margin: 0; list-style: none; padding: 0; overflow-x:hidden; }
+        .shrinkonmove{ width:300px !important;height:120px !important; overflow:hidden;}
+        .sect-active .lbc { background-color:#0094ff}
+        .ui-state-highlight { background-color:#f1f286 !important; height:120px !important;}
+        li.sincCont { border: 3px dotted #aaa; padding: 2px; }
+        li.sincCont div.sectHead { background-color: #85bf5b; margin-bottom: 3px; padding: 1px 3px; font-size: 20px; }
+        li.sincCont div.sectHead a:link, li.sincCont div.sectHead a:visited { color: #111; }
+        a.wmax {margin-top:5px;}
+        div.sectEdit2 { float: right; padding-top: 0px; width: 60px; text-align: right; }
+        section { overflow-x:hidden}
+    </style>
+
+
+    <style type="text/css">
+        @media(max-width:999px) {
+            .mainRow { overflow-x:auto;}
+        }
+    </style>
+<style type="text/css">
+.eo_tag_style{}
+</style>
+<style type="text/css">
+table.eo_no_border_spacing { border-spacing: 0; border-collapse: collapse; }
+table.eo_td_no_padding td {padding: 0px;}
+table.eo_border_collapse { border-collapse: collapse; }
+.eo_align_center { text-align: center;}
+.eo_align_left { text-align: left;}
+.eo_transparent { filter:alpha(opacity=0);-moz-opacity:0.0;opacity:0.0; }
+.eo_fullheight { height: 100%; }
+.eo_fullwidth { width: 100%; }
+a.eo_plain_link.link { border: none; }
+a.eo_plain_link.visited { border: none; }
+a.eo_plain_link.hover { border: none; }
+a.eo_plain_link.active { border: none; }
+ul.eo_list { list-style-type: none; margin: 0px; padding: 0px; }
+ul.eo_list li { list-style: none; margin: 0px; padding: 0px; white-space: nowrap; }
+.eo_text { font-family: Verdana; font-size: 10px; }
+
+</style>
+<style type="text/css">
+.eo_css_ctrl_ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC1 {background-color:#fff;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;color:black;font-family:'Segoe UI Light', Tahoma, Helvetica, Arial, Verdana, sans-serif;font-size:18pt;padding-bottom:5px;padding-left:8px;padding-right:3px;padding-top:0}
+.eo_css_ctrl_ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC2 {background-color:#fff;border-bottom-width:0;border-left-width:0;border-right-width:0;border-top-width:0;color:#383838;padding-bottom:4px;padding-left:4px;padding-right:4px;padding-top:4px}
+.eo_css_ctrl_ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC3 {background-color:#d2d2d2;font-family:tahoma;font-size:8pt}
+
+
+.eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection1 {background-color:#fff;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;color:black;font-family:'Segoe UI Light', Tahoma, Helvetica, Arial, Verdana, sans-serif;font-size:18pt;padding-bottom:5px;padding-left:8px;padding-right:3px;padding-top:0}
+.eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection2 {background-color:#fff;border-bottom-width:0;border-left-width:0;border-right-width:0;border-top-width:0;color:#383838;padding-bottom:4px;padding-left:4px;padding-right:4px;padding-top:4px}
+.eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection3 {background-color:#d2d2d2;font-family:tahoma;font-size:8pt}
+
+
+.eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogPageOptions1 {background-color:#fff;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;color:black;font-family:'Segoe UI Light', Tahoma, Helvetica, Arial, Verdana, sans-serif;font-size:18pt;padding-bottom:5px;padding-left:8px;padding-right:3px;padding-top:0}
+.eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogPageOptions2 {background-color:#fff;border-bottom-width:0;border-left-width:0;border-right-width:0;border-top-width:0;color:#383838;padding-bottom:4px;padding-left:4px;padding-right:4px;padding-top:4px}
+.eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogPageOptions3 {background-color:#d2d2d2;font-family:tahoma;font-size:8pt}
+
+
+.eo_css_ctrl_ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager1 {background-color:#fff;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;color:black;font-family:'Segoe UI Light', Tahoma, Helvetica, Arial, Verdana, sans-serif;font-size:18pt;padding-bottom:5px;padding-left:8px;padding-right:3px;padding-top:0}
+.eo_css_ctrl_ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager2 {background-color:#fff;border-bottom-width:0;border-left-width:0;border-right-width:0;border-top-width:0;color:#383838;padding-bottom:4px;padding-left:4px;padding-right:4px;padding-top:4px}
+.eo_css_ctrl_ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager3 {background-color:#d2d2d2;font-family:tahoma;font-size:8pt}
+
+
+.eo_css_ctrl_ctl00_DialogHelp1 {background-color:#fff;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;color:black;font-family:'Segoe UI Light', Tahoma, Helvetica, Arial, Verdana, sans-serif;font-size:18pt;padding-bottom:5px;padding-left:8px;padding-right:3px;padding-top:0}
+.eo_css_ctrl_ctl00_DialogHelp2 {background-color:#fff;border-bottom-width:0;border-left-width:0;border-right-width:0;border-top-width:0;color:#383838;padding-bottom:4px;padding-left:4px;padding-right:4px;padding-top:4px}
+.eo_css_ctrl_ctl00_DialogHelp3 {background-color:#d2d2d2;font-family:tahoma;font-size:8pt}
+
+
+.eo_css_ctrl_ctl00_SICCM_Dialog_ContentManager1 {background-color:#fff;border-bottom-width:0px;border-left-width:0px;border-right-width:0px;border-top-width:0px;color:black;font-family:'Segoe UI Light', Tahoma, Helvetica, Arial, Verdana, sans-serif;font-size:18pt;padding-bottom:5px;padding-left:8px;padding-right:3px;padding-top:0}
+.eo_css_ctrl_ctl00_SICCM_Dialog_ContentManager2 {background-color:#fff;border-bottom-width:0;border-left-width:0;border-right-width:0;border-top-width:0;color:#383838;padding-bottom:4px;padding-left:4px;padding-right:4px;padding-top:4px}
+.eo_css_ctrl_ctl00_SICCM_Dialog_ContentManager3 {background-color:#d2d2d2;font-family:tahoma;font-size:8pt}
+
+</style><style></style></head>
+<body id="thebody" data-aos-easing="ease-out-quad" data-aos-duration="700" data-aos-delay="0">
+
+    <form name="aspnetForm" method="post" action="./details.aspx?tid=AFCWIN&amp;tab=2" id="aspnetForm">
+<div>
+<input type="hidden" name="eo_cb_id" id="eo_cb_id" value="">
+<input type="hidden" name="ctl00_navbar_cpSearch_trigger" id="ctl00_navbar_cpSearch_trigger" value="">
+<input type="hidden" name="ctl00_navbar_cpSearch_param" id="ctl00_navbar_cpSearch_param" value="">
+<input type="hidden" name="__eo_sc" id="__eo_sc" value="">
+<input type="hidden" name="ctl00_navbar_sicAthleteMerge_cpMergeAthleteControl_trigger" id="ctl00_navbar_sicAthleteMerge_cpMergeAthleteControl_trigger" value="">
+<input type="hidden" name="ctl00_navbar_sicAthleteMerge_cpMergeAthleteControl_param" id="ctl00_navbar_sicAthleteMerge_cpMergeAthleteControl_param" value="">
+<input type="hidden" name="ctl00_ContentPlaceHolder1_cpSave_trigger" id="ctl00_ContentPlaceHolder1_cpSave_trigger" value="">
+<input type="hidden" name="ctl00_ContentPlaceHolder1_cpSave_param" id="ctl00_ContentPlaceHolder1_cpSave_param" value="">
+<input type="hidden" name="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpSection_trigger" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpSection_trigger" value="">
+<input type="hidden" name="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpSection_param" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpSection_param" value="">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpLayouts_trigger" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpLayouts_trigger" value="">
+<input type="hidden" name="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpLayouts_param" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpLayouts_param" value="">
+<input type="hidden" name="ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_ctl00_cbpContentManager_trigger" id="ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_ctl00_cbpContentManager_trigger" value="">
+<input type="hidden" name="ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_ctl00_cbpContentManager_param" id="ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_ctl00_cbpContentManager_param" value="">
+<input type="hidden" name="ctl00_DialogHelp_ctl00_cpHelpPanel_trigger" id="ctl00_DialogHelp_ctl00_cpHelpPanel_trigger" value="">
+<input type="hidden" name="ctl00_DialogHelp_ctl00_cpHelpPanel_param" id="ctl00_DialogHelp_ctl00_cpHelpPanel_param" value="">
+<input type="hidden" name="ctl00_SICCM_Dialog_ContentManager_ctl00_cbpContentManager_trigger" id="ctl00_SICCM_Dialog_ContentManager_ctl00_cbpContentManager_trigger" value="">
+<input type="hidden" name="ctl00_SICCM_Dialog_ContentManager_ctl00_cbpContentManager_param" id="ctl00_SICCM_Dialog_ContentManager_ctl00_cbpContentManager_param" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTA3OTk4NzY4MA9kFgJmD2QWBAIBD2QWCAIBD2QWAmYPFgIeBFRleHQF7QM8c2NyaXB0IGFzeW5jIHNyYz0naHR0cHM6Ly93d3cuZ29vZ2xldGFnbWFuYWdlci5jb20vZ3RhZy9qcz9pZD1HLU1XUUNUUFFRNEInPjwvc2NyaXB0PjxzY3JpcHQ+IHdpbmRvdy5kYXRhTGF5ZXIgPSB3aW5kb3cuZGF0YUxheWVyIHx8IFtdOyBmdW5jdGlvbiBndGFnKCl7ZGF0YUxheWVyLnB1c2goYXJndW1lbnRzKTt9IGd0YWcoJ2pzJywgbmV3IERhdGUoKSk7IGd0YWcoJ2NvbmZpZycsICdHLU1XUUNUUFFRNEInKTs8L3NjcmlwdD4gPHNjcmlwdCBhc3luYyBzcmM9J2h0dHBzOi8vd3d3Lmdvb2dsZXRhZ21hbmFnZXIuY29tL2d0YWcvanM/aWQ9Ry1WUENaS1JHNzI0Jz48L3NjcmlwdD48c2NyaXB0PiB3aW5kb3cuZGF0YUxheWVyID0gd2luZG93LmRhdGFMYXllciB8fCBbXTsgZnVuY3Rpb24gZ3RhZygpe2RhdGFMYXllci5wdXNoKGFyZ3VtZW50cyk7fSBndGFnKCdqcycsIG5ldyBEYXRlKCkpO2d0YWcoJ2NvbmZpZycsICdHLVZQQ1pLUkc3MjQnKTs8L3NjcmlwdD4gZAIGDxYCHwAFPjxsaW5rIHJlbD0naWNvbicgdHlwZSA9ICdpbWFnZS9pY28nIGhyZWY9J2ltYWdlcy9zb2NjZXIuaWNvJyA+ZAINDxYCHwAFuQI8bGluayBocmVmPScvY3NzL3RpZC9BRkNXSU4uY3NzP3Y9MTAzMDIwMjUuMTYzMzInIHR5cGU9J3RleHQvY3NzJyByZWw9J3N0eWxlc2hlZXQnIC8+PHN0eWxlIHR5cGU9J3RleHQvY3NzJz4gI2NvbnRlbnQgeyBiYWNrZ3JvdW5kLWNvbG9yOiNmZmYgIWltcG9ydGFudDttYXJnaW46NXB4OyB9IDwvc3R5bGU+PGxpbmsgaHJlZj0naHR0cHM6Ly9mb250cy5nb29nbGVhcGlzLmNvbS9jc3M/ZmFtaWx5PVVidW50dStDb25kZW5zZWR8RWNvbm9taWNhfFJvYm90bzoxMDB8UG9wcGluc3xDYWlybycgcmVsPSdzdHlsZXNoZWV0JyB0eXBlPSd0ZXh0L2Nzcyc+ZAISD2QWAgIBDxYCHwAFfTxzdHlsZSB0eXBlPSd0ZXh0L2Nzcyc+ICAubmV4dENvbG9yLTEgeyBjb2xvcjogOyB9ICAubmV4dENvbG9yMiB7IGNvbG9yOiAjZmZmZmZmOyB9ICAubmV4dENvbG9yMyB7IGNvbG9yOiAjZmZmZmZmOyB9IDwvc3R5bGU+ZAIDD2QWHAIBD2QWDAIBDw8WAh4LTmF2aWdhdGVVcmwFDS9EZWZhdWx0LmFzcHhkZAIDDxYCHwBlZAIFDxYCHwAF7CQ8bGkgY2xhc3M9J25hdi1pdGVtIGRyb3Bkb3duJz48YSBjbGFzcz0nbmF2LWxpbmsnIGhyZWY9JyMnPjxpIGNsYXNzPSdtZGkgbWRpLW1lbnUgZC1sZy1ibG9jayBkLW5vbmUnPjwvaT48c3BhbiBjbGFzcz0nZC1sZy1ub25lIGQtYmxvY2snPk1FTlU8L3NwYW4+PC9hPjx1bCBjbGFzcz0nZG1sIGRyb3Bkb3duLW1lbnUnPjxsaSBjbGFzcz0nZHJvcGRvd24taXRlbSc+PGEgaHJlZj0nL1RUTWFzc01haWwuYXNweD90aWQ9QUZDV0lOJyBjbGFzcz0nZHJvcGRvd24tbGluayc+Q29udGFjdCBFdmVudDxpbWcgc3JjPScvaW1hZ2VzL3NtYmFyL21haWwucG5nJyBjbGFzcz0nZmxvYXQtcmlnaHQnIGJvcmRlcj0nMCcgLz48L2E+PC9saT48bGkgY2xhc3M9J2Ryb3Bkb3duLWl0ZW0nPjxhIGhyZWY9Jy9kYXNoLmFzcHg/aWQ9JnRpZD1BRkNXSU4mdGFza3M9WSZzaW5jPU4nIGNsYXNzPSdkcm9wZG93bi1saW5rJz5FdmVudCBUYXNrczwvYT48L2xpPjxsaSBjbGFzcz0nZHJvcGRvd24taXRlbSBkcm9wcmlnaHQnPjxhIGhyZWY9JyMnIGNsYXNzPSdkcm9wZG93bi1saW5rIGRyb3Bkb3duLXRvZ2dsZScgZGF0YS10b2dnbGU9J2Ryb3Bkb3duJz5NeSBBY2NvdW50PC9hPjx1bCBjbGFzcz0nZHJvcGRvd24tbWVudSc+PGxpIGNsYXNzPSdkcm9wZG93bi1pdGVtJz48YSBocmVmPSdUVExvZ2luLmFzcHgnIGNsYXNzPSdkcm9wZG93bi1saW5rJyBkYXRhLXRvZ2dsZT0nZHJvcGRvd24nPkxvZ2luIHRvIHZpZXcgeW91ciBhY2NvdW50PC9hPjwvbGk+PC91bD48bGkgY2xhc3M9J2Ryb3Bkb3duLWl0ZW0gZHJvcHJpZ2h0Jz48YSBocmVmPScjJyBjbGFzcz0nZHJvcGRvd24tbGluayBkcm9wZG93bi10b2dnbGUnIGRhdGEtdG9nZ2xlPSdkcm9wZG93bic+U29jY2VyIGluIGNvbGxlZ2U8L2E+PHVsIGNsYXNzPSdkcm9wZG93bi1tZW51Jz48bGkgY2xhc3M9J2Ryb3Bkb3duLWl0ZW0nPjxhIGhyZWY9J2NvbGxlZ2VzLmFzcHgnIGNsYXNzPSdkcm9wZG93bi1saW5rJyBkYXRhLXRvZ2dsZT0nZHJvcGRvd24nPkNvbGxlZ2VzPC9hPjwvbGk+PGxpIGNsYXNzPSdkcm9wZG93bi1pdGVtJz48YSBocmVmPSdldmVudHMuYXNweCcgY2xhc3M9J2Ryb3Bkb3duLWxpbmsnIGRhdGEtdG9nZ2xlPSdkcm9wZG93bic+VG91cm5hbWVudHM8L2E+PC9saT48bGkgY2xhc3M9J2Ryb3Bkb3duLWl0ZW0nPjxhIGhyZWY9J2V2ZW50cy5hc3B4P2xlYWd1ZXM9WScgY2xhc3M9J2Ryb3Bkb3duLWxpbmsnIGRhdGEtdG9nZ2xlPSdkcm9wZG93bic+TGVhZ3VlczwvYT48L2xpPjxsaSBjbGFzcz0nZHJvcGRvd24taXRlbSc+PGEgaHJlZj0nc2ljQ2x1YnMuYXNweCcgY2xhc3M9J2Ryb3Bkb3duLWxpbmsnIGRhdGEtdG9nZ2xlPSdkcm9wZG93bic+VGVhbXM8L2E+PC9saT48bGkgY2xhc3M9J2Ryb3Bkb3duLWl0ZW0nPjxhIGhyZWY9J3NpY0F0aGxldGVzLmFzcHgnIGNsYXNzPSdkcm9wZG93bi1saW5rJyBkYXRhLXRvZ2dsZT0nZHJvcGRvd24nPkF0aGxldGVzPC9hPjwvbGk+PC91bD48bGkgY2xhc3M9J2Ryb3Bkb3duLWl0ZW0gZHJvcHJpZ2h0Jz48YSBocmVmPScjJyBjbGFzcz0nZHJvcGRvd24tbGluayBkcm9wZG93bi10b2dnbGUnIGRhdGEtdG9nZ2xlPSdkcm9wZG93bic+VVNBIFJhbms8L2E+PHVsIGNsYXNzPSdkcm9wZG93bi1tZW51Jz48bGkgY2xhc3M9J2Ryb3Bkb3duLWl0ZW0nPjxhIGhyZWY9J2h0dHBzOi8vdXNhLnNpbmNzcG9ydHMuY29tL3JhbmsvYWJvdXQnIHRhcmdldD0nX2JsYW5rJyBjbGFzcz0nZHJvcGRvd24tbGluaycgZGF0YS10b2dnbGU9J2Ryb3Bkb3duJz5Ib3cgVVNBIFJhbmsgd29ya3M8L2E+PC9saT48bGkgY2xhc3M9J2Ryb3Bkb3duLWl0ZW0nPjxhIGhyZWY9J2h0dHBzOi8vdXNhLnNpbmNzcG9ydHMuY29tL3JhbmsvdmlldycgdGFyZ2V0PSdfYmxhbmsnIGNsYXNzPSdkcm9wZG93bi1saW5rJyBkYXRhLXRvZ2dsZT0nZHJvcGRvd24nPlZpZXcgUmFua2luZ3M8L2E+PC9saT48L3VsPjxsaSBjbGFzcz0nZHJvcGRvd24taXRlbSBkcm9wcmlnaHQnPjxhIGhyZWY9JyMnIGNsYXNzPSdkcm9wZG93bi1saW5rIGRyb3Bkb3duLXRvZ2dsZScgZGF0YS10b2dnbGU9J2Ryb3Bkb3duJz5TaW5jU3BvcnRzPC9hPjx1bCBjbGFzcz0nZHJvcGRvd24tbWVudSc+PGxpIGNsYXNzPSdkcm9wZG93bi1pdGVtJz48YSBocmVmPSdodHRwOi8vc2luY215dGVhbS5jb20nIHRhcmdldD0nX2JsYW5rJyBjbGFzcz0nZHJvcGRvd24tbGluaycgZGF0YS10b2dnbGU9J2Ryb3Bkb3duJz5TaW5jIE15IFRlYW08L2E+PC9saT48bGkgY2xhc3M9J2Ryb3Bkb3duLWl0ZW0nPjxhIGhyZWY9Jy9zaWNUb3VybmFtZW50cy5hc3B4JyBjbGFzcz0nZHJvcGRvd24tbGluaycgZGF0YS10b2dnbGU9J2Ryb3Bkb3duJz5VcGNvbWluZyBFdmVudHM8L2E+PC9saT48bGkgY2xhc3M9J2Ryb3Bkb3duLWl0ZW0nPjxhIGhyZWY9J2h0dHBzOi8vd3d3LnNpbmNzcG9ydHMuY29tJyB0YXJnZXQ9J19ibGFuaycgY2xhc3M9J2Ryb3Bkb3duLWxpbmsnIGRhdGEtdG9nZ2xlPSdkcm9wZG93bic+UHJvbW90ZSBZb3VyIEV2ZW50PC9hPjwvbGk+PC91bD48bGkgY2xhc3M9J2Ryb3Bkb3duLWl0ZW0gZHJvcHJpZ2h0Jz48YSBocmVmPScjJyBjbGFzcz0nZHJvcGRvd24tbGluayBkcm9wZG93bi10b2dnbGUnIGRhdGEtdG9nZ2xlPSdkcm9wZG93bic+SGVscCAmIFN1cHBvcnQ8L2E+PHVsIGNsYXNzPSdkcm9wZG93bi1tZW51Jz48bGkgY2xhc3M9J2Ryb3Bkb3duLWl0ZW0nPjxhIGhyZWY9Jy9zaWNTdXBwb3J0LmFzcHgnIGNsYXNzPSdkcm9wZG93bi1saW5rJyBkYXRhLXRvZ2dsZT0nZHJvcGRvd24nPkNvbnRhY3QgVXM8L2E+PC9saT48L3VsPjwvbGk+PC91bD48L2xpPjxsaSBjbGFzcz0nbmF2LWl0ZW0nPjxhIGhyZWY9Jy9UVEludHJvLmFzcHg/dGlkPUFGQ1dJTiZ0YWI9MSZzdWI9MCcgIGNsYXNzPSduYXYtbGluayc+SG9tZTwvYT48L2xpPjxsaSBjbGFzcz0nY3VycmVudCBuYXYtaXRlbSBkcm9wZG93bic+PGEgaHJlZj0nIycgY2xhc3M9J25hdi1saW5rIGRyb3Bkb3duLXRvZ2dsZScgZGF0YS10b2dnbGU9J2Ryb3Bkb3duJz5SZWdpc3RyYXRpb248L2E+PHVsIGNsYXNzPSdkcm9wZG93bi1tZW51Jz48bGkgY2xhc3M9J2Ryb3Bkb3duLWl0ZW0nPjxhIGhyZWY9Jy9UVEFwcGx5MC5hc3B4P3RpZD1BRkNXSU4mdGFiPTImc3ViPTEnICBjbGFzcz0nZHJvcGRvd24tbGluayc+TmV3IEFwcGxpY2F0aW9uPC9hPjwvbGk+PC91bD48L2xpPjxsaSBjbGFzcz0nbmF2LWl0ZW0gZHJvcGRvd24nPjxhIGhyZWY9JyMnIGNsYXNzPSduYXYtbGluayBkcm9wZG93bi10b2dnbGUnIGRhdGEtdG9nZ2xlPSdkcm9wZG93bic+SW5mb3JtYXRpb248L2E+PHVsIGNsYXNzPSdkcm9wZG93bi1tZW51Jz48bGkgY2xhc3M9J2Ryb3Bkb3duLWl0ZW0nPjxhIGhyZWY9Jy9UVE1vcmUuYXNweD90aWQ9QUZDV0lOJnRhYj0zJnN1Yj0xJlF1YWw9TUlTQyZTZXE9MTUnICBjbGFzcz0nZHJvcGRvd24tbGluayc+R2VuZXJhbCBJbmZvcm1hdGlvbjwvYT48L2xpPjxsaSBjbGFzcz0nZHJvcGRvd24taXRlbSc+PGEgaHJlZj0nL1RUTW9yZS5hc3B4P3RpZD1BRkNXSU4mdGFiPTMmc3ViPTImUXVhbD1NSVNDJlNlcT05JyAgY2xhc3M9J2Ryb3Bkb3duLWxpbmsnPk9ubGluZSBDaGVjay1JbjwvYT48L2xpPjxsaSBjbGFzcz0nZHJvcGRvd24taXRlbSc+PGEgaHJlZj0nL1RUQ2hlY2tMaXN0LmFzcHg/dGlkPUFGQ1dJTiZ0YWI9MyZzdWI9MyZQYWdlPTInICBjbGFzcz0nZHJvcGRvd24tbGluayc+UnVsZXMgJiBEb2N1bWVudHM8L2E+PC9saT48bGkgY2xhc3M9J2Ryb3Bkb3duLWl0ZW0nPjxhIGhyZWY9Jy9UVFNjb3Jlcy5hc3B4P3RpZD1BRkNXSU4mdGFiPTMmc3ViPTQnICBjbGFzcz0nZHJvcGRvd24tbGluayc+U2NvcmluZyBSdWxlczwvYT48L2xpPjwvdWw+PC9saT48bGkgY2xhc3M9J25hdi1pdGVtJz48YSBocmVmPScvVFRNb3JlLmFzcHg/dGlkPUFGQ1dJTiZ0YWI9NCZzdWI9MCZRdWFsPU1JU0MmU2VxPTcnICBjbGFzcz0nbmF2LWxpbmsnPlJlZmVyZWVzPC9hPjwvbGk+PGxpIGNsYXNzPSduYXYtaXRlbSc+PGEgaHJlZj0nL3RlYW1saXN0LmFzcHg/dGlkPUFGQ1dJTiZ0YWI9NSZzdWI9MCcgIGNsYXNzPSduYXYtbGluayc+VGVhbXMvRGl2aXNpb25zPC9hPjwvbGk+PGxpIGNsYXNzPSduYXYtaXRlbSBkcm9wZG93bic+PGEgaHJlZj0nIycgY2xhc3M9J25hdi1saW5rIGRyb3Bkb3duLXRvZ2dsZScgZGF0YS10b2dnbGU9J2Ryb3Bkb3duJz5TY2hlZHVsZXM8L2E+PHVsIGNsYXNzPSdkcm9wZG93bi1tZW51Jz48bGkgY2xhc3M9J2Ryb3Bkb3duLWl0ZW0nPjxhIGhyZWY9Jy9UVFNjaGVkdWxlczIuYXNweD90aWQ9QUZDV0lOJnRhYj02JnN1Yj0xJyAgY2xhc3M9J2Ryb3Bkb3duLWxpbmsnPlNjaGVkdWxlczwvYT48L2xpPjxsaSBjbGFzcz0nZHJvcGRvd24taXRlbSc+PGEgaHJlZj0nL1RUUmVzdWx0cy5hc3B4P3RpZD1BRkNXSU4mdGFiPTYmc3ViPTInICBjbGFzcz0nZHJvcGRvd24tbGluayc+U3RhbmRpbmdzPC9hPjwvbGk+PC91bD48L2xpPjxsaSBjbGFzcz0nbmF2LWl0ZW0nPjxhIGhyZWY9Jy9UVE1vcmUuYXNweD90aWQ9QUZDV0lOJnRhYj03JnN1Yj0wJlF1YWw9TUlTQyZTZXE9NScgIGNsYXNzPSduYXYtbGluayc+VmVudWVzPC9hPjwvbGk+PGxpIGNsYXNzPSduYXYtaXRlbSc+PGEgaHJlZj0nL1RUTW9yZS5hc3B4P3RpZD1BRkNXSU4mdGFiPTgmc3ViPTAmUXVhbD1NSVNDJlNlcT00JyAgY2xhc3M9J25hdi1saW5rJz5Ib3RlbHM8L2E+PC9saT5kAgcPDxYGHghDc3NDbGFzcwVCbmF2YmFyLWJ0biBidG4gYnRuLXNtIGJ0bi1waWxsIGJ0bi13aGl0ZSBsaWZ0IG1sLWF1dG8gdGV4dC1wcmltYXJ5HwAFEExvZyBJbiAvIFNpZ24gVXAeBF8hU0ICAmRkAg8PZWQCEQ9kFgJmD2VkAgMPZWQCBQ9kFgYCAw8WAh8AZWQCBA8WAh8ABQY8YnIgLz5kAgcPZBYCAgEPZRYCAgUPPCsACQBkAgcPZBYCAgEPZBYCAgEPDxYCHghJbWFnZVVybAUsL3Bob3Rvcy90aWQvQUZDV0lOL2Jhbm5lci5wbmc/dj0xMDI5MjUxNDQ4MjhkZAINDw8WBB8CZR8DAgJkFgICAw8PFgQfAmUfAwICZBYEAgEPDxYEHwIFBmQtbm9uZR8DAgJkZAIDDw8WBB8CBQljb2wtbWQtMTIfAwICZBYCAgcPZBYYAgMPDxYCHgdWaXNpYmxlaGQWAgIDDw8WAh8BBR0vZGVzaWduL3RoZW1lLmFzcHg/dGlkPUFGQ1dJTmRkAgUPZWQCCw9kFgJmD2QWBmYPZBYCZg9kFgJmD2QWAmYPZBYCZg9kFgJmD2QWAmYPZBYCZg9kFgJmD2QWAmYPZBYCZg9kFgJmD2QWAmYPZBYCZg8PFgQfAmUfAwICZBYCAgEPZBYCAgEPFgIfAAX4DDxkaXY+PGgzPldlbGNvbWUgdG8gdGhlwqBBRkMgTGlnaHRuaW5nIEludml0YXRpb25hbCE8L2gzPjxkaXY+PGRpdiBjbGFzcz0naXRlbVdyYXAnID48ZGl2PjxkaXYgQ2xhc3M9J2NhdCc+PHAgZGF0YS1lbmQ9IjQ3OCIgZGF0YS1zdGFydD0iMjk5Ij48c3BhbiBzdHlsZT0iZm9udC1zaXplOjE2cHg7Ij48c3Ryb25nPkdhbWVzIHdpbGwgYmUgcGxheWVkIG9uIEZlYnJ1YXJ5IDcgJmFtcDsgOCwgMjAyNi48L3N0cm9uZz4gPC9zcGFuPjwvcD4NCg0KPHAgZGF0YS1lbmQ9IjQ3OCIgZGF0YS1zdGFydD0iMjk5Ij48c3BhbiBzdHlsZT0iZm9udC1zaXplOjE2cHg7Ij5UaGlzJm5ic3A7dW5yZXN0cmljdGVkIGV2ZW50Jm5ic3A7aXMgb3BlbiB0byBhbGwgVVMgQ2x1YiwgVVNZUywmbmJzcDtVU1NTQSwgYW5kIEdBTCB0ZWFtcyZtZGFzaDtldmVyeW9uZSBpcyBpbnZpdGVkIHRvIGFwcGx5IGFuZCBjb21wZXRlLiBPdXIgZ29hbCBpcyB0byBwcm92aWRlIGEgaGlnaC1xdWFsaXR5IHRvdXJuYW1lbnQgZXhwZXJpZW5jZSBmb3IgcGxheWVycywgY29hY2hlcywgYW5kIGZhbWlsaWVzIGFsaWtlLjwvc3Bhbj48L3A+DQoNCjxwIGRhdGEtZW5kPSI0NzgiIGRhdGEtc3RhcnQ9IjI5OSI+PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZToxNnB4OyI+VGhlIHBlcmZlY3Qgd2F5IHRvIGtpY2sgb2ZmIHlvdXIgc3ByaW5nIHNlYXNvbiB3aXRoIGNvbXBldGl0aXZlIGdhbWVzIG9uIHNvbWUgb2YgR2VvcmdpYSZyc3F1bztzIHByZW1pZXIgZmllbGRzLjwvc3Bhbj48L3A+DQoNCjxociAvPg0KPGgzIGRhdGEtZW5kPSI3MzMiIGRhdGEtc3RhcnQ9IjcxNSI+V2h5IEpvaW4gVXM/PC9oMz4NCg0KPHAgZGF0YS1lbmQ9IjgzMSIgZGF0YS1zdGFydD0iNzM2Ij48c3BhbiBzdHlsZT0iZm9udC1zaXplOjE2cHg7Ij48c3Ryb25nIGRhdGEtZW5kPSI3NTUiIGRhdGEtc3RhcnQ9IjczNiI+VG9wIEZhY2lsaXRpZXM6PC9zdHJvbmc+Jm5ic3A7R2FtZXMgcGxheWVkIG9uIHdlbGwtbWFpbnRhaW5lZCwgZnVsbC1zaXplZCBmaWVsZHMgYXQgY2VudHJhbGl6ZWQgdmVudWVzLjwvc3Bhbj48L3A+DQoNCjxwIGRhdGEtZW5kPSIxMDk1IiBkYXRhLXN0YXJ0PSI5NTMiPjxzcGFuIHN0eWxlPSJmb250LXNpemU6MTZweDsiPjxzdHJvbmcgZGF0YS1lbmQ9Ijk3NyIgZGF0YS1zdGFydD0iOTUzIj5Db252ZW5pZW50IExvY2F0aW9uOjwvc3Ryb25nPiZuYnNwO0p1c3Qgc291dGggb2YgQXRsYW50YSwgb3VyIGZpZWxkcyBhcmUgZWFzaWx5IGFjY2Vzc2libGUgd2l0aCBwbGVudHkgb2YgbmVhcmJ5IGhvdGVscywgcmVzdGF1cmFudHMsIGFuZCBhdHRyYWN0aW9ucy48L3NwYW4+PC9wPg0KDQo8cCBkYXRhLWVuZD0iMTI0NSIgZGF0YS1zdGFydD0iMTA5OCI+PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZToxNnB4OyI+PHN0cm9uZyBkYXRhLWVuZD0iMTEzMiIgZGF0YS1zdGFydD0iMTA5OCI+UHJvZmVzc2lvbmFsIFRvdXJuYW1lbnQgU3RhZmY6PC9zdHJvbmc+Jm5ic3A7T3VyIHRlYW0gd29ya3MgaGFyZCB0byBlbnN1cmUgc21vb3RoIHNjaGVkdWxpbmcsIGNvbW11bmljYXRpb24sIGFuZCBhbiBlbmpveWFibGUgd2Vla2VuZCBmb3IgYWxsIHBhcnRpY2lwYW50cy48L3NwYW4+PC9wPg0KPC9kaXY+PC9kaXY+PC9kaXY+PGRpdiBjbGFzcz0nY2xlYXInPjwvZGl2PjwvZGl2PjwvZGl2PmQCAQ9kFgJmD2QWAmYPZBYCZg9kFgRmD2QWAmYPZBYCZg9kFgJmD2QWAmYPZBYCZg9kFgJmD2QWAmYPZBYCZg9kFgJmDw8WBB8CZR8DAgIWBB4IZGF0YS1hb3MFCmZhZGUtcmlnaHQeDmRhdGEtYW9zLWRlbGF5BQM1MDAWAgIBD2QWAgIBDxYCHwAFzgY8ZGl2PjxkaXY+PGRpdiBjbGFzcz0naXRlbVdyYXAnID48ZGl2PjxkaXYgQ2xhc3M9J2NhdCc+PHA+PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZToyNHB4OyI+PHNwYW4gc3R5bGU9ImNvbG9yOiNmZmVmMDE7Ij48c3Ryb25nPk9ubGluZSBDaGVjay1pbjwvc3Ryb25nPjwvc3Bhbj48L3NwYW4+PC9wPg0KDQo8cD48c3BhbiBzdHlsZT0iZm9udC1zaXplOjE2cHg7Ij5BbGwgdGVhbXMgYXJlIHJlcXVpcmVkIHRvIGNvbXBsZXRlIE9ubGluZSBDaGVjay1JbiZuYnNwO3Rocm91Z2ggU2luY1Nwb3J0cy4mbmJzcDs8L3NwYW4+PC9wPg0KDQo8dWwgc3R5bGU9Imxpc3Qtc3R5bGUtdHlwZTogZGlzYzsiPg0KCTxsaT48c3BhbiBzdHlsZT0iZm9udC1zaXplOjE2cHg7Ij48c3Ryb25nPkZlZTo8L3N0cm9uZz4gJDIwIChub24tcmVmdW5kYWJsZSwgcGFpZCBkaXJlY3RseSB0byBTaW5jU3BvcnRzIGZvciBkb2N1bWVudCByZXZpZXcpPC9zcGFuPjwvbGk+DQoJPGxpPjxzcGFuIHN0eWxlPSJmb250LXNpemU6IDE2cHg7Ij48c3Ryb25nPlN0YXJ0IERlYWRsaW5lOjwvc3Ryb25nPiBNdXN0IGJlIGluaXRpYXRlZCBubyBsYXRlciB0aGFuJm5ic3A7TW9uZGF5LCBGZWJydWFyeSAyLCAyMDI2PC9zcGFuPjwvbGk+DQoJPGxpPg0KCTxwPjxzcGFuIHN0eWxlPSJmb250LXNpemU6MTZweDsiPjxzdHJvbmc+Q29tcGxldGlvbiBEZWFkbGluZTo8L3N0cm9uZz4gTXVzdCBiZSBmaW5hbGl6ZWQgYnkmbmJzcDs1OjAwIFBNIG9uIFRodXJzZGF5LCBGZWJydWFyeSA1LCAyMDI2PC9zcGFuPjwvcD4NCgk8L2xpPg0KPC91bD4NCjwvZGl2PjwvZGl2PjwvZGl2PjxkaXYgY2xhc3M9J2NsZWFyJz48L2Rpdj48L2Rpdj48L2Rpdj5kAgEPZBYCZg9kFgJmD2QWAmYPZBYCZg9kFgJmD2QWAmYPZBYCZg9kFgJmD2QWAmYPDxYEHwJlHwMCAhYEHwYFCmZhZGUtcmlnaHQfBwUDNTAwFgICAQ9kFgICAQ8WAh8ABZEGPGRpdj48ZGl2PjxkaXYgY2xhc3M9J2l0ZW1XcmFwJyA+PGRpdj48ZGl2IENsYXNzPSdjYXQnPjxwPjxzcGFuIHN0eWxlPSJmb250LXNpemU6MjRweDsiPjxzdHJvbmc+PHNwYW4gc3R5bGU9ImNvbG9yOiNmZmVmMDE7Ij5HZXQgSW52b2x2ZWQ8L3NwYW4+PC9zdHJvbmc+PC9zcGFuPjwvcD4NCg0KPHA+PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZToxNnB4OyI+VXNlIHRoZSBsaW5rcyBhdCB0aGUgdG9wIG9mIHRoaXMgcGFnZSB0byBuYXZpZ2F0ZSB0aGUgdG91cm5hbWVudCBzaXRlIGZvciZuYnNwOzxzdHJvbmc+UmVnaXN0cmF0aW9uPC9zdHJvbmc+PC9zcGFuPjxzdHJvbmc+LCZuYnNwOzwvc3Ryb25nPjxzcGFuIHN0eWxlPSJmb250LXNpemU6MTZweDsiPjxzdHJvbmc+UmVmZXJlZXMsJm5ic3A7U2NoZWR1bGVzLCA8L3N0cm9uZz5hbmQ8c3Ryb25nPiBIb3RlbHM8L3N0cm9uZz4uPC9zcGFuPjwvcD4NCg0KPHA+PHNwYW4gc3R5bGU9ImZvbnQtc2l6ZToxNnB4OyI+Rm9yIGFkZGl0aW9uYWwgaW5mb3JtYXRpb24sIGNvbnRhY3QgdXMgYXQmbmJzcDs8c3Ryb25nPnRvdXJuYW1lbnRzQGFmY2xpZ2h0bmluZy5vcmcgJm5ic3A7PGltZyBhbHQ9Im1haWwiIGhlaWdodD0iMjMiIHNyYz0iaHR0cHM6Ly9zb2NjZXIuc2luY3Nwb3J0cy5jb20vY2s0L3BsdWdpbnMvc21pbGV5L2ltYWdlcy9lbnZlbG9wZS5wbmciIHRpdGxlPSJtYWlsIiB3aWR0aD0iMjMiIC8+PC9zdHJvbmc+PC9zcGFuPjwvcD4NCjwvZGl2PjwvZGl2PjwvZGl2PjxkaXYgY2xhc3M9J2NsZWFyJz48L2Rpdj48L2Rpdj48L2Rpdj5kAgIPZBYCZg9kFgJmD2QWAmYPZBYGZg9kFgJmD2QWAmYPZBYCZg9kFgJmD2QWAmYPZBYCZg9kFgJmD2QWAmYPZBYCZg8PZA8PZAW0AkFBTWFmaTlwYldGblpYTXZNakF4TXk5dGIyUmhiQzkwYkM1d2JtY0NBeGwrTDJsdFlXZGxjeTh5TURFekwyMXZaR0ZzTDNRdWNHNW5CQU1hZmk5cGJXRm5aWE12TWpBeE15OXRiMlJoYkM5MGNpNXdibWNIQXhsK0wybHRZV2RsY3k4eU1ERXpMMjF2WkdGc0wyd3VjRzVuQ0FNWmZpOXBiV0ZuWlhNdk1qQXhNeTl0YjJSaGJDOXlMbkJ1WndzREduNHZhVzFoWjJWekx6SXdNVE12Ylc5a1lXd3ZZbXd1Y0c1bkRRTVpmaTlwYldGblpYTXZNakF4TXk5dGIyUmhiQzlpTG5CdVp3OERHbjR2YVcxaFoyVnpMekl3TVRNdmJXOWtZV3d2WW5JdWNHNW5BQUE9PCsADgEABVREQU1GWW14aFkyc05BaklBQUFBd0F3OXlaWE5wZW1GaWJHVkVhV0ZzYjJjMkFUMERHSDR2YVcxaFoyVnpMMk5zYjNObFJHbGhiRzluTG5CdVp3QUEWAmYPZBYIAgEPDxYCHwAFHk9ubGluZSBDaGVjay1pbiBpcyBub3cgY2xvc2VkLmRkAgMPDxYCHwAFrgI8ZGl2Pk9ubGluZSBDaGVjay1pbiBlbGltaW5hdGVzIHRoZSBuZWVkIGZvciB5b3VyIHRlYW0gdG8gc2hvdyB1cCBpbiBwZXJzb24gYmVmb3JlIHlvdXIgZmlyc3QgZ2FtZSBieSBhbGxvd2luZyB5b3UgdG8gY29tcGxldGUgdGhlIGNoZWNrLWluIHByb2Nlc3Mgb25saW5lLiBZb3Ugd2lsbCBiZSByZXF1aXJlZCB0byB1cGxvYWQgLnBkZiBmaWxlcyBvciBpbWFnZXMgdG8gdGhlIHNlY3VyZSBzaW5jU3BvcnRzIGNsb3VkLiBUaGUgZXZlbnQgd2lsbCBkZXRlcm1pbmUgd2hpY2ggZG9jdW1lbnRzIGFyZSByZXF1aXJlZC48L2Rpdj4NCmRkAgUPDxYCHwAFNVRoZXJlIGlzIGEgJDIwIDxiPm5vbi1yZWZ1bmRhYmxlPC9iPiBmZWUuPGJyIC8+PGJyIC8+ZGQCBw8PFgQfAQUlfi9UVENoZWNrSW4uYXNweD90aWQ9QUZDV0lOJnllYXI9MjAyNh8FaGRkAgEPZBYCZg9kFgJmD2QWAmYPZBYEZg9kFgJmD2QWAmYPZBYCZg9kFgJmD2QWAmYPDxYEHwJlHwMCAmQWAgIBD2QWAgIBDxYCHwAF1gI8ZGl2PjxkaXY+PGRpdiBjbGFzcz0naXRlbVdyYXAnID48ZGl2PjxkaXYgQ2xhc3M9J2NhdCc+PHAgc3R5bGU9InRleHQtYWxpZ246IGNlbnRlcjsiPjxzcGFuIHN0eWxlPSJmb250LXNpemU6MjhweDsiPjxzcGFuIHN0eWxlPSJjb2xvcjojMmU2MGFkOyI+PHN0cm9uZz5SZWdpc3RyYXRpb24gY2xvc2VzIG9uIDxzcGFuIGRhdGEtdG9nZ2xlPSd0eXBlZCcgZGF0YS1vcHRpb25zPSd7InN0cmluZ3MiOiBbIkphbnVhcnkgMTcsIDIwMjYiXX0nPjwvc3Bhbj48L3N0cm9uZz48L3NwYW4+PC9zcGFuPjwvcD4NCjwvZGl2PjwvZGl2PjwvZGl2PjxkaXYgY2xhc3M9J2NsZWFyJz48L2Rpdj48L2Rpdj48L2Rpdj5kAgEPZBYCZg9kFgJmD2QWAmYPZBYCZg9kFgQCAQ8WAh8ABeQBPGRpdiBzdHlsZT0nbWFyZ2luOjAgYXV0bzt3aWR0aDo0ODBweDsnPjxkaXYgaWQ9J2NkSU5UUk8yNjInPjwvZGl2PjxkaXYgY2xhc3M9J2NvdW50ZXJfZGVzYyc+PGRpdiBjbGFzcz0nZmxlZnQnPkRheXM8L2Rpdj48ZGl2IGNsYXNzPSdmbGVmdCc+SG91cnM8L2Rpdj48ZGl2IGNsYXNzPSdmbGVmdCc+TWludXRlczwvZGl2PjxkaXYgY2xhc3M9J2ZsZWZ0Jz5TZWNvbmRzPC9kaXY+PC9kaXY+PC9kaXY+ZAIDDxYCHwAFogE8c2NyaXB0IHR5cGU9J3RleHQvamF2YXNjcmlwdCc+ICQoZG9jdW1lbnQpLnJlYWR5KGZ1bmN0aW9uKCkgeyAkKCcjY2RJTlRSTzI2MicpLmNvdW50ZG93bih7IGltYWdlOiAnL2ltYWdlcy9kaWdpdHMucG5nJywgc3RhcnRUaW1lOiAnMzI6MDU6MDg6MTMnIH0pOyB9KSA8L3NjcmlwdD5kAgIPZBYCZg9kFgJmD2QWAmYPZBYCZg9kFgJmD2QWAmYPZBYCZg9kFgJmD2QWAmYPDxYEHwJlHwMCAmQWAgIBD2QWAgIBDxYCHwAFnQI8ZGl2PjxkaXY+PGRpdiBjbGFzcz0naXRlbVdyYXAnID48ZGl2PjxkaXYgQ2xhc3M9J2NhdCc+PHAgc3R5bGU9InRleHQtYWxpZ246IGNlbnRlcjsiPjxpbWcgY2xhc3M9ImltZy1mbHVpZCIgc3JjPSIvcGhvdG9zL3RpZC9BRkNXSU4vdXNlci91cy1jbHViLXNvY2Nlci1zYW5jdGlvbmVkLXRvdXJuYW1lbnQtbG9nby5wbmciIHN0eWxlPSJ3aWR0aDogMzAwcHg7IGhlaWdodDogMTYzcHg7IiAvPjwvcD4NCjwvZGl2PjwvZGl2PjwvZGl2PjxkaXYgY2xhc3M9J2NsZWFyJz48L2Rpdj48L2Rpdj48L2Rpdj5kAg0PD2QPD2QFtAJBQU1hZmk5cGJXRm5aWE12TWpBeE15OXRiMlJoYkM5MGJDNXdibWNDQXhsK0wybHRZV2RsY3k4eU1ERXpMMjF2WkdGc0wzUXVjRzVuQkFNYWZpOXBiV0ZuWlhNdk1qQXhNeTl0YjJSaGJDOTBjaTV3Ym1jSEF4bCtMMmx0WVdkbGN5OHlNREV6TDIxdlpHRnNMMnd1Y0c1bkNBTVpmaTlwYldGblpYTXZNakF4TXk5dGIyUmhiQzl5TG5CdVp3c0RHbjR2YVcxaFoyVnpMekl3TVRNdmJXOWtZV3d2WW13dWNHNW5EUU1aZmk5cGJXRm5aWE12TWpBeE15OXRiMlJoYkM5aUxuQnVadzhER240dmFXMWhaMlZ6THpJd01UTXZiVzlrWVd3dlluSXVjRzVuQUFBPTwrAA4BAAVUREFNRllteGhZMnNOQWpJQUFBQXdBdzl5WlhOcGVtRmliR1ZFYVdGc2IyYzJBVDBER0g0dmFXMWhaMlZ6TDJOc2IzTmxSR2xoYkc5bkxuQnVad0FBFgJmD2QWAgIBDw9kD2QFREJ3TXRlME52Ym5SeWIyeEpSRHBzYm10RVpXeGxkR1ZUWldOMGFXOXVPMUJoY21GdFpYUmxjanBrWld4bGRHVjlBQUE9FgQCBQ9lZAIJD2VkAg8PD2QPD2QFtAJBQU1hZmk5cGJXRm5aWE12TWpBeE15OXRiMlJoYkM5MGJDNXdibWNDQXhsK0wybHRZV2RsY3k4eU1ERXpMMjF2WkdGc0wzUXVjRzVuQkFNYWZpOXBiV0ZuWlhNdk1qQXhNeTl0YjJSaGJDOTBjaTV3Ym1jSEF4bCtMMmx0WVdkbGN5OHlNREV6TDIxdlpHRnNMMnd1Y0c1bkNBTVpmaTlwYldGblpYTXZNakF4TXk5dGIyUmhiQzl5TG5CdVp3c0RHbjR2YVcxaFoyVnpMekl3TVRNdmJXOWtZV3d2WW13dWNHNW5EUU1aZmk5cGJXRm5aWE12TWpBeE15OXRiMlJoYkM5aUxuQnVadzhER240dmFXMWhaMlZ6THpJd01UTXZiVzlrWVd3dlluSXVjRzVuQUFBPTwrAA4BAAVUREFNRllteGhZMnNOQWpJQUFBQXdBdzl5WlhOcGVtRmliR1ZFYVdGc2IyYzJBVDBER0g0dmFXMWhaMlZ6TDJOc2IzTmxSR2xoYkc5bkxuQnVad0FBFgJmD2QWAgIBDw9kD2QFuAFCd09FQVh0RGIyNTBjbTlzU1VRNlluUnVSR1ZzWlhSbFEyOXVkR0ZwYm1WeU8xQmhjbUZ0WlhSbGNqcGtaWE4wY205NWZTeDdRMjl1ZEhKdmJFbEVPbUowYmxOaGRtVkRiMjUwWVdsdVpYSTdVR0Z5WVcxbGRHVnlPbk5oZG1WOUxIdERiMjUwY205c1NVUTZZblJ1UVdSa1UyVmpkR2x2Ymp0UVlYSmhiV1YwWlhJNllXUmtmUUFBFgICAw9kFgICDQ9kFgICBQ9lZAIRDw8WAh8ABQZBRkNXSU5kZAITDw8WAh8ABQQyMDI2ZGQCFQ8PFgIfAAUFSU5UUk9kZAIXDw8WAh8ABQEwZGQCGQ8PFgIfAAUITUlTQzAwNjlkZAIbDw8WAh8ABTImcmV0dXJuPWRldGFpbHMuYXNweCUzZnRpZCUzZEFGQ1dJTiUyNnF1YWwlM2RJTlRST2RkAh8PZBYCAgEPD2QPD2QFtAJBQU1hZmk5cGJXRm5aWE12TWpBeE15OXRiMlJoYkM5MGJDNXdibWNDQXhsK0wybHRZV2RsY3k4eU1ERXpMMjF2WkdGc0wzUXVjRzVuQkFNYWZpOXBiV0ZuWlhNdk1qQXhNeTl0YjJSaGJDOTBjaTV3Ym1jSEF4bCtMMmx0WVdkbGN5OHlNREV6TDIxdlpHRnNMMnd1Y0c1bkNBTVpmaTlwYldGblpYTXZNakF4TXk5dGIyUmhiQzl5TG5CdVp3c0RHbjR2YVcxaFoyVnpMekl3TVRNdmJXOWtZV3d2WW13dWNHNW5EUU1aZmk5cGJXRm5aWE12TWpBeE15OXRiMlJoYkM5aUxuQnVadzhER240dmFXMWhaMlZ6THpJd01UTXZiVzlrWVd3dlluSXVjRzVuQUFBPTwrAA4BAAVUREFNRllteGhZMnNOQWpJQUFBQXdBdzl5WlhOcGVtRmliR1ZFYVdGc2IyYzJBVDBER0g0dmFXMWhaMlZ6TDJOc2IzTmxSR2xoYkc5bkxuQnVad0FBFgJmD2QWAgIBD2UWAgIFD2QWAgILDw8WAh8ABSpkZXRhaWxzLmFzcHglM2Z0aWQlM2RBRkNXSU4lMjZxdWFsJTNkSU5UUk9kZAIPDxYCHwAFgAE8YSBocmVmPScvVFRNYXNzTWFpbC5hc3B4P3RpZD1BRkNXSU4nPkNvbnRhY3QgVXM8L2E+PGJyIC8+PGEgaHJlZj0nL1RUU2NoZWR1bGVzLmFzcHg/dGlkPUFGQ1dJTic+U2NoZWR1bGVzICYgU3RhbmRpbmdzPC9hPjxiciAvPmQCEQ8WAh8ABdABPGEgaHJlZj0nL1RURmluZE1lLmFzcHg/dGlkPUFGQ1dJTic+TG9naW4gSGVscDwvYT48YnIgLz48YSBocmVmPScvY29udGFjdC5hc3B4P3RpZD1BRkNXSU4nPkNvbnRhY3QgU3VwcG9ydDwvYT48YnIgLz48YSBocmVmPSdodHRwOi8vd3d3LnNpbmNzcG9ydHMuY29tL21vYmlsZS5hc3B4JyB0YXJnZXQ9J19ibGFuayc+RG93bmxvYWQgdGhlIG1vYmlsZSBhcHAhPC9hPmQCEw8PFgYfAAU3PGltZyBzcmM9Jy9pbWFnZXMvdXNhLWxvZ28tZGFyay5wbmcnIGNsYXNzPSd1c2Fsb2dvJyAvPh8BBRlodHRwOi8vdXNhdG91cm5hbWVudHMuY29tHgZUYXJnZXQFBl9ibGFua2RkAhUPFgIfAAUEMjAyNWQCFw8PFgIfAQUlL3ByaXZhY3kuYXNweD90aWQ9QUZDV0lOJnNpbmM9TiZzaWM9TmRkAhkPDxYCHwEFKi9jb29raWVwb2xpY3kuYXNweD90aWQ9QUZDV0lOJnNpbmM9TiZzaWM9TmRkAh0PD2QPD2QFtAJBQU1hZmk5cGJXRm5aWE12TWpBeE15OXRiMlJoYkM5MGJDNXdibWNDQXhsK0wybHRZV2RsY3k4eU1ERXpMMjF2WkdGc0wzUXVjRzVuQkFNYWZpOXBiV0ZuWlhNdk1qQXhNeTl0YjJSaGJDOTBjaTV3Ym1jSEF4bCtMMmx0WVdkbGN5OHlNREV6TDIxdlpHRnNMMnd1Y0c1bkNBTVpmaTlwYldGblpYTXZNakF4TXk5dGIyUmhiQzl5TG5CdVp3c0RHbjR2YVcxaFoyVnpMekl3TVRNdmJXOWtZV3d2WW13dWNHNW5EUU1aZmk5cGJXRm5aWE12TWpBeE15OXRiMlJoYkM5aUxuQnVadzhER240dmFXMWhaMlZ6THpJd01UTXZiVzlrWVd3dlluSXVjRzVuQUFBPTwrAA4BAAVITUFNUGNtVnphWHBoWW14bFJHbGhiRzluTmdJQUFBQUFQUU1ZZmk5cGJXRm5aWE12WTJ4dmMyVkVhV0ZzYjJjdWNHNW5BQUE9FgJmD2QWAgIBD2VkAiEPZBYCAgEPD2QPD2QFtAJBQU1hZmk5cGJXRm5aWE12TWpBeE15OXRiMlJoYkM5MGJDNXdibWNDQXhsK0wybHRZV2RsY3k4eU1ERXpMMjF2WkdGc0wzUXVjRzVuQkFNYWZpOXBiV0ZuWlhNdk1qQXhNeTl0YjJSaGJDOTBjaTV3Ym1jSEF4bCtMMmx0WVdkbGN5OHlNREV6TDIxdlpHRnNMMnd1Y0c1bkNBTVpmaTlwYldGblpYTXZNakF4TXk5dGIyUmhiQzl5TG5CdVp3c0RHbjR2YVcxaFoyVnpMekl3TVRNdmJXOWtZV3d2WW13dWNHNW5EUU1aZmk5cGJXRm5aWE12TWpBeE15OXRiMlJoYkM5aUxuQnVadzhER240dmFXMWhaMlZ6THpJd01UTXZiVzlrWVd3dlluSXVjRzVuQUFBPTwrAA4BAAVUREFNRllteGhZMnNOQWpJQUFBQXdBdzl5WlhOcGVtRmliR1ZFYVdGc2IyYzJBVDBER0g0dmFXMWhaMlZ6TDJOc2IzTmxSR2xoYkc5bkxuQnVad0FBFgJmD2QWAgIBD2VkAiUPDxYCHwVoZGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgUFN2N0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkRGlhbG9nU2VjdGlvbiRjdGwwMCRjcEJHQ29sb3IFOWN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkRGlhbG9nU2VjdGlvbiRjdGwwMCRjcEZvbnRDb2xvcgU/Y3RsMDAkQ29udGVudFBsYWNlSG9sZGVyMSREaWFsb2dQYWdlT3B0aW9ucyRjdGwwMCRjcENvbnRhaW5lckJHBT9jdGwwMCRDb250ZW50UGxhY2VIb2xkZXIxJERpYWxvZ1BhZ2VPcHRpb25zJGN0bDAwJGNiQkdDb2xvckZ1bGwFPWN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkRGlhbG9nUGFnZU9wdGlvbnMkY3RsMDAkY2JGdWxsV2lkdGhCba+2xCC2t+Lb4AIEzjrclhXfeg==">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(EO25264)=='undefined'){EO25264=new Object();EO25264.f=new Object();EO25264.g=new Object();EO25264.r=new Object();EO25264.g.a=EO25264.r;EO25264.r.getVersion=function(){return "25.264";};EO25264.r.getLoader=function(){return typeof(EO25264.g.d)!='undefined'?EO25264.g.d:null;};EO25264.r.getNS=function(){return "EO25264";};};
+EO25264.r.product='EO.Web';
+EO25264.r.form='aspnetForm';
+EO25264.r.autoInit=false;
+EO25264.r.handlerUrl='/eo_web.ashx';
+
+//]]>
+</script>
+<script type="text/javascript" src="/js/eo/eo.18ccd2b5-5bb4-4e32-aeb3-adc32338a5de.js"></script>
+<script type="text/javascript" src="/js/eo/eo.310dad10-dab1-44a7-a637-c218ef9aa3b7.js"></script>
+<script type="text/javascript" src="/js/eo/eo.86c43cce-ff60-427d-9a37-1e16debbe456.js"></script>
+<script type="text/javascript" src="/js/eo/eo.e1a21eb1-352a-4a42-b2b6-bbacb24a29d1.js"></script>
+<script type="text/javascript" src="/js/eo/eo.1690bc33-6c82-4e45-a64c-c8c0fde91095.js"></script><div id="eo_root"><div><table id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor" cellspacing="0" cellpadding="0" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor2" style="background-color: white; border-color: rgb(153, 153, 153); border-style: solid; border-width: 1px; color: rgb(7, 81, 184); display: none; font-family: arial; font-size: 10pt; z-index: 297000; position: absolute;"><tbody><tr><td><table border="0" cellspacing="5" cellpadding="3"><tbody><tr><td colspan="3"><span id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor_TitleText">Select color:</span></td></tr><tr><td valign="top"><div style="width: 128px; height: 128px"><div id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor_colorField" style="width: 128px; height: 128px; background-image: url(&quot;/WebResource.axd?d=YycwwfSod9sPbIKHe2_ld-zHVSqt38bq8Hj0L66mYdnCwfPqynU8TYsFPny7Lzy4OCPt4Wx7WRUXeP2H1bBY1QBIR_aPa1h6w9dV5nAf-rnxt-qeF4nOi6t-llwUPT9pY_TVTA2&amp;t=638906142105203672&quot;); background-position: left top; background-repeat: no-repeat;"><img id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor_colorFieldMarker" style="position: relative; cursor: pointer;" src="/WebResource.axd?d=_qc0p2Vnz7-e9MnRIIIMPi639cqGe28lBhGnmnk9t5IbV_empZcVO1iTqVznco1h6fo5--Smml2N8hBdRkdlXc4OwOi197ZnIYxudtDFrEGcNRUIRMDr4C--Onv7woyGx1DhJC7Wh0RjtzKwDew9TPGcIzk1&amp;t=638906142105203672"></div></div></td><td valign="top"><div style="width: 15px; height: 128px"><table id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor_sliderTable" cellspacing="0" cellpadding="0" style="width: 21px; height: 128px; cursor: pointer;"><tbody><tr><td align="center" valign="top" id="eo_ele_9" style="background-image: url(&quot;/WebResource.axd?d=2J7gk_s41so2Hx9rTFUm24O2bEgFXnOXnzqgyfDjPyvZ11DLQ0d75q1U_JRD9-veT0gc-K5Uo8QwifM6jecCsPlcEKLvS9EdPBm58oTcLQtp_ARJ3D-8sk_ST8WxKhPvCnRbcCEduMc-k7d9He-boyd4Llk1&amp;t=638906142105203672&quot;); background-position: center center; background-repeat: no-repeat;"><img id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor_sliderArrow" style="position: relative; cursor: pointer;" src="/WebResource.axd?d=L3DUa3YPOIwKKPgNU7lmEMd9mIW10rHtW_n4jlhWmpwq-Ag90QfbI2kRADpvQ7ENe1L1KmPiiRi0VkIARRKI3wE1PH75lH5XUn8PEnFsnunE6LbUYRQmiFuGIarHqf58NgtCwNRmpjClJu8oaBg76PK0u0s1&amp;t=638906142105203672"></td></tr></tbody></table></div></td><td valign="top"><table border="1" cellspacing="0" cellpadding="0" bordercolor="#999999" style="border-collapse: collapse"><tbody><tr><td><div style="width: 40px; height: 20px; text-align: center; vertical-align: middle; display: table-cell; background-color: white;"><span id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor_org" style="color: black;">X</span></div></td><td><div style="width: 40px; height: 20px; text-align: center; vertical-align: middle; display: table-cell; background-color: white;"><span id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor_adj" style="color: black;">X</span></div></td></tr></tbody></table><table border="0" cellspacing="2" cellpadding="0"><tbody><tr><td width="27">R:</td><td><input name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpBGColor$RTextBox" type="text" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor_RTextBox" style="width:48px;" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor1"></td></tr><tr><td width="27">G:</td><td><input name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpBGColor$GTextBox" type="text" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor_GTextBox" style="width:48px;" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor1"></td></tr><tr><td width="27">B:</td><td><input name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpBGColor$BTextBox" type="text" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor_BTextBox" style="width:48px;" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor1"></td></tr><tr><td width="27">#</td><td><input name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpBGColor$WebColorTextBox" type="text" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor_WebColorTextBox" style="width:48px;" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor1"></td></tr></tbody></table></td></tr><tr><td colspan="2"><input id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor_WebSafeCheckBox" type="checkbox" name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpBGColor$WebSafeCheckBox"><label for="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor_WebSafeCheckBox">Only web safe colors</label></td><td align="right"><input type="submit" name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpBGColor$OKButton" value="OK" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor_OKButton" style="width:60px;"></td></tr></tbody></table></td></tr></tbody></table></div><div><table id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor" cellspacing="0" cellpadding="0" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor2" style="background-color: white; border-color: rgb(153, 153, 153); border-style: solid; border-width: 1px; color: rgb(7, 81, 184); display: none; font-family: arial; font-size: 10pt; z-index: 297000; position: absolute;"><tbody><tr><td><table border="0" cellspacing="5" cellpadding="3"><tbody><tr><td colspan="3"><span id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor_TitleText">Select color:</span></td></tr><tr><td valign="top"><div style="width: 128px; height: 128px"><div id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor_colorField" style="width: 128px; height: 128px; background-image: url(&quot;/WebResource.axd?d=YycwwfSod9sPbIKHe2_ld-zHVSqt38bq8Hj0L66mYdnCwfPqynU8TYsFPny7Lzy4OCPt4Wx7WRUXeP2H1bBY1QBIR_aPa1h6w9dV5nAf-rnxt-qeF4nOi6t-llwUPT9pY_TVTA2&amp;t=638906142105203672&quot;); background-position: left top; background-repeat: no-repeat;"><img id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor_colorFieldMarker" style="position: relative; cursor: pointer;" src="/WebResource.axd?d=_qc0p2Vnz7-e9MnRIIIMPi639cqGe28lBhGnmnk9t5IbV_empZcVO1iTqVznco1h6fo5--Smml2N8hBdRkdlXc4OwOi197ZnIYxudtDFrEGcNRUIRMDr4C--Onv7woyGx1DhJC7Wh0RjtzKwDew9TPGcIzk1&amp;t=638906142105203672"></div></div></td><td valign="top"><div style="width: 15px; height: 128px"><table id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor_sliderTable" cellspacing="0" cellpadding="0" style="width: 21px; height: 128px; cursor: pointer;"><tbody><tr><td align="center" valign="top" id="eo_ele_10" style="background-image: url(&quot;/WebResource.axd?d=2J7gk_s41so2Hx9rTFUm24O2bEgFXnOXnzqgyfDjPyvZ11DLQ0d75q1U_JRD9-veT0gc-K5Uo8QwifM6jecCsPlcEKLvS9EdPBm58oTcLQtp_ARJ3D-8sk_ST8WxKhPvCnRbcCEduMc-k7d9He-boyd4Llk1&amp;t=638906142105203672&quot;); background-position: center center; background-repeat: no-repeat;"><img id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor_sliderArrow" style="position: relative; cursor: pointer;" src="/WebResource.axd?d=L3DUa3YPOIwKKPgNU7lmEMd9mIW10rHtW_n4jlhWmpwq-Ag90QfbI2kRADpvQ7ENe1L1KmPiiRi0VkIARRKI3wE1PH75lH5XUn8PEnFsnunE6LbUYRQmiFuGIarHqf58NgtCwNRmpjClJu8oaBg76PK0u0s1&amp;t=638906142105203672"></td></tr></tbody></table></div></td><td valign="top"><table border="1" cellspacing="0" cellpadding="0" bordercolor="#999999" style="border-collapse: collapse"><tbody><tr><td><div style="width: 40px; height: 20px; text-align: center; vertical-align: middle; display: table-cell; background-color: white;"><span id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor_org" style="color: black;">X</span></div></td><td><div style="width: 40px; height: 20px; text-align: center; vertical-align: middle; display: table-cell; background-color: white;"><span id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor_adj" style="color: black;">X</span></div></td></tr></tbody></table><table border="0" cellspacing="2" cellpadding="0"><tbody><tr><td width="27">R:</td><td><input name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpFontColor$RTextBox" type="text" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor_RTextBox" style="width:48px;" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor1"></td></tr><tr><td width="27">G:</td><td><input name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpFontColor$GTextBox" type="text" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor_GTextBox" style="width:48px;" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor1"></td></tr><tr><td width="27">B:</td><td><input name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpFontColor$BTextBox" type="text" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor_BTextBox" style="width:48px;" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor1"></td></tr><tr><td width="27">#</td><td><input name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpFontColor$WebColorTextBox" type="text" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor_WebColorTextBox" style="width:48px;" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor1"></td></tr></tbody></table></td></tr><tr><td colspan="2"><input id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor_WebSafeCheckBox" type="checkbox" name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpFontColor$WebSafeCheckBox"><label for="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor_WebSafeCheckBox">Only web safe colors</label></td><td align="right"><input type="submit" name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpFontColor$OKButton" value="OK" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor_OKButton" style="width:60px;"></td></tr></tbody></table></td></tr></tbody></table></div><div><table id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG" cellspacing="0" cellpadding="0" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG1" style="background-color: white; border-color: rgb(153, 153, 153); border-style: solid; border-width: 1px; color: rgb(7, 81, 184); display: none; font-family: arial; font-size: 10pt; z-index: 297000; position: absolute;"><tbody><tr><td><table border="0" cellspacing="5" cellpadding="3"><tbody><tr><td colspan="3"><span id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG_TitleText">Select color:</span></td></tr><tr><td valign="top"><div style="width: 128px; height: 128px"><div id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG_colorField" style="width: 128px; height: 128px; background-image: url(&quot;/WebResource.axd?d=YycwwfSod9sPbIKHe2_ld-zHVSqt38bq8Hj0L66mYdnCwfPqynU8TYsFPny7Lzy4OCPt4Wx7WRUXeP2H1bBY1QBIR_aPa1h6w9dV5nAf-rnxt-qeF4nOi6t-llwUPT9pY_TVTA2&amp;t=638906142105203672&quot;); background-position: left top; background-repeat: no-repeat;"><img id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG_colorFieldMarker" style="position: relative; cursor: pointer;" src="/WebResource.axd?d=_qc0p2Vnz7-e9MnRIIIMPi639cqGe28lBhGnmnk9t5IbV_empZcVO1iTqVznco1h6fo5--Smml2N8hBdRkdlXc4OwOi197ZnIYxudtDFrEGcNRUIRMDr4C--Onv7woyGx1DhJC7Wh0RjtzKwDew9TPGcIzk1&amp;t=638906142105203672"></div></div></td><td valign="top"><div style="width: 15px; height: 128px"><table id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG_sliderTable" cellspacing="0" cellpadding="0" style="width: 21px; height: 128px; cursor: pointer;"><tbody><tr><td align="center" valign="top" id="eo_ele_11" style="background-image: url(&quot;/WebResource.axd?d=2J7gk_s41so2Hx9rTFUm24O2bEgFXnOXnzqgyfDjPyvZ11DLQ0d75q1U_JRD9-veT0gc-K5Uo8QwifM6jecCsPlcEKLvS9EdPBm58oTcLQtp_ARJ3D-8sk_ST8WxKhPvCnRbcCEduMc-k7d9He-boyd4Llk1&amp;t=638906142105203672&quot;); background-position: center center; background-repeat: no-repeat;"><img id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG_sliderArrow" style="position: relative; cursor: pointer;" src="/WebResource.axd?d=L3DUa3YPOIwKKPgNU7lmEMd9mIW10rHtW_n4jlhWmpwq-Ag90QfbI2kRADpvQ7ENe1L1KmPiiRi0VkIARRKI3wE1PH75lH5XUn8PEnFsnunE6LbUYRQmiFuGIarHqf58NgtCwNRmpjClJu8oaBg76PK0u0s1&amp;t=638906142105203672"></td></tr></tbody></table></div></td><td valign="top"><table border="1" cellspacing="0" cellpadding="0" bordercolor="#999999" style="border-collapse: collapse"><tbody><tr><td><div style="width: 40px; height: 20px; text-align: center; vertical-align: middle; display: table-cell; background-color: white;"><span id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG_org" style="color: black;">X</span></div></td><td><div style="width: 40px; height: 20px; text-align: center; vertical-align: middle; display: table-cell; background-color: white;"><span id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG_adj" style="color: black;">X</span></div></td></tr></tbody></table><table border="0" cellspacing="2" cellpadding="0"><tbody><tr><td width="27">R:</td><td><input name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$cpContainerBG$RTextBox" type="text" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG_RTextBox" style="width:48px;"></td></tr><tr><td width="27">G:</td><td><input name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$cpContainerBG$GTextBox" type="text" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG_GTextBox" style="width:48px;"></td></tr><tr><td width="27">B:</td><td><input name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$cpContainerBG$BTextBox" type="text" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG_BTextBox" style="width:48px;"></td></tr><tr><td width="27">#</td><td><input name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$cpContainerBG$WebColorTextBox" type="text" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG_WebColorTextBox" style="width:48px;"></td></tr></tbody></table></td></tr><tr><td colspan="2"><input id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG_WebSafeCheckBox" type="checkbox" name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$cpContainerBG$WebSafeCheckBox"><label for="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG_WebSafeCheckBox">Only web safe colors</label></td><td align="right"><input type="submit" name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$cpContainerBG$OKButton" value="OK" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG_OKButton" style="width:60px;"></td></tr></tbody></table></td></tr></tbody></table></div><div id="eo_dialog_shade" style="position: fixed; left: 0px; top: 0px; height: 933px; z-index: 295000; width: 1904px; display: none; opacity: 0;"></div><div></div><div><table id="ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC_bdt" cellspacing="0" cellpadding="0" border="0" style="display: none; position: fixed; top: -3000px;"><tbody><tr><td style="font-size:1px"><img src="/images/2013/modal/tl.png" alt="" tabindex="-1"></td><td style="background-image:url('/images/2013/modal/t.png');background-repeat:repeat-x;font-size:1px;"></td><td style="font-size:1px"><img src="/images/2013/modal/tr.png" alt="" tabindex="-1"></td></tr><tr><td style="background-image:url('/images/2013/modal/l.png');background-repeat:repeat-y;font-size:1px;" valign="top"></td><td><table id="ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC" border="0" class="eo_no_border_spacing" style="width: 800px;" cellspacing="0" cellpadding="0">
+	<tbody><tr><td align="left"><div id="ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC_headerDiv" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC1" style="cursor: move;"><div style="position:relative;z-index:2;"><div id="ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC_headerHtml">Online CheckIn</div><table id="ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC_headerTableR" border="0" cellspacing="0" cellpadding="0" style="position:absolute;right:0px;top:0px;"><tbody><tr><td valign="middle"><img id="ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC_close" alt="" src="/images/closeDialog.png" style="cursor: default;"></td></tr></tbody></table></div></div></td></tr><tr><td valign="top"><table id="ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC_contentTable" border="0" style="width:100%;height:100%;" class="eo_no_border_spacing" cellspacing="0" cellpadding="0"><tbody><tr><td height="100%" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC2" align="left" valign="top">
+        <div style="padding:20px 25px;">
+		<h3>Online Check-In</h3>
+		<p style="line-height:20px;">
+            <span id="ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC_ctl00_lblOLCNow">Online Check-in is now closed.</span>
+            <br><br>
+            <img src="/images/logos/olc_logo.png" class="olc_large" alt="olc">
+            <b>What is Online Check-in?</b>
+            </p><div>
+            <span id="ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC_ctl00_lblIntro"><div>Online Check-in eliminates the need for your team to show up in person before your first game by allowing you to complete the check-in process online. You will be required to upload .pdf files or images to the secure sincSports cloud. The event will determine which documents are required.</div>
+</span>
+            </div>
+            <div>
+            
+            </div>
+            <div>
+                <br>
+                You must scan documents or take digital photos to complete this process. 
+            We will help you through the rest!
+            </div>
+            
+            <br>
+            
+        <p></p>        
+        </div>
+    </td></tr></tbody></table></td></tr><tr><td><div id="ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC_footerDiv" style="position:relative;width:auto;"><table id="ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC_footerTable" border="0" cellspacing="0" cellpadding="0" style="width:100%;"><tbody><tr><td id="ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC_footer" class="eo_align_center eo_css_ctrl_ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC3">
+
+    </td></tr></tbody></table></div></td></tr>
+</tbody></table></td><td style="background-image:url('/images/2013/modal/r.png');background-repeat:repeat-y;font-size:1px;" valign="top"></td></tr><tr><td style="font-size:1px"><img src="/images/2013/modal/bl.png" alt="" tabindex="-1"></td><td style="background-image:url('/images/2013/modal/b.png');background-repeat:repeat-x;font-size:1px;"></td><td style="font-size:1px"><img src="/images/2013/modal/br.png" alt="" tabindex="-1"></td></tr></tbody></table></div><div><table id="ctl00_ContentPlaceHolder1_DialogSection_bdt" cellspacing="0" cellpadding="0" border="0" style="display: none; position: fixed; top: -3000px;"><tbody><tr><td style="font-size:1px"><img src="/images/2013/modal/tl.png" alt="" tabindex="-1"></td><td style="background-image:url('/images/2013/modal/t.png');background-repeat:repeat-x;font-size:1px;"></td><td style="font-size:1px"><img src="/images/2013/modal/tr.png" alt="" tabindex="-1"></td></tr><tr><td style="background-image:url('/images/2013/modal/l.png');background-repeat:repeat-y;font-size:1px;" valign="top"></td><td><table id="ctl00_ContentPlaceHolder1_DialogSection" border="0" class="eo_no_border_spacing" style="width: 600px;" cellspacing="0" cellpadding="0">
+	<tbody><tr><td align="left"><div id="ctl00_ContentPlaceHolder1_DialogSection_headerDiv" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection1" style="cursor: move;"><div style="position:relative;z-index:2;"><div id="ctl00_ContentPlaceHolder1_DialogSection_headerHtml">Section Options</div><table id="ctl00_ContentPlaceHolder1_DialogSection_headerTableR" border="0" cellspacing="0" cellpadding="0" style="position:absolute;right:0px;top:0px;"><tbody><tr><td valign="middle"><img id="ctl00_ContentPlaceHolder1_DialogSection_close" alt="" src="/images/closeDialog.png" style="cursor: default;"></td></tr></tbody></table></div></div></td></tr><tr><td valign="top"><table id="ctl00_ContentPlaceHolder1_DialogSection_contentTable" border="0" style="width:100%;height:100%;" class="eo_no_border_spacing" cellspacing="0" cellpadding="0"><tbody><tr><td height="100%" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection2" align="left" valign="top">
+            <table id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpSection" border="0" cellspacing="0" cellpadding="0">
+		<tbody>
+			<tr>
+				<td valign="top">
+                <p>Adjust the background color, border style, and or the font color for this section</p>
+                
+                <hr>
+                <div class="form-row form-group">
+                    <div class="col-3">Wrap:</div>
+                    <div class="col-3">
+                        <select name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$ddlWrap" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_ddlWrap" class="form-control form-control-xs">
+					<option value="">None</option>
+					<option value="card">Card</option>
+
+				</select>
+                    </div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-3">Background Color:</div>
+                    <div class="col-3"><input name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$tbBGColor" type="text" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_tbBGColor" class="form-control form-control-xs"></div>
+                    <div class="col">
+				<!-- Begin EO.Web ColorPicker cpBGColor.  -->
+				<div style="position:absolute; top:-1000px;"><input type="hidden" name="_eo_js_modules" value="/js/eo/eo.310dad10-dab1-44a7-a637-c218ef9aa3b7.js|i|/js/eo/eo.86c43cce-ff60-427d-9a37-1e16debbe456.js|fmt|/js/eo/eo.e1a21eb1-352a-4a42-b2b6-bbacb24a29d1.js|u|/js/eo/eo.1690bc33-6c82-4e45-a64c-c8c0fde91095.js|c|/js/eo/eo.20891133-56ac-42df-9870-2d95a8ab231e.js|ei|/js/eo/eo.59fe8f2b-e671-41c5-9491-e9b2df72e9ec.js|e|/js/eo/eo.54ab8d54-4fdd-42e1-a5ec-62c40a48bb49.js|pop|/js/eo/eo.e955a919-0660-48a3-972b-6a7e7c13879e.js|dd|/js/eo/eo.a81cac04-7396-436e-96d4-99acb86cb2be.js|dg|/js/eo/eo.b7c1f0df-fb79-4c2c-bf2b-777a822730f2.js|cp"></div>
+<div id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor_b" style="width: 30px; height: 28px; border-color: lightgrey; border-style: solid; border-width: 1px; cursor: pointer;"></div>
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("ldr|i|fmt|u|pop|ei|e|dd|cp", function(){EO25264.g.b.ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor=1;EO25264.r._o_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor=EO25264.f.acg(EO25264.r._o_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor,"cpBGColor",new EO25264.f.acma([[[,"ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor","ColorPicker","ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpBGColor",,,,,,,"__doPostBack('ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpBGColor','_eo_arg_')"],,,[".eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor1|border-bottom-color:#7f9db9;border-bottom-style:solid;border-bottom-width:1px;border-left-color:#7f9db9;border-left-style:solid;border-left-width:1px;border-right-color:#7f9db9;border-right-style:solid;border-right-width:1px;border-top-color:#7f9db9;border-top-style:solid;border-top-width:1px",".eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor2|background-color:white;border-bottom-color:#999999;border-bottom-style:solid;border-bottom-width:1px;border-left-color:#999999;border-left-style:solid;border-left-width:1px;border-right-color:#999999;border-right-style:solid;border-right-width:1px;border-top-color:#999999;border-top-style:solid;border-top-width:1px;color:#0751b8;font-family:arial;font-size:10pt"],"None",,,,,[]],"/WebResource.axd?d=YycwwfSod9sPbIKHe2_ld-zHVSqt38bq8Hj0L66mYdnCwfPqynU8TYsFPny7Lzy4OCPt4Wx7WRUXeP2H1bBY1QBIR_aPa1h6w9dV5nAf-rnxt-qeF4nOi6t-llwUPT9pY_TVTA2&t=638906142105203672","/WebResource.axd?d=2J7gk_s41so2Hx9rTFUm24O2bEgFXnOXnzqgyfDjPyvZ11DLQ0d75q1U_JRD9-veT0gc-K5Uo8QwifM6jecCsPlcEKLvS9EdPBm58oTcLQtp_ARJ3D-8sk_ST8WxKhPvCnRbcCEduMc-k7d9He-boyd4Llk1&t=638906142105203672","/WebResource.axd?d=xG1zwnyoGxTQjsqqUNmJIfPjYJNa8p1ijcC4yq5I9KNjsIUJ-ZT754B5PqujoGR90FHNKF0QAbMtDfusYFomJmG1Y2o_waq5e-hRJ70Dz4r0jvRPTXixWX_VOFxuro-VYl5U9I3Dr3j4sxN4onmnVPfsvRM1&t=638906142105203672",,,,,,,,,,,"/WebResource.axd?d=_qc0p2Vnz7-e9MnRIIIMPi639cqGe28lBhGnmnk9t5IbV_empZcVO1iTqVznco1h6fo5--Smml2N8hBdRkdlXc4OwOi197ZnIYxudtDFrEGcNRUIRMDr4C--Onv7woyGx1DhJC7Wh0RjtzKwDew9TPGcIzk1&t=638906142105203672","/WebResource.axd?d=L3DUa3YPOIwKKPgNU7lmEMd9mIW10rHtW_n4jlhWmpwq-Ag90QfbI2kRADpvQ7ENe1L1KmPiiRi0VkIARRKI3wE1PH75lH5XUn8PEnFsnunE6LbUYRQmiFuGIarHqf58NgtCwNRmpjClJu8oaBg76PK0u0s1&t=638906142105203672",,"ctl00_ContentPlaceHolder1_DialogSection_ctl00_tbBGColor",,,-1,-1,-1,"eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor1"]),"ColorPicker");EO25264.f.ahm(EO25264.r._o_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpBGColor,1,null, 0);});
+//]]>
+</script>
+
+				<!-- End EO.Web ColorPicker cpBGColor.  -->
+				</div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-3">Font Color:</div>
+                    <div class="col-3"><input name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$tbFontColor" type="text" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_tbFontColor" class="form-control form-control-xs"></div>
+                    <div class="col">
+				<!-- Begin EO.Web ColorPicker cpFontColor.  -->
+				<div style="position:absolute; top:-1000px;"><input type="hidden" name="_eo_js_modules" value="/js/eo/eo.310dad10-dab1-44a7-a637-c218ef9aa3b7.js|i|/js/eo/eo.86c43cce-ff60-427d-9a37-1e16debbe456.js|fmt|/js/eo/eo.e1a21eb1-352a-4a42-b2b6-bbacb24a29d1.js|u|/js/eo/eo.1690bc33-6c82-4e45-a64c-c8c0fde91095.js|c|/js/eo/eo.20891133-56ac-42df-9870-2d95a8ab231e.js|ei|/js/eo/eo.59fe8f2b-e671-41c5-9491-e9b2df72e9ec.js|e|/js/eo/eo.54ab8d54-4fdd-42e1-a5ec-62c40a48bb49.js|pop|/js/eo/eo.e955a919-0660-48a3-972b-6a7e7c13879e.js|dd|/js/eo/eo.a81cac04-7396-436e-96d4-99acb86cb2be.js|dg|/js/eo/eo.b7c1f0df-fb79-4c2c-bf2b-777a822730f2.js|cp"></div>
+<div id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor_b" style="width: 30px; height: 28px; border-color: lightgrey; border-style: solid; border-width: 1px; cursor: pointer;"></div>
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("ldr|i|fmt|u|pop|ei|e|dd|cp", function(){EO25264.g.b.ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor=1;EO25264.r._o_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor=EO25264.f.acg(EO25264.r._o_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor,"cpFontColor",new EO25264.f.acma([[[,"ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor","ColorPicker","ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpFontColor",,,,,,,"__doPostBack('ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpFontColor','_eo_arg_')"],,,[".eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor1|border-bottom-color:#7f9db9;border-bottom-style:solid;border-bottom-width:1px;border-left-color:#7f9db9;border-left-style:solid;border-left-width:1px;border-right-color:#7f9db9;border-right-style:solid;border-right-width:1px;border-top-color:#7f9db9;border-top-style:solid;border-top-width:1px",".eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor2|background-color:white;border-bottom-color:#999999;border-bottom-style:solid;border-bottom-width:1px;border-left-color:#999999;border-left-style:solid;border-left-width:1px;border-right-color:#999999;border-right-style:solid;border-right-width:1px;border-top-color:#999999;border-top-style:solid;border-top-width:1px;color:#0751b8;font-family:arial;font-size:10pt"],"None",,,,,[]],"/WebResource.axd?d=YycwwfSod9sPbIKHe2_ld-zHVSqt38bq8Hj0L66mYdnCwfPqynU8TYsFPny7Lzy4OCPt4Wx7WRUXeP2H1bBY1QBIR_aPa1h6w9dV5nAf-rnxt-qeF4nOi6t-llwUPT9pY_TVTA2&t=638906142105203672","/WebResource.axd?d=2J7gk_s41so2Hx9rTFUm24O2bEgFXnOXnzqgyfDjPyvZ11DLQ0d75q1U_JRD9-veT0gc-K5Uo8QwifM6jecCsPlcEKLvS9EdPBm58oTcLQtp_ARJ3D-8sk_ST8WxKhPvCnRbcCEduMc-k7d9He-boyd4Llk1&t=638906142105203672","/WebResource.axd?d=xG1zwnyoGxTQjsqqUNmJIfPjYJNa8p1ijcC4yq5I9KNjsIUJ-ZT754B5PqujoGR90FHNKF0QAbMtDfusYFomJmG1Y2o_waq5e-hRJ70Dz4r0jvRPTXixWX_VOFxuro-VYl5U9I3Dr3j4sxN4onmnVPfsvRM1&t=638906142105203672",,,,,,,,,,,"/WebResource.axd?d=_qc0p2Vnz7-e9MnRIIIMPi639cqGe28lBhGnmnk9t5IbV_empZcVO1iTqVznco1h6fo5--Smml2N8hBdRkdlXc4OwOi197ZnIYxudtDFrEGcNRUIRMDr4C--Onv7woyGx1DhJC7Wh0RjtzKwDew9TPGcIzk1&t=638906142105203672","/WebResource.axd?d=L3DUa3YPOIwKKPgNU7lmEMd9mIW10rHtW_n4jlhWmpwq-Ag90QfbI2kRADpvQ7ENe1L1KmPiiRi0VkIARRKI3wE1PH75lH5XUn8PEnFsnunE6LbUYRQmiFuGIarHqf58NgtCwNRmpjClJu8oaBg76PK0u0s1&t=638906142105203672",,"ctl00_ContentPlaceHolder1_DialogSection_ctl00_tbFontColor",,,-1,-1,-1,"eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor1"]),"ColorPicker");EO25264.f.ahm(EO25264.r._o_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpFontColor,1,null, 0);});
+//]]>
+</script>
+
+				<!-- End EO.Web ColorPicker cpFontColor.  -->
+				</div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-3">Margin top:</div>
+                    <div class="col-3">
+                        <select name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$ddlMarginTop" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_ddlMarginTop" class="form-control form-control-xs">
+					<option value="-01">-1</option>
+					<option value="-02">-2</option>
+					<option value="-03">-3</option>
+					<option value="-04">-4</option>
+					<option value="-05">-5</option>
+					<option value="-06">-6</option>
+					<option value="-07">-7</option>
+					<option value="-08">-8</option>
+					<option value="-09">-9</option>
+					<option value="-10">-10</option>
+					<option value="-11">-11</option>
+					<option value="-12">-12</option>
+					<option value="-13">-13</option>
+					<option value="-14">-14</option>
+					<option value="000">None</option>
+					<option value="001">1</option>
+					<option value="002">2</option>
+					<option value="003">3</option>
+					<option value="004">4</option>
+					<option value="005">5</option>
+					<option value="006">6</option>
+					<option value="007">7</option>
+					<option value="008">8</option>
+					<option value="009">9</option>
+					<option value="010">10</option>
+					<option value="011">11</option>
+					<option value="012">12</option>
+					<option value="013">13</option>
+					<option value="014">14</option>
+
+				</select>
+                    </div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-3">Margin bottom:</div>
+                    <div class="col-3">
+                        <select name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$ddlMarginBottom" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_ddlMarginBottom" class="form-control form-control-xs">
+					<option value="-01">-1</option>
+					<option value="-02">-2</option>
+					<option value="-03">-3</option>
+					<option value="-04">-4</option>
+					<option value="-05">-5</option>
+					<option value="-06">-6</option>
+					<option value="-07">-7</option>
+					<option value="-08">-8</option>
+					<option value="-09">-9</option>
+					<option value="-10">-10</option>
+					<option value="-11">-11</option>
+					<option value="-12">-12</option>
+					<option value="-13">-13</option>
+					<option value="-14">-14</option>
+					<option value="000">None</option>
+					<option value="001">1</option>
+					<option value="002">2</option>
+					<option value="003">3</option>
+					<option value="004">4</option>
+					<option value="005">5</option>
+					<option value="006">6</option>
+					<option value="007">7</option>
+					<option value="008">8</option>
+					<option value="009">9</option>
+					<option value="010">10</option>
+					<option value="011">11</option>
+					<option value="012">12</option>
+					<option value="013">13</option>
+					<option value="014">14</option>
+
+				</select>
+                    </div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-3">Height:</div>
+                    <div class="col-2"><input name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$tbHeight" type="text" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_tbHeight" class="form-control form-control-xs"></div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-3">Fade In Section:</div>
+                    <div class="col-6">
+                        <select name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$ddlAnimationDelay" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_ddlAnimationDelay" class="form-control form-control-xs">
+					<option value="0">No Animation</option>
+					<option value="250">.25 second</option>
+					<option value="500">.5 second</option>
+					<option value="750">.75 second</option>
+					<option value="1000">1 second</option>
+					<option value="1250">1.25 seconds</option>
+					<option value="1500">1.5 seconds</option>
+					<option value="1750">1.75 seconds</option>
+					<option value="2000">2 seconds</option>
+					<option value="2500">2.5 seconds</option>
+					<option value="3000">3 seconds</option>
+
+				</select>
+                    </div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-3">
+                        <a id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_lnkDeleteSection" class="btn btn-link btn-xs text-danger" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$DialogSection$ctl00$lnkDeleteSection','')">Delete</a>
+                        <span id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_lblSectionId" style="color:White;"></span></div>
+                    <div class="col">
+                        <input type="submit" name="ctl00$ContentPlaceHolder1$DialogSection$ctl00$btnSave" value="Save" id="ctl00_ContentPlaceHolder1_DialogSection_ctl00_btnSave" class="btn btn-primary btn-xs"></div>
+                </div>
+            </td>
+			</tr>
+		</tbody>
+	</table>
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("i|c", function(){EO25264.g.b.ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpSection=1;EO25264.r._o_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpSection=EO25264.f.acg(EO25264.r._o_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpSection,"cpSection",new EO25264.f.aaum([[,"ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpSection","Callback","ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpSection",,,,,,,"__doPostBack('ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpSection','_eo_arg_')"],,"__doPostBack('ctl00$ContentPlaceHolder1$DialogSection$ctl00$cpSection','')",,,,,,[["ctl00$ContentPlaceHolder1$DialogSection$ctl00$lnkDeleteSection","delete"]],"<div class='loading'></div>",,,,,,,0,0]),"Callback");EO25264.f.ahm(EO25264.r._o_ctl00_ContentPlaceHolder1_DialogSection_ctl00_cpSection,1,null, 0);});
+//]]>
+</script>
+
+        </td></tr></tbody></table></td></tr><tr><td><div id="ctl00_ContentPlaceHolder1_DialogSection_footerDiv" style="position:relative;width:auto;"><table id="ctl00_ContentPlaceHolder1_DialogSection_footerTable" border="0" cellspacing="0" cellpadding="0" style="width:100%;"><tbody><tr><td id="ctl00_ContentPlaceHolder1_DialogSection_footer" class="eo_align_center eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection3"></td></tr></tbody></table></div></td></tr>
+</tbody></table></td><td style="background-image:url('/images/2013/modal/r.png');background-repeat:repeat-y;font-size:1px;" valign="top"></td></tr><tr><td style="font-size:1px"><img src="/images/2013/modal/bl.png" alt="" tabindex="-1"></td><td style="background-image:url('/images/2013/modal/b.png');background-repeat:repeat-x;font-size:1px;"></td><td style="font-size:1px"><img src="/images/2013/modal/br.png" alt="" tabindex="-1"></td></tr></tbody></table></div><div><table id="ctl00_ContentPlaceHolder1_DialogPageOptions_bdt" cellspacing="0" cellpadding="0" border="0" style="display: none; position: fixed; top: -3000px;"><tbody><tr><td style="font-size:1px"><img src="/images/2013/modal/tl.png" alt="" tabindex="-1"></td><td style="background-image:url('/images/2013/modal/t.png');background-repeat:repeat-x;font-size:1px;"></td><td style="font-size:1px"><img src="/images/2013/modal/tr.png" alt="" tabindex="-1"></td></tr><tr><td style="background-image:url('/images/2013/modal/l.png');background-repeat:repeat-y;font-size:1px;" valign="top"></td><td><table id="ctl00_ContentPlaceHolder1_DialogPageOptions" border="0" class="eo_no_border_spacing" style="width: 800px;" cellspacing="0" cellpadding="0">
+	<tbody><tr><td align="left"><div id="ctl00_ContentPlaceHolder1_DialogPageOptions_headerDiv" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogPageOptions1" style="cursor: move;"><div style="position:relative;z-index:2;"><div id="ctl00_ContentPlaceHolder1_DialogPageOptions_headerHtml">Container Layout</div><table id="ctl00_ContentPlaceHolder1_DialogPageOptions_headerTableR" border="0" cellspacing="0" cellpadding="0" style="position:absolute;right:0px;top:0px;"><tbody><tr><td valign="middle"><img id="ctl00_ContentPlaceHolder1_DialogPageOptions_close" alt="" src="/images/closeDialog.png" style="cursor: default;"></td></tr></tbody></table></div></div></td></tr><tr><td valign="top"><table id="ctl00_ContentPlaceHolder1_DialogPageOptions_contentTable" border="0" style="width:100%;height:100%;" class="eo_no_border_spacing" cellspacing="0" cellpadding="0"><tbody><tr><td height="100%" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogPageOptions2" align="left" valign="top">
+            
+
+            <table id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpLayouts" style="width:100%;width:100%;" border="0" cellspacing="0" cellpadding="0">
+		<tbody>
+			<tr>
+				<td valign="top">
+                <p><span id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_lblLayoutInstructions"></span></p>
+                <div id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_pnlLayouts" class="p-3">
+					
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="p-2">
+                                <h3>1 or 4 Sections</h3>
+                                <div id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_pnlOneCol">
+
+					</div>
+                                <div id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_pnlFourCol">
+
+					</div>
+                            </div>
+                            
+                        </div>
+                        <div class="col-4">
+                            <div class="p-2">
+                            <h3>2 Sections</h3>
+                            <div id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_pnl2Col">
+
+					</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="p-2">
+                                <h3>3 Sections</h3>
+                                <div id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_pnl3Col">
+
+					</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$btnAddSection" value="Add a Section" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_btnAddSection" class="btn btn-link btn-xs">
+                    </div>
+                    <hr>
+                <input name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$tbLayoutSelection" type="text" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_tbLayoutSelection" class="layoutid d-none">
+                <div id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_pnlOptions" class="layoutOpt">
+						
+                    <div id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_pnlPosition" class="form-row form-group">
+							
+                    <div class="col-3">
+                        Position:
+                    </div>
+                    <div class="col-3">
+                        <select name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$ddlPosition" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_ddlPosition" class="form-control form-control-xs">
+								<option value="0">Bottom of page</option>
+								<option value="1">Top of page</option>
+
+							</select>
+                    </div>
+                
+						</div>
+                    <div class="form-row form-group">
+                    <div class="col-3">
+                        Background Color:
+                    </div>
+                    <div class="col-3">
+                        <input name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$tbContainerBG" type="text" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_tbContainerBG" class="form-control form-control-xs">
+                    </div>
+                    <div class="col-2">
+                        
+						<!-- Begin EO.Web ColorPicker cpContainerBG.  -->
+						<div style="position:absolute; top:-1000px;"><input type="hidden" name="_eo_js_modules" value="/js/eo/eo.310dad10-dab1-44a7-a637-c218ef9aa3b7.js|i|/js/eo/eo.86c43cce-ff60-427d-9a37-1e16debbe456.js|fmt|/js/eo/eo.e1a21eb1-352a-4a42-b2b6-bbacb24a29d1.js|u|/js/eo/eo.1690bc33-6c82-4e45-a64c-c8c0fde91095.js|c|/js/eo/eo.20891133-56ac-42df-9870-2d95a8ab231e.js|ei|/js/eo/eo.59fe8f2b-e671-41c5-9491-e9b2df72e9ec.js|e|/js/eo/eo.54ab8d54-4fdd-42e1-a5ec-62c40a48bb49.js|pop|/js/eo/eo.e955a919-0660-48a3-972b-6a7e7c13879e.js|dd|/js/eo/eo.a81cac04-7396-436e-96d4-99acb86cb2be.js|dg|/js/eo/eo.b7c1f0df-fb79-4c2c-bf2b-777a822730f2.js|cp"></div>
+<div id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG_b" style="width: 30px; height: 28px; border-color: lightgrey; border-style: solid; border-width: 1px; cursor: pointer;"></div>
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("ldr|i|fmt|u|pop|ei|e|dd|cp", function(){EO25264.g.b.ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG=1;EO25264.r._o_ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG=EO25264.f.acg(EO25264.r._o_ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG,"cpContainerBG",new EO25264.f.acma([[[,"ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG","ColorPicker","ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$cpContainerBG",,,,,,,"__doPostBack('ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$cpContainerBG','_eo_arg_')"],,,[".eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG1|background-color:white;border-bottom-color:#999999;border-bottom-style:solid;border-bottom-width:1px;border-left-color:#999999;border-left-style:solid;border-left-width:1px;border-right-color:#999999;border-right-style:solid;border-right-width:1px;border-top-color:#999999;border-top-style:solid;border-top-width:1px;color:#0751b8;font-family:arial;font-size:10pt"],"None",,,,,[]],"/WebResource.axd?d=YycwwfSod9sPbIKHe2_ld-zHVSqt38bq8Hj0L66mYdnCwfPqynU8TYsFPny7Lzy4OCPt4Wx7WRUXeP2H1bBY1QBIR_aPa1h6w9dV5nAf-rnxt-qeF4nOi6t-llwUPT9pY_TVTA2&t=638906142105203672","/WebResource.axd?d=2J7gk_s41so2Hx9rTFUm24O2bEgFXnOXnzqgyfDjPyvZ11DLQ0d75q1U_JRD9-veT0gc-K5Uo8QwifM6jecCsPlcEKLvS9EdPBm58oTcLQtp_ARJ3D-8sk_ST8WxKhPvCnRbcCEduMc-k7d9He-boyd4Llk1&t=638906142105203672","/WebResource.axd?d=xG1zwnyoGxTQjsqqUNmJIfPjYJNa8p1ijcC4yq5I9KNjsIUJ-ZT754B5PqujoGR90FHNKF0QAbMtDfusYFomJmG1Y2o_waq5e-hRJ70Dz4r0jvRPTXixWX_VOFxuro-VYl5U9I3Dr3j4sxN4onmnVPfsvRM1&t=638906142105203672",,,,,,,,,,,"/WebResource.axd?d=_qc0p2Vnz7-e9MnRIIIMPi639cqGe28lBhGnmnk9t5IbV_empZcVO1iTqVznco1h6fo5--Smml2N8hBdRkdlXc4OwOi197ZnIYxudtDFrEGcNRUIRMDr4C--Onv7woyGx1DhJC7Wh0RjtzKwDew9TPGcIzk1&t=638906142105203672","/WebResource.axd?d=L3DUa3YPOIwKKPgNU7lmEMd9mIW10rHtW_n4jlhWmpwq-Ag90QfbI2kRADpvQ7ENe1L1KmPiiRi0VkIARRKI3wE1PH75lH5XUn8PEnFsnunE6LbUYRQmiFuGIarHqf58NgtCwNRmpjClJu8oaBg76PK0u0s1&t=638906142105203672",,"ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_tbContainerBG",,,-1,-1,-1]),"ColorPicker");EO25264.f.ahm(EO25264.r._o_ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpContainerBG,1,null, 0);});
+//]]>
+</script>
+
+						<!-- End EO.Web ColorPicker cpContainerBG.  -->
+						
+                    </div>
+                </div>
+                    <div class="form-row form-group">
+                    <div class="col-3">Background Color Full Width:</div>
+                    <div class="col-3"><input id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cbBGColorFull" type="checkbox" name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$cbBGColorFull"></div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-3">
+                        Bottom Curve:
+                    </div>
+                    <div class="col-3">
+                        <select name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$ddlCurveType" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_ddlCurveType" class="form-control form-control-xs">
+							<option value="">No Curve</option>
+							<option value="1">Smiley</option>
+							<option value="2">Frown</option>
+							<option value="3">Diagonal</option>
+							<option value="4">Reverse Diagonal</option>
+							<option value="5">Swoop Right</option>
+							<option value="6">Swoop Left</option>
+
+						</select>
+                    </div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-3">
+                        Content Full Width:
+                    </div>
+                    <div class="col-3">
+                        <input id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cbFullWidth" type="checkbox" name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$cbFullWidth">
+                    </div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-3">Padding:</div>
+                    <div class="col-5">
+                        <div class="form-row row">
+                            <div class="col-3">
+                                Top
+                            </div>
+                            <div class="col-3">
+                                Bottom
+                            </div>
+                            <div class="col-3">
+                                Left
+                            </div>
+                            <div class="col-3">
+                                Right
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col text-right">
+                        
+                        
+                    </div>
+                </div>
+                <div class="form-row form-group">
+                    <div class="col-3"></div>
+                    <div class="col-5">
+                        <div class="form-row row">
+                            <div class="col-3">
+                                 <select name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$ddlTopPadding" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_ddlTopPadding" class="form-control form-control-xs">
+							<option value="00">None</option>
+							<option value="01">1</option>
+							<option value="02">2</option>
+							<option value="03">3</option>
+							<option value="04">4</option>
+							<option value="05">5</option>
+							<option value="06">6</option>
+							<option value="07">7</option>
+							<option value="08">8</option>
+							<option value="09">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+
+						</select>
+                            </div>
+                            <div class="col-3">
+                                <select name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$ddlBottomPadding" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_ddlBottomPadding" class="form-control form-control-xs">
+							<option value="00">None</option>
+							<option value="01">1</option>
+							<option value="02">2</option>
+							<option value="03">3</option>
+							<option value="04">4</option>
+							<option value="05">5</option>
+							<option value="06">6</option>
+							<option value="07">7</option>
+							<option value="08">8</option>
+							<option value="09">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+
+						</select>
+                            </div>
+                            <div class="col-3">
+                                <select name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$ddlLeftPadding" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_ddlLeftPadding" class="form-control form-control-xs">
+							<option value="00">None</option>
+							<option value="01">1</option>
+							<option value="02">2</option>
+							<option value="03">3</option>
+							<option value="04">4</option>
+							<option value="05">5</option>
+							<option value="06">6</option>
+							<option value="07">7</option>
+							<option value="08">8</option>
+							<option value="09">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+
+						</select>
+                            </div>
+                            <div class="col-3">
+                                <select name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$ddlRightPadding" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_ddlRightPadding" class="form-control form-control-xs">
+							<option value="00">None</option>
+							<option value="01">1</option>
+							<option value="02">2</option>
+							<option value="03">3</option>
+							<option value="04">4</option>
+							<option value="05">5</option>
+							<option value="06">6</option>
+							<option value="07">7</option>
+							<option value="08">8</option>
+							<option value="09">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+
+						</select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col text-right">
+                        <input type="submit" name="ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$btnSaveContainer" value="Save Container" id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_btnSaveContainer" class="btn btn-primary btn-xs">
+                    </div>
+                </div>
+                    
+                
+					</div>
+                
+				</div>
+                
+                
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("div.lbox").mouseenter(function () {
+                        $(this).addClass("sdw");
+                    }).mouseleave(function () {
+                        $(this).removeClass("sdw");
+                    });
+                });
+            </script>
+                <span id="ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_lblContainer" style="color:White;"></span>
+            </td>
+			</tr>
+		</tbody>
+	</table>
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("i|c", function(){EO25264.g.b.ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpLayouts=1;EO25264.r._o_ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpLayouts=EO25264.f.acg(EO25264.r._o_ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpLayouts,"cpLayouts",new EO25264.f.aaum([[,"ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpLayouts","Callback","ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$cpLayouts",,,,,,,"__doPostBack('ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$cpLayouts','_eo_arg_')"],,"__doPostBack('ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$cpLayouts','')",,,,,,[["ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$btnDeleteContainer","destroy"],["ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$btnSaveContainer","save"],["ctl00$ContentPlaceHolder1$DialogPageOptions$ctl00$btnAddSection","add"]],"<div class='loading'></div>",,,,,,,,0]),"Callback");EO25264.f.ahm(EO25264.r._o_ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00_cpLayouts,1,null, 0);});
+//]]>
+</script>
+
+
+            
+        </td></tr></tbody></table></td></tr><tr><td><div id="ctl00_ContentPlaceHolder1_DialogPageOptions_footerDiv" style="position:relative;width:auto;"><table id="ctl00_ContentPlaceHolder1_DialogPageOptions_footerTable" border="0" cellspacing="0" cellpadding="0" style="width:100%;"><tbody><tr><td id="ctl00_ContentPlaceHolder1_DialogPageOptions_footer" class="eo_align_center eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogPageOptions3">
+
+        </td></tr></tbody></table></div></td></tr>
+</tbody></table></td><td style="background-image:url('/images/2013/modal/r.png');background-repeat:repeat-y;font-size:1px;" valign="top"></td></tr><tr><td style="font-size:1px"><img src="/images/2013/modal/bl.png" alt="" tabindex="-1"></td><td style="background-image:url('/images/2013/modal/b.png');background-repeat:repeat-x;font-size:1px;"></td><td style="font-size:1px"><img src="/images/2013/modal/br.png" alt="" tabindex="-1"></td></tr></tbody></table></div><div><table id="ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_bdt" cellspacing="0" cellpadding="0" border="0" style="display: none; position: fixed; top: -3000px;"><tbody><tr><td style="font-size:1px"><img src="/images/2013/modal/tl.png" alt="" tabindex="-1"></td><td style="background-image:url('/images/2013/modal/t.png');background-repeat:repeat-x;font-size:1px;"></td><td style="font-size:1px"><img src="/images/2013/modal/tr.png" alt="" tabindex="-1"></td></tr><tr><td style="background-image:url('/images/2013/modal/l.png');background-repeat:repeat-y;font-size:1px;" valign="top"></td><td><table id="ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager" border="0" class="eo_no_border_spacing" style="width: 800px;" cellspacing="0" cellpadding="0">
+	<tbody><tr><td align="left"><div id="ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_headerDiv" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager1" style="cursor: move;"><div style="position:relative;z-index:2;"><div id="ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_headerHtml">SINC Content Manager</div><table id="ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_headerTableR" border="0" cellspacing="0" cellpadding="0" style="position:absolute;right:0px;top:0px;"><tbody><tr><td valign="middle"><img id="ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_close" alt="" src="/images/closeDialog.png" style="cursor: default;"></td></tr></tbody></table></div></div></td></tr><tr><td valign="top"><table id="ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_contentTable" border="0" style="width:100%;height:100%;" class="eo_no_border_spacing" cellspacing="0" cellpadding="0"><tbody><tr><td height="100%" class="eo_css_ctrl_ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager2" align="left" valign="top">
+<table id="ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_ctl00_cbpContentManager" border="0" cellspacing="0" cellpadding="0">
+		<tbody>
+			<tr>
+				<td valign="top">
+    
+        
+        
+        
+        
+        </td>
+			</tr>
+		</tbody>
+	</table>
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("i|c", function(){EO25264.g.b.ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_ctl00_cbpContentManager=1;EO25264.r._o_ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_ctl00_cbpContentManager=EO25264.f.acg(EO25264.r._o_ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_ctl00_cbpContentManager,"cbpContentManager",new EO25264.f.aaum([[,"ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_ctl00_cbpContentManager","Callback","ctl00$ContentPlaceHolder1$SICCM$Dialog_ContentManager$ctl00$cbpContentManager",,,,,,,"__doPostBack('ctl00$ContentPlaceHolder1$SICCM$Dialog_ContentManager$ctl00$cbpContentManager','_eo_arg_')"],,"__doPostBack('ctl00$ContentPlaceHolder1$SICCM$Dialog_ContentManager$ctl00$cbpContentManager','')",,,,,,[],"<div class='loading'></div>",,,,,,,0,0]),"Callback");EO25264.f.ahm(EO25264.r._o_ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_ctl00_cbpContentManager,1,null, 0);});
+//]]>
+</script>
+
+    </td></tr></tbody></table></td></tr><tr><td><div id="ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_footerDiv" style="position:relative;width:auto;"><table id="ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_footerTable" border="0" cellspacing="0" cellpadding="0" style="width:100%;"><tbody><tr><td id="ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_footer" class="eo_align_center eo_css_ctrl_ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager3"></td></tr></tbody></table></div></td></tr>
+</tbody></table></td><td style="background-image:url('/images/2013/modal/r.png');background-repeat:repeat-y;font-size:1px;" valign="top"></td></tr><tr><td style="font-size:1px"><img src="/images/2013/modal/bl.png" alt="" tabindex="-1"></td><td style="background-image:url('/images/2013/modal/b.png');background-repeat:repeat-x;font-size:1px;"></td><td style="font-size:1px"><img src="/images/2013/modal/br.png" alt="" tabindex="-1"></td></tr></tbody></table></div><div></div><div></div></div>
+<script type="text/javascript" src="/js/eo/eo.20891133-56ac-42df-9870-2d95a8ab231e.js"></script>
+<script type="text/javascript" src="/js/eo/eo.59fe8f2b-e671-41c5-9491-e9b2df72e9ec.js"></script>
+<script type="text/javascript" src="/js/eo/eo.54ab8d54-4fdd-42e1-a5ec-62c40a48bb49.js"></script>
+<script type="text/javascript" src="/js/eo/eo.e955a919-0660-48a3-972b-6a7e7c13879e.js"></script>
+<script type="text/javascript" src="/js/eo/eo.a81cac04-7396-436e-96d4-99acb86cb2be.js"></script>
+<script type="text/javascript" src="/js/eo/eo.b7c1f0df-fb79-4c2c-bf2b-777a822730f2.js"></script>
+        
+<nav id="nav" class="navbar navbar-expand-lg navbar-light bg-gray-200 border-bottom fixed-top p-2 pr-0 pl-0 shadow">
+    <div class="container-fluid">
+        <!-- Brand -->
+        <a id="ctl00_navbar_lnkSportLogo" class="navbar-brand d-inline-block d-md-none" href="/Default.aspx">
+            <img src="/images/sincsports/sinc_line.png" alt="SincSports" style="height:35px;">
+        </a>
+        <!-- Toggler -->
+        <a class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="mdi mdi-menu"></i>
+        </a>
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <!-- Toggler -->
+            <a class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="mdi mdi-menu"></i>
+            </a>
+            <!-- Navigation -->
+            <ul class="navbar-nav w-100 navbar-condensed">
+                
+                <li class="nav-item dropdown"><a class="nav-link" href="#"><i class="mdi mdi-menu d-lg-block d-none"></i><span class="d-lg-none d-block">MENU</span></a><ul class="dml dropdown-menu"><li class="dropdown-item"><a href="/TTMassMail.aspx?tid=AFCWIN" class="dropdown-link">Contact Event<img src="/images/smbar/mail.png" class="float-right" border="0"></a></li><li class="dropdown-item"><a href="/dash.aspx?id=&amp;tid=AFCWIN&amp;tasks=Y&amp;sinc=N" class="dropdown-link">Event Tasks</a></li><li class="dropdown-item dropright"><a href="#" class="dropdown-link dropdown-toggle" data-toggle="dropdown">My Account</a><ul class="dropdown-menu"><li class="dropdown-item"><a href="TTLogin.aspx" class="dropdown-link" data-toggle="dropdown">Login to view your account</a></li></ul></li><li class="dropdown-item dropright"><a href="#" class="dropdown-link dropdown-toggle" data-toggle="dropdown">Soccer in college</a><ul class="dropdown-menu"><li class="dropdown-item"><a href="colleges.aspx" class="dropdown-link" data-toggle="dropdown">Colleges</a></li><li class="dropdown-item"><a href="events.aspx" class="dropdown-link" data-toggle="dropdown">Tournaments</a></li><li class="dropdown-item"><a href="events.aspx?leagues=Y" class="dropdown-link" data-toggle="dropdown">Leagues</a></li><li class="dropdown-item"><a href="sicClubs.aspx" class="dropdown-link" data-toggle="dropdown">Teams</a></li><li class="dropdown-item"><a href="sicAthletes.aspx" class="dropdown-link" data-toggle="dropdown">Athletes</a></li></ul></li><li class="dropdown-item dropright"><a href="#" class="dropdown-link dropdown-toggle" data-toggle="dropdown">USA Rank</a><ul class="dropdown-menu"><li class="dropdown-item"><a href="https://usa.sincsports.com/rank/about" target="_blank" class="dropdown-link" data-toggle="dropdown">How USA Rank works</a></li><li class="dropdown-item"><a href="https://usa.sincsports.com/rank/view" target="_blank" class="dropdown-link" data-toggle="dropdown">View Rankings</a></li></ul></li><li class="dropdown-item dropright"><a href="#" class="dropdown-link dropdown-toggle" data-toggle="dropdown">SincSports</a><ul class="dropdown-menu"><li class="dropdown-item"><a href="http://sincmyteam.com" target="_blank" class="dropdown-link" data-toggle="dropdown">Sinc My Team</a></li><li class="dropdown-item"><a href="/sicTournaments.aspx" class="dropdown-link" data-toggle="dropdown">Upcoming Events</a></li><li class="dropdown-item"><a href="https://www.sincsports.com" target="_blank" class="dropdown-link" data-toggle="dropdown">Promote Your Event</a></li></ul></li><li class="dropdown-item dropright"><a href="#" class="dropdown-link dropdown-toggle" data-toggle="dropdown">Help &amp; Support</a><ul class="dropdown-menu"><li class="dropdown-item"><a href="/sicSupport.aspx" class="dropdown-link" data-toggle="dropdown">Contact Us</a></li></ul></li></ul></li><li class="nav-item"><a href="/TTIntro.aspx?tid=AFCWIN&amp;tab=1&amp;sub=0" class="nav-link">Home</a></li><li class="current nav-item dropdown"><a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Registration</a><ul class="dropdown-menu"><li class="dropdown-item"><a href="/TTApply0.aspx?tid=AFCWIN&amp;tab=2&amp;sub=1" class="dropdown-link">New Application</a></li></ul></li><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Information</a><ul class="dropdown-menu"><li class="dropdown-item"><a href="/TTMore.aspx?tid=AFCWIN&amp;tab=3&amp;sub=1&amp;Qual=MISC&amp;Seq=15" class="dropdown-link">General Information</a></li><li class="dropdown-item"><a href="/TTMore.aspx?tid=AFCWIN&amp;tab=3&amp;sub=2&amp;Qual=MISC&amp;Seq=9" class="dropdown-link">Online Check-In</a></li><li class="dropdown-item"><a href="/TTCheckList.aspx?tid=AFCWIN&amp;tab=3&amp;sub=3&amp;Page=2" class="dropdown-link">Rules &amp; Documents</a></li><li class="dropdown-item"><a href="/TTScores.aspx?tid=AFCWIN&amp;tab=3&amp;sub=4" class="dropdown-link">Scoring Rules</a></li></ul></li><li class="nav-item"><a href="/TTMore.aspx?tid=AFCWIN&amp;tab=4&amp;sub=0&amp;Qual=MISC&amp;Seq=7" class="nav-link">Referees</a></li><li class="nav-item"><a href="/teamlist.aspx?tid=AFCWIN&amp;tab=5&amp;sub=0" class="nav-link">Teams/Divisions</a></li><li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Schedules</a><ul class="dropdown-menu"><li class="dropdown-item"><a href="/TTSchedules2.aspx?tid=AFCWIN&amp;tab=6&amp;sub=1" class="dropdown-link">Schedules</a></li><li class="dropdown-item"><a href="/TTResults.aspx?tid=AFCWIN&amp;tab=6&amp;sub=2" class="dropdown-link">Standings</a></li></ul></li><li class="nav-item"><a href="/TTMore.aspx?tid=AFCWIN&amp;tab=7&amp;sub=0&amp;Qual=MISC&amp;Seq=5" class="nav-link">Venues</a></li><li class="nav-item"><a href="/TTMore.aspx?tid=AFCWIN&amp;tab=8&amp;sub=0&amp;Qual=MISC&amp;Seq=4" class="nav-link">Hotels</a></li>
+                <li class=" flex-grow-1"></li>
+                <li class="nav-item dropdown">
+                    <a id="ctl00_navbar_lnkLogin" class="navbar-btn btn btn-sm btn-pill btn-white lift ml-auto text-primary" href="/TTLogin.aspx">Log In / Sign Up</a>
+                    
+              </li>
+            </ul>
+
+
+        </div>
+    </div>
+</nav>
+<div class="collapse mt-10" id="searchTB">
+    <div class="container">
+        <div class="d-flex">
+            <select name="ctl00$navbar$ddlSearchType" id="ctl00_navbar_ddlSearchType" class="form-control mr-2">
+	<option value="people">People Search</option>
+	<option value="event">Event Search</option>
+	<option value="usarank">USA Rank ID</option>
+
+</select>
+            <input name="ctl00$navbar$tbSearch" type="text" id="ctl00_navbar_tbSearch" class="form-control mr-2">
+            <a href="#" class="btn btn-primary" onclick="eo_Callback('cpSearch', 'search'); return false;">Search</a>
+        </div>
+        <div>
+            <div style="position:absolute; top:-1000px;"><input type="hidden" name="eo_version" value="25.2.64.0"><input type="hidden" name="eo_style_keys" value="/wFk"><input type="hidden" name="__eo_obj_states"></div>
+<script type="text/javascript">
+//<![CDATA[
+EO25264.r.product='EO.Web';
+EO25264.r.debug=0;
+EO25264.r.aspnet11=0;
+var eo_culture_i=eval('({"name":"","numberFormat":{"CurrencyDecimalDigits":2,"CurrencyDecimalSeparator":".","IsReadOnly":true,"CurrencyGroupSizes":[3],"NumberGroupSizes":[3],"PercentGroupSizes":[3],"CurrencyGroupSeparator":",","CurrencySymbol":"\u00A4","NaNSymbol":"NaN","CurrencyNegativePattern":0,"NumberNegativePattern":1,"PercentPositivePattern":0,"PercentNegativePattern":0,"NegativeInfinitySymbol":"-Infinity","NegativeSign":"-","NumberDecimalDigits":2,"NumberDecimalSeparator":".","NumberGroupSeparator":",","CurrencyPositivePattern":0,"PositiveInfinitySymbol":"Infinity","PositiveSign":"+","PercentDecimalDigits":2,"PercentDecimalSeparator":".","PercentGroupSeparator":",","PercentSymbol":"%","PerMilleSymbol":"\u2030","NativeDigits":["0","1","2","3","4","5","6","7","8","9"],"DigitSubstitution":1},"dateTimeFormat":{"AMDesignator":"AM","Calendar":{"MinSupportedDateTime":"@-62135568000000@","MaxSupportedDateTime":"@253402300799999@","AlgorithmType":1,"CalendarType":1,"Eras":[1],"TwoDigitYearMax":2029,"IsReadOnly":true},"DateSeparator":"/","FirstDayOfWeek":0,"CalendarWeekRule":0,"FullDateTimePattern":"dddd, dd MMMM yyyy HH:mm:ss","LongDatePattern":"dddd, dd MMMM yyyy","LongTimePattern":"HH:mm:ss","MonthDayPattern":"MMMM dd","PMDesignator":"PM","RFC1123Pattern":"ddd, dd MMM yyyy HH\':\'mm\':\'ss \'GMT\'","ShortDatePattern":"MM/dd/yyyy","ShortTimePattern":"HH:mm","SortableDateTimePattern":"yyyy\'-\'MM\'-\'dd\'T\'HH\':\'mm\':\'ss","TimeSeparator":":","UniversalSortableDateTimePattern":"yyyy\'-\'MM\'-\'dd HH\':\'mm\':\'ss\'Z\'","YearMonthPattern":"yyyy MMMM","AbbreviatedDayNames":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"ShortestDayNames":["Su","Mo","Tu","We","Th","Fr","Sa"],"DayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"AbbreviatedMonthNames":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec",""],"MonthNames":["January","February","March","April","May","June","July","August","September","October","November","December",""],"IsReadOnly":true,"NativeCalendarName":"Gregorian Calendar","AbbreviatedMonthGenitiveNames":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec",""],"MonthGenitiveNames":["January","February","March","April","May","June","July","August","September","October","November","December",""]}})');//eo_culture_i
+var eo_culture=eval('({"name":"en-US","numberFormat":{"CurrencyDecimalDigits":2,"CurrencyDecimalSeparator":".","IsReadOnly":false,"CurrencyGroupSizes":[3],"NumberGroupSizes":[3],"PercentGroupSizes":[3],"CurrencyGroupSeparator":",","CurrencySymbol":"$","NaNSymbol":"NaN","CurrencyNegativePattern":0,"NumberNegativePattern":1,"PercentPositivePattern":0,"PercentNegativePattern":0,"NegativeInfinitySymbol":"-Infinity","NegativeSign":"-","NumberDecimalDigits":2,"NumberDecimalSeparator":".","NumberGroupSeparator":",","CurrencyPositivePattern":0,"PositiveInfinitySymbol":"Infinity","PositiveSign":"+","PercentDecimalDigits":2,"PercentDecimalSeparator":".","PercentGroupSeparator":",","PercentSymbol":"%","PerMilleSymbol":"‰","NativeDigits":["0","1","2","3","4","5","6","7","8","9"],"DigitSubstitution":1},"dateTimeFormat":{"AMDesignator":"AM","Calendar":{"MinSupportedDateTime":new Date(-62135568000000),"MaxSupportedDateTime":new Date(253402300799999),"AlgorithmType":1,"CalendarType":1,"Eras":[1],"TwoDigitYearMax":2029,"IsReadOnly":false},"DateSeparator":"/","FirstDayOfWeek":0,"CalendarWeekRule":0,"FullDateTimePattern":"dddd, MMMM dd, yyyy h:mm:ss tt","LongDatePattern":"dddd, MMMM dd, yyyy","LongTimePattern":"h:mm:ss tt","MonthDayPattern":"MMMM dd","PMDesignator":"PM","RFC1123Pattern":"ddd, dd MMM yyyy HH\u0027:\u0027mm\u0027:\u0027ss \u0027GMT\u0027","ShortDatePattern":"M/d/yyyy","ShortTimePattern":"h:mm tt","SortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd\u0027T\u0027HH\u0027:\u0027mm\u0027:\u0027ss","TimeSeparator":":","UniversalSortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd HH\u0027:\u0027mm\u0027:\u0027ss\u0027Z\u0027","YearMonthPattern":"MMMM, yyyy","AbbreviatedDayNames":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"ShortestDayNames":["Su","Mo","Tu","We","Th","Fr","Sa"],"DayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"AbbreviatedMonthNames":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec",""],"MonthNames":["January","February","March","April","May","June","July","August","September","October","November","December",""],"IsReadOnly":false,"NativeCalendarName":"Gregorian Calendar","AbbreviatedMonthGenitiveNames":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec",""],"MonthGenitiveNames":["January","February","March","April","May","June","July","August","September","October","November","December",""]}})');//eo_culture
+
+//]]>
+</script>
+<table id="ctl00_navbar_cpSearch" style="width:100%;width:100%;" border="0" cellspacing="0" cellpadding="0">
+	<tbody>
+		<tr>
+			<td valign="top">
+                
+            </td>
+		</tr>
+	</tbody>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("i|c", function(){EO25264.g.b.ctl00_navbar_cpSearch=1;EO25264.r._o_ctl00_navbar_cpSearch=EO25264.f.acg(EO25264.r._o_ctl00_navbar_cpSearch,"cpSearch",new EO25264.f.aaum([[,"ctl00_navbar_cpSearch","Callback","ctl00$navbar$cpSearch",,,,,,,"__doPostBack('ctl00$navbar$cpSearch','_eo_arg_')"],,"__doPostBack('ctl00$navbar$cpSearch','')",,,,,,[],"<div class='loading'></div>",,,,,,,,0]),"Callback");EO25264.f.ahm(EO25264.r._o_ctl00_navbar_cpSearch,1,null, 0);});
+//]]>
+</script>
+
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+.mergeAthleteDiv 
+{
+	font-family: Arial, Helvetica, sans-serif; font-size: 12px; width:250px;z-index: 10000000;margin-top:68px;
+	color: #000; padding: 10px 10px 5px 10px; -webkit-border-bottom-right-radius: 10px;-moz-border-radius-bottomright: 10px;background: #fefefe;
+	background:-moz-linear-gradient(top,#fefefe 0%,#b7b7b7); background: -webkit-gradient(linear, left top, left bottom, from(#fefefe),to(#b7b7b7));
+	border: 0px solid #474747;-moz-box-shadow:0px 0px 0px rgba(000,000,000,0.5),inset 0px 0px 9px rgba(255,255,255,1);
+	-webkit-box-shadow: 0px 0px 0px rgba(000,000,000,0.5),inset 0px 0px 9px rgba(255,255,255,1);
+	-moz-box-shadow: 2px 5px 15px #9a9a9a;-webkit-box-shadow: 3px 5px 15px #9a9a9a;
+}
+
+</style>
+<script type="text/javascript" language="javascript">
+    function MergeAthlete(img, Athleteid) {
+        $(".amerge").attr("src", "/images/mergeSignRed.png");
+        $(".pmerge").hide();
+        $(".merge").hide();
+        $(img).hide();
+        eo_Callback('ctl00_navbar_sicAthleteMerge_cpMergeAthleteControl', Athleteid + "|" + img.id);
+        return false;
+    }
+
+    function cancelAthleteMerge() {
+        $(".amerge").attr("src", "/images/mergeSign.png");
+        $(".pmerge").show();
+        $(".amerge").show();
+        $(".merge").show();
+        var showthis = $('ctl00_navbar_sicAthleteMerge_lblFirstAthleteId').html();
+        if (showthis != "")
+            $('#' + showthis).show();
+        eo_Callback('ctl00_navbar_sicAthleteMerge_cpMergeAthleteControl', 'clear');
+        return false;
+        
+    }
+</script>
+<table id="ctl00_navbar_sicAthleteMerge_cpMergeAthleteControl" border="0" cellspacing="0" cellpadding="0">
+	<tbody>
+		<tr>
+			<td valign="top">
+        
+</td>
+		</tr>
+	</tbody>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("i|c", function(){EO25264.g.b.ctl00_navbar_sicAthleteMerge_cpMergeAthleteControl=1;EO25264.r._o_ctl00_navbar_sicAthleteMerge_cpMergeAthleteControl=EO25264.f.acg(EO25264.r._o_ctl00_navbar_sicAthleteMerge_cpMergeAthleteControl,"cpMergeAthleteControl",new EO25264.f.aaum([[,"ctl00_navbar_sicAthleteMerge_cpMergeAthleteControl","Callback","ctl00$navbar$sicAthleteMerge$cpMergeAthleteControl",,,,,,,"__doPostBack('ctl00$navbar$sicAthleteMerge$cpMergeAthleteControl','_eo_arg_')"],,"__doPostBack('ctl00$navbar$sicAthleteMerge$cpMergeAthleteControl','')",,,,,,[],,,,,,,,0,0]),"Callback");EO25264.f.ahm(EO25264.r._o_ctl00_navbar_sicAthleteMerge_cpMergeAthleteControl,1,null, 0);});
+//]]>
+</script>
+
+
+
+<!-- Begin EO.Web Dialog dialogHandleAlert.  -->
+
+<script type="text/javascript">
+//<![CDATA[
+EO25264.f.asv();
+//]]>
+</script>
+<table id="ctl00_navbar_dialogHandleAlert" border="0" class="eo_no_border_spacing" style="width: 400px; display: none; position: fixed; top: -3000px;" cellspacing="0" cellpadding="0">
+	<tbody><tr><td align="left"><div id="ctl00_navbar_dialogHandleAlert_headerDiv" style="cursor: move;"><div style="position:relative;z-index:2;"><div id="ctl00_navbar_dialogHandleAlert_headerHtml">SincSports Alert</div><table id="ctl00_navbar_dialogHandleAlert_headerTableR" border="0" cellspacing="0" cellpadding="0" style="position:absolute;right:0px;top:0px;"><tbody><tr><td valign="middle"><img id="ctl00_navbar_dialogHandleAlert_close" alt="" style="display: none; cursor: default;"></td></tr></tbody></table></div></div></td></tr><tr><td valign="top"><table id="ctl00_navbar_dialogHandleAlert_contentTable" border="0" style="width:100%;height:100%;" class="eo_no_border_spacing" cellspacing="0" cellpadding="0"><tbody><tr><td height="100%" align="left" valign="top">
+        <p>
+        </p>
+        <span id="ctl00_navbar_dialogHandleAlert_ctl00_lblType"></span>
+        <div class="text-center">
+             <a id="ctl00_navbar_dialogHandleAlert_ctl00_lnkHandleAlert" class="btn btn-danger">Handle Alert</a>
+        </div>
+       
+    </td></tr></tbody></table></td></tr><tr><td><div id="ctl00_navbar_dialogHandleAlert_footerDiv" style="position:relative;width:auto;"><table id="ctl00_navbar_dialogHandleAlert_footerTable" border="0" cellspacing="0" cellpadding="0" style="width:100%;"><tbody><tr><td id="ctl00_navbar_dialogHandleAlert_footer" class="eo_align_center"></td></tr></tbody></table></div></td></tr>
+</tbody></table>
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("ldr|i|fmt|u|ei|e|pop|dd|c|dg", function(){EO25264.g.b.ctl00_navbar_dialogHandleAlert=1;EO25264.r._o_ctl00_navbar_dialogHandleAlert=EO25264.f.acg(EO25264.r._o_ctl00_navbar_dialogHandleAlert,"dialogHandleAlert",new EO25264.f.bak([[[,"ctl00_navbar_dialogHandleAlert","Dialog","ctl00$navbar$dialogHandleAlert",,,,,,,"__doPostBack('ctl00$navbar$dialogHandleAlert','_eo_arg_')"],,,,,,,,,[]],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"/js/eo/eo.b07569df-aab1-4833-b62f-f5d642a057b3.html",,"ctl00_navbar_dialogHandleAlert_ctl00","ctl00_navbar_dialogHandleAlert_ctl01"]),"Dialog");EO25264.f.ahm(EO25264.r._o_ctl00_navbar_dialogHandleAlert,1,300, 0);});
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+EO25264.f.asw();
+//]]>
+</script>
+
+<!-- End EO.Web Dialog dialogHandleAlert.  -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#searchlnk").click(function (e) {
+            $("#searchTB").toggle("collapse");
+            e.preventDefault();
+        });
+        //if ($("#nav").height > 58)
+        //    $("#nav").css("font-size", "10pt");
+        $("#ctl00_navbar_ddlSearchType").change(function () {
+            if ($(this).val() == "event") {
+                $('#ctl00_navbar_tbSearch').autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            type: "POST",
+                            contentType: "application/json; charset=utf-8",
+                            url: "/services/AutoComplete.asmx/GetTournaments",
+                            dataType: "json",
+                            data: "{'state':'', 'prefix':'" + request.term + "'}",
+                            success: function (data) {
+                                response($.map(data.d, function (item) {
+                                    return {
+                                        label: item.Name,
+                                        value: item.Value
+                                    }
+                                }))
+                            }
+                        });
+                    },
+                    minLength: 3,
+                    select: function (event, ui) {
+                        window.location = "TTIntro.aspx?register=Y&tid=" + ui.item.value;
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(textStatus);
+                    }
+                });
+
+            }
+            else {
+                $('#ctl00_navbar_tbSearch').autocomplete("destroy");
+                $('#ctl00_navbar_tbSearch').removeData('autocomplete');
+            }
+        });
+
+    })
+</script>
+<style type="text/css">
+    #searchTB { max-height: 260px; overflow: auto; }
+    div.dropdown-menu div.list-group a:hover { background-color: #efefef; }
+    .blink_me {
+  animation: blinker 2s linear infinite;
+}
+    .dml {    left: 0 !important;
+    -webkit-transform: none !important ;
+    transform:  none !important ;}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+</style>
+
+        
+<!-- Begin EO.Web ScriptManager MyEOScriptManager.  -->
+
+<!-- End EO.Web ScriptManager MyEOScriptManager.  -->
+
+        <a id="demo_link" href="#" style="float: right; position: fixed; top: 0; right: 0;"></a>
+           
+<link href="/css/helpPanel.CSS?v=4.1" type="text/css" rel="stylesheet">
+ <script type="text/javascript">
+
+     $(document).ready(function () {
+         var height = $(window).height();
+         $("img.hlptb").css("top", (height / 2) + "px");
+     });
+
+     function showHelp(el) {
+         var isOpen = false;
+         if ($(el).css('display') == 'none')
+             isOpen = false;
+         else
+             isOpen = true;
+         closeHelp();
+         if (!isOpen) {
+             $(el).slideToggle('slow');
+
+         }
+     }
+     function closeHelp() {
+         $('.answer_div').slideUp();
+     }
+     function showHelpTab() {
+         $('#ctl00_hPanelText_imgShowHelp').hide();
+         $('#helpdiv').animate({ width: 'toggle' }, function () {
+             $(document).ready(function () {
+                 var height = $(window).height() - 70;
+                 console.log(height);
+                 console.log($("div.helpbottom").height());
+                 height -= $("div.helpbottom").height();
+                 $("#divhh").css("max-height", height + "px");
+
+             });
+         });
+
+     }
+     function hideHelpTab() {
+         $('#helpdiv').hide();
+         $('#ctl00_hPanelText_imgShowHelp').show();
+     }
+
+ </script>
+<img id="ctl00_hPanelText_imgShowHelp" class="hlptb" onclick="showHelpTab();" src="images/help/help_tab_new.png" style="border-width: 0px; position: fixed; cursor: pointer; z-index: 600000; top: 466.5px; right: 0px; width: 23px; height: 120px;">
+<div class="slide-out-div" id="helpdiv" style="display:none;line-height:140%;height:100%;position:fixed;right:0;font-size:10pt;">
+<div id="divhh" style="overflow-x:hidden; overflow-y:auto">
+    <div class="helptop">
+        <div style="border-bottom:1px solid #a0a0a0;">
+            <img src="/images/help/sincHelp45.png" style="float:left;">
+            <img src="/images/help/close.png" class="closehelp" onclick="hideHelpTab();">
+            <div class="clr"></div>
+        </div>
+        <div>
+            <span id="ctl00_hPanelText_lblHeader" style="font-size:12pt;"></span>
+            <span id="ctl00_hPanelText_lblIntro" style="line-height:130%;"></span><br>
+            
+            <br>
+        </div>
+    </div>
+
+
+</div>
+<div style="position:fixed; bottom:0;padding-bottom:10px; text-align:center;width:300px" class="helpbottom"> 
+       
+        <span id="ctl00_hPanelText_lblHelpQ">
+        Can't find what you need?</span><br>
+        <a href="/sicsupport.aspx" class="contactBtn">Contact Us</a>
+
+</div>
+</div>
+
+        <div id="thethings">
+            <header id="banner">
+                <div id="ctl00_pnlBanner_Wrap" class="banner_wrap container p-0">
+	
+                    <a href="#" id="ctl00_siteLogo">
+                        <img id="ctl00_imgLogo" src="/photos/tid/AFCWIN/banner.png?v=102925144828" alt="Event Logo" style="border-width:0px;width:100%;">
+                    </a>
+                
+</div>
+            </header>
+            <nav id="navigation">
+                <div id="navwrap">
+                    <div id="ctl00_pnlUpdMenu">
+
+</div>
+                    
+
+                </div>
+                <div class="clear"></div>
+            </nav>
+            
+                <div id="ctl00_pnlPage" style="overflow:auto;">
+	
+                    
+                <div id="subNav">
+                    
+                </div>
+
+                <div id="ctl00_pnlMainRow">
+		
+                    <div id="ctl00_pnlSide" class="d-none">
+			
+                    
+		</div>
+
+                    <div id="ctl00_pnlMainContent" class="col-md-12">
+			
+                        <div id="belowNav">
+                            <div id="belowNavWrap" style="position: relative;">
+                                
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="container">
+                                
+                                
+                            </div>
+                            
+                            
+
+    
+    
+    <table id="ctl00_ContentPlaceHolder1_cpSave" border="0" cellspacing="0" cellpadding="0">
+				<tbody>
+					<tr>
+						<td valign="top"></td>
+					</tr>
+				</tbody>
+			</table>
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("i|c", function(){EO25264.g.b.ctl00_ContentPlaceHolder1_cpSave=1;EO25264.r._o_ctl00_ContentPlaceHolder1_cpSave=EO25264.f.acg(EO25264.r._o_ctl00_ContentPlaceHolder1_cpSave,"cpSave",new EO25264.f.aaum([[,"ctl00_ContentPlaceHolder1_cpSave","Callback","ctl00$ContentPlaceHolder1$cpSave",,,,,,,"__doPostBack('ctl00$ContentPlaceHolder1$cpSave','_eo_arg_')"],,"__doPostBack('ctl00$ContentPlaceHolder1$cpSave','')",,,,,,[],"<div class='loading'></div>",,,,,,,0,0]),"Callback");EO25264.f.ahm(EO25264.r._o_ctl00_ContentPlaceHolder1_cpSave,1,null, 0);});
+//]]>
+</script>
+   
+    <div class="clear"></div>
+    
+    
+    <div id="ctl00_ContentPlaceHolder1_pnlPage" class="eStyle">
+				<ul id="thePageContainers" class="ui-sortable"><li><div class="container">
+					<div>
+						<div class="row pt-md-8 pb-md-8 pl-md-0 pr-md-0">
+							<div class="sect sect21 col-md-12 d-flex">
+								<div class="card shadow-dark-lg mb-3 aos-init aos-animate" data-aos="fade-in" data-aos-delay="250" style="background-color:#ffffff;">
+									<div class="card-body" style="">
+										<ul data-qual="INTRO" data-page="21" class="contentitems"><li class="cOuter"><div class="row">
+											<div class="col">
+												<div class="cWrap">
+													<div id="ctl00_ContentPlaceHolder1_ctl13_pnlJarallax" data-jarallax="" data-speed=".8">
+														
+
+    <div id="ctl00_ContentPlaceHolder1_ctl13_pnlPad" class="p-2">
+															         
+        <div><h3>Welcome to the&nbsp;AFC Lightning Invitational!</h3><div><div class="itemWrap"><div><div class="cat"><p data-end="478" data-start="299"><span style="font-size:16px;"><strong>Games will be played on February 7 &amp; 8, 2026.</strong> </span></p>
+
+<p data-end="478" data-start="299"><span style="font-size:16px;">This&nbsp;unrestricted event&nbsp;is open to all US Club, USYS,&nbsp;USSSA, and GAL teams—everyone is invited to apply and compete. Our goal is to provide a high-quality tournament experience for players, coaches, and families alike.</span></p>
+
+<p data-end="478" data-start="299"><span style="font-size:16px;">The perfect way to kick off your spring season with competitive games on some of Georgia’s premier fields.</span></p>
+
+<hr>
+<h3 data-end="733" data-start="715">Why Join Us?</h3>
+
+<p data-end="831" data-start="736"><span style="font-size:16px;"><strong data-end="755" data-start="736">Top Facilities:</strong>&nbsp;Games played on well-maintained, full-sized fields at centralized venues.</span></p>
+
+<p data-end="1095" data-start="953"><span style="font-size:16px;"><strong data-end="977" data-start="953">Convenient Location:</strong>&nbsp;Just south of Atlanta, our fields are easily accessible with plenty of nearby hotels, restaurants, and attractions.</span></p>
+
+<p data-end="1245" data-start="1098"><span style="font-size:16px;"><strong data-end="1132" data-start="1098">Professional Tournament Staff:</strong>&nbsp;Our team works hard to ensure smooth scheduling, communication, and an enjoyable weekend for all participants.</span></p>
+</div></div></div><div class="clear"></div></div></div>
+    
+														</div>
+
+													</div>
+
+<div class="clear">
+
+													</div>
+												</div>
+											</div>
+										</div></li></ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div></li><li style="background-color:#ffffff;" class=" pt-md-6 pb-md-6 pl-md-0 pr-md-0"><div>
+					<div>
+						<div class="row">
+							<div class="sect sect22 col-md-6 d-flex">
+								<div class="card shadow-dark-lg mb-3 aos-init" data-aos="fade-in" data-aos-delay="250" style="background-color:#2e60ad;">
+									<div class="card-body" style="">
+										<ul data-qual="INTRO" data-page="22" class="contentitems"><li class="cOuter"><div class="row">
+											<div class="col">
+												<div class="cWrap">
+													<div id="ctl00_ContentPlaceHolder1_ctl27_pnlJarallax" data-jarallax="" data-speed=".8" data-aos="fade-right" data-aos-delay="500" class="aos-init">
+														
+
+    <div id="ctl00_ContentPlaceHolder1_ctl27_pnlPad" class="p-2">
+															         
+        <div><div><div class="itemWrap"><div><div class="cat"><p><span style="font-size:24px;"><span style="color:#ffef01;"><strong>Online Check-in</strong></span></span></p>
+
+<p><span style="font-size:16px;">All teams are required to complete Online Check-In&nbsp;through SincSports.&nbsp;</span></p>
+
+<ul style="list-style-type: disc;">
+	<li><span style="font-size:16px;"><strong>Fee:</strong> $20 (non-refundable, paid directly to SincSports for document review)</span></li>
+	<li><span style="font-size: 16px;"><strong>Start Deadline:</strong> Must be initiated no later than&nbsp;Monday, February 2, 2026</span></li>
+	<li>
+	<p><span style="font-size:16px;"><strong>Completion Deadline:</strong> Must be finalized by&nbsp;5:00 PM on Thursday, February 5, 2026</span></p>
+	</li>
+</ul>
+</div></div></div><div class="clear"></div></div></div>
+    
+														</div>
+
+													</div>
+
+<div class="clear">
+
+													</div>
+												</div>
+											</div>
+										</div></li></ul>
+									</div>
+								</div>
+							</div><div class="sect sect23 col-md-6 d-flex">
+								<div class="card shadow-dark-lg mb-3 aos-init" data-aos="fade-in" data-aos-delay="250" style="background-color:#2e60ad;">
+									<div class="card-body" style="">
+										<ul data-qual="INTRO" data-page="23" class="contentitems"><li class="cOuter"><div class="row">
+											<div class="col">
+												<div class="cWrap">
+													<div id="ctl00_ContentPlaceHolder1_ctl37_pnlJarallax" data-jarallax="" data-speed=".8" data-aos="fade-right" data-aos-delay="500" class="aos-init">
+														
+
+    <div id="ctl00_ContentPlaceHolder1_ctl37_pnlPad" class="p-2">
+															         
+        <div><div><div class="itemWrap"><div><div class="cat"><p><span style="font-size:24px;"><strong><span style="color:#ffef01;">Get Involved</span></strong></span></p>
+
+<p><span style="font-size:16px;">Use the links at the top of this page to navigate the tournament site for&nbsp;<strong>Registration</strong></span><strong>,&nbsp;</strong><span style="font-size:16px;"><strong>Referees,&nbsp;Schedules, </strong>and<strong> Hotels</strong>.</span></p>
+
+<p><span style="font-size:16px;">For additional information, contact us at&nbsp;<strong>tournaments@afclightning.org &nbsp;<img alt="mail" height="23" src="https://soccer.sincsports.com/ck4/plugins/smiley/images/envelope.png" title="mail" width="23"></strong></span></p>
+</div></div></div><div class="clear"></div></div></div>
+    
+														</div>
+
+													</div>
+
+<div class="clear">
+
+													</div>
+												</div>
+											</div>
+										</div></li></ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div></li><li style="background-color:#ffffff;" class=" pt-md-6 pb-md-6 pl-md-0 pr-md-0"><div>
+					<div>
+						<div class="row">
+							<div class="sect sect25 col-md-3 aos-init" data-aos="fade-in" data-aos-delay="250" style="">
+								<div>
+									<div style="">
+										<ul data-qual="INTRO" data-page="25" class="contentitems"><li class="cOuter"><div class="row">
+											<div class="col">
+												<div class="cWrap">
+													
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("a.olc_link").click(function (e) {
+            eo_GetObject('ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC').show(true);
+            e.preventDefault();
+        });
+    });
+</script>
+<style type="text/css">
+    .olc_large { float:right; padding-left:8px; padding-bottom:8px; }
+    @media all and (max-width: 998px) {
+        .olc_large { display:none;}
+    }
+    
+</style>
+<div class="p-3">
+    <a href="#" class="olc_link d-block lift">
+        <img src="/images/logos/olc_logo.png" class="img-fluid" alt="olc">
+    </a>
+</div>
+
+
+
+
+													<!-- Begin EO.Web Dialog Dialog_OLC.  -->
+													
+<script type="text/javascript">
+//<![CDATA[
+EO25264.f.asv();
+//]]>
+</script>
+													
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("ldr|i|fmt|u|ei|e|pop|dd|c|dg", function(){EO25264.g.b.ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC=1;EO25264.r._o_ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC=EO25264.f.acg(EO25264.r._o_ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC,"Dialog_OLC",new EO25264.f.bak([[[,"ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC","Dialog","ctl00$ContentPlaceHolder1$ctl51$Dialog_OLC",,,,,,,"__doPostBack('ctl00$ContentPlaceHolder1$ctl51$Dialog_OLC','_eo_arg_')"],["/images/2013/modal/tl.png","/images/2013/modal/t.png","/images/2013/modal/tr.png","/images/2013/modal/l.png","/images/2013/modal/r.png","/images/2013/modal/bl.png","/images/2013/modal/b.png","/images/2013/modal/br.png"],,,,,,,,[]],"black",50,,,,,,,,"eo_css_ctrl_ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC1","eo_css_ctrl_ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC1",,"eo_css_ctrl_ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC2",,,,,,,,,,,,,,,,,,"eo_css_ctrl_ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC3",,,,,,"resizableDialog",,,,,,,,"/js/eo/eo.b07569df-aab1-4833-b62f-f5d642a057b3.html",,"ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC_ctl00","ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC_ctl01",,"/images/closeDialog.png"]),"Dialog");EO25264.f.ahm(EO25264.r._o_ctl00_ContentPlaceHolder1_ctl51_Dialog_OLC,1,500, 0);});
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+EO25264.f.asw();
+//]]>
+</script>
+
+													<!-- End EO.Web Dialog Dialog_OLC.  -->
+													<div class="clear">
+
+													</div>
+												</div>
+											</div>
+										</div></li></ul>
+									</div>
+								</div>
+							</div><div class="sect sect26 col-md-6 aos-init" data-aos="fade-in" data-aos-delay="500" style="">
+								<div>
+									<div style="">
+										<ul data-qual="INTRO" data-page="26" class="contentitems"><li class="cOuter"><div class="row">
+											<div class="col">
+												<div class="cWrap">
+													<div id="ctl00_ContentPlaceHolder1_ctl61_pnlJarallax" data-jarallax="" data-speed=".8">
+														
+
+    <div id="ctl00_ContentPlaceHolder1_ctl61_pnlPad" class="p-2">
+															         
+        <div><div><div class="itemWrap"><div><div class="cat"><p style="text-align: center;"><span style="font-size:28px;"><span style="color:#2e60ad;"><strong>Registration closes on <span data-toggle="typed" data-options="{&quot;strings&quot;: [&quot;January 17, 2026&quot;]}">January 17, 2026</span><span class="typed-cursor typed-cursor--blink">|</span></strong></span></span></p>
+</div></div></div><div class="clear"></div></div></div>
+    
+														</div>
+
+													</div>
+
+<div class="clear">
+
+													</div>
+												</div>
+											</div>
+										</div></li><li class="cOuter"><div class="row">
+											<div class="col">
+												<div class="cWrap">
+													
+<script type="text/javascript" src="/js/sitepro/jquery.countdown.js"></script>
+
+<div style="margin:0 auto;width:480px;"><div id="cdINTRO262" style="height: 77px; overflow: hidden;"><div id="cnt_0" class="cntDigit" style="height: 4620px; float: left; background: url(&quot;/images/digits.png&quot;); width: 53px; margin-top: -1386px;"></div><div id="cnt_1" class="cntDigit" style="height: 4620px; float: left; background: url(&quot;/images/digits.png&quot;); width: 53px; margin-top: -924px;"></div><div class="cntSeparator" style="float: left;">:</div><div id="cnt_3" class="cntDigit" style="height: 4620px; float: left; background: url(&quot;/images/digits.png&quot;); width: 53px; margin-top: 0px;"></div><div id="cnt_4" class="cntDigit" style="height: 4620px; float: left; background: url(&quot;/images/digits.png&quot;); width: 53px; margin-top: -2310px;"></div><div class="cntSeparator" style="float: left;">:</div><div id="cnt_6" class="cntDigit" style="height: 4620px; float: left; background: url(&quot;/images/digits.png&quot;); width: 53px; margin-top: 0px;"></div><div id="cnt_7" class="cntDigit" style="height: 4620px; float: left; background: url(&quot;/images/digits.png&quot;); width: 53px; margin-top: -3696px;"></div><div class="cntSeparator" style="float: left;">:</div><div id="cnt_9" class="cntDigit" style="height: 4620px; float: left; background: url(&quot;/images/digits.png&quot;); width: 53px; margin-top: 0px;"></div><div id="cnt_10" class="cntDigit" style="height: 4620px; float: left; background: url(&quot;/images/digits.png&quot;); width: 53px; margin-top: -2310px;"></div></div><div class="counter_desc"><div class="fleft">Days</div><div class="fleft">Hours</div><div class="fleft">Minutes</div><div class="fleft">Seconds</div></div></div>
+<script type="text/javascript"> $(document).ready(function() { $('#cdINTRO262').countdown({ image: '/images/digits.png', startTime: '32:05:08:13' }); }) </script>
+<div class="clear"></div>
+<style type="text/css">
+    .counter_desc {
+position: relative;
+overflow: hidden;
+font-size: 16px;
+font-weight: bold;
+line-height: 1.2em;
+padding: 5px 0 0 0;
+}
+    .counter_desc div {
+width: 116px;
+margin-right:4px;
+text-align: center;
+}
+    .cntSeparator { font-size: 26pt; padding-top: 14px; }
+</style><div class="clear">
+
+													</div>
+												</div>
+											</div>
+										</div></li></ul>
+									</div>
+								</div>
+							</div><div class="sect sect27 col-md-3 aos-init" data-aos="fade-in" data-aos-delay="250" style="">
+								<div>
+									<div style="">
+										<ul data-qual="INTRO" data-page="27" class="contentitems"><li class="cOuter"><div class="row">
+											<div class="col">
+												<div class="cWrap">
+													<div id="ctl00_ContentPlaceHolder1_ctl77_pnlJarallax" data-jarallax="" data-speed=".8">
+														
+
+    <div id="ctl00_ContentPlaceHolder1_ctl77_pnlPad" class="p-2">
+															         
+        <div><div><div class="itemWrap"><div><div class="cat"><p style="text-align: center;"><img class="img-fluid" src="/photos/tid/AFCWIN/user/us-club-soccer-sanctioned-tournament-logo.png" style="width: 300px; height: 163px;"></p>
+</div></div></div><div class="clear"></div></div></div>
+    
+														</div>
+
+													</div>
+
+<div class="clear">
+
+													</div>
+												</div>
+											</div>
+										</div></li></ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><div class="clear"></div></li></ul>
+			</div>
+        
+
+
+
+    
+			<!-- Begin EO.Web Dialog DialogSection.  -->
+			
+<script type="text/javascript">
+//<![CDATA[
+EO25264.f.asv();
+//]]>
+</script>
+			
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("ldr|i|fmt|u|ei|e|pop|dd|c|dg", function(){EO25264.g.b.ctl00_ContentPlaceHolder1_DialogSection=1;EO25264.r._o_ctl00_ContentPlaceHolder1_DialogSection=EO25264.f.acg(EO25264.r._o_ctl00_ContentPlaceHolder1_DialogSection,"DialogSection",new EO25264.f.bak([[[,"ctl00_ContentPlaceHolder1_DialogSection","Dialog","ctl00$ContentPlaceHolder1$DialogSection",,,,,,,"__doPostBack('ctl00$ContentPlaceHolder1$DialogSection','_eo_arg_')"],["/images/2013/modal/tl.png","/images/2013/modal/t.png","/images/2013/modal/tr.png","/images/2013/modal/l.png","/images/2013/modal/r.png","/images/2013/modal/bl.png","/images/2013/modal/b.png","/images/2013/modal/br.png"],,,,,,,,[]],"black",50,,,,,,,,"eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection1","eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection1",,"eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection2",,,,,,,,,,,,,,,,,,"eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogSection3",,,,,,"resizableDialog",,,,,,,,"/js/eo/eo.b07569df-aab1-4833-b62f-f5d642a057b3.html",,"ctl00_ContentPlaceHolder1_DialogSection_ctl00","ctl00_ContentPlaceHolder1_DialogSection_ctl01",,"/images/closeDialog.png"]),"Dialog");EO25264.f.ahm(EO25264.r._o_ctl00_ContentPlaceHolder1_DialogSection,1,400, 0);});
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+EO25264.f.asw();
+//]]>
+</script>
+
+			<!-- End EO.Web Dialog DialogSection.  -->
+			
+    
+			<!-- Begin EO.Web Dialog DialogPageOptions.  -->
+			
+<script type="text/javascript">
+//<![CDATA[
+EO25264.f.asv();
+//]]>
+</script>
+			
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("ldr|i|fmt|u|ei|e|pop|dd|c|dg", function(){EO25264.g.b.ctl00_ContentPlaceHolder1_DialogPageOptions=1;EO25264.r._o_ctl00_ContentPlaceHolder1_DialogPageOptions=EO25264.f.acg(EO25264.r._o_ctl00_ContentPlaceHolder1_DialogPageOptions,"DialogPageOptions",new EO25264.f.bak([[[,"ctl00_ContentPlaceHolder1_DialogPageOptions","Dialog","ctl00$ContentPlaceHolder1$DialogPageOptions",,,,,,,"__doPostBack('ctl00$ContentPlaceHolder1$DialogPageOptions','_eo_arg_')"],["/images/2013/modal/tl.png","/images/2013/modal/t.png","/images/2013/modal/tr.png","/images/2013/modal/l.png","/images/2013/modal/r.png","/images/2013/modal/bl.png","/images/2013/modal/b.png","/images/2013/modal/br.png"],,,,,,,,[]],"black",50,,,,,,,,"eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogPageOptions1","eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogPageOptions1",,"eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogPageOptions2",,,,,,,,,,,,,,,,,,"eo_css_ctrl_ctl00_ContentPlaceHolder1_DialogPageOptions3",,,,,,"resizableDialog",,,,,,,,"/js/eo/eo.b07569df-aab1-4833-b62f-f5d642a057b3.html",,"ctl00_ContentPlaceHolder1_DialogPageOptions_ctl00","ctl00_ContentPlaceHolder1_DialogPageOptions_ctl01",,"/images/closeDialog.png"]),"Dialog");EO25264.f.ahm(EO25264.r._o_ctl00_ContentPlaceHolder1_DialogPageOptions,1,500, 0);});
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+EO25264.f.asw();
+//]]>
+</script>
+
+			<!-- End EO.Web Dialog DialogPageOptions.  -->
+			
+    
+    
+    
+    
+    
+    
+    <input type="hidden" name="ctl00$ContentPlaceHolder1$hfStaff" id="ctl00_ContentPlaceHolder1_hfStaff">
+    
+<script type="text/javascript">
+    function openDialog() {
+        $("[id$=headerDiv]").addClass("dHeader");
+    }
+</script>
+<style type="text/css">
+    .dHeader { color:black;font-family:'Segoe UI Light', Tahoma, Helvetica, Arial, Verdana, sans-serif;font-size:18pt;padding:0 3px 5px 8px;background-color:#fff;border:0px; }
+</style>
+
+			<!-- Begin EO.Web Dialog Dialog_ContentManager.  -->
+			
+<script type="text/javascript">
+//<![CDATA[
+EO25264.f.asv();
+//]]>
+</script>
+			
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("ldr|i|fmt|u|ei|e|pop|dd|c|dg", function(){EO25264.g.b.ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager=1;EO25264.r._o_ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager=EO25264.f.acg(EO25264.r._o_ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager,"Dialog_ContentManager",new EO25264.f.bak([[[,"ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager","Dialog","ctl00$ContentPlaceHolder1$SICCM$Dialog_ContentManager",,,,,,,"__doPostBack('ctl00$ContentPlaceHolder1$SICCM$Dialog_ContentManager','_eo_arg_')"],["/images/2013/modal/tl.png","/images/2013/modal/t.png","/images/2013/modal/tr.png","/images/2013/modal/l.png","/images/2013/modal/r.png","/images/2013/modal/bl.png","/images/2013/modal/b.png","/images/2013/modal/br.png"],,,,,,,,[]],"black",50,,,,,,,,"eo_css_ctrl_ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager1","eo_css_ctrl_ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager1",,"eo_css_ctrl_ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager2",,,,,,,,,,,,,,,,,,"eo_css_ctrl_ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager3",,,,,,"resizableDialog",,,,,,,,"/js/eo/eo.b07569df-aab1-4833-b62f-f5d642a057b3.html",,"ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_ctl00","ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager_ctl01",,"/images/closeDialog.png"]),"Dialog");EO25264.f.ahm(EO25264.r._o_ctl00_ContentPlaceHolder1_SICCM_Dialog_ContentManager,1,550, 0);});
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+EO25264.f.asw();
+//]]>
+</script>
+
+			<!-- End EO.Web Dialog Dialog_ContentManager.  -->
+			
+
+<input name="ctl00$ContentPlaceHolder1$ThisPageMasterFile" type="text" value="/TT10.master" id="ctl00_ContentPlaceHolder1_ThisPageMasterFile" style="display:none;">
+                            
+
+                        </div>
+                        
+                    
+		</div>
+                
+	</div>
+            
+</div>
+            <div id="tfooter" class="ubuntufont pt-8">
+                
+                <div class="footerWrap">
+                    <div id="eFoot">
+                        <div class="fContents">
+                            Event Information<br>
+                            <a href="/TTMassMail.aspx?tid=AFCWIN">Contact Us</a><br><a href="/TTSchedules.aspx?tid=AFCWIN">Schedules &amp; Standings</a><br>
+                        </div>
+                    </div>
+                    <div id="sincFoot">
+                        <div class="fContents">
+                            SincSports.com Help<br>
+                            <a href="/TTFindMe.aspx?tid=AFCWIN">Login Help</a><br><a href="/contact.aspx?tid=AFCWIN">Contact Support</a><br><a href="http://www.sincsports.com/mobile.aspx" target="_blank">Download the mobile app!</a>
+                        </div>
+                    </div>
+                    <div id="sincLogo">
+                        <a id="ctl00_lnkUSA" class="usa_lnk" rel="noopener" href="http://usatournaments.com" target="_blank"><img src="/images/usa-logo-dark.png" class="usalogo"></a>
+                        <a id="powered" href="http://sincsports.com" target="_blank" rel="noopener">
+                            <img src="/images/blank.gif" border="0" class="fleft"></a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div id="bottom" class="ubuntufont">
+                <div class="footerWrap">
+                    ©
+                    2025
+                    SincSports&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a id="ctl00_lnkPrivacyPolicy" href="/privacy.aspx?tid=AFCWIN&amp;sinc=N&amp;sic=N">Privacy Policy</a>
+                    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a id="ctl00_lnkCookiePolicy" href="/cookiepolicy.aspx?tid=AFCWIN&amp;sinc=N&amp;sic=N">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+
+        
+
+        
+<!-- Begin EO.Web Dialog DialogHelp.  -->
+
+<script type="text/javascript">
+//<![CDATA[
+EO25264.f.asv();
+//]]>
+</script>
+<table id="ctl00_DialogHelp_bdt" cellspacing="0" cellpadding="0" border="0" style="display: none; position: fixed; top: -3000px;"><tbody><tr><td style="font-size:1px"><img src="/images/2013/modal/tl.png" alt="" tabindex="-1"></td><td style="background-image:url('/images/2013/modal/t.png');background-repeat:repeat-x;font-size:1px;"></td><td style="font-size:1px"><img src="/images/2013/modal/tr.png" alt="" tabindex="-1"></td></tr><tr><td style="background-image:url('/images/2013/modal/l.png');background-repeat:repeat-y;font-size:1px;" valign="top"></td><td><table id="ctl00_DialogHelp" border="0" class="eo_no_border_spacing" style="width: 593px;" cellspacing="0" cellpadding="0">
+	<tbody><tr><td align="left"><div id="ctl00_DialogHelp_headerDiv" class="eo_css_ctrl_ctl00_DialogHelp1" style="cursor: move;"><div style="position:relative;z-index:2;"><div id="ctl00_DialogHelp_headerHtml"></div><table id="ctl00_DialogHelp_headerTableR" border="0" cellspacing="0" cellpadding="0" style="position:absolute;right:0px;top:0px;"><tbody><tr><td valign="middle"><img id="ctl00_DialogHelp_close" alt="" src="/images/closeDialog.png" style="cursor: default;"></td></tr></tbody></table></div></div></td></tr><tr><td valign="top"><table id="ctl00_DialogHelp_contentTable" border="0" style="width:100%;height:100%;" class="eo_no_border_spacing" cellspacing="0" cellpadding="0"><tbody><tr><td height="100%" class="eo_css_ctrl_ctl00_DialogHelp2" align="left" valign="top">
+                <table id="ctl00_DialogHelp_ctl00_cpHelpPanel" border="0" cellspacing="0" cellpadding="0">
+		<tbody>
+			<tr>
+				<td valign="top">
+                    <div id="hpdiv" style="max-height:550px; overflow:auto;">
+                    
+                        
+                        <br>
+                    </div>
+                </td>
+			</tr>
+		</tbody>
+	</table>
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("i|c", function(){EO25264.g.b.ctl00_DialogHelp_ctl00_cpHelpPanel=1;EO25264.r._o_ctl00_DialogHelp_ctl00_cpHelpPanel=EO25264.f.acg(EO25264.r._o_ctl00_DialogHelp_ctl00_cpHelpPanel,"cpHelpPanel",new EO25264.f.aaum([[,"ctl00_DialogHelp_ctl00_cpHelpPanel","Callback","ctl00$DialogHelp$ctl00$cpHelpPanel",,,,,,,"__doPostBack('ctl00$DialogHelp$ctl00$cpHelpPanel','_eo_arg_')"],,"__doPostBack('ctl00$DialogHelp$ctl00$cpHelpPanel','')",,,,,,[],"<img src='images/loading2.gif' /> Loading...",,,,,,,0,0]),"Callback");EO25264.f.ahm(EO25264.r._o_ctl00_DialogHelp_ctl00_cpHelpPanel,1,null, 0);});
+//]]>
+</script>
+
+            </td></tr></tbody></table></td></tr><tr><td><div id="ctl00_DialogHelp_footerDiv" style="position:relative;width:auto;"><table id="ctl00_DialogHelp_footerTable" border="0" cellspacing="0" cellpadding="0" style="width:100%;"><tbody><tr><td id="ctl00_DialogHelp_footer" class="eo_align_center eo_css_ctrl_ctl00_DialogHelp3"></td></tr></tbody></table></div></td></tr>
+</tbody></table></td><td style="background-image:url('/images/2013/modal/r.png');background-repeat:repeat-y;font-size:1px;" valign="top"></td></tr><tr><td style="font-size:1px"><img src="/images/2013/modal/bl.png" alt="" tabindex="-1"></td><td style="background-image:url('/images/2013/modal/b.png');background-repeat:repeat-x;font-size:1px;"></td><td style="font-size:1px"><img src="/images/2013/modal/br.png" alt="" tabindex="-1"></td></tr></tbody></table>
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("ldr|i|fmt|u|ei|e|pop|dd|c|dg", function(){EO25264.g.b.ctl00_DialogHelp=1;EO25264.r._o_ctl00_DialogHelp=EO25264.f.acg(EO25264.r._o_ctl00_DialogHelp,"DialogHelp",new EO25264.f.bak([[[,"ctl00_DialogHelp","Dialog","ctl00$DialogHelp",,,,,,,"__doPostBack('ctl00$DialogHelp','_eo_arg_')"],["/images/2013/modal/tl.png","/images/2013/modal/t.png","/images/2013/modal/tr.png","/images/2013/modal/l.png","/images/2013/modal/r.png","/images/2013/modal/bl.png","/images/2013/modal/b.png","/images/2013/modal/br.png"],,,,,,,,[]],,,,,,,,,,"eo_css_ctrl_ctl00_DialogHelp1","eo_css_ctrl_ctl00_DialogHelp1",,"eo_css_ctrl_ctl00_DialogHelp2",,,,,,,,,,,,,,,,,,"eo_css_ctrl_ctl00_DialogHelp3",,,,,,"resizableDialog",,,,,,0,,"/js/eo/eo.b07569df-aab1-4833-b62f-f5d642a057b3.html",,"ctl00_DialogHelp_ctl00","ctl00_DialogHelp_ctl01",,"/images/closeDialog.png"]),"Dialog");EO25264.f.ahm(EO25264.r._o_ctl00_DialogHelp,1,0, 0);});
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+EO25264.f.asw();
+//]]>
+</script>
+
+<!-- End EO.Web Dialog DialogHelp.  -->
+
+        
+<div id="smMessageBar">
+    <div>
+        <span id="ctl00_sicMessage_lblMsg" class="spanDisplayMessage"></span>
+        <img id="csmb" src="/images/blank.gif">
+    </div>
+</div>
+
+        
+        
+<script type="text/javascript">
+    function openDialog() {
+        $("[id$=headerDiv]").addClass("dHeader");
+    }
+</script>
+<style type="text/css">
+    .dHeader { color:black;font-family:'Segoe UI Light', Tahoma, Helvetica, Arial, Verdana, sans-serif;font-size:18pt;padding:0 3px 5px 8px;background-color:#fff;border:0px; }
+</style>
+
+<!-- Begin EO.Web Dialog Dialog_ContentManager.  -->
+
+<script type="text/javascript">
+//<![CDATA[
+EO25264.f.asv();
+//]]>
+</script>
+<table id="ctl00_SICCM_Dialog_ContentManager_bdt" cellspacing="0" cellpadding="0" border="0" style="display: none; position: fixed; top: -3000px;"><tbody><tr><td style="font-size:1px"><img src="/images/2013/modal/tl.png" alt="" tabindex="-1"></td><td style="background-image:url('/images/2013/modal/t.png');background-repeat:repeat-x;font-size:1px;"></td><td style="font-size:1px"><img src="/images/2013/modal/tr.png" alt="" tabindex="-1"></td></tr><tr><td style="background-image:url('/images/2013/modal/l.png');background-repeat:repeat-y;font-size:1px;" valign="top"></td><td><table id="ctl00_SICCM_Dialog_ContentManager" border="0" class="eo_no_border_spacing" style="width: 800px;" cellspacing="0" cellpadding="0">
+	<tbody><tr><td align="left"><div id="ctl00_SICCM_Dialog_ContentManager_headerDiv" class="eo_css_ctrl_ctl00_SICCM_Dialog_ContentManager1" style="cursor: move;"><div style="position:relative;z-index:2;"><div id="ctl00_SICCM_Dialog_ContentManager_headerHtml">SINC Content Manager</div><table id="ctl00_SICCM_Dialog_ContentManager_headerTableR" border="0" cellspacing="0" cellpadding="0" style="position:absolute;right:0px;top:0px;"><tbody><tr><td valign="middle"><img id="ctl00_SICCM_Dialog_ContentManager_close" alt="" src="/images/closeDialog.png" style="cursor: default;"></td></tr></tbody></table></div></div></td></tr><tr><td valign="top"><table id="ctl00_SICCM_Dialog_ContentManager_contentTable" border="0" style="width:100%;height:100%;" class="eo_no_border_spacing" cellspacing="0" cellpadding="0"><tbody><tr><td height="100%" class="eo_css_ctrl_ctl00_SICCM_Dialog_ContentManager2" align="left" valign="top">
+<table id="ctl00_SICCM_Dialog_ContentManager_ctl00_cbpContentManager" border="0" cellspacing="0" cellpadding="0">
+		<tbody>
+			<tr>
+				<td valign="top">
+    
+        
+        
+        
+        
+        </td>
+			</tr>
+		</tbody>
+	</table>
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("i|c", function(){EO25264.g.b.ctl00_SICCM_Dialog_ContentManager_ctl00_cbpContentManager=1;EO25264.r._o_ctl00_SICCM_Dialog_ContentManager_ctl00_cbpContentManager=EO25264.f.acg(EO25264.r._o_ctl00_SICCM_Dialog_ContentManager_ctl00_cbpContentManager,"cbpContentManager",new EO25264.f.aaum([[,"ctl00_SICCM_Dialog_ContentManager_ctl00_cbpContentManager","Callback","ctl00$SICCM$Dialog_ContentManager$ctl00$cbpContentManager",,,,,,,"__doPostBack('ctl00$SICCM$Dialog_ContentManager$ctl00$cbpContentManager','_eo_arg_')"],,"__doPostBack('ctl00$SICCM$Dialog_ContentManager$ctl00$cbpContentManager','')",,,,,,[],"<div class='loading'></div>",,,,,,,0,0]),"Callback");EO25264.f.ahm(EO25264.r._o_ctl00_SICCM_Dialog_ContentManager_ctl00_cbpContentManager,1,null, 0);});
+//]]>
+</script>
+
+    </td></tr></tbody></table></td></tr><tr><td><div id="ctl00_SICCM_Dialog_ContentManager_footerDiv" style="position:relative;width:auto;"><table id="ctl00_SICCM_Dialog_ContentManager_footerTable" border="0" cellspacing="0" cellpadding="0" style="width:100%;"><tbody><tr><td id="ctl00_SICCM_Dialog_ContentManager_footer" class="eo_align_center eo_css_ctrl_ctl00_SICCM_Dialog_ContentManager3"></td></tr></tbody></table></div></td></tr>
+</tbody></table></td><td style="background-image:url('/images/2013/modal/r.png');background-repeat:repeat-y;font-size:1px;" valign="top"></td></tr><tr><td style="font-size:1px"><img src="/images/2013/modal/bl.png" alt="" tabindex="-1"></td><td style="background-image:url('/images/2013/modal/b.png');background-repeat:repeat-x;font-size:1px;"></td><td style="font-size:1px"><img src="/images/2013/modal/br.png" alt="" tabindex="-1"></td></tr></tbody></table>
+<script type="text/javascript">
+//<![CDATA[
+EO25264.g.d.k("ldr|i|fmt|u|ei|e|pop|dd|c|dg", function(){EO25264.g.b.ctl00_SICCM_Dialog_ContentManager=1;EO25264.r._o_ctl00_SICCM_Dialog_ContentManager=EO25264.f.acg(EO25264.r._o_ctl00_SICCM_Dialog_ContentManager,"Dialog_ContentManager",new EO25264.f.bak([[[,"ctl00_SICCM_Dialog_ContentManager","Dialog","ctl00$SICCM$Dialog_ContentManager",,,,,,,"__doPostBack('ctl00$SICCM$Dialog_ContentManager','_eo_arg_')"],["/images/2013/modal/tl.png","/images/2013/modal/t.png","/images/2013/modal/tr.png","/images/2013/modal/l.png","/images/2013/modal/r.png","/images/2013/modal/bl.png","/images/2013/modal/b.png","/images/2013/modal/br.png"],,,,,,,,[]],"black",50,,,,,,,,"eo_css_ctrl_ctl00_SICCM_Dialog_ContentManager1","eo_css_ctrl_ctl00_SICCM_Dialog_ContentManager1",,"eo_css_ctrl_ctl00_SICCM_Dialog_ContentManager2",,,,,,,,,,,,,,,,,,"eo_css_ctrl_ctl00_SICCM_Dialog_ContentManager3",,,,,,"resizableDialog",,,,,,,,"/js/eo/eo.b07569df-aab1-4833-b62f-f5d642a057b3.html",,"ctl00_SICCM_Dialog_ContentManager_ctl00","ctl00_SICCM_Dialog_ContentManager_ctl01",,"/images/closeDialog.png"]),"Dialog");EO25264.f.ahm(EO25264.r._o_ctl00_SICCM_Dialog_ContentManager,1,550, 0);});
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+EO25264.f.asw();
+//]]>
+</script>
+
+<!-- End EO.Web Dialog Dialog_ContentManager.  -->
+
+
+        
+        
+    
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C9F36B63">
+</div>
+<script src="/WebResource.axd?d=j0a4_h54crQEQkbke0AMrvP6Mf7DTCgvGTFtXMwe5BoIo5hjKInNEL-d3yipUc5ufAwdoz4C82HDU6nAKRhm4wBe22U1&amp;t=638901397900000000" type="text/javascript"></script>
+</form>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if ($('ul.navbar-nav').height() >= 40) 
+                $("ul.navbar-nav").addClass("navbar-condensed");
+        });
+    </script>
+    <style type="text/css">
+        .navbar-condensed li a{ padding-left:.5rem !important; padding-right:.5rem !important }
+    </style>
+    <script src="/bs/all.js"></script><style type="text/css" data-typed-js-css="true">
+        .typed-cursor{
+          opacity: 1;
+        }
+        .typed-cursor.typed-cursor--blink{
+          animation: typedjsBlink 0.7s infinite;
+          -webkit-animation: typedjsBlink 0.7s infinite;
+                  animation: typedjsBlink 0.7s infinite;
+        }
+        @keyframes typedjsBlink{
+          50% { opacity: 0.0; }
+        }
+        @-webkit-keyframes typedjsBlink{
+          0% { opacity: 1; }
+          50% { opacity: 0.0; }
+          100% { opacity: 1; }
+        }
+      </style>
+    
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;d8c0a8d5c1d34adea3ab10341fc53ca9&quot;,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+
+
+</body></html>

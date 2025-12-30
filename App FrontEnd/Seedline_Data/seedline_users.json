@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "dugansteve",
+      "email": "dugansteve@gmail.com",
+      "password": "seedline77",
+      "account_type": "pro",
+      "notes": "",
+      "created_at": "2025-12-16T21:29:37.023745",
+      "last_login": "2025-12-18T08:57:13.528703",
+      "teams_saved": 0,
+      "games_submitted": 0
+    }
+  ],
+  "last_updated": "2025-12-22T09:33:46.073254"
+}

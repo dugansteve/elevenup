@@ -2,6 +2,9 @@ import { useState, useMemo } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useRankingsData } from '../data/useRankingsData';
 import LinkManager from './LinkManager';
+import BottomSheetSelect from './BottomSheetSelect';
+import { ClubsIcon } from './PaperIcons';
+import { useClubLogo } from '../data/useClubLogo';
 
 // Helper to extract actual club name by stripping age group suffixes
 // (same logic as Clubs.jsx to ensure consistent matching)
@@ -28,6 +31,7 @@ function ClubProfile() {
   const [activeTab, setActiveTab] = useState('teams');
 
   const decodedClubName = decodeURIComponent(clubName);
+  const { logoUrl } = useClubLogo(decodedClubName);
 
   // Get all teams for this club
   // Use extractClubName to match the same way Clubs.jsx aggregates clubs
@@ -116,8 +120,8 @@ function ClubProfile() {
   return (
     <div>
       <div className="page-header">
-        <button 
-          onClick={() => navigate(-1)} 
+        <button
+          onClick={() => navigate(-1)}
           style={{
             background: 'none',
             border: 'none',
@@ -133,11 +137,31 @@ function ClubProfile() {
         >
           ← Back
         </button>
-        <h1 className="page-title">{decodedClubName}</h1>
-        <p className="page-description">
-          {clubTeams.length} team{clubTeams.length !== 1 ? 's' : ''} across {clubAgeGroups.length} age group{clubAgeGroups.length !== 1 ? 's' : ''}
-          {clubStates.length > 0 && ` • ${clubStates.join(', ')}`}
-        </p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          {logoUrl && (
+            <img
+              src={logoUrl}
+              alt={`${decodedClubName} logo`}
+              style={{
+                width: '80px',
+                height: '80px',
+                objectFit: 'contain',
+                borderRadius: '8px',
+                background: 'white',
+                padding: '4px',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+              }}
+              onError={(e) => { e.target.style.display = 'none'; }}
+            />
+          )}
+          <div>
+            <h1 className="page-title" style={{ marginBottom: '0.25rem' }}>{decodedClubName}</h1>
+            <p className="page-description" style={{ margin: 0 }}>
+              {clubTeams.length} team{clubTeams.length !== 1 ? 's' : ''} across {clubAgeGroups.length} age group{clubAgeGroups.length !== 1 ? 's' : ''}
+              {clubStates.length > 0 && ` • ${clubStates.join(', ')}`}
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Club Overview Stats */}
@@ -199,7 +223,7 @@ function ClubProfile() {
             className={`tab ${activeTab === 'teams' ? 'active' : ''}`}
             onClick={() => setActiveTab('teams')}
           >
-            ⚽ Teams ({clubTeams.length})
+            <ClubsIcon size={16} color="green" /> Teams ({clubTeams.length})
           </button>
           <button
             className={`tab ${activeTab === 'links' ? 'active' : ''}`}
@@ -214,19 +238,18 @@ function ClubProfile() {
             {/* Age Group Filter */}
             <div className="filter-group" style={{ maxWidth: '300px', marginBottom: '1.5rem' }}>
               <label className="filter-label">Filter by Age Group</label>
-              <select 
-                className="filter-select"
+              <BottomSheetSelect
+                label="Age Group"
                 value={selectedAgeGroup}
-                onChange={(e) => setSelectedAgeGroup(e.target.value)}
-              >
-                <option value="ALL">All Age Groups ({clubTeams.length})</option>
-                {clubAgeGroups.map(age => {
-                  const count = clubTeams.filter(t => t.ageGroup === age).length;
-                  return (
-                    <option key={age} value={age}>{age} ({count})</option>
-                  );
-                })}
-              </select>
+                onChange={setSelectedAgeGroup}
+                options={[
+                  { value: 'ALL', label: `All Age Groups (${clubTeams.length})` },
+                  ...clubAgeGroups.map(age => {
+                    const count = clubTeams.filter(t => t.ageGroup === age).length;
+                    return { value: age, label: `${age} (${count})` };
+                  })
+                ]}
+              />
             </div>
 
             {/* Teams List */}
@@ -287,19 +310,9 @@ function ClubProfile() {
                         color: 'var(--primary-green)',
                         marginBottom: '0.25rem'
                       }}>
-                        {team.name}
+                        {team.name} {team.ageGroup}
                       </div>
                       <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
-                        <span style={{
-                          padding: '0.125rem 0.5rem',
-                          borderRadius: '4px',
-                          fontSize: '0.75rem',
-                          fontWeight: '600',
-                          background: '#e8f5e9',
-                          color: 'var(--primary-green)'
-                        }}>
-                          {team.ageGroup}
-                        </span>
                         <span style={{
                           padding: '0.125rem 0.5rem',
                           borderRadius: '4px',

@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "elevenupsoccer",
+    "seedline": "seedline-app",
+    "elevenup": "elevenupsoccer"
+  }
+}

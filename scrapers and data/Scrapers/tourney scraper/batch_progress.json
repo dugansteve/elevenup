@@ -1,0 +1,930 @@
+{
+  "scraped": {
+    "45571": {
+      "platform": "gotsport",
+      "name": "2025 Bat City Cup",
+      "games": 243,
+      "success": true,
+      "scraped_at": "2025-12-16T13:25:00"
+    },
+    "47277": {
+      "platform": "gotsport",
+      "name": "Copa Miami Winter Showcase",
+      "games": 134,
+      "success": true,
+      "scraped_at": "2025-12-16T13:50:00"
+    },
+    "45373": {
+      "platform": "gotsport",
+      "name": "Upper 90 Challenge 2025",
+      "games": 137,
+      "success": true,
+      "scraped_at": "2025-12-16T13:55:00"
+    },
+    "47667": {
+      "platform": "gotsport",
+      "name": "San Ramon FC 2025 Winter Turf",
+      "games": 59,
+      "success": true,
+      "scraped_at": "2025-12-16T13:58:00"
+    },
+    "44982": {
+      "platform": "gotsport",
+      "name": "Holiday Cup 2025",
+      "games": 159,
+      "success": true,
+      "scraped_at": "2025-12-16T14:03:00"
+    },
+    "1984898f0c": {
+      "platform": "gotsport",
+      "name": "2025 JSC Copa de Oro",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-16T14:29:16.373061"
+    },
+    "43166": {
+      "platform": "gotsport",
+      "name": "2025 Winter Tall Trees",
+      "games": 225,
+      "success": true,
+      "scraped_at": "2025-12-16T14:34:37.746956"
+    },
+    "46906": {
+      "platform": "gotsport",
+      "name": "Copa Del Mar Winter Classic",
+      "games": 193,
+      "success": true,
+      "scraped_at": "2025-12-16T14:51:49.392793"
+    },
+    "41339": {
+      "platform": "gotsport",
+      "name": "Temecula Holiday Classic",
+      "games": 241,
+      "success": true,
+      "scraped_at": "2025-12-16T15:06:15.158287"
+    },
+    "47385": {
+      "platform": "gotsport",
+      "name": "Winter Goal Rush",
+      "games": 200,
+      "success": true,
+      "scraped_at": "2025-12-16T15:12:12.634639"
+    },
+    "43499": {
+      "platform": "gotsport",
+      "name": "Winter Turf Girls Weekend Tournament",
+      "games": 82,
+      "success": true,
+      "scraped_at": "2025-12-16T15:14:33.979349"
+    },
+    "45665": {
+      "platform": "gotsport",
+      "name": "MVLA Winter Cup",
+      "games": 198,
+      "success": true,
+      "scraped_at": "2025-12-16T15:23:17.879900"
+    },
+    "38880": {
+      "platform": "gotsport",
+      "name": "Winter Classic and Showcase",
+      "games": 144,
+      "success": true,
+      "scraped_at": "2025-12-16T15:29:23.255156"
+    },
+    "8ad0b5fc4a": {
+      "platform": "gotsport",
+      "name": "2026 JSC Presidential Tournament",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-16T15:29:46.766270"
+    },
+    "edd263efa1": {
+      "platform": "gotsport",
+      "name": "2026 Northern California Spring Showcase",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-16T15:30:12.289804"
+    },
+    "GSSJUN": {
+      "platform": "sincsports",
+      "name": "Gulf States Juniors",
+      "games": 81,
+      "success": true,
+      "scraped_at": "2025-12-16T18:59:32.681828"
+    },
+    "4067": {
+      "platform": "totalglobalsports",
+      "name": "Surf College Cup Youngers",
+      "games": 1,
+      "success": true,
+      "scraped_at": "2025-12-16T15:33:57.698488"
+    },
+    "48292": {
+      "platform": "gotsport",
+      "name": "Copa Toque 2025",
+      "games": 522,
+      "success": true,
+      "scraped_at": "2025-12-19T22:51:35.339476"
+    },
+    "46442": {
+      "platform": "gotsport",
+      "name": "GOAT Soccer Cup 2nd Edition",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T22:52:37.003209"
+    },
+    "42706": {
+      "platform": "gotsport",
+      "name": "Christmas Youth Super Cup 2025",
+      "games": 65,
+      "success": true,
+      "scraped_at": "2025-12-19T22:56:24.215192"
+    },
+    "49550": {
+      "platform": "gotsport",
+      "name": "Corona Winter Cup",
+      "games": 31,
+      "success": true,
+      "scraped_at": "2025-12-19T23:01:52.728957"
+    },
+    "49724": {
+      "platform": "gotsport",
+      "name": "San Jose 5v5 Showdown",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:02:53.340001"
+    },
+    "49931": {
+      "platform": "gotsport",
+      "name": "San Jose Cup 5v5",
+      "games": 35,
+      "success": true,
+      "scraped_at": "2025-12-19T23:05:55.681367"
+    },
+    "43218": {
+      "platform": "gotsport",
+      "name": "Scripps Ranch Recreational All Star 2025",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:07:05.125784"
+    },
+    "49719": {
+      "platform": "gotsport",
+      "name": "Spartans FC Holiday Tournament",
+      "games": 52,
+      "success": true,
+      "scraped_at": "2025-12-19T23:09:29.978666"
+    },
+    "NORCG": {
+      "platform": "sincsports",
+      "name": "2025 UFA Adidas Premier Cup",
+      "games": 771,
+      "success": true,
+      "scraped_at": "2025-12-19T23:21:03.953402"
+    },
+    "GSTATSS": {
+      "platform": "sincsports",
+      "name": "Gulf States College Showcase",
+      "games": 153,
+      "success": true,
+      "scraped_at": "2025-12-19T23:25:03.631219"
+    },
+    "AFUSPFR": {
+      "platform": "sincsports",
+      "name": "Atlanta Fire United Spring Friendlies",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:26:15.040425"
+    },
+    "AFCWIN": {
+      "platform": "sincsports",
+      "name": "AFC Lightning Invitational",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:27:11.673913"
+    },
+    "CONCG": {
+      "platform": "sincsports",
+      "name": "Concorde Fire Girls Challenge Cup",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:28:16.716508"
+    },
+    "CONCFC": {
+      "platform": "sincsports",
+      "name": "Concorde Fire Challenge Cup Boys",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:28:57.704997"
+    },
+    "TRN219": {
+      "platform": "sincsports",
+      "name": "Gulf Coast Cup & Showcase",
+      "games": 317,
+      "success": true,
+      "scraped_at": "2025-12-19T23:35:16.708864"
+    },
+    "NFLCL": {
+      "platform": "sincsports",
+      "name": "Pensacola Classic",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:36:34.792020"
+    },
+    "AFUF": {
+      "platform": "sincsports",
+      "name": "Atlanta Fire United Academy Elite Cup",
+      "games": 401,
+      "success": true,
+      "scraped_at": "2025-12-19T23:43:00.058559"
+    },
+    "AFUSEL": {
+      "platform": "sincsports",
+      "name": "Atlanta Fire United Select Elite Cup",
+      "games": 296,
+      "success": true,
+      "scraped_at": "2025-12-19T23:47:46.197348"
+    },
+    "49681": {
+      "platform": "gotsport",
+      "name": "Winter 2025 CA Community Shield 7v7",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:48:26.806573"
+    },
+    "44366": {
+      "platform": "gotsport",
+      "name": "Hawks Invitational",
+      "games": 75,
+      "success": true,
+      "scraped_at": "2025-12-19T23:50:39.944625"
+    },
+    "48936": {
+      "platform": "gotsport",
+      "name": "2026 Cal South Winter Classic",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:51:42.572555"
+    },
+    "49513": {
+      "platform": "gotsport",
+      "name": "22nd Annual Winter Storm 5v5 Cup",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:52:30.603408"
+    },
+    "50143": {
+      "platform": "gotsport",
+      "name": "Austin Lights Futsal Festival",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:53:32.802238"
+    },
+    "49487": {
+      "platform": "gotsport",
+      "name": "9th Annual Winter Junior Champions Cup 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:54:26.390483"
+    },
+    "50377": {
+      "platform": "gotsport",
+      "name": "2026 Copa De Austin",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:55:35.425652"
+    },
+    "49863": {
+      "platform": "gotsport",
+      "name": "Solar Winter Cup 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:56:34.248170"
+    },
+    "41719": {
+      "platform": "gotsport",
+      "name": "2026 Outlaw Cup",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:57:29.950431"
+    },
+    "46057": {
+      "platform": "gotsport",
+      "name": "U90C Winter Classic Showcase 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:58:15.392239"
+    },
+    "49375": {
+      "platform": "gotsport",
+      "name": "Bobby Rhine Invitational 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-19T23:59:02.680616"
+    },
+    "45941": {
+      "platform": "gotsport",
+      "name": "IMG Cup Boys Invitational 2025",
+      "games": 270,
+      "success": true,
+      "scraped_at": "2025-12-20T00:06:19.033564"
+    },
+    "45874": {
+      "platform": "gotsport",
+      "name": "8TH ANNUAL BAZOOKA SOCCER HOLIDAY CUP",
+      "games": 35,
+      "success": true,
+      "scraped_at": "2025-12-20T00:09:29.934024"
+    },
+    "46492": {
+      "platform": "gotsport",
+      "name": "The 2025 Cape Coral Cup",
+      "games": 81,
+      "success": true,
+      "scraped_at": "2025-12-20T00:13:06.733374"
+    },
+    "46185": {
+      "platform": "gotsport",
+      "name": "2025 Florida Sun Classic",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T00:13:59.416861"
+    },
+    "44507": {
+      "platform": "gotsport",
+      "name": "2025 Disney Young Legends Soccer Tournament",
+      "games": 152,
+      "success": true,
+      "scraped_at": "2025-12-20T00:19:22.047291"
+    },
+    "46351": {
+      "platform": "gotsport",
+      "name": "Orlando Cup 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T00:20:04.984541"
+    },
+    "46472": {
+      "platform": "gotsport",
+      "name": "2026 Paradise Cup",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T00:21:12.670530"
+    },
+    "45141": {
+      "platform": "gotsport",
+      "name": "2026 ODP Far West Championships",
+      "games": 458,
+      "success": true,
+      "scraped_at": "2025-12-20T00:26:38.564802"
+    },
+    "44162": {
+      "platform": "gotsport",
+      "name": "Inside Classic Winter 2026",
+      "games": 139,
+      "success": true,
+      "scraped_at": "2025-12-20T00:31:04.687694"
+    },
+    "41699": {
+      "platform": "gotsport",
+      "name": "CCV Stars Champions Cup 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T00:31:46.891765"
+    },
+    "45222": {
+      "platform": "gotsport",
+      "name": "2026 Rated Cup",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T00:32:38.763522"
+    },
+    "46091": {
+      "platform": "gotsport",
+      "name": "Fort Lowell Shootout 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T00:33:48.756812"
+    },
+    "46006": {
+      "platform": "gotsport",
+      "name": "North Scottsdale Sandsharks Invitational 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T00:34:56.822095"
+    },
+    "8d8956d5d8": {
+      "platform": "gotsport",
+      "name": "The Open 2025 Scottsdale",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T00:35:57.309856"
+    },
+    "49204": {
+      "platform": "gotsport",
+      "name": "2025 Bluegrass Futsal Cup",
+      "games": 89,
+      "success": true,
+      "scraped_at": "2025-12-20T00:39:47.785775"
+    },
+    "49187": {
+      "platform": "gotsport",
+      "name": "Copa Talento Futsal 2025",
+      "games": 332,
+      "success": true,
+      "scraped_at": "2025-12-20T00:45:55.659076"
+    },
+    "46216": {
+      "platform": "gotsport",
+      "name": "Philadelphia Union Futsal Cup",
+      "games": 96,
+      "success": true,
+      "scraped_at": "2025-12-20T00:50:09.906186"
+    },
+    "4028": {
+      "platform": "totalglobalsports",
+      "name": "Legends FC Winter Classic",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T08:26:44.074959"
+    },
+    "3446": {
+      "platform": "totalglobalsports",
+      "name": "Legends FC The Classic",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T08:29:18.834248"
+    },
+    "4163": {
+      "platform": "totalglobalsports",
+      "name": "Legends FC Santa Clarita Invitational",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T08:31:26.065754"
+    },
+    "4058": {
+      "platform": "totalglobalsports",
+      "name": "TGS Event 4058",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T08:33:31.846420"
+    },
+    "3797": {
+      "platform": "totalglobalsports",
+      "name": "TGS Event 3797",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T08:35:09.522449"
+    },
+    "NASASCCS": {
+      "platform": "sincsports",
+      "name": "NASA Tophat Adidas Cup and College Showcase",
+      "games": 669,
+      "success": true,
+      "scraped_at": "2025-12-20T09:00:17.646057"
+    },
+    "TT4577": {
+      "platform": "sincsports",
+      "name": "Winter Cup 2025",
+      "games": 95,
+      "success": true,
+      "scraped_at": "2025-12-20T09:02:59.404283"
+    },
+    "SWISG2": {
+      "platform": "sincsports",
+      "name": "Winter Futsal Challenge",
+      "games": 58,
+      "success": true,
+      "scraped_at": "2025-12-20T09:05:24.559476"
+    },
+    "3V3HOLCUP2": {
+      "platform": "sincsports",
+      "name": "3v3 Holiday Cup",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:06:20.867758"
+    },
+    "BEATTHEFR": {
+      "platform": "sincsports",
+      "name": "Beat The Freeze",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:07:30.833671"
+    },
+    "5V5RAPTORS": {
+      "platform": "sincsports",
+      "name": "5v5 Raptors Indoor Cup",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:08:47.199095"
+    },
+    "RUSHUWL7": {
+      "platform": "sincsports",
+      "name": "Rush Union Winter 7v7 League",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:10:34.848387"
+    },
+    "KIRKCO": {
+      "platform": "sincsports",
+      "name": "Kirkwood Cobra 5v5 Challenge",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:11:31.434718"
+    },
+    "SHOWTN": {
+      "platform": "sincsports",
+      "name": "Showcase Tennessee",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:12:33.137676"
+    },
+    "NEWYC": {
+      "platform": "sincsports",
+      "name": "New Years Cup",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:13:50.489813"
+    },
+    "WINCHCL": {
+      "platform": "sincsports",
+      "name": "Valor FC Champions Classic",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:14:51.419151"
+    },
+    "JASAHHI": {
+      "platform": "sincsports",
+      "name": "JASA Hammerheads Indoor Tournament",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:16:06.797715"
+    },
+    "FCACSM": {
+      "platform": "sincsports",
+      "name": "Southeast College Showcase Boys",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:17:28.242509"
+    },
+    "INNAUG": {
+      "platform": "sincsports",
+      "name": "Strikers Invitational",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:18:24.271542"
+    },
+    "CMARTIN": {
+      "platform": "sincsports",
+      "name": "Chris Martin Memorial 4v4",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:19:20.479153"
+    },
+    "TSCCS": {
+      "platform": "sincsports",
+      "name": "TSC College Showcase",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:20:28.122651"
+    },
+    "AIP1": {
+      "platform": "sincsports",
+      "name": "All-In Play Sports 4v4 Championships",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:21:46.248084"
+    },
+    "TRN159": {
+      "platform": "sincsports",
+      "name": "Bojangles Beast of the East",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:22:47.488685"
+    },
+    "NCFCK4AC": {
+      "platform": "sincsports",
+      "name": "Kick 4 A Cause",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:23:57.169773"
+    },
+    "CSAADIG": {
+      "platform": "sincsports",
+      "name": "Puma Kings Cup - Girls",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:24:50.706130"
+    },
+    "ABYSA1": {
+      "platform": "sincsports",
+      "name": "Riverside Spring Kickoff",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:26:10.237952"
+    },
+    "FCCPSI": {
+      "platform": "sincsports",
+      "name": "FC Charleston Pre-Season Invitational",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:27:12.285904"
+    },
+    "AFCOPC": {
+      "platform": "sincsports",
+      "name": "Gray Massey Memorial Open Cup",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:28:22.674816"
+    },
+    "TZ1482": {
+      "platform": "sincsports",
+      "name": "Lexington Soccer Academy Cup",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:29:41.530434"
+    },
+    "TURF2": {
+      "platform": "sincsports",
+      "name": "Turf Cup II",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:31:02.025603"
+    },
+    "COMCUP": {
+      "platform": "sincsports",
+      "name": "2026 Commanders Cup SincSports",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:32:14.737033"
+    },
+    "WIN3V3F": {
+      "platform": "sincsports",
+      "name": "AFC Lightning Winter 5V5 Festival",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:33:21.583068"
+    },
+    "CSAADI": {
+      "platform": "sincsports",
+      "name": "Puma Kings Cup - Boys",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:34:18.796543"
+    },
+    "RISING52": {
+      "platform": "sincsports",
+      "name": "Rising Stars Winter Elite 5v5",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:35:40.545213"
+    },
+    "SUNELITC": {
+      "platform": "sincsports",
+      "name": "Savannah United Elite Cup",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T09:36:33.239923"
+    },
+    "TZ0885": {
+      "platform": "sincsports",
+      "name": "Battleground Tournament of Champions",
+      "games": 518,
+      "success": true,
+      "scraped_at": "2025-12-20T09:44:06.651722"
+    },
+    "FARSS": {
+      "platform": "sincsports",
+      "name": "Alabama Soccer Showdown",
+      "games": 119,
+      "success": true,
+      "scraped_at": "2025-12-20T09:46:42.440717"
+    },
+    "NCFCRC": {
+      "platform": "sincsports",
+      "name": "NC FC Youth Recreation Cup",
+      "games": 284,
+      "success": true,
+      "scraped_at": "2025-12-20T09:51:23.662539"
+    },
+    "13": {
+      "platform": "athletes2events",
+      "name": "Coronado Holiday Cup Boys",
+      "games": 410,
+      "success": true,
+      "scraped_at": "2025-12-20T12:46:31.787882"
+    },
+    "11": {
+      "platform": "athletes2events",
+      "name": "Coronado Holiday Cup Girls",
+      "games": 374,
+      "success": true,
+      "scraped_at": "2025-12-20T12:46:31.798627"
+    },
+    "7": {
+      "platform": "athletes2events",
+      "name": "Coronado Crown City Classic Boys",
+      "games": 320,
+      "success": true,
+      "scraped_at": "2025-12-20T12:46:31.806755"
+    },
+    "8": {
+      "platform": "athletes2events",
+      "name": "Coronado Crown City Classic Girls",
+      "games": 229,
+      "success": true,
+      "scraped_at": "2025-12-20T12:46:31.814303"
+    },
+    "42320": {
+      "platform": "gotsport",
+      "name": "Commanders Cup 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T12:47:59.527908"
+    },
+    "47823": {
+      "platform": "gotsport",
+      "name": "GA Spring Showcase Bryan Park",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T12:49:09.921723"
+    },
+    "44183": {
+      "platform": "gotsport",
+      "name": "2026 NC Rush Triad Beat the Heat",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T12:50:11.622265"
+    },
+    "47898": {
+      "platform": "gotsport",
+      "name": "Aspire East Regional U13-19",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T12:51:00.423070"
+    },
+    "50633": {
+      "platform": "gotsport",
+      "name": "2026 Zoo City Summer Classic",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T12:52:02.404455"
+    },
+    "47493": {
+      "platform": "gotsport",
+      "name": "2026 National Cup Southeast Regional",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T12:53:12.844493"
+    },
+    "49786": {
+      "platform": "gotsport",
+      "name": "Elite Futsal Invitational 2025",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T12:54:16.542397"
+    },
+    "50174": {
+      "platform": "gotsport",
+      "name": "Arlington Boys College Showcase",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T12:55:26.534257"
+    },
+    "50173": {
+      "platform": "gotsport",
+      "name": "Arlington Girls College Showcase",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T12:56:38.205367"
+    },
+    "43452": {
+      "platform": "gotsport",
+      "name": "Feature Weekend Showcase 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T12:57:23.469998"
+    },
+    "44863": {
+      "platform": "gotsport",
+      "name": "VDA Girls College Showcase 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T12:58:25.291600"
+    },
+    "42679": {
+      "platform": "gotsport",
+      "name": "The Adidas National Cup 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T12:59:10.828870"
+    },
+    "43076": {
+      "platform": "gotsport",
+      "name": "2026 Presidents Day Cup Showcase",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T13:00:18.938406"
+    },
+    "44877": {
+      "platform": "gotsport",
+      "name": "VDA Boys College Showcase 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T13:01:02.574592"
+    },
+    "46958": {
+      "platform": "gotsport",
+      "name": "Arlington Spring Boys Tournament",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T13:02:02.558782"
+    },
+    "46932": {
+      "platform": "gotsport",
+      "name": "Loudoun Soccer College Showcase 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T13:02:59.528884"
+    },
+    "43512": {
+      "platform": "gotsport",
+      "name": "Alexandria Soccer Kickoff 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T13:04:07.361232"
+    },
+    "44679": {
+      "platform": "gotsport",
+      "name": "Winter 5v5 Kick-off Sat",
+      "games": 165,
+      "success": true,
+      "scraped_at": "2025-12-20T13:08:23.612342"
+    },
+    "44680": {
+      "platform": "gotsport",
+      "name": "Winter 5v5 Kick-off Sun",
+      "games": 122,
+      "success": true,
+      "scraped_at": "2025-12-20T13:12:10.418948"
+    },
+    "44681": {
+      "platform": "gotsport",
+      "name": "Winter Holiday 5v5 Blast Sat",
+      "games": 146,
+      "success": true,
+      "scraped_at": "2025-12-20T13:16:54.323518"
+    },
+    "44684": {
+      "platform": "gotsport",
+      "name": "Winter Holiday 5v5 Blast Sun",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T13:17:55.621002"
+    },
+    "44685": {
+      "platform": "gotsport",
+      "name": "Winter Holiday 5v5 Blast Mon",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T13:18:48.370239"
+    },
+    "44824": {
+      "platform": "gotsport",
+      "name": "Gotham FC Youth Cup",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T13:19:52.684931"
+    },
+    "44825": {
+      "platform": "gotsport",
+      "name": "Winter One-Day Sun Jan 4",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T13:20:43.392204"
+    },
+    "49611": {
+      "platform": "gotsport",
+      "name": "January 26 Winter Futsal",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T13:21:41.263566"
+    },
+    "49587": {
+      "platform": "gotsport",
+      "name": "The FA 7v7 MLK Cup 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T13:22:28.926658"
+    },
+    "45745": {
+      "platform": "gotsport",
+      "name": "Weston Cup & Showcase 2026",
+      "games": 0,
+      "success": true,
+      "scraped_at": "2025-12-20T13:23:22.710613"
+    }
+  },
+  "last_platform": "gotsport",
+  "last_event_id": "45745"
+}

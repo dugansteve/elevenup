@@ -52,11 +52,11 @@ App_FrontEnd/
     │   ├── rankings_for_react.json  ← Generated from database
     │   └── players_for_react.json   ← Generated from database
     │
-    ├── scrapers/               ← Web scraper code
-    │   ├── ecnl_scraper_v65.py
-    │   ├── GA_scraper_v13.py
-    │   ├── GA_events_scraper_v2.py
-    │   └── ASPIRE_scraper_v5.py
+    ├── scrapers/               ← Web scraper code (in scrapers and data folder)
+    │   ├── ecnl_scraper_final.py
+    │   ├── GA_league_scraper_final.py
+    │   ├── GA_events_scraper_final.py
+    │   └── ASPIRE_league_scraper_final.py
     │
     └── server/                 ← URL validator service
         └── urlValidator.js
@@ -160,16 +160,16 @@ This is separate from the app to allow scrapers to run independently.
 ### Running from Command Line
 ```bash
 # ECNL + ECNL-RL
-python scrapers/ecnl_scraper_v65.py --gender girls --ages 13 --days 30
+python ecnl_scraper_final.py --gender girls --ages 13 --days 30
 
 # Girls Academy League
-python scrapers/GA_scraper_v13.py --gender girls --ages 13 --days 30
+python GA_league_scraper_final.py --gender girls --ages 13 --days 30
 
 # GA Events (Champions Cup, Playoffs, etc.)
-python scrapers/GA_events_scraper_v2.py --scrape
+python GA_events_scraper_final.py --scrape
 
 # ASPIRE
-python scrapers/ASPIRE_scraper_v5.py --gender girls --ages 13G --days 30
+python ASPIRE_league_scraper_final.py --gender girls --ages 13G --days 30
 ```
 
 ### GA Events Scraper Commands

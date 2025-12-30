@@ -1,6 +1,8 @@
 import { useState, useMemo, useEffect } from 'react';
 import { storage, linkHelpers, LINK_PLATFORMS } from '../data/sampleData';
 import { useUser } from '../context/UserContext';
+import { SettingsIcon } from './PaperIcons';
+import { isElevenUpBrand } from '../config/brand';
 
 function LinkManager({ entityType, entityId, entityName, isOwner = false }) {
   const { canPerform } = useUser();
@@ -153,7 +155,7 @@ function LinkManager({ entityType, entityId, entityName, isOwner = false }) {
           }}
           style={{
             cursor: interactive ? 'pointer' : 'default',
-            color: i <= (userRating || link.averageRating) ? '#FFD700' : '#ddd',
+            color: i <= (userRating || link.averageRating) ? (isElevenUpBrand ? '#76FF03' : '#FFD700') : '#ddd',
             fontSize: '1.25rem',
             transition: 'transform 0.1s',
           }}
@@ -192,7 +194,7 @@ function LinkManager({ entityType, entityId, entityName, isOwner = false }) {
               className="btn btn-secondary"
               style={{ fontSize: '0.85rem', padding: '0.5rem 1rem' }}
             >
-              ⚙️ Manage
+              <SettingsIcon size={14} color="green" /> Manage
             </button>
           )}
           {canAddLinks && (

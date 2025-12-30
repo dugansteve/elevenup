@@ -6,7 +6,8 @@
  */
 
 // API base URL - can be configured via environment
-const API_BASE_URL = import.meta.env.VITE_VALIDATOR_URL || 'http://localhost:3001';
+// Set VITE_VALIDATOR_URL in .env for local dev, leave empty for production
+const API_BASE_URL = import.meta.env.VITE_VALIDATOR_URL || '';
 
 /**
  * Validate a single game's URL
@@ -21,6 +22,15 @@ export async function validateGameUrl(url, gameData) {
       verified: false,
       message: 'No URL provided',
       skipped: true
+    };
+  }
+
+  if (!API_BASE_URL) {
+    return {
+      success: false,
+      verified: false,
+      message: 'Validation server not configured',
+      serverOffline: true
     };
   }
 
@@ -68,9 +78,13 @@ export async function validateGameUrl(url, gameData) {
  */
 export async function validateGamesBatch(games) {
   const gamesWithUrls = games.filter(g => g.scoreUrl);
-  
+
   if (gamesWithUrls.length === 0) {
     return { results: [], message: 'No games with URLs to validate' };
+  }
+
+  if (!API_BASE_URL) {
+    return { results: [], serverOffline: true };
   }
 
   try {
@@ -102,6 +116,8 @@ export async function validateGamesBatch(games) {
  * @returns {Promise<boolean>}
  */
 export async function isValidatorAvailable() {
+  if (!API_BASE_URL) return false;
+
   try {
     const response = await fetch(`${API_BASE_URL}/api/health`, {
       method: 'GET',

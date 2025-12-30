@@ -1,5 +1,7 @@
 import { useState, useMemo } from 'react';
 import { storage, BADGE_TYPES, AGE_GROUPS, LEAGUES, STATES } from '../data/sampleData';
+import BottomSheetSelect from './BottomSheetSelect';
+import { SimulationIcon, TeamsIcon } from './PaperIcons';
 
 function BadgeLeaderboard() {
   const [selectedBadge, setSelectedBadge] = useState(BADGE_TYPES[0].id);
@@ -63,7 +65,7 @@ function BadgeLeaderboard() {
             className="btn btn-secondary"
             style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
           >
-            📊 Filters {showFilters ? '▲' : '▼'}
+            <SimulationIcon size={14} color="green" /> Filters {showFilters ? '▲' : '▼'}
           </button>
         </div>
 
@@ -108,44 +110,41 @@ function BadgeLeaderboard() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
             <div className="filter-group">
               <label className="filter-label">Age Group</label>
-              <select
-                className="filter-select"
+              <BottomSheetSelect
+                label="Age Group"
                 value={filters.ageGroup}
-                onChange={(e) => setFilters({...filters, ageGroup: e.target.value})}
-              >
-                <option value="ALL">All Age Groups</option>
-                {AGE_GROUPS.map(age => (
-                  <option key={age} value={age}>{age}</option>
-                ))}
-              </select>
+                onChange={(val) => setFilters({...filters, ageGroup: val})}
+                options={[
+                  { value: 'ALL', label: 'All Age Groups' },
+                  ...AGE_GROUPS.map(age => ({ value: age, label: age }))
+                ]}
+              />
             </div>
 
             <div className="filter-group">
               <label className="filter-label">League</label>
-              <select
-                className="filter-select"
+              <BottomSheetSelect
+                label="League"
                 value={filters.league}
-                onChange={(e) => setFilters({...filters, league: e.target.value})}
-              >
-                <option value="ALL">All Leagues</option>
-                {LEAGUES.map(league => (
-                  <option key={league} value={league}>{league}</option>
-                ))}
-              </select>
+                onChange={(val) => setFilters({...filters, league: val})}
+                options={[
+                  { value: 'ALL', label: 'All Leagues' },
+                  ...LEAGUES.map(league => ({ value: league, label: league }))
+                ]}
+              />
             </div>
 
             <div className="filter-group">
               <label className="filter-label">State</label>
-              <select
-                className="filter-select"
+              <BottomSheetSelect
+                label="State"
                 value={filters.state}
-                onChange={(e) => setFilters({...filters, state: e.target.value})}
-              >
-                <option value="ALL">All States</option>
-                {STATES.map(state => (
-                  <option key={state} value={state}>{state}</option>
-                ))}
-              </select>
+                onChange={(val) => setFilters({...filters, state: val})}
+                options={[
+                  { value: 'ALL', label: 'All States' },
+                  ...STATES.map(state => ({ value: state, label: state }))
+                ]}
+              />
             </div>
           </div>
 
@@ -179,7 +178,7 @@ function BadgeLeaderboard() {
 
       {leaderboard.length === 0 ? (
         <div className="empty-state">
-          <div className="empty-state-icon">🏆</div>
+          <div className="empty-state-icon"><TeamsIcon size={48} color="gray" /></div>
           <div className="empty-state-text">
             No players have earned this badge yet
             {(filters.ageGroup !== 'ALL' || filters.league !== 'ALL' || filters.state !== 'ALL') && 

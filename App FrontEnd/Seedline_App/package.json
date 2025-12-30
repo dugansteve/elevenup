@@ -4,16 +4,26 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:seedline": "cross-env VITE_BRAND=seedline vite",
     "build": "vite build",
+    "build:seedline": "vite build --mode seedline",
+    "build:elevenup": "vite build --mode elevenup",
+    "deploy:seedline": "npm run build:seedline && firebase deploy --only hosting -P seedline",
+    "deploy:elevenup": "npm run build:elevenup && firebase deploy --only hosting -P elevenup",
+    "deploy:both": "npm run deploy:seedline && npm run deploy:elevenup",
     "preview": "vite preview"
   },
   "dependencies": {
+    "firebase": "^12.7.0",
+    "leaflet": "^1.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.20.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
+    "cross-env": "^7.0.3",
     "vite": "^5.0.8"
   }
 }

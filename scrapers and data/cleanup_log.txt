@@ -1,0 +1,671 @@
+[2025-12-21 16:23:28] 
+============================================================
+[2025-12-21 16:23:28] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-21 16:23:28] ============================================================
+[2025-12-21 16:23:28] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-21 16:23:28] Fixing 234 games with invalid scores:
+[2025-12-21 16:23:28]   ID 365379: Laguna FC Laguna FC B15 vs Legends FC (CA) LA B15 FC = -
+[2025-12-21 16:23:28]   ID 365478: LASC-SCV LAFC SoCal-SCV B2015 Gold vs LA Surf Soccer Club LC B2015 BLACK - SOCAL = -
+[2025-12-21 16:23:28]   ID 365703: Claremont Stars Soccer Club Boys- B2015 Red vs ALBION SC Riverside ALBION SC Riverside B15 Premier = -
+[2025-12-21 16:23:28]   ID 365816: TOTAL FUTBOL ACADEMY (CA) TFA-OC B2015 vs California Football Academy CFA OC B15 Helm = -
+[2025-12-21 16:23:28]   ID 365817: B15 Red - AG * vs Pateadores Soccer Club NB B2015 Blue = -
+[2025-12-21 16:23:28]   ID 365819: TOTAL FUTBOL ACADEMY (CA) TFA-OC B2015 vs Capo FC Capo FC - B15 Blue = -
+[2025-12-21 16:23:28]   ID 366186: Downey United Football Club B2015 White vs Sand and Surf SC B15 Premier = -
+[2025-12-21 16:23:28]   ID 366273: So Cal Blues B15 Clark Blue vs Strikers FC Orange Strikers FC Orange-B2015 VE = -
+[2025-12-21 16:23:28]   ID 366303: Cardiff Sockers B15 Blue - Favor vs Drop - B15 - Flight 2 SD North = -
+[2025-12-21 16:23:28]   ID 366307: Drop - B15 - Flight 2 SD North vs City SC City SC Carlsbad B15 Premier - Manhungo = -
+[2025-12-21 16:23:28]   ... and 224 more
+[2025-12-21 16:23:28] 
+--- Normalizing state abbreviations ---
+[2025-12-21 16:23:30] 
+--- Standardizing gender values ---
+[2025-12-21 16:23:30]   Gender fixes: teams Male->Boys=0, games Male->Boys=0, Both/None->NULL=4017
+[2025-12-21 16:23:30] 
+--- Normalizing club names ---
+[2025-12-21 16:23:30]   Club name: 'ALBION SC San Diego ALBION SC San Diego academy III' -> 'ALBION SC San Diego ALBION SC San Diego Academy III': 1 teams
+[2025-12-21 16:23:31]   Club name: 'ALBION SC Santa Monica Albion SC Santa Monica' -> 'ALBION SC Santa Monica ALBION SC Santa Monica': 1 teams
+[2025-12-21 16:23:31]   Club name: 'Mo Rush' -> 'MO Rush': 3 teams
+[2025-12-21 16:23:31]   Club name: 'Mo Rush Azul' -> 'MO Rush Azul': 2 teams
+[2025-12-21 16:23:31]   Club name: 'Mo Rush Blanco' -> 'MO Rush Blanco': 2 teams
+[2025-12-21 16:23:31]   Club name: 'Mo Rush Grey' -> 'MO Rush Grey': 1 teams
+[2025-12-21 16:23:31]   Club name: 'Upper Moreland SC Rampage' -> 'Upper Moreland SC RAMPAGE': 1 teams
+[2025-12-21 16:23:31]   Club name: 'Upper Moreland SC UMSC Fire -' -> 'Upper Moreland SC UMSC FIRE -': 1 teams
+[2025-12-21 16:23:31] 
+--- Populating MLS NEXT states ---
+[2025-12-21 16:23:54] 
+=== ISSUES FOR MANUAL REVIEW ===
+[2025-12-21 16:23:54]   [!] Potential duplicate game groups: 91 (review before deleting - may be double-headers)
+[2025-12-21 16:23:54] 
+============================================================
+[2025-12-21 16:23:54] SAFE CLEANUP COMPLETE
+[2025-12-21 16:23:54] ============================================================
+[2025-12-21 16:23:54]   Invalid scores fixed: 234
+[2025-12-21 16:23:54]   Gender values fixed: 4017
+[2025-12-21 16:23:54]   Club names normalized: 12
+[2025-12-21 22:00:01] 
+============================================================
+[2025-12-21 22:00:01] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-21 22:00:01] ============================================================
+[2025-12-21 22:00:01] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-21 22:00:02] 
+============================================================
+[2025-12-21 22:00:02] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-21 22:00:02] ============================================================
+[2025-12-21 22:00:02] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-21 22:00:03] 
+--- Normalizing state abbreviations ---
+[2025-12-21 22:00:04] 
+--- Standardizing gender values ---
+[2025-12-21 22:00:04] 
+--- Normalizing club names ---
+[2025-12-21 22:00:04] 
+--- Populating MLS NEXT states ---
+[2025-12-21 22:00:05] 
+--- Normalizing state abbreviations ---
+[2025-12-21 22:00:07] 
+--- Standardizing gender values ---
+[2025-12-21 22:00:07] 
+--- Normalizing club names ---
+[2025-12-21 22:00:07] 
+--- Populating MLS NEXT states ---
+[2025-12-21 22:00:13] ERROR: database is locked
+[2025-12-21 22:00:36] 
+=== ISSUES FOR MANUAL REVIEW ===
+[2025-12-21 22:00:36]   [!] PKS corrupted games: 4 (run database_cleanup.py to remove)
+[2025-12-21 22:00:36]   [!] Potential duplicate game groups: 183 (review before deleting - may be double-headers)
+[2025-12-21 22:00:36] 
+============================================================
+[2025-12-21 22:00:36] SAFE CLEANUP COMPLETE
+[2025-12-21 22:00:36] ============================================================
+[2025-12-21 22:00:36]   No fixes needed - database is clean!
+[2025-12-22 07:00:02] 
+============================================================
+[2025-12-22 07:00:02] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-22 07:00:02] ============================================================
+[2025-12-22 07:00:02] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-22 07:00:03] Fixing 8680 games with invalid scores:
+[2025-12-22 07:00:03]   ID 377483: Lamorinda SC Lamorinda FC 14 Navy 4 vs Fremont Rush Soccer Fremont Rush 2014 Boys = -
+[2025-12-22 07:00:03]   ID 377485: Lamorinda SC Lamorinda FC 14 Navy 2 vs Lamorinda SC Lamorinda FC 14 Navy 4 = -
+[2025-12-22 07:00:03]   ID 377489: Cupertino FC Cupertino FC Flames 14B vs Lamorinda SC Lamorinda FC 14 Navy 3 = -
+[2025-12-22 07:00:03]   ID 377492: Lamorinda SC Lamorinda FC 14 Navy 4 vs JSC Soccer Club Juventus Academy SV 14B Bianco = -
+[2025-12-22 07:00:03]   ID 377494: Lamorinda SC Lamorinda FC 14 Navy 1 vs D2C South Bay FC 2014 Boys = -
+[2025-12-22 07:00:03]   ID 377499: Fremont Rush Soccer Fremont Rush 2014 Boys vs Lamorinda SC Lamorinda FC 14 Navy 1 = -
+[2025-12-22 07:00:03]   ID 377501: Lamorinda SC Lamorinda FC 14 Navy 2 vs Ravenswood Juniors Soccer Club Zorritos B14 = -
+[2025-12-22 07:00:03]   ID 377502: D2C South Bay FC 2014 Boys vs Ravenswood Juniors Soccer Club JaguarsB14 = -
+[2025-12-22 07:00:03]   ID 377506: Lamorinda SC Lamorinda FC 14 Navy 4 vs JSC Soccer Club Juventus Academy SV 14B Nero = -
+[2025-12-22 07:00:03]   ID 377507: Cupertino FC Cupertino FC Flames 14B vs Stanford Strikers FC Alpine Strikers FC 14B Chelsea = -
+[2025-12-22 07:00:03]   ... and 8670 more
+[2025-12-22 07:00:03] 
+--- Normalizing state abbreviations ---
+[2025-12-22 07:00:05] 
+--- Standardizing gender values ---
+[2025-12-22 07:00:06]   Gender fixes: teams Male->Boys=0, games Male->Boys=0, Both/None->NULL=12343
+[2025-12-22 07:00:06] 
+--- Normalizing club names ---
+[2025-12-22 07:00:06]   Club name: 'bye team' -> 'BYE TEAM': 1 teams
+[2025-12-22 07:00:06]   Club name: 'Bonita Springs Wildcats Bonita Springs WIldcats ( Red)' -> 'Bonita Springs Wildcats Bonita Springs Wildcats ( Red)': 1 teams
+[2025-12-22 07:00:06]   Club name: 'Cape Coral Soccer CYCLONE BOYS' -> 'Cape Coral Soccer Cyclone Boys': 2 teams
+[2025-12-22 07:00:06]   Club name: 'Chestnut Hill Youth Sports Club Blue Lightning' -> 'Chestnut Hill Youth Sports Club Blue LIghtning': 1 teams
+[2025-12-22 07:00:06]   Club name: 'Colo Colo Soccer Academy USA colo colo' -> 'Colo Colo Soccer Academy USA Colo Colo': 1 teams
+[2025-12-22 07:00:06]   Club name: 'District of Columbia Football Club DISTRICT OF COLUMBIA FOOTBALL CLUB' -> 'District of Columbia Football Club District of Columbia Football Club': 1 teams
+[2025-12-22 07:00:06]   Club name: 'Doral SC DORAL' -> 'Doral SC Doral': 9 teams
+[2025-12-22 07:00:06]   Club name: 'Empire Surf Albion SC Temecula Academy' -> 'Empire Surf ALBION SC Temecula Academy': 1 teams
+[2025-12-22 07:00:06]   Club name: 'Empire Surf Albion SC Temecula Academy Perris' -> 'Empire Surf ALBION SC Temecula Academy Perris': 2 teams
+[2025-12-22 07:00:06]   Club name: 'Empire Surf Albion SC Temecula Academy Perris ll' -> 'Empire Surf ALBION SC Temecula Academy Perris ll': 1 teams
+[2025-12-22 07:00:06]   Club name: 'FRESNO HEAT FC FRESNO Heat FC Scorpions' -> 'FRESNO HEAT FC FRESNO HEAT FC Scorpions': 1 teams
+[2025-12-22 07:00:06]   Club name: 'Futbol Beach Soccer Futsal Club FBS-FC CHARCOAL' -> 'Futbol Beach Soccer Futsal Club FBS-FC Charcoal': 1 teams
+[2025-12-22 07:00:06]   Club name: 'Greater Severna Park Athletic Assoc SEVERNA PARK 12B -' -> 'Greater Severna Park Athletic Assoc Severna Park 12B -': 1 teams
+[2025-12-22 07:00:06]   Club name: 'Hollister Tremors Hollister tremors' -> 'Hollister Tremors Hollister Tremors': 1 teams
+[2025-12-22 07:00:06]   Club name: 'Lodi FC Lodi FC' -> 'Lodi FC LODI FC': 1 teams
+[2025-12-22 07:00:06]   Club name: 'Mako Soccer Club Mako BOYS' -> 'Mako Soccer Club MAKO BOYS': 3 teams
+[2025-12-22 07:00:06]   Club name: 'Paterson Rec. Unisamba Unisamba FC' -> 'Paterson Rec. Unisamba UNISAMBA FC': 1 teams
+[2025-12-22 07:00:06]   Club name: 'Philadelphia SC Philadelphia SC COPPA 11' -> 'Philadelphia SC Philadelphia SC Coppa 11': 1 teams
+[2025-12-22 07:00:06]   Club name: 'Piedmont SC Highlanders' -> 'Piedmont SC HIghlanders': 1 teams
+[2025-12-22 07:00:06]   Club name: 'Piedmont SC Highlanders Grey' -> 'Piedmont SC HIghlanders Grey': 1 teams
+[2025-12-22 07:00:06]   Club name: 'Piedmont SC Highlanders Purple' -> 'Piedmont SC HIghlanders Purple': 4 teams
+[2025-12-22 07:00:06]   Club name: 'SDSC Surf Escondido FC Heat B2014' -> 'SDSC Surf Escondido FC HEAT B2014': 1 teams
+[2025-12-22 07:00:06]   Club name: 'SDSC Surf Escondido FC Heat B2015' -> 'SDSC Surf Escondido FC HEAT B2015': 1 teams
+[2025-12-22 07:00:06]   Club name: 'STA Mount Olive Soccer Club sta mosc usys' -> 'STA Mount Olive Soccer Club STA MOSC USYS': 1 teams
+[2025-12-22 07:00:06]   Club name: 'Sentinels Soccer Club Sentinels' -> 'Sentinels Soccer Club SENTINELS': 1 teams
+[2025-12-22 07:00:06]   Club name: 'SoCal Elite FC Academy' -> 'SoCal Elite FC ACADEMY': 1 teams
+[2025-12-22 07:00:07]   Club name: 'Socal Pride Futbol Club So Cal Pride FC B2012 gonzalez' -> 'Socal Pride Futbol Club So Cal Pride FC B2012 Gonzalez': 1 teams
+[2025-12-22 07:00:07]   Club name: 'Sporting Club Premier (NJ) Pda-Scp Boys' -> 'Sporting Club Premier (NJ) PDA-SCP Boys': 1 teams
+[2025-12-22 07:00:07] 
+--- Populating MLS NEXT states ---
+[2025-12-22 07:00:42] 
+=== ISSUES FOR MANUAL REVIEW ===
+[2025-12-22 07:00:42]   [!] Hidden teams: 4566 (run database_cleanup.py to remove)
+[2025-12-22 07:00:42]   [!] PKS corrupted games: 255 (run database_cleanup.py to remove)
+[2025-12-22 07:00:42]   [!] TBD placeholder games: 108 (review before deleting - may be future games)
+[2025-12-22 07:00:42]   [!] Potential duplicate game groups: 4643 (review before deleting - may be double-headers)
+[2025-12-22 07:00:42] 
+============================================================
+[2025-12-22 07:00:42] SAFE CLEANUP COMPLETE
+[2025-12-22 07:00:42] ============================================================
+[2025-12-22 07:00:42]   Invalid scores fixed: 8680
+[2025-12-22 07:00:42]   Gender values fixed: 12343
+[2025-12-22 07:00:42]   Club names normalized: 43
+[2025-12-22 07:00:42]   MLS states added: 39
+[2025-12-22 22:00:03] 
+============================================================
+[2025-12-22 22:00:03] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-22 22:00:03] ============================================================
+[2025-12-22 22:00:03] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-22 22:00:04] Fixing 1780 games with invalid scores:
+[2025-12-22 22:00:04]   ID 437606: Florida Celtic B16 Academy vs FC Sarasota Inc FCS 2016 Boys Gold YDA = -
+[2025-12-22 22:00:04]   ID 437607: Florida Premier FC SWFL B16 GOLD vs Cape Coral Soccer 2016 Cyclone Boys Black = -
+[2025-12-22 22:00:04]   ID 437608: Cape Coral Soccer 2016 Cyclone Boys Black vs Tampa Bay United TBU 2016B South Blue JA = -
+[2025-12-22 22:00:04]   ID 437609: Florida Premier FC FPFC 16B CP REGIONAL vs Tampa Dynamo FC Tampa Dynamo FC 2016B White = -
+[2025-12-22 22:00:04]   ID 437610: Florida Hawks Futbol Club FHFC ACAD II B16 vs Florida Celtic B16 Academy = -
+[2025-12-22 22:00:04]   ID 437611: FC Sarasota Inc FCS 2016 Boys Gold YDA vs Tampa Dynamo FC Tampa Dynamo FC 2016B White = -
+[2025-12-22 22:00:04]   ID 437612: Florida Premier FC SWFL B16 GOLD vs Florida Celtic B16 Academy = -
+[2025-12-22 22:00:04]   ID 437613: Tampa Bay United TBU 2016B South Blue JA vs FC Sarasota Inc FCS 2016 Boys Gold YDA = -
+[2025-12-22 22:00:04]   ID 437614: Florida Premier FC FPFC 16B CP REGIONAL vs St Pete Raiders St. Pete Raiders 2016B Bonsu = -
+[2025-12-22 22:00:04]   ID 437615: Florida Hawks Futbol Club FHFC ACAD II B16 vs FC Sarasota Inc FCS 2016 Boys Gold YDA = -
+[2025-12-22 22:00:04]   ... and 1770 more
+[2025-12-22 22:00:05] 
+--- Normalizing state abbreviations ---
+[2025-12-22 22:00:05]   State: Alabama -> AL: 9 teams
+[2025-12-22 22:00:05]   State: Arizona -> AZ: 5 teams
+[2025-12-22 22:00:05]   State: California -> CA: 93 teams
+[2025-12-22 22:00:05]   State: Colorado -> CO: 115 teams
+[2025-12-22 22:00:05]   State: Connecticut -> CT: 11 teams
+[2025-12-22 22:00:05]   State: Florida -> FL: 354 teams
+[2025-12-22 22:00:05]   State: Illinois -> IL: 10 teams
+[2025-12-22 22:00:05]   State: Indiana -> IN: 6 teams
+[2025-12-22 22:00:05]   State: Kansas -> KS: 8 teams
+[2025-12-22 22:00:06]   State: Louisiana -> LA: 6 teams
+[2025-12-22 22:00:06]   State: Massachusetts -> MA: 44 teams
+[2025-12-22 22:00:06]   State: Michigan -> MI: 1 teams
+[2025-12-22 22:00:06]   State: Minnesota -> MN: 7 teams
+[2025-12-22 22:00:06]   State: Missouri -> MO: 2 teams
+[2025-12-22 22:00:06]   State: New Jersey -> NJ: 2 teams
+[2025-12-22 22:00:06]   State: New York -> NY: 19 teams
+[2025-12-22 22:00:06]   State: North Carolina -> NC: 12 teams
+[2025-12-22 22:00:06]   State: Ohio -> OH: 11 teams
+[2025-12-22 22:00:06]   State: Pennsylvania -> PA: 173 teams
+[2025-12-22 22:00:07]   State: Texas -> TX: 305 teams
+[2025-12-22 22:00:07]   State: Virginia -> VA: 66 teams
+[2025-12-22 22:00:07]   State: Washington -> WA: 1 teams
+[2025-12-22 22:00:07]   State: Wisconsin -> WI: 2 teams
+[2025-12-22 22:00:07] 
+--- Standardizing gender values ---
+[2025-12-22 22:00:07]   Gender fixes: teams Male->Boys=0, games Male->Boys=0, Both/None->NULL=785
+[2025-12-22 22:00:07] 
+--- Normalizing club names ---
+[2025-12-22 22:00:08]   Club name: 'NPSA WW Surf' -> 'NPSA WW SURF': 7 teams
+[2025-12-22 22:00:08]   Club name: 'SC del Sol' -> 'SC Del Sol': 13 teams
+[2025-12-22 22:00:08]   Club name: 'Springfield SYC Soccer SYC MLS Next' -> 'Springfield SYC Soccer SYC MLS NEXT': 1 teams
+[2025-12-22 22:00:08] 
+--- Populating MLS NEXT states ---
+[2025-12-22 22:00:34] 
+=== ISSUES FOR MANUAL REVIEW ===
+[2025-12-22 22:00:34]   [!] Hidden teams: 4566 (run database_cleanup.py to remove)
+[2025-12-22 22:00:34]   [!] PKS corrupted games: 307 (run database_cleanup.py to remove)
+[2025-12-22 22:00:34]   [!] TBD placeholder games: 139 (review before deleting - may be future games)
+[2025-12-22 22:00:34]   [!] Potential duplicate game groups: 355 (review before deleting - may be double-headers)
+[2025-12-22 22:00:34] 
+============================================================
+[2025-12-22 22:00:34] SAFE CLEANUP COMPLETE
+[2025-12-22 22:00:34] ============================================================
+[2025-12-22 22:00:34]   Invalid scores fixed: 1780
+[2025-12-22 22:00:34]   States normalized: 1262
+[2025-12-22 22:00:34]   Gender values fixed: 785
+[2025-12-22 22:00:34]   Club names normalized: 21
+[2025-12-23 07:00:02] 
+============================================================
+[2025-12-23 07:00:02] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-23 07:00:02] ============================================================
+[2025-12-23 07:00:02] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-23 07:00:03] Fixing 65 games with invalid scores:
+[2025-12-23 07:00:03]   ID 461837: S. Legacy 13-14 vs Cobras Sifuentes 2013 = 21-0
+[2025-12-23 07:00:03]   ID 461935: Athletic Club 2009 vs Deming United 2009 = 27-0
+[2025-12-23 07:00:03]   ID 461937: Deming United 2009 vs Altavista FC 2009 = 0-23
+[2025-12-23 07:00:03]   ID 467257: PITCHESNBOOTS - COED SUMMER 7V7 vs VINTAGE HAWAIIANS - COED SUMMER 7V7 = 3-23
+[2025-12-23 07:00:03]   ID 470039: Solar SC Solar 15B Donnelly vs FC Dallas Youth FC Dallas Youth 15B Reyes Copa = 22-0
+[2025-12-23 07:00:03]   ID 470055: Fort Worth Vaqueros FC Vaqueros Academy 2015 vs Saints ASC Saints ASC 15B Corral = 21-0
+[2025-12-23 07:00:03]   ID 470152: Forms Academy 15G West DEV vs Evolution 16G White = 21-1
+[2025-12-23 07:00:03]   ID 470169: TX BOMBERS FC TX Bombers FC 17B vs Avanti Soccer Academy Avanti Pre-Academy 17B Blue Cavazos = 22-1
+[2025-12-23 07:00:03]   ID 481789: BVB 16B Yellow vs Rose City SC 16B = 1-21
+[2025-12-23 07:00:03]   ID 481972: BVB 16/17G Yellow vs Forms Academy 16G = 0-30
+[2025-12-23 07:00:03]   ... and 55 more
+[2025-12-23 07:00:03] 
+--- Normalizing state abbreviations ---
+[2025-12-23 07:00:05] 
+--- Standardizing gender values ---
+[2025-12-23 07:00:06] 
+--- Normalizing club names ---
+[2025-12-23 07:00:06] 
+--- Populating MLS NEXT states ---
+[2025-12-23 07:00:31] 
+=== ISSUES FOR MANUAL REVIEW ===
+[2025-12-23 07:00:31]   [!] Hidden teams: 4566 (run database_cleanup.py to remove)
+[2025-12-23 07:00:31]   [!] PKS corrupted games: 307 (run database_cleanup.py to remove)
+[2025-12-23 07:00:31]   [!] TBD placeholder games: 219 (review before deleting - may be future games)
+[2025-12-23 07:00:32]   [!] Potential duplicate game groups: 1108 (review before deleting - may be double-headers)
+[2025-12-23 07:00:32] 
+============================================================
+[2025-12-23 07:00:32] SAFE CLEANUP COMPLETE
+[2025-12-23 07:00:32] ============================================================
+[2025-12-23 07:00:32]   Invalid scores fixed: 65
+[2025-12-23 21:39:15] 
+============================================================
+[2025-12-23 21:39:15] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-23 21:39:15] ============================================================
+[2025-12-23 21:39:15] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-23 21:39:15] Fixing 180 games with invalid scores:
+[2025-12-23 21:39:15]   ID 623464: Avalanche 17B Blue SL vs CFC B17 Red CH = 1-25
+[2025-12-23 21:39:15]   ID 625569: United Futbol Academy (UFA) UFA DSM 2012 GIRLS ELITE vs Sporting City Soccer Club 2012G Indigo - East = 21-0
+[2025-12-23 21:39:15]   ID 627075: STJFA 2018B II South vs A1 2018 Black = 0-23
+[2025-12-23 21:39:15]   ID 627197: Alexandria Futsal 2017 Boys Silver vs Bethesda Boca 2017 = 0-25
+[2025-12-23 21:39:15]   ID 627384: Alexandria JA Futsal Boys Santos FC vs A1 2018 Blue = 0-23
+[2025-12-23 21:39:15]   ID 628210: AYSO 350 Alliance Koalas vs Arizona Arsenal Soccer Club AZ Arsenal 16 Girls Teal JH = 0-22
+[2025-12-23 21:39:15]   ID 628434: Arizona Arsenal Soccer Club AZ Arsenal 17 Girls Teal JH vs Canyon Del Oro Soccer Club CDO 17G Premier = 31-0
+[2025-12-23 21:39:15]   ID 631513: Galveston County YS Houston Futsal SC 15G Black- GC vs SCA RAYADAS 2015 = 27-0
+[2025-12-23 21:39:15]   ID 632193: Avalanche 17B Black WE 2 vs El Mellindo FC B17 = 0-26
+[2025-12-23 21:39:15]   ID 635763: Mustang FC U17 vs Barbie = 1-21
+[2025-12-23 21:39:15]   ... and 170 more
+[2025-12-23 21:39:15] 
+--- Normalizing state abbreviations ---
+[2025-12-23 21:39:15]   State: California -> CA: 5 teams
+[2025-12-23 21:39:16]   State: Florida -> FL: 1 teams
+[2025-12-23 21:39:16]   State: Illinois -> IL: 1 teams
+[2025-12-23 21:39:17] 
+--- Standardizing gender values ---
+[2025-12-23 21:39:18] 
+--- Fixing trailing dashes in team names ---
+[2025-12-23 21:39:19]   Fixed trailing dashes in 60 records
+[2025-12-23 21:39:19] 
+--- Fixing common typos ---
+[2025-12-23 21:39:21]   Typo 'Acadamy' -> 'Academy': 4 fixes
+[2025-12-23 21:39:22]   Typo 'Untied' -> 'United': 21 fixes
+[2025-12-23 21:39:25] 
+--- Normalizing club names ---
+[2025-12-23 21:39:25] 
+--- Populating MLS NEXT states ---
+[2025-12-23 21:39:34] 
+=== ISSUES FOR MANUAL REVIEW ===
+[2025-12-23 21:39:34]   [!] Hidden teams: 4566 (run database_cleanup.py to remove)
+[2025-12-23 21:39:35]   [!] PKS corrupted games: 307 (run database_cleanup.py to remove)
+[2025-12-23 21:39:35]   [!] TBD placeholder games: 302 (review before deleting - may be future games)
+[2025-12-23 21:39:36]   [!] Potential duplicate game groups: 1919 (review before deleting - may be double-headers)
+[2025-12-23 21:39:36] 
+============================================================
+[2025-12-23 21:39:36] SAFE CLEANUP COMPLETE
+[2025-12-23 21:39:36] ============================================================
+[2025-12-23 21:39:36]   Invalid scores fixed: 180
+[2025-12-23 21:39:36]   States normalized: 7
+[2025-12-23 21:39:36]   Trailing dashes fixed: 60
+[2025-12-23 21:39:36]   Typos fixed: 25
+[2025-12-23 21:44:21] 
+============================================================
+[2025-12-23 21:44:21] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-23 21:44:21] ============================================================
+[2025-12-23 21:44:21] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-23 21:44:22] 
+--- Normalizing state abbreviations ---
+[2025-12-23 21:44:24] 
+--- Standardizing gender values ---
+[2025-12-23 21:44:25] 
+--- Fixing trailing dashes in team names ---
+[2025-12-23 21:44:26] 
+--- Fixing common typos ---
+[2025-12-23 21:44:30]   Typo 'Untied' -> 'United': 4 fixes
+[2025-12-23 21:44:31]   Typo 'untied' -> 'united': 4 fixes
+[2025-12-23 21:44:38] 
+--- Normalizing club names ---
+[2025-12-23 21:44:38] 
+--- Populating MLS NEXT states ---
+[2025-12-23 21:44:50] 
+=== ISSUES FOR MANUAL REVIEW ===
+[2025-12-23 21:44:50]   [!] Hidden teams: 4566 (run database_cleanup.py to remove)
+[2025-12-23 21:44:50]   [!] PKS corrupted games: 307 (run database_cleanup.py to remove)
+[2025-12-23 21:44:50]   [!] TBD placeholder games: 302 (review before deleting - may be future games)
+[2025-12-23 21:44:51]   [!] Potential duplicate game groups: 1928 (review before deleting - may be double-headers)
+[2025-12-23 21:44:51] 
+============================================================
+[2025-12-23 21:44:51] SAFE CLEANUP COMPLETE
+[2025-12-23 21:44:51] ============================================================
+[2025-12-23 21:44:51]   Typos fixed: 8
+[2025-12-23 22:00:02] 
+============================================================
+[2025-12-23 22:00:02] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-23 22:00:02] ============================================================
+[2025-12-23 22:00:02] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-23 22:00:03] Fixing 1 games with invalid scores:
+[2025-12-23 22:00:03]   ID 768880: Walnut Creek Surf Soccer Club Walnut Creek Surf 14B White vs Mt Diablo Mustang Soccer Mt. Diablo Mustang 14/15B Gray = 22-1
+[2025-12-23 22:00:04] 
+--- Normalizing state abbreviations ---
+[2025-12-23 22:00:07] 
+--- Standardizing gender values ---
+[2025-12-23 22:00:08] 
+--- Fixing trailing dashes in team names ---
+[2025-12-23 22:00:10]   Fixed trailing dashes in 3 records
+[2025-12-23 22:00:10] 
+--- Fixing common typos ---
+[2025-12-23 22:00:21] 
+--- Normalizing club names ---
+[2025-12-23 22:00:21] 
+--- Populating MLS NEXT states ---
+[2025-12-23 22:00:34] 
+=== ISSUES FOR MANUAL REVIEW ===
+[2025-12-23 22:00:34]   [!] Hidden teams: 4566 (run database_cleanup.py to remove)
+[2025-12-23 22:00:35]   [!] PKS corrupted games: 307 (run database_cleanup.py to remove)
+[2025-12-23 22:00:35]   [!] TBD placeholder games: 302 (review before deleting - may be future games)
+[2025-12-23 22:00:36]   [!] Potential duplicate game groups: 1967 (review before deleting - may be double-headers)
+[2025-12-23 22:00:36] 
+============================================================
+[2025-12-23 22:00:36] SAFE CLEANUP COMPLETE
+[2025-12-23 22:00:36] ============================================================
+[2025-12-23 22:00:36]   Invalid scores fixed: 1
+[2025-12-23 22:00:36]   Trailing dashes fixed: 3
+[2025-12-24 22:00:02] 
+============================================================
+[2025-12-24 22:00:02] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-24 22:00:02] ============================================================
+[2025-12-24 22:00:02] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-24 22:00:03] Fixing 6 games with invalid scores:
+[2025-12-24 22:00:03]   ID 771310: Joga Bonito vs Turlock Sports Park FC 2014 Boys Black = 26-1
+[2025-12-24 22:00:03]   ID 771316: Three Sixty The Valley vs SUSC Futsal 2017G = 28-1
+[2025-12-24 22:00:03]   ID 771496: Paradise Hills Rec. vs City Heights Rec. Center = 21-0
+[2025-12-24 22:00:03]   ID 771498: Silver Wing Rec. vs Memorial Rec. Center = 30-21
+[2025-12-24 22:00:03]   ID 771503: Willie Henderson Sports Complex vs Silver Wing Rec. = 32-14
+[2025-12-24 22:00:03]   ID 771505: Willie Henderson Sports Complex vs San Ysidro = 11-22
+[2025-12-24 22:00:03] 
+--- Normalizing state abbreviations ---
+[2025-12-24 22:00:05] 
+--- Standardizing gender values ---
+[2025-12-24 22:00:06] 
+--- Fixing trailing dashes in team names ---
+[2025-12-24 22:00:07] 
+--- Fixing common typos ---
+[2025-12-24 22:00:17] 
+--- Normalizing club names ---
+[2025-12-24 22:00:17] 
+--- Populating MLS NEXT states ---
+[2025-12-24 22:00:27] 
+=== ISSUES FOR MANUAL REVIEW ===
+[2025-12-24 22:00:27]   [!] Hidden teams: 4566 (run database_cleanup.py to remove)
+[2025-12-24 22:00:27]   [!] PKS corrupted games: 307 (run database_cleanup.py to remove)
+[2025-12-24 22:00:28]   [!] TBD placeholder games: 302 (review before deleting - may be future games)
+[2025-12-24 22:00:28]   [!] Potential duplicate game groups: 2009 (review before deleting - may be double-headers)
+[2025-12-24 22:00:28] 
+============================================================
+[2025-12-24 22:00:28] SAFE CLEANUP COMPLETE
+[2025-12-24 22:00:28] ============================================================
+[2025-12-24 22:00:28]   Invalid scores fixed: 6
+[2025-12-25 22:00:03] 
+============================================================
+[2025-12-25 22:00:03] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-25 22:00:03] ============================================================
+[2025-12-25 22:00:03] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-25 22:00:03] Fixing 2122 games with invalid scores:
+[2025-12-25 22:00:03]   ID 420522: Las Vegas Sports Academy Las Vegas Sports Academy U11 Boys Red 2014 vs Players SC Players 14 Boys Elite = -
+[2025-12-25 22:00:03]   ID 420523: Downtown Las Vegas SC 2014 Pre EA II vs Villarreal Las Vegas Academy VILLARREAL LV U11 YELLOW-NW = -
+[2025-12-25 22:00:03]   ID 420526: Players SC Players 14 Boys Elite vs Villarreal Las Vegas Academy VILLARREAL LV U11 YELLOW-NW = -
+[2025-12-25 22:00:03]   ID 420546: Players SC Players 14 Boys Academy vs LV Heat Surf SC  LV Heat Surf 14B Pre RP Henderson = -
+[2025-12-25 22:00:03]   ID 420547: LV Heat Surf SC  LV Heat Surf 14B Pre NP Summerlin vs Villarreal Las Vegas Academy VILLARREAL LV U10 YELLOW = -
+[2025-12-25 22:00:03]   ID 420548: LV Heat Surf SC  LV Heat Surf 14B Pre NP Henderson vs ALBION SC Las Vegas ALBION SC Las Vegas B15 Academy I = -
+[2025-12-25 22:00:03]   ID 420549: Las Vegas Sports Academy Las Vegas Sports Academy U10 Boys Red 2015 vs Players SC Players 15 Boys Elite Junior = -
+[2025-12-25 22:00:03]   ID 420554: Players SC Players 15 Boys Elite Junior vs Nevada South Youth Soccer League Las Vegas Red Stars 2014 = -
+[2025-12-25 22:00:03]   ID 420555: ALBION SC Las Vegas ALBION SC Las Vegas B15 Academy I vs LV Heat Surf SC  LV Heat Surf 14B Pre RP Henderson = -
+[2025-12-25 22:00:03]   ID 420557: LV Heat Surf SC  LV Heat Surf 14B Pre NP Summerlin vs LV Heat Surf SC  LV Heat Surf 14B Pre NP Henderson = -
+[2025-12-25 22:00:03]   ... and 2112 more
+[2025-12-25 22:00:04] 
+--- Normalizing state abbreviations ---
+[2025-12-25 22:00:06] 
+--- Standardizing gender values ---
+[2025-12-25 22:00:07] 
+--- Fixing trailing dashes in team names ---
+[2025-12-25 22:00:08] 
+--- Fixing common typos ---
+[2025-12-25 22:00:17] 
+--- Normalizing club names ---
+[2025-12-25 22:00:18] 
+--- Populating MLS NEXT states ---
+[2025-12-25 22:00:27] 
+=== ISSUES FOR MANUAL REVIEW ===
+[2025-12-25 22:00:27]   [!] Hidden teams: 4566 (run database_cleanup.py to remove)
+[2025-12-25 22:00:27]   [!] PKS corrupted games: 307 (run database_cleanup.py to remove)
+[2025-12-25 22:00:27]   [!] TBD placeholder games: 302 (review before deleting - may be future games)
+[2025-12-25 22:00:28]   [!] Potential duplicate game groups: 2009 (review before deleting - may be double-headers)
+[2025-12-25 22:00:28] 
+============================================================
+[2025-12-25 22:00:28] SAFE CLEANUP COMPLETE
+[2025-12-25 22:00:28] ============================================================
+[2025-12-25 22:00:28]   Invalid scores fixed: 2122
+[2025-12-26 22:00:03] 
+============================================================
+[2025-12-26 22:00:03] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-26 22:00:03] ============================================================
+[2025-12-26 22:00:03] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-26 22:00:04] 
+--- Normalizing state abbreviations ---
+[2025-12-26 22:00:07] 
+--- Standardizing gender values ---
+[2025-12-26 22:00:08] 
+--- Fixing trailing dashes in team names ---
+[2025-12-26 22:00:09] 
+--- Fixing common typos ---
+[2025-12-26 22:00:20] 
+--- Normalizing club names ---
+[2025-12-26 22:00:20] 
+--- Populating MLS NEXT states ---
+[2025-12-26 22:00:31] 
+=== ISSUES FOR MANUAL REVIEW ===
+[2025-12-26 22:00:31]   [!] Hidden teams: 4566 (run database_cleanup.py to remove)
+[2025-12-26 22:00:31]   [!] PKS corrupted games: 307 (run database_cleanup.py to remove)
+[2025-12-26 22:00:31]   [!] TBD placeholder games: 302 (review before deleting - may be future games)
+[2025-12-26 22:00:32]   [!] Potential duplicate game groups: 2009 (review before deleting - may be double-headers)
+[2025-12-26 22:00:32] 
+============================================================
+[2025-12-26 22:00:32] SAFE CLEANUP COMPLETE
+[2025-12-26 22:00:32] ============================================================
+[2025-12-26 22:00:32]   No fixes needed - database is clean!
+[2025-12-27 22:00:02] 
+============================================================
+[2025-12-27 22:00:02] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-27 22:00:02] ============================================================
+[2025-12-27 22:00:02] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-27 22:00:03] 
+============================================================
+[2025-12-27 22:00:03] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-27 22:00:03] ============================================================
+[2025-12-27 22:00:03] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-27 22:00:03] Fixing 2106 games with invalid scores:
+[2025-12-27 22:00:03]   ID 420522: Las Vegas Sports Academy Las Vegas Sports Academy U11 Boys Red 2014 vs Players SC Players 14 Boys Elite = -
+[2025-12-27 22:00:03]   ID 420523: Downtown Las Vegas SC 2014 Pre EA II vs Villarreal Las Vegas Academy VILLARREAL LV U11 YELLOW-NW = -
+[2025-12-27 22:00:03]   ID 420526: Players SC Players 14 Boys Elite vs Villarreal Las Vegas Academy VILLARREAL LV U11 YELLOW-NW = -
+[2025-12-27 22:00:03]   ID 420546: Players SC Players 14 Boys Academy vs LV Heat Surf SC  LV Heat Surf 14B Pre RP Henderson = -
+[2025-12-27 22:00:03]   ID 420547: LV Heat Surf SC  LV Heat Surf 14B Pre NP Summerlin vs Villarreal Las Vegas Academy VILLARREAL LV U10 YELLOW = -
+[2025-12-27 22:00:03]   ID 420548: LV Heat Surf SC  LV Heat Surf 14B Pre NP Henderson vs ALBION SC Las Vegas ALBION SC Las Vegas B15 Academy I = -
+[2025-12-27 22:00:03]   ID 420549: Las Vegas Sports Academy Las Vegas Sports Academy U10 Boys Red 2015 vs Players SC Players 15 Boys Elite Junior = -
+[2025-12-27 22:00:03]   ID 420554: Players SC Players 15 Boys Elite Junior vs Nevada South Youth Soccer League Las Vegas Red Stars 2014 = -
+[2025-12-27 22:00:03]   ID 420555: ALBION SC Las Vegas ALBION SC Las Vegas B15 Academy I vs LV Heat Surf SC  LV Heat Surf 14B Pre RP Henderson = -
+[2025-12-27 22:00:03]   ID 420557: LV Heat Surf SC  LV Heat Surf 14B Pre NP Summerlin vs LV Heat Surf SC  LV Heat Surf 14B Pre NP Henderson = -
+[2025-12-27 22:00:03]   ... and 2096 more
+[2025-12-27 22:00:04] Fixing 2106 games with invalid scores:
+[2025-12-27 22:00:04]   ID 420522: Las Vegas Sports Academy Las Vegas Sports Academy U11 Boys Red 2014 vs Players SC Players 14 Boys Elite = -
+[2025-12-27 22:00:04]   ID 420523: Downtown Las Vegas SC 2014 Pre EA II vs Villarreal Las Vegas Academy VILLARREAL LV U11 YELLOW-NW = -
+[2025-12-27 22:00:04]   ID 420526: Players SC Players 14 Boys Elite vs Villarreal Las Vegas Academy VILLARREAL LV U11 YELLOW-NW = -
+[2025-12-27 22:00:04]   ID 420546: Players SC Players 14 Boys Academy vs LV Heat Surf SC  LV Heat Surf 14B Pre RP Henderson = -
+[2025-12-27 22:00:04]   ID 420547: LV Heat Surf SC  LV Heat Surf 14B Pre NP Summerlin vs Villarreal Las Vegas Academy VILLARREAL LV U10 YELLOW = -
+[2025-12-27 22:00:04]   ID 420548: LV Heat Surf SC  LV Heat Surf 14B Pre NP Henderson vs ALBION SC Las Vegas ALBION SC Las Vegas B15 Academy I = -
+[2025-12-27 22:00:04]   ID 420549: Las Vegas Sports Academy Las Vegas Sports Academy U10 Boys Red 2015 vs Players SC Players 15 Boys Elite Junior = -
+[2025-12-27 22:00:04]   ID 420554: Players SC Players 15 Boys Elite Junior vs Nevada South Youth Soccer League Las Vegas Red Stars 2014 = -
+[2025-12-27 22:00:04]   ID 420555: ALBION SC Las Vegas ALBION SC Las Vegas B15 Academy I vs LV Heat Surf SC  LV Heat Surf 14B Pre RP Henderson = -
+[2025-12-27 22:00:04]   ID 420557: LV Heat Surf SC  LV Heat Surf 14B Pre NP Summerlin vs LV Heat Surf SC  LV Heat Surf 14B Pre NP Henderson = -
+[2025-12-27 22:00:04]   ... and 2096 more
+[2025-12-27 22:00:04] 
+--- Normalizing state abbreviations ---
+[2025-12-27 22:00:06] 
+--- Standardizing gender values ---
+[2025-12-27 22:00:07] 
+--- Fixing trailing dashes in team names ---
+[2025-12-27 22:00:08] 
+--- Fixing common typos ---
+[2025-12-27 22:00:09] ERROR: database is locked
+[2025-12-27 22:00:18] 
+--- Normalizing club names ---
+[2025-12-27 22:00:19] 
+--- Populating MLS NEXT states ---
+[2025-12-27 22:00:29] 
+=== ISSUES FOR MANUAL REVIEW ===
+[2025-12-27 22:00:29]   [!] Hidden teams: 4566 (run database_cleanup.py to remove)
+[2025-12-27 22:00:29]   [!] PKS corrupted games: 307 (run database_cleanup.py to remove)
+[2025-12-27 22:00:29]   [!] TBD placeholder games: 302 (review before deleting - may be future games)
+[2025-12-27 22:00:30]   [!] Potential duplicate game groups: 2009 (review before deleting - may be double-headers)
+[2025-12-27 22:00:30] 
+============================================================
+[2025-12-27 22:00:30] SAFE CLEANUP COMPLETE
+[2025-12-27 22:00:30] ============================================================
+[2025-12-27 22:00:30]   Invalid scores fixed: 2106
+[2025-12-28 22:00:03] 
+============================================================
+[2025-12-28 22:00:03] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-28 22:00:03] ============================================================
+[2025-12-28 22:00:03] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-28 22:00:03] 
+============================================================
+[2025-12-28 22:00:03] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-28 22:00:03] ============================================================
+[2025-12-28 22:00:03] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-28 22:00:04] 
+--- Normalizing state abbreviations ---
+[2025-12-28 22:00:06] 
+--- Standardizing gender values ---
+[2025-12-28 22:00:08] 
+--- Fixing trailing dashes in team names ---
+[2025-12-28 22:00:08] ERROR: database is locked
+[2025-12-28 22:00:09] 
+--- Fixing common typos ---
+[2025-12-28 22:00:20] 
+--- Normalizing club names ---
+[2025-12-28 22:00:20] 
+--- Populating MLS NEXT states ---
+[2025-12-28 22:00:31] 
+=== ISSUES FOR MANUAL REVIEW ===
+[2025-12-28 22:00:32]   [!] Hidden teams: 4566 (run database_cleanup.py to remove)
+[2025-12-28 22:00:32]   [!] PKS corrupted games: 307 (run database_cleanup.py to remove)
+[2025-12-28 22:00:32]   [!] TBD placeholder games: 302 (review before deleting - may be future games)
+[2025-12-28 22:00:34]   [!] Potential duplicate game groups: 2009 (review before deleting - may be double-headers)
+[2025-12-28 22:00:34] 
+============================================================
+[2025-12-28 22:00:34] SAFE CLEANUP COMPLETE
+[2025-12-28 22:00:34] ============================================================
+[2025-12-28 22:00:34]   No fixes needed - database is clean!
+[2025-12-29 07:00:02] 
+============================================================
+[2025-12-29 07:00:02] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-29 07:00:02] ============================================================
+[2025-12-29 07:00:02] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-29 07:00:02] Fixing 2122 games with invalid scores:
+[2025-12-29 07:00:02]   ID 420522: Las Vegas Sports Academy Las Vegas Sports Academy U11 Boys Red 2014 vs Players SC Players 14 Boys Elite = -
+[2025-12-29 07:00:02]   ID 420523: Downtown Las Vegas SC 2014 Pre EA II vs Villarreal Las Vegas Academy VILLARREAL LV U11 YELLOW-NW = -
+[2025-12-29 07:00:02]   ID 420526: Players SC Players 14 Boys Elite vs Villarreal Las Vegas Academy VILLARREAL LV U11 YELLOW-NW = -
+[2025-12-29 07:00:02]   ID 420546: Players SC Players 14 Boys Academy vs LV Heat Surf SC  LV Heat Surf 14B Pre RP Henderson = -
+[2025-12-29 07:00:02]   ID 420547: LV Heat Surf SC  LV Heat Surf 14B Pre NP Summerlin vs Villarreal Las Vegas Academy VILLARREAL LV U10 YELLOW = -
+[2025-12-29 07:00:02]   ID 420548: LV Heat Surf SC  LV Heat Surf 14B Pre NP Henderson vs ALBION SC Las Vegas ALBION SC Las Vegas B15 Academy I = -
+[2025-12-29 07:00:02]   ID 420549: Las Vegas Sports Academy Las Vegas Sports Academy U10 Boys Red 2015 vs Players SC Players 15 Boys Elite Junior = -
+[2025-12-29 07:00:02]   ID 420554: Players SC Players 15 Boys Elite Junior vs Nevada South Youth Soccer League Las Vegas Red Stars 2014 = -
+[2025-12-29 07:00:02]   ID 420555: ALBION SC Las Vegas ALBION SC Las Vegas B15 Academy I vs LV Heat Surf SC  LV Heat Surf 14B Pre RP Henderson = -
+[2025-12-29 07:00:02]   ID 420557: LV Heat Surf SC  LV Heat Surf 14B Pre NP Summerlin vs LV Heat Surf SC  LV Heat Surf 14B Pre NP Henderson = -
+[2025-12-29 07:00:02]   ... and 2112 more
+[2025-12-29 07:00:03] 
+--- Normalizing state abbreviations ---
+[2025-12-29 07:00:04] 
+--- Standardizing gender values ---
+[2025-12-29 07:00:05] 
+--- Fixing trailing dashes in team names ---
+[2025-12-29 07:00:06] 
+--- Fixing common typos ---
+[2025-12-29 07:00:16] 
+--- Normalizing club names ---
+[2025-12-29 07:00:17] 
+--- Populating MLS NEXT states ---
+[2025-12-29 07:00:26] 
+=== ISSUES FOR MANUAL REVIEW ===
+[2025-12-29 07:00:26]   [!] Hidden teams: 4566 (run database_cleanup.py to remove)
+[2025-12-29 07:00:26]   [!] PKS corrupted games: 307 (run database_cleanup.py to remove)
+[2025-12-29 07:00:26]   [!] TBD placeholder games: 302 (review before deleting - may be future games)
+[2025-12-29 07:00:27]   [!] Potential duplicate game groups: 2009 (review before deleting - may be double-headers)
+[2025-12-29 07:00:27] 
+============================================================
+[2025-12-29 07:00:27] SAFE CLEANUP COMPLETE
+[2025-12-29 07:00:27] ============================================================
+[2025-12-29 07:00:27]   Invalid scores fixed: 2122
+[2025-12-29 22:00:02] 
+============================================================
+[2025-12-29 22:00:02] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-29 22:00:02] ============================================================
+[2025-12-29 22:00:02] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-29 22:00:03] 
+--- Normalizing state abbreviations ---
+[2025-12-29 22:00:05] 
+--- Standardizing gender values ---
+[2025-12-29 22:00:06] 
+--- Fixing trailing dashes in team names ---
+[2025-12-29 22:00:07] 
+--- Fixing common typos ---
+[2025-12-29 22:00:17] 
+--- Normalizing club names ---
+[2025-12-29 22:00:17] 
+--- Populating MLS NEXT states ---
+[2025-12-29 22:00:26] 
+=== ISSUES FOR MANUAL REVIEW ===
+[2025-12-29 22:00:26]   [!] Hidden teams: 4566 (run database_cleanup.py to remove)
+[2025-12-29 22:00:26]   [!] PKS corrupted games: 307 (run database_cleanup.py to remove)
+[2025-12-29 22:00:26]   [!] TBD placeholder games: 302 (review before deleting - may be future games)
+[2025-12-29 22:00:27]   [!] Potential duplicate game groups: 2009 (review before deleting - may be double-headers)
+[2025-12-29 22:00:27] 
+============================================================
+[2025-12-29 22:00:27] SAFE CLEANUP COMPLETE
+[2025-12-29 22:00:27] ============================================================
+[2025-12-29 22:00:27]   No fixes needed - database is clean!
+[2025-12-30 07:00:02] 
+============================================================
+[2025-12-30 07:00:02] SAFE DATABASE CLEANUP (Auto-run safe)
+[2025-12-30 07:00:02] ============================================================
+[2025-12-30 07:00:02] 
+--- Fixing invalid scores (resetting to NULL) ---
+[2025-12-30 07:00:03] 
+--- Normalizing state abbreviations ---
+[2025-12-30 07:00:05] 
+--- Standardizing gender values ---
+[2025-12-30 07:00:06] 
+--- Fixing trailing dashes in team names ---
+[2025-12-30 07:00:07] 
+--- Fixing common typos ---
+[2025-12-30 07:00:17] 
+--- Normalizing club names ---
+[2025-12-30 07:00:17] 
+--- Populating MLS NEXT states ---
+[2025-12-30 07:00:28] 
+=== ISSUES FOR MANUAL REVIEW ===
+[2025-12-30 07:00:28]   [!] Hidden teams: 4566 (run database_cleanup.py to remove)
+[2025-12-30 07:00:28]   [!] PKS corrupted games: 307 (run database_cleanup.py to remove)
+[2025-12-30 07:00:29]   [!] TBD placeholder games: 302 (review before deleting - may be future games)
+[2025-12-30 07:00:30]   [!] Potential duplicate game groups: 2009 (review before deleting - may be double-headers)
+[2025-12-30 07:00:30] 
+============================================================
+[2025-12-30 07:00:30] SAFE CLEANUP COMPLETE
+[2025-12-30 07:00:30] ============================================================
+[2025-12-30 07:00:30]   No fixes needed - database is clean!
